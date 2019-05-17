@@ -46,6 +46,17 @@ export default {
         }
     }
 }
+.box{
+    // width: 100%;
+    height: 550px;
+    .demo-carousel{
+        // width: 100%;
+        img{
+            width: 100%;
+            height: 500px;
+        }
+    }
+}
 
 </style>
 
