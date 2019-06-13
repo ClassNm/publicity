@@ -1,28 +1,31 @@
 <template>
     <div class="box">
           <h1>答题页面</h1>
-          <RadioGroup vertical v-model="vertical">
-              <div v-for="(item,i) in title" :key="i" :value="item.value" >
+          <RadioGroup vertical v-model="vertical" @on-change="ccc">
+              <div v-for="(item,i) in title" :key="i" :value="item.value">
                     <h3>{{item.pig}}</h3>
                     <!-- <li v-for="(item,i) in fot" :key="i" :value="item.value" > -->
-                    <Radio :label="item.value" @click="ccc" v-for="(item,i) in fot" :key="i" :value="item.value" v-model="item.value">
+                    
+                    <Radio :label="item.value" v-model="item.id">
                       <Icon type="social-apple"></Icon>
-                      <span >{{item.name}}</span>
+                      <span >{{item.value}}</span>
                     </Radio>
+                    <Radio :label="item.value1" :v-model="item.id">
+                      <Icon type="social-apple"></Icon>
+                      <span >{{item.value1}}</span>
+                    </Radio>
+                    <Radio :label="item.value2" v-model="vertical2">
+                      <Icon type="social-apple"></Icon>
+                      <span >{{item.value2}}</span>
+                    </Radio>
+
                     <!-- </li> -->
               </div>
               
-                <!-- <Radio label="android">
-                    <Icon type="social-android"></Icon>
-                    <span>Android</span>
-                </Radio>
-                <Radio label="windows">
-                    <Icon type="social-windows"></Icon>
-                    <span>Windows</span>
-                </Radio> -->
+                
               
           </RadioGroup>
-          <Page :total="100" :page-size="pageSize" @on-change="handlePage" />
+          <!-- <Page :total="100" :page-size="pageSize" @on-change="handlePage" /> -->
     </div>
 </template>
 
@@ -33,18 +36,30 @@ export default {
         // 每页的数据量
           pageSize: 10,
           vertical: '',
+          vertical1: '',
+          vertical2: '',
+          vertical3: '',
           title:[
             {
               pig:"1,你最喜欢哪一个",
-              value:"1"
+              value:"喜欢",
+              value1:"不喜欢",
+              value2:"还可以",
+              id:1,
             },
             {
               pig:"2,你最喜欢哪一个",
-              value:"2"
+              value:"喜欢",
+              value1:"不喜欢",
+              value2:"还可以",
+              id:2,
             },
             {
               pig:"3,你最喜欢哪一个",
-              value:"3"
+              value:"喜欢",
+              value1:"不喜欢",
+              value2:"还可以",
+              id:3,
             },
             {
               pig:"4,你最喜欢哪一个",
@@ -120,23 +135,23 @@ export default {
           fot:[
             {
               name: "苹果",
-              value:  "apple"
+              value:  "1"
             },
             {
               name: "香蕉",
-              value:  "bananer"
+              value:  "2"
             },
             {
               name: "菠萝",
-              value:  "bool"
+              value:  "3"
             },
             {
               name: "橘子",
-              value:  "orange"
+              value:  "4"
             },
             {
               name: "梨",
-              value:  "pear"
+              value:  "5"
             },
           ]
       }
@@ -154,13 +169,13 @@ export default {
       // console.log(this.data.vertical);
     },
     methods:{
-          handlePage(value) {
-              this.pageNum = value
-              this.getTeacherMessages()
-          },
-          ccc(){
-              console.log(index);
-              console.log(111)
+          // handlePage(value) {
+          //     this.pageNum = value
+          //     this.getTeacherMessages()
+          // },
+          ccc(data){
+              // console.log(data);
+              console.log(this.vertical)
           }
         // handlePageSize(value) {
         //   this.pageSize = value

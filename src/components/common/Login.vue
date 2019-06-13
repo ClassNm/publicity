@@ -28,6 +28,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
     export default {
         data () {
             return {
@@ -49,13 +50,42 @@
         },
         methods: {
             handleSubmit(name) {
-                this.$refs[name].validate((valid) => {
-                    if (valid) {
-                        this.$Message.success('Success!');
-                    } else {
-                        this.$Message.error('Fail!');
-                    }
+                // this.$refs[name].validate((valid) => {
+                //     if (valid) {
+                //         this.$Message.success('Success!');
+                //     } else {
+                //         this.$Message.error('Fail!');
+                //     }
+                // })
+                let a = JSON.stringify(this.formInline.user);
+                let b = JSON.stringify(this.formInline.password);
+                let data = {
+                    n : a,
+                    p : b,
+                }
+                // console.log(this.formInline.user);
+                // console.log(this.formInline.password);
+                // axios.post('http://192.168.1.113:8080/fingByPassWord?p=123')
+                axios.post('http://192.168.1.113:8080/fingByPassWord?p=123',
+                data,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    console.log(res)
+                    // this.cityList1 = res.data
                 })
+
+                // 登录
+// export const Login = function(e){
+//     let url = '/fingByPassWord'
+//     let data = e
+//     axios.post(url,data).then((res)=>{
+//         console.log(res)
+//     },(err)=>{
+//         console.log(err)
+//     })
+// }
+                
             }
         }
     }
