@@ -1,23 +1,23 @@
 <template>
     <div class="box">
           <h1>答题页面</h1>
-          <RadioGroup vertical v-model="vertical" @on-change="ccc">
-              <div v-for="(item,i) in title" :key="i" :value="item.value">
+          <RadioGroup vertical v-model="vertical" >
+              <div v-for="(item,i) in title" :key="i" :value="item.value" @on-change="ccc(index)" :checked="item.isCheck">
                     <h3>{{item.pig}}</h3>
                     <!-- <li v-for="(item,i) in fot" :key="i" :value="item.value" > -->
                     
-                    <Radio :label="item.value" v-model="item.id">
+                    <Radio :label="item.value" v-for="(item,index) in list" :value="item.value" :checked="item.isCheck" @change="changeInput(index)">
                       <Icon type="social-apple"></Icon>
                       <span >{{item.value}}</span>
                     </Radio>
-                    <Radio :label="item.value1" :v-model="item.id">
+                    <!-- <Radio :label="item.value1">
                       <Icon type="social-apple"></Icon>
                       <span >{{item.value1}}</span>
                     </Radio>
-                    <Radio :label="item.value2" v-model="vertical2">
+                    <Radio :label="item.value2">
                       <Icon type="social-apple"></Icon>
                       <span >{{item.value2}}</span>
-                    </Radio>
+                    </Radio> -->
 
                     <!-- </li> -->
               </div>
@@ -46,6 +46,7 @@ export default {
               value1:"不喜欢",
               value2:"还可以",
               id:1,
+              isCheck:false
             },
             {
               pig:"2,你最喜欢哪一个",
@@ -53,6 +54,7 @@ export default {
               value1:"不喜欢",
               value2:"还可以",
               id:2,
+              isCheck:false
             },
             {
               pig:"3,你最喜欢哪一个",
@@ -60,6 +62,7 @@ export default {
               value1:"不喜欢",
               value2:"还可以",
               id:3,
+              isCheck:false
             },
             {
               pig:"4,你最喜欢哪一个",
@@ -132,7 +135,7 @@ export default {
 
           ],
           
-          fot:[
+          list:[
             {
               name: "苹果",
               value:  "1"
@@ -173,10 +176,30 @@ export default {
           //     this.pageNum = value
           //     this.getTeacherMessages()
           // },
-          ccc(data){
+          ccc(index){
               // console.log(data);
-              console.log(this.vertical)
-          }
+              // this.vertical = "";
+              this.title.map((v,i)=>{ 
+                if(i==index){
+                  v.isCheck = true
+                }else{
+                  v.isCheck = false
+                }
+              })
+              // console.log(this.vertical)
+              // this.vertical = "";
+          },
+          changeInput(index){
+            this.list.map((v,i)=>{ 
+                if(i==index){
+                v.isCheck = true
+                }else{
+                v.isCheck = false
+                }if(v.isCheck){
+                console.log('被选中的值为:'+v.value)
+                }
+            })
+        },
         // handlePageSize(value) {
         //   this.pageSize = value
         //   this.getTeacherMessages()
