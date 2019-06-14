@@ -11,6 +11,11 @@ import Register from './components/common/Register.vue'
 // 答题页面
 import Answer from  './components/common/Answer.vue'
 
+// 测试
+import test from './components/common/test.vue'
+
+import Report from  './components/common/Report.vue'
+
 export default new Router({
   routes: [
     {
@@ -40,6 +45,22 @@ export default new Router({
       component: Answer,
       meta: {
         isLogin: true
+      },
+    },
+    {
+      //测试
+      path: '/test',
+      component: test,
+      meta: {
+        // isLogin: true
+      },
+    },
+    {
+      //报告
+      path: '/report',
+      component: Report,
+      meta: {
+        // isLogin: true
       },
     },
     {

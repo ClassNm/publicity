@@ -5,6 +5,10 @@ import store from './store'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 
+// echarts
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts 
+
 // Vue.use(VueRouter);
 Vue.use(iView);
 
