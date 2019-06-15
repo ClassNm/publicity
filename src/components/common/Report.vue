@@ -8,32 +8,15 @@
 export default {
     data(){
         return{
-
+            tit:['自然事物','人造事物','艺术符号','数字符号','语言符号','社会制度','个体生命'],
+            stateL:['第一部分','第二部分','第三部分'],
+            stateOne:"第一部分",
+            stateTwe:"第二部分",
+            stateThree:"第三部分",
         }
     },
     created(){
-        // // 基于准备好的dom，初始化echarts实例
-        // var myChart = echarts.init(document.getElementById('main'));
-        // var option = {
-        //     title: {
-        //         text: 'ECharts 入门示例'
-        //     },
-        //     tooltip: {},
-        //     legend: {
-        //         data:['销量']
-        //     },
-        //     xAxis: {
-        //         data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
-        //     },
-        //     yAxis: {},
-        //     series: [{
-        //         name: '销量',
-        //         type: 'bar',
-        //         data: [5, 20, 36, 10, 10, 20]
-        //     }]
-        // };
-        // // 使用刚指定的配置项和数据显示图表。
-        // myChart.setOption(option);
+        
     },
     mounted(){
         var myChart = this.$echarts.init(document.getElementById('myChart'));//获取容器元素
@@ -45,7 +28,8 @@ export default {
         }
     },
     legend: {
-        data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎','百度','谷歌','必应','其他']
+        // data:['直接访问','联盟广告','搜索引擎']
+        data:this.stateL
     },
     grid: {
         left: '3%',
@@ -56,7 +40,8 @@ export default {
     xAxis : [
         {
             type : 'category',
-            data : ['自然事物','人造食物','艺术能力','数学能力','语言能力','社会服务','人文素养']
+            // data : ['自然事物','人造事物','艺术符号','数字符号','语言符号','社会制度','个体生命']
+            data:this.tit
         }
     ],
     yAxis : [
@@ -66,72 +51,30 @@ export default {
     ],
     series : [
         {
-            name:'直接访问',
+            name:this.stateOne,
             type:'bar',
-            data:[320, 332, 301, 334, 390, 330, 320]
+            data:[5, 3, 2,6,3,3,3]
         },
         {
-            name:'邮件营销',
+            name:this.stateTwe,
             type:'bar',
             stack: '广告',
-            data:[120, 132, 101, 134, 90, 230, 210]
+            data:[3, 2, 3,3,3,3,3]
         },
         {
-            name:'联盟广告',
+            name:this.stateThree,
             type:'bar',
-            stack: '广告',
-            data:[220, 182, 191, 234, 290, 330, 310]
-        },
-        {
-            name:'视频广告',
-            type:'bar',
-            stack: '广告',
-            data:[150, 232, 201, 154, 190, 330, 410]
-        },
-        {
-            name:'搜索引擎',
-            type:'bar',
-            data:[862, 1018, 964, 1026, 1679, 1600, 1570],
+            data:[3, 2, 3,3,3,3,3],
             markLine : {
                 lineStyle: {
                     normal: {
                         type: 'dashed'
                     }
                 },
-                data : [
-                    [{type : 'min'}, {type : 'max'}]
-                ]
             }
         },
-        {
-            name:'百度',
-            type:'bar',
-            barWidth : 5,
-            stack: '搜索引擎',
-            data:[620, 732, 701, 734, 1090, 1130, 1120]
-        },
-        {
-            name:'谷歌',
-            type:'bar',
-            stack: '搜索引擎',
-            data:[120, 132, 101, 134, 290, 230, 220]
-        },
-        {
-            name:'必应',
-            type:'bar',
-            stack: '搜索引擎',
-            data:[60, 72, 71, 74, 190, 130, 110]
-        },
-        {
-            name:'其他',
-            type:'bar',
-            stack: '搜索引擎',
-            data:[62, 82, 91, 84, 109, 110, 120]
-        }
     ]
 };
-            
-            
             
             myChart.setOption(option);//设置option
     }
