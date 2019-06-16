@@ -36,6 +36,8 @@ import axios from 'axios';
                     user: '',
                     password: ''
                 },
+                // 用户id  or  失败信息
+                information:"",
                 ruleInline: {
                     user: [
                         { required: true, message: 'Please fill in the user name', trigger: 'blur' },
@@ -50,30 +52,66 @@ import axios from 'axios';
         },
         methods: {
             handleSubmit(name) {
-                // this.$refs[name].validate((valid) => {
-                //     if (valid) {
-                //         this.$Message.success('Success!');
-                //     } else {
-                //         this.$Message.error('Fail!');
-                //     }
-                // })
-                let a = JSON.stringify(this.formInline.user);
-                let b = JSON.stringify(this.formInline.password);
+                
+                let user = this.formInline.user;
+                // let b = JSON.stringify(this.formInline.password);
+                let password = this.formInline.password
+                
                 let data = {
-                    n : a,
-                    p : b,
+                    
+
+                    phone : user,
+
+                    passWord : password,
+                    
+                    name : '',
+                    
+                    sex : '',
+                     
+                     id: "",
+                    
+                    artsAndSciences : '',
+                    
+                    grade : '',
+                    
+                    address : '',
+
+                    school : '',
+                    
+                    clas : '',
                 }
+                // console.log(data)
                 // console.log(this.formInline.user);
                 // console.log(this.formInline.password);
                 // axios.post('http://192.168.1.113:8080/fingByPassWord?p=123')
-                axios.post('http://192.168.1.113:8080/fingByPassWord?p=123',
+                let uid = ""
+                axios.post('http://192.168.1.186:8080/AssessUser/fingByPassWord',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    console.log(res)
+                    console.log(res.data,'res.data')
+                    this.information = res.data
+                    console.log(this.information,'res.data')
+                    if(this.information=="用户名或密码错误"){
+                        alert('用户名或密码错误')
+                    }else{
+                        let id = this.information
+                        this.$router.push({path:'/answer',query:{id:id}})
+                        // console.log(this.information,'登录时的id')
+                    }
+                    // uid = res.data
                     // this.cityList1 = res.data
                 })
+                // console.log(this.information)
+                // console.log(this.information)
+                // if(this.information=="用户名或密码错误"){
+                //     alert('用户名或密码错误')
+                // }else{
+                //     // this.$router.push({path:'/register',query:obj})
+                //     console.log(111)
+                // }
+                
 
                 // 登录
 // export const Login = function(e){

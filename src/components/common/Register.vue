@@ -67,7 +67,7 @@
                     文理：
                 </span>
                 <Select v-model="model" clearable style="width:200px">
-                    <Option v-for="item in cityListO" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                    <Option v-for="(item,i) in cityListO" :value="item.object" :key="i">{{ item.object }}</Option>
                 </Select>
             </div>
             <br>
@@ -177,18 +177,18 @@ export default {
             model8: '',
             // 文理数据
             cityListO: [
-                {
-                    value: '文科',
-                    label: '文科'
-                },
-                {
-                    value: '理科',
-                    label: '理科'
-                },
-                {
-                    value: '新高考',
-                    label: '新高考'
-                },
+                // {
+                //     value: '文科',
+                //     label: '文科'
+                // },
+                // {
+                //     value: '理科',
+                //     label: '理科'
+                // },
+                // {
+                //     value: '新高考',
+                //     label: '新高考'
+                // },
             ],
             // 文理
             model: '',
@@ -238,10 +238,23 @@ export default {
     },
     created(){
         // 省份数据
-        axios.post('http://192.168.1.113:8080/City/findByCode')
+        axios.post('http://192.168.1.186:8080/City/findByCode')
         .then((res)=>{
             this.cityList = res.data
             // console.log(res.data)
+        }),(err)=>{
+            console.log(error)
+        }
+
+        // 文理科
+        let obj2 = 2;
+        axios.post('http://192.168.1.186:8080/AssessObject/obj2',
+        obj2,
+        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        )
+        .then((res)=>{
+            this.cityListO = res.data
+            console.log(res.data)
         }),(err)=>{
             console.log(error)
         }
@@ -251,7 +264,7 @@ export default {
             aaa(word){
                 let data = word;
                 // console.log(data)
-                axios.post('http://192.168.1.113:8080/City/findById',
+                axios.post('http://192.168.1.186:8080/City/findById',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -265,7 +278,7 @@ export default {
                 let data = word;
                 // console.log(data)
                 // http://192.168.1.113:8080/City/findByCode2
-                axios.post('http://192.168.1.113:8080/City/findByCode2',
+                axios.post('http://192.168.1.186:8080/City/findByCode2',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -278,7 +291,7 @@ export default {
             ccc(word){
                 let data = word;
                 console.log(data)
-                axios.post('http://192.168.1.113:8080/City/findByCode3',
+                axios.post('http://192.168.1.186:8080/City/findByCode3',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -318,19 +331,18 @@ export default {
                 let l = this.value21;
 
                 let data = {
-                    
                     phone : a,
                     passWord : b,
-                    // name : c,
-                    // sex : e,
-                    // artsAndSciences : f,
-                    // grade : g,
-                    // address : j,
-                    // school : k,
-                    // clas : l,
+                    name : c,
+                    sex : e,
+                    artsAndSciences : f,
+                    grade : g,
+                    address : j,
+                    school : k,
+                    clas : l,
                 }
                 console.log(data)
-                Register(data)
+                // Register(data)
             }
             // handleSubmit (name) {
             //     this.$refs[name].validate((valid) => {

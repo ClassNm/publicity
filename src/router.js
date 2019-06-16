@@ -12,9 +12,13 @@ import Register from './components/common/Register.vue'
 import Answer from  './components/common/Answer.vue'
 
 // 测试
-import test from './components/common/test.vue'
+// import test from './components/common/test.vue'
 
-import Report from  './components/common/Report.vue'
+// 报告表
+import Reported from './components/common/Reported.vue'
+
+// 柱状图  报告里的
+// import Report from  './components/common/Report.vue'
 
 export default new Router({
   routes: [
@@ -47,22 +51,30 @@ export default new Router({
         isLogin: true
       },
     },
-    {
-      //测试
-      path: '/test',
-      component: test,
-      meta: {
-        // isLogin: true
-      },
-    },
+    // {
+    //   //测试
+    //   path: '/test',
+    //   component: test,
+    //   meta: {
+    //     // isLogin: true
+    //   },
+    // },
     {
       //报告
-      path: '/report',
-      component: Report,
+      path: '/reported',
+      component: Reported,
       meta: {
         // isLogin: true
       },
     },
+    // {
+    //   //报告图
+    //   path: '/report',
+    //   component: Report,
+    //   meta: {
+    //     // isLogin: true
+    //   },
+    // },
     {
       path: '/about',
       name: 'about',
