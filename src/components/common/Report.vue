@@ -13,6 +13,7 @@ export default {
             stateOne:"第一部分",
             stateTwe:"第二部分",
             stateThree:"第三部分",
+            seriesdataOne:[5, 10, 2,6,3,3,3],
         }
     },
     created(){
@@ -53,7 +54,7 @@ export default {
         {
             name:this.stateOne,
             type:'bar',
-            data:[5, 3, 2,6,3,3,3]
+            data:this.seriesdataOne
         },
         {
             name:this.stateTwe,

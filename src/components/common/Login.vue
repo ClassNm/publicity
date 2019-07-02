@@ -90,9 +90,10 @@ import axios from 'axios';
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
+                    console.log(res)
                     console.log(res.data,'res.data')
                     this.information = res.data
-                    console.log(this.information,'res.data')
+                    // console.log(this.information,'res.data')
                     if(this.information=="用户名或密码错误"){
                         alert('用户名或密码错误')
                     }else{

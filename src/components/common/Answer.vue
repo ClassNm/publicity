@@ -5,10 +5,8 @@
         onselectstart="return false"
         v-bind:style="{overflow: activeColor}" 
         >
-            <div id="qindex_1" 
-                 class="test_contents" 
-                 
-                  
+            <!-- <div id="qindex_1" 
+                 class="test_contents,surveydetailTw" 
                  :name="item.typ"  
                  v-for="(item,i) in title" 
                  :key="i" 
@@ -16,9 +14,6 @@
                  v-bind:style="{display: activeColorOver}"
                  ref="box1"
                  >
-                 <!-- :style="seeo" -->
-                 <!-- v-if="ok" -->
-                 <!-- @click="ccc(item,i)" -->
                  
                 <p class="descs fb">{{i+1}}、{{item.matter}}</p>
                 <div class="sels_list" >
@@ -29,7 +24,6 @@
                            :key="item.id"
                            :value = "item.id"
                             @click="eee(item,i)"  
-                            
                            >
                             <span class="sels">
                                 <input type="radio" 
@@ -38,85 +32,27 @@
                                 >
                             </span>
                             {{item.object}}
-                            <!-- {{ssew}} -->
-                        </p>
-                        <!-- {{ssew}} -->
-                        <p class="i_bot"></p>
-                </div>
-                    <Button @click="wwww">Default</Button>
-                    <!-- <div class="items">
-                        <p class="i_top"></p>
-                        <p class="i_mid">
-                            <span class="sels">
-                                <input type="radio" name="a1" value="10941" cindex="1" qid="3412" nindex="0" checked="checked">
-                            </span>有些不符合
-                        </p>
-                        <p class="i_bot"></p>
-                    </div>
-                    <div class="items">
-                        <p class="i_top"></p>
-                        <p class="i_mid">
-                            <span class="sels">
-                                <input type="radio" name="a1" value="10942" cindex="1" qid="3412" nindex="0">
-                            </span>不好确定
-                        </p>
-                        <p class="i_bot"></p>
-                    </div>
-                    <div class="items">
-                        <p class="i_top"></p>
-                        <p class="i_mid">
-                            <span class="sels">
-                                <input type="radio" name="a1" value="10943" cindex="1" qid="3412" nindex="0">
-                            </span>比较符合
-                        </p>
-                        <p class="i_bot"></p>
-                    </div>
-                    <div class="items">
-                        <p class="i_top"></p>
-                        <p class="i_mid">
-                            <span class="sels">
-                                <input type="radio" name="a1" value="10944" cindex="1" qid="3412" nindex="0">
-                            </span>完全符合
                         </p>
                         <p class="i_bot"></p>
                     </div> -->
-
-                    
-                </div>
-            </div>
+                    <!-- 按钮 -->
+                    <!-- <Button @click="wwww">Default</Button> -->
+                <!-- </div> -->
+            <!-- </div> -->
             <!-- 多选 -->
-            <div>
-                <div v-for="(item,i) in fone" :key="i">
-                    <p>{{i+1}}，{{item.matter}}</p>
-                    <div v-for="(item,i) in foneOne" :key="i" :value="item" @click="ddd">
-                        <!-- <CheckboxGroup v-model="item.value" > -->
-                        <Checkbox :label="item.personality"></Checkbox>
-                        {{item.personality}}
-                        <!-- <Checkbox label="2"></Checkbox>
-                        <Checkbox label="3"></Checkbox>
-                        <Checkbox label="4"></Checkbox>
-                        <Checkbox label="5"></Checkbox>
-                        <Checkbox label="6"></Checkbox>
-                        <Checkbox label="7"></Checkbox>
-                        <Checkbox label="8"></Checkbox>
-                        <Checkbox label="9"></Checkbox>
-                        <Checkbox label="10"></Checkbox>
-                        <Checkbox label="11"></Checkbox>
-                        <Checkbox label="12"></Checkbox> -->
-                    </CheckboxGroup>
-                    </div>
-                    
-                </div>
-            </div>            
-        </div>
-            <!-- <Button @click="wwww">Default</Button> -->
+            <AnswerCheck></AnswerCheck>
+        </div>            
     </div>
+            <!-- <Button @click="wwww">Default</Button> -->
 </template>
 
 <script>
 
+import AnswerCheck from './AnswerCheck'
+
 // import {Test} from '../../actions.js'
 import axios from 'axios';
+import { constants } from 'crypto';
 // import { setTimeout } from 'timers';
 
 export default {
@@ -180,8 +116,12 @@ export default {
           indexPrev:'green',
           activeColor: 'hidden',
           activeColorOver:'block',
+          stateNum : []
 
         }
+    },
+    components:{
+        AnswerCheck
     },
     created(){
 
@@ -198,6 +138,7 @@ export default {
         )
         .then((res)=>{
             this.title = res.data
+            // console.log(title)
         }),(err)=>{
             console.log(error)
         };
@@ -211,36 +152,63 @@ export default {
         )
         .then((res)=>{
             this.list = res.data
-            // console.log(res)
+            // console.log(res.data,'res')
         }),(err)=>{
             console.log(error)
         };
 
-        // let b = this.b;
-        let see = 2;
-        axios.post('http://192.168.1.186:8080/AssessMatter/showMatter2',
-        see,
-        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        )
-        .then((res)=>{
-          // 题目
-            this.fone = res.data;
-            this.foneOne = res.data;
-            // console.log(res.data)
-            
+        // let see = 2;
+        // axios.post('http://192.168.1.186:8080/AssessMatter/showMatter2',
+        // see,
+        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        // )
+        // .then((res)=>{
+        //   // 题目
+        //     this.fone = res.data;
+        // }),(err)=>{
+        //     console.log(error)
+        // }
 
+        // 多选答案
+        // let typ = 5;
+        // axios.post('http://192.168.1.186:8080/AssessObject/obj5',
+        // typ,
+        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        // )
+        // .then((res)=>{
+        //     this.stateNum = res.data
+        //     // console.log(res.data)
 
-
-
-            // console.log(res.data)
-
-
-
-
-            // console.log(res)
-        }),(err)=>{
-            console.log(error)
-        }
+        //     let aim = res.data;
+        //     // 根据单个名字筛选
+        //     function filterByName(aim, typ) {
+        //         return aim.filter(item => item.typ == typ)
+        //     }
+        //     // 输入 aim 'Leila' 期望输出为 [{name:'Leila', age: 16, gender:'female'}]
+        //     console.log(filterByName(aim,'RN'),'RN')
+        //     console.log(filterByName(aim,'PN'),'PN')
+        //     console.log(filterByName(aim,'UN'),'UN')
+        //     console.log(filterByName(aim,'RT'),'RT')
+        //     console.log(filterByName(aim,'PT'),'PT')
+        //     console.log(filterByName(aim,'UT'),'UT')
+        //     console.log(filterByName(aim,'RA'),'RA')
+        //     console.log(filterByName(aim,'PA'),'PA')
+        //     console.log(filterByName(aim,'UA'),'UA')
+        //     console.log(filterByName(aim,'RM'),'RM')
+        //     console.log(filterByName(aim,'PM'),'PM')
+        //     console.log(filterByName(aim,'UM'),'UM')
+        //     console.log(filterByName(aim,'RL'),'RN')
+        //     console.log(filterByName(aim,'PL'),'PL')
+        //     console.log(filterByName(aim,'UL'),'UL')
+        //     console.log(filterByName(aim,'RS'),'RS')
+        //     console.log(filterByName(aim,'PS'),'PS')
+        //     console.log(filterByName(aim,'US'),'US')
+        //     console.log(filterByName(aim,'RI'),'RI')
+        //     console.log(filterByName(aim,'PI'),'PI')
+        //     console.log(filterByName(aim,'UI'),'UI')
+        // }),(err)=>{
+        //     console.log(err)
+        // }
 
 
     },
@@ -251,7 +219,7 @@ export default {
     },
     methods:{
       // 兴趣题目
-          ccc(index){
+        ccc(index){
             // console.log(index)
             // let a = index.typ;
             // let b = index.id;
@@ -266,9 +234,6 @@ export default {
             // var c = index.id;
             this.score = index.id;
             
-        },
-        ddd(index){
-            // console.log(index)
         },
         wwww(){
           // 类型
@@ -316,9 +281,15 @@ export default {
 
 <style  scoped>
     .surveydetail{
-        width: 700px;
-        height: 340px;
-        /* overflow: hidden; */
+        width: 500px;
+        height: 600px;
+        overflow: hidden;
+        margin: 100px auto
+    }
+    .surveydetailTw{
+        width: 500px;
+        height: 600px;
+        overflow: hidden;
         margin: 100px auto
     }
     .surveydetailout {
@@ -352,7 +323,9 @@ export default {
         margin-inline-end: 0px;
     }
     .sels_list {
-        overflow: hidden;
+        /* overflow: hidden; */
+        width: 500px;
+        height: 600px;
     }
     .sels_list .items {
         cursor: pointer;
@@ -362,7 +335,7 @@ export default {
     }
     .sels_list .items .i_top, .sels_list .items .i_bot {
         height: 5px;
-        overflow: hidden;
+        /* overflow: hidden; */
         width: 640px;
     }
     .sels_list .items .i_mid {

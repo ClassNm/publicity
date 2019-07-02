@@ -341,8 +341,31 @@ export default {
                     school : k,
                     clas : l,
                 }
-                console.log(data)
+                // console.log(data)
                 // Register(data)
+                // 注册
+                // export const Register = function(e){
+                //     let url = '/AssessUser/save'
+                //     let data = e
+                //     axios.post(url,data).then((res)=>{
+                //         console.log(res)
+                //     },(err)=>{
+                //         console.log(err)
+                //     })
+                // }
+                axios.post('http://192.168.1.186:8080/AssessUser/save',
+                data,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    console.log(res);
+                    alert(res.data);
+                    if(res.data==="注册成功"){
+                        // this.$route.push({path:"/login"})
+                        this.$router.push('/login')
+                    }
+                    // this.cityList3 = res.data
+                })
             }
             // handleSubmit (name) {
             //     this.$refs[name].validate((valid) => {
