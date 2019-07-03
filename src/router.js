@@ -51,14 +51,6 @@ export default new Router({
         isLogin: true
       },
     },
-    // {
-    //   //测试
-    //   path: '/test',
-    //   component: test,
-    //   meta: {
-    //     // isLogin: true
-    //   },
-    // },
     {
       //报告
       path: '/reported',

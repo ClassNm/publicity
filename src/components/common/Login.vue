@@ -95,7 +95,7 @@ import axios from 'axios';
                     this.information = res.data
                     // console.log(this.information,'res.data')
                     if(this.information=="用户名或密码错误"){
-                        alert('用户名或密码错误')
+                        alert(this.information)
                     }else{
                         let id = this.information
                         this.$router.push({path:'/answer',query:{id:id}})

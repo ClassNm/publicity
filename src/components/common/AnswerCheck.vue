@@ -18,7 +18,7 @@
                     {{item.object}}
                 <!-- </CheckboxGroup> -->
             </div>
-            <Button @click="resultMe">Default</Button>
+            <Button @click="resultMe">{{buttonAga}}</Button>
         </div> 
         <!-- 2 -->
         <div class="box" ref="resultTwo" v-bind:style="{display: activeColorOver}">
@@ -33,7 +33,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultTwoMe">Default</Button>
+            <Button @click="resultTwoMe">{{buttonAga}}</Button>
         </div> 
         <!-- 3 -->
         <div class="box" ref="resultThree" v-bind:style="{display: activeColorOver}">
@@ -49,7 +49,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeThr">Default</Button>
+            <Button @click="resultMeThr">{{buttonAga}}</Button>
         </div> 
         <!-- 4 -->
         <div class="box" ref="resultFour" v-bind:style="{display: activeColorOver}">
@@ -65,7 +65,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFou">Default</Button>
+            <Button @click="resultMeFou">{{buttonAga}}</Button>
         </div> 
 
         <!-- 5 -->
@@ -81,7 +81,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFiv">Default</Button>
+            <Button @click="resultMeFiv">{{buttonAga}}</Button>
         </div> 
 
         <!-- 6 -->
@@ -97,7 +97,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeSi">Default</Button>
+            <Button @click="resultMeSi">{{buttonAga}}</Button>
         </div> 
 
         <!-- 7 -->
@@ -113,7 +113,7 @@
                     {{item.object}}
                 <!-- </CheckboxGroup> -->
             </div>
-            <Button @click="resultMeSeven">Default</Button>
+            <Button @click="resultMeSeven">{{buttonAga}}</Button>
         </div> 
 
         <!-- 8 -->
@@ -129,7 +129,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeEight">Default</Button>
+            <Button @click="resultMeEight">{{buttonAga}}</Button>
         </div> 
 
         <!-- 9 -->
@@ -145,7 +145,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeNine">Default</Button>
+            <Button @click="resultMeNine">{{buttonAga}}</Button>
         </div> 
 
         <!-- 10 -->
@@ -161,7 +161,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeTen">Default</Button>
+            <Button @click="resultMeTen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 11 -->
@@ -177,7 +177,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeEleven">Default</Button>
+            <Button @click="resultMeEleven">{{buttonAga}}</Button>
         </div> 
 
         <!-- 12 -->
@@ -193,7 +193,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeTwelve">Default</Button>
+            <Button @click="resultMeTwelve">{{buttonAga}}</Button>
         </div> 
 
         <!-- 13 -->
@@ -209,7 +209,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeThirteen">Default</Button>
+            <Button @click="resultMeThirteen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 14 -->
@@ -225,7 +225,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFourteen">Default</Button>
+            <Button @click="resultMeFourteen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 15 -->
@@ -241,7 +241,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFifteen">Default</Button>
+            <Button @click="resultMeFifteen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 16 -->
@@ -257,7 +257,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeSixteen">Default</Button>
+            <Button @click="resultMeSixteen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 17 -->
@@ -273,7 +273,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeSeveteen">Default</Button>
+            <Button @click="resultMeSeveteen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 18 -->
@@ -289,7 +289,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeEighteen">Default</Button>
+            <Button @click="resultMeEighteen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 19 -->
@@ -305,7 +305,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeNineteen">Default</Button>
+            <Button @click="resultMeNineteen">{{buttonAga}}</Button>
         </div> 
 
         <!-- 20 -->
@@ -321,7 +321,7 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-             <Button @click="resultMeTwenty">Default</Button>
+             <Button @click="resultMeTwenty">{{buttonAga}}</Button>
         </div> 
 
         <!-- 21 -->
@@ -337,7 +337,8 @@
                     {{item.object}}
                 </CheckboxGroup>
             </div>
-             <Button @click="resultMeTwentyOne">Default</Button>
+            <p class="noticeCo">{{notice}}</p>
+             <Button @click="resultMeTwentyOne">{{buttonLast}}</Button>
         </div> 
 
         
@@ -378,9 +379,19 @@ export default {
             resultTwentyOne:[],
             // 选中的答案
             answer:[],
+            // 注释  注意事项
+            notice:"注意：请您认真作答，确认提交后将无法对试题答案进行修改",
+            // 点击按钮
+            buttonLast:"确认提交",
+            buttonAga:"下一题",
+            // 用户的id
+            uid : "",
         }
     },
     created(){
+        // 用户的uid
+        this.uid = this.$route.query.id;
+
         let see = 2;
         axios.post('http://192.168.1.186:8080/AssessMatter/showMatter2',
         see,
@@ -462,179 +473,223 @@ export default {
         //拿到点击的选项 多选的3道  
         AnswerClick(index){
             // console.log(index.object,'item')
-            let a = index.object
+            let uid = this.uid
+            let typ = index.typ
+            let mid = index.id
+            let score = index.object
             let answer = this.answer
-            answer.push(a)
+            let obj = {
+                uid : uid,
+                typ : typ,
+                mid : mid,
+                score : score
+            }
+            answer.push(obj)
             // console.log(this.answer,'answer')
         },
-
-        // 21个click按钮点击  crazy
+        //发送数据给后台
+        postBack(data){
+            axios.post('http://192.168.1.186:8080/AssessMatter/save2',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{})
+            ,(err)=>{
+                console.log(err)
+            }
+        },
+        // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 
         resultMe(){
             let data = this.answer;
-            console.log(this.answer,'发送前')
+            // console.log(this.answer,'发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'发送后')
-            // console.log(data)
+            // console.log(this.answer,'发送后')
             let canvas=this.$refs.box2;
             canvas.style.display = "none"
         },
         resultTwoMe(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            this.postBack(data);
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultTwo;
             canvas.style.display = "none"
         },
         resultMeThr(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultThree;
             canvas.style.display = "none"
         },
         resultMeFou(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultFour;
             canvas.style.display = "none"
         },
         resultMeFiv(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultFive;
             canvas.style.display = "none"
         },
         resultMeSi(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultSix;
             canvas.style.display = "none"
         },
         resultMeSeven(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultSeven;
-            canvas.style.display = "none",
-            console.log(111)
+            canvas.style.display = "none"
+            // console.log(111)
         },
         resultMeEight(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resulteight;
             canvas.style.display = "none"
         },
         resultMeNine(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultNine;
             canvas.style.display = "none"
         },
         resultMeTen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultTen;
             canvas.style.display = "none"
         },
         resultMeEleven(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resulteleven;
             canvas.style.display = "none"
         },
         resultMeTwelve(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resulttwelve;
             canvas.style.display = "none"
         },
         resultMeThirteen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultthirteen;
             canvas.style.display = "none"
         },
         resultMeFourteen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultfourteen;
             canvas.style.display = "none"
         },
         resultMeFifteen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultfifteen;
             canvas.style.display = "none"
         },
         resultMeSixteen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultsixteen;
             canvas.style.display = "none"
         },
         resultMeSeveteen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultseveteen;
             canvas.style.display = "none"
         },
         resultMeEighteen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resulteighteen;
             canvas.style.display = "none"
         },
         resultMeNineteen(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultnineteen;
             canvas.style.display = "none"
         },
         resultMeTwenty(){
             let data = this.answer;
-            console.log(this.answer,'第二次发送前')
+            // console.log(this.answer,'第二次发送前')
+            this.postBack(data);
             this.answer = [];
-            console.log(this.answer,'第二次发送后')
+            // console.log(this.answer,'第二次发送后')
             let canvas=this.$refs.resultTwenty;
             canvas.style.display = "none"
         },
         resultMeTwentyOne(){
+            let data = this.answer;
+            this.postBack(data);
+            this.answer = [];
+            alert('答题完成')
+            let id = this.uid
+            this.$router.push({path:'/reported',query:{id:id}})
             // let canvas=this.$refs.resultTwentyOne;
             // canvas.style.display = "none"
-            alert('答题完成')
+            // alert('答题完成')
         },
     }
 }
@@ -644,10 +699,14 @@ export default {
     .box{
         width: 500px;
         height: 600px;
-        background: rgb(255, 230, 0);
+        /* background: rgb(255, 230, 0); */
         overflow: hidden;
     }
     .checked{
         text-align: center
+    }
+    /* 注意事项 */
+    .noticeCo{
+        color: red;
     }
 </style>

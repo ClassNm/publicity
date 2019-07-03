@@ -124,10 +124,8 @@ export default {
         AnswerCheck
     },
     created(){
-
         this.ubid = this.$route.query.id;
         // console.log(this.ubid,'ubid');
-
        // 兴趣题 题目
       //  let a = this.a;
        let data = 1;
@@ -156,102 +154,36 @@ export default {
         }),(err)=>{
             console.log(error)
         };
-
-        // let see = 2;
-        // axios.post('http://192.168.1.186:8080/AssessMatter/showMatter2',
-        // see,
-        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        // )
-        // .then((res)=>{
-        //   // 题目
-        //     this.fone = res.data;
-        // }),(err)=>{
-        //     console.log(error)
-        // }
-
-        // 多选答案
-        // let typ = 5;
-        // axios.post('http://192.168.1.186:8080/AssessObject/obj5',
-        // typ,
-        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        // )
-        // .then((res)=>{
-        //     this.stateNum = res.data
-        //     // console.log(res.data)
-
-        //     let aim = res.data;
-        //     // 根据单个名字筛选
-        //     function filterByName(aim, typ) {
-        //         return aim.filter(item => item.typ == typ)
-        //     }
-        //     // 输入 aim 'Leila' 期望输出为 [{name:'Leila', age: 16, gender:'female'}]
-        //     console.log(filterByName(aim,'RN'),'RN')
-        //     console.log(filterByName(aim,'PN'),'PN')
-        //     console.log(filterByName(aim,'UN'),'UN')
-        //     console.log(filterByName(aim,'RT'),'RT')
-        //     console.log(filterByName(aim,'PT'),'PT')
-        //     console.log(filterByName(aim,'UT'),'UT')
-        //     console.log(filterByName(aim,'RA'),'RA')
-        //     console.log(filterByName(aim,'PA'),'PA')
-        //     console.log(filterByName(aim,'UA'),'UA')
-        //     console.log(filterByName(aim,'RM'),'RM')
-        //     console.log(filterByName(aim,'PM'),'PM')
-        //     console.log(filterByName(aim,'UM'),'UM')
-        //     console.log(filterByName(aim,'RL'),'RN')
-        //     console.log(filterByName(aim,'PL'),'PL')
-        //     console.log(filterByName(aim,'UL'),'UL')
-        //     console.log(filterByName(aim,'RS'),'RS')
-        //     console.log(filterByName(aim,'PS'),'PS')
-        //     console.log(filterByName(aim,'US'),'US')
-        //     console.log(filterByName(aim,'RI'),'RI')
-        //     console.log(filterByName(aim,'PI'),'PI')
-        //     console.log(filterByName(aim,'UI'),'UI')
-        // }),(err)=>{
-        //     console.log(err)
-        // }
-
-
-    },
-    mounted(){
-        // console.log(this.$route.query,'querty的穿差')
-        // this.ubid = this.$route.query.id;
-        // console.log(this.ubid,'ubid');
     },
     methods:{
       // 兴趣题目
         ccc(index){
             // console.log(index)
-            // let a = index.typ;
-            // let b = index.id;
             this.type = index.typ;
-            this.topic = index.id
-            
-            
+            this.topic = index.id        
         },
         // 获取兴趣题的id
         eee(index){
           // console.log(index,'index')
-            // var c = index.id;
             this.score = index.id;
             
         },
         wwww(){
           // 类型
-          let type = JSON.stringify(this.type);
+          let typ = this.type;
           // 题号  
-          
-          let topic =  JSON.stringify(this.topic);
+          let mid =  this.topic;
           // 分值 id
-          let score = JSON.stringify(this.score);
+          let score = this.score;
           // 用户id router传参的值
           // let uid = 20
-          let ubid = JSON.stringify(this.ubid);
+          let uid = this.ubid;
 
           let data = {
-            typ : type,
-            mid : topic,
+            typ : typ,
+            mid : mid,
             score : score,
-            uid : ubid
+            uid : uid
           }
           let obj = [];
           obj.push(data)
@@ -265,14 +197,10 @@ export default {
           }),(err)=>{
               console.log(err)
           }
-
-          
-
-
            let canvas=this.$refs.box1;
            canvas[length-1].style.display = "none"
            canvas.shift()
-        //    console.log(canvas.length)
+        // console.log(canvas.length)
           
         }
     }

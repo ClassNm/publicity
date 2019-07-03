@@ -35,12 +35,13 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 // 柱状图
 import Report from './Report'
 export default {
     data(){
         return{
+            // 登录过的id
             Report:"测试报告结果",
             reom:"极力推荐",
             test:[
