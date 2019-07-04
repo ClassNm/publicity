@@ -7,27 +7,41 @@
         </div>
         <Report class="header"></Report>  
         <!-- 第一部分 -->
-        <div style="background:#eee;padding: 20px">
+        <!-- <div style="background:#eee;padding: 20px">
             <Card :bordered="false">
                 <p slot="title">{{reom}}</p>
                 <p v-for="(item,i) in test" :key="i">{{i+1}},{{item.name}}</p>
             </Card>
-        </div>
+        </div> -->
         <!-- 第二部分 -->
-        <div style="background:#eee;padding: 20px">
+        <!-- <div style="background:#eee;padding: 20px">
             <Card :bordered="false">
                 <p slot="title">{{reomT}}</p>
                 <p v-for="(item,i) in testT" :key="i">{{i+1}},{{item.name}}</p>
             </Card>
-        </div>
+        </div> -->
         <!-- 第三部分 -->
-        <div style="background:#eee;padding: 20px">
+        <!-- <div style="background:#eee;padding: 20px">
             <Card :bordered="false">
                 <p slot="title">{{reomThr}}</p>
                 <p v-for="(item,i) in testThr" :key="i">{{i+1}},{{item.name}}</p>
             </Card>
-        </div>
+        </div> -->
         
+        <Tabs value="name1" class="boxT">
+            <TabPane :label="reom" name="name1">
+                <span v-for="(item,i) in tit" :key="i" class="spanL">{{item.name}}</span>
+            </TabPane>
+            <TabPane :label="reomT" name="name2">
+                <span v-for="(item,i) in tit" :key="i" class="spanL">{{item.name}}</span>
+            </TabPane>
+            <TabPane :label="reomThr" name="name3">标签三的内容</TabPane>
+        </Tabs>
+
+
+
+
+
         <!-- 滑动按钮 -->
         <BackTop></BackTop>
         <!-- <Button type="primary" @click="handleSpinShow">整页显示，3秒后关闭</Button> -->
@@ -142,6 +156,38 @@ export default {
                     name : "物理海洋学"
                 },
             ],
+            tit:[
+            {
+                name : "基础数学"
+            },
+            {
+                name : "计算数学"
+            },
+            {
+                name : "应用数学"
+            },
+            {
+                name : "粒子物理与原子核物理"
+            },
+            {
+                name : "凝聚态物理"
+            },
+            {
+                name : "声学"
+            },
+            {
+                name : "光学"
+            },
+            {
+                name : "无线电物理"
+            },
+            {
+                name : "大气物理学与大气环境"
+            },
+            {
+                name : "物理海洋学"
+            },
+        ],
         }
     },
     created(){
@@ -179,5 +225,14 @@ export default {
     /* 初始化显示的跳转等待默认样式 */
     .demo-spin-icon-load{
         animation: ani-demo-spin 1s linear infinite;
+    }
+
+    .boxT{
+        width: 500px;
+        margin: 0 auto
+    }
+    .spanL{
+        display: block;
+        margin: 0 auto;
     }
 </style>

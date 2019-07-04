@@ -85,7 +85,7 @@ import axios from 'axios';
                 // console.log(this.formInline.password);
                 // axios.post('http://192.168.1.113:8080/fingByPassWord?p=123')
                 let uid = ""
-                axios.post('http://192.168.1.186:8080/AssessUser/fingByPassWord',
+                axios.post('http://192.168.1.100:8080/AssessUser/fingByPassWord',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )

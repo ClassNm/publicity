@@ -393,7 +393,7 @@ export default {
         this.uid = this.$route.query.id;
 
         let see = 2;
-        axios.post('http://192.168.1.186:8080/AssessMatter/showMatter2',
+        axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
         see,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -407,7 +407,7 @@ export default {
         // 答案选项
          // 多选答案
         let typ = 5;
-        axios.post('http://192.168.1.186:8080/AssessObject/obj5',
+        axios.post('http://192.168.1.100:8080/AssessObject/obj5',
         typ,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -489,7 +489,7 @@ export default {
         },
         //发送数据给后台
         postBack(data){
-            axios.post('http://192.168.1.186:8080/AssessMatter/save2',
+            axios.post('http://192.168.1.100:8080/AssessMatter/save2',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )

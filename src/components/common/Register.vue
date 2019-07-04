@@ -238,7 +238,7 @@ export default {
     },
     created(){
         // 省份数据
-        axios.post('http://192.168.1.186:8080/City/findByCode')
+        axios.post('http://192.168.1.100:8080/City/findByCode')
         .then((res)=>{
             this.cityList = res.data
             // console.log(res.data)
@@ -248,7 +248,7 @@ export default {
 
         // 文理科
         let obj2 = 2;
-        axios.post('http://192.168.1.186:8080/AssessObject/obj2',
+        axios.post('http://192.168.1.100:8080/AssessObject/obj2',
         obj2,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -264,7 +264,7 @@ export default {
             aaa(word){
                 let data = word;
                 // console.log(data)
-                axios.post('http://192.168.1.186:8080/City/findById',
+                axios.post('http://192.168.1.100:8080/City/findById',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -278,7 +278,7 @@ export default {
                 let data = word;
                 // console.log(data)
                 // http://192.168.1.113:8080/City/findByCode2
-                axios.post('http://192.168.1.186:8080/City/findByCode2',
+                axios.post('http://192.168.1.100:8080/City/findByCode2',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -291,7 +291,7 @@ export default {
             ccc(word){
                 let data = word;
                 console.log(data)
-                axios.post('http://192.168.1.186:8080/City/findByCode3',
+                axios.post('http://192.168.1.100:8080/City/findByCode3',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -353,7 +353,7 @@ export default {
                 //         console.log(err)
                 //     })
                 // }
-                axios.post('http://192.168.1.186:8080/AssessUser/save',
+                axios.post('http://192.168.1.100:8080/AssessUser/save',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )

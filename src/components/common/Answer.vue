@@ -130,7 +130,7 @@ export default {
       //  let a = this.a;
        let data = 1;
         // console.log(data)
-        axios.post('http://192.168.1.186:8080/AssessMatter/showMatter',
+        axios.post('http://192.168.1.100:8080/AssessMatter/showMatter',
         data,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -144,7 +144,7 @@ export default {
         // 兴趣题  答案选项
         let obj3 = 3;
         // console.log(data)
-        axios.post('http://192.168.1.186:8080/AssessObject/obj3',
+        axios.post('http://192.168.1.100:8080/AssessObject/obj3',
         obj3,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -188,7 +188,7 @@ export default {
           let obj = [];
           obj.push(data)
           console.log(obj)
-          axios.post('http://192.168.1.186:8080/AssessMatter/save',
+          axios.post('http://192.168.1.100:8080/AssessMatter/save',
           data,
           {headers:{'Content-Type':"application/json; charset=UTF-8"}}
           )
