@@ -36,7 +36,7 @@ import axios from 'axios';
                     user: '',
                     password: ''
                 },
-                // 用户id  or  失败信息
+                // 用户id集合  or  失败信息
                 information:"",
                 ruleInline: {
                     user: [
@@ -47,7 +47,11 @@ import axios from 'axios';
                         { required: true, message: 'Please fill in the password.', trigger: 'blur' },
                         { type: 'string', min: 6, message: '请使用6位数的密码', trigger: 'blur' }
                     ]
-                }
+                },
+                // 判断是否做题
+                judge:"",
+                // id
+                id:""
             }
         },
         methods: {
@@ -79,6 +83,7 @@ import axios from 'axios';
                     school : '',
                     
                     clas : '',
+                    
                 }
                 // console.log(data)
                 // console.log(this.formInline.user);
@@ -90,16 +95,29 @@ import axios from 'axios';
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    console.log(res)
-                    console.log(res.data,'res.data')
+                    // console.log(res.data,'res.data')
+                    // console.log(typeof(res.data))
                     this.information = res.data
+                    let arr = res.data.split(',')
+                    this.id = arr[0]
+                    this.judge = arr[1];
+                    // console.log(arr[0]);
+                    // console.log(arr[1])
                     // console.log(this.information,'res.data')
-                    if(this.information=="用户名或密码错误"){
+                    if(this.information==="用户名或密码错误"){
                         alert(this.information)
                     }else{
-                        let id = this.information
-                        this.$router.push({path:'/answer',query:{id:id}})
+                        if(this.judge==="无"){
+                            let id = this.id;
+                            console.log('没做过题')
+                            this.$router.push({path:'/answer',query:{id:id}})
                         // console.log(this.information,'登录时的id')
+                        }else if(this.judge==="有"){
+                            console.log('做过题了')
+                            let id = this.id;
+                            this.$router.push({path:'/reported',query:{id:id}})
+                        }
+                        
                     }
                     // uid = res.data
                     // this.cityList1 = res.data

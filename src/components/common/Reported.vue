@@ -30,12 +30,14 @@
         
         <Tabs value="name1" class="boxT">
             <TabPane :label="reom" name="name1">
-                <span v-for="(item,i) in tit" :key="i" class="spanL">{{item.name}}</span>
+                <span v-for="(item,i) in utmost" :key="i" class="spanL">{{item}}</span>
             </TabPane>
             <TabPane :label="reomT" name="name2">
-                <span v-for="(item,i) in tit" :key="i" class="spanL">{{item.name}}</span>
+                <span v-for="(item,i) in very" :key="i" class="spanL">{{item}}</span>
             </TabPane>
-            <TabPane :label="reomThr" name="name3">标签三的内容</TabPane>
+            <TabPane :label="reomThr" name="name3">
+                <span v-for="(item,i) in common" :key="i" class="spanL">{{item}}</span>
+            </TabPane>
         </Tabs>
 
 
@@ -156,42 +158,31 @@ export default {
                     name : "物理海洋学"
                 },
             ],
-            tit:[
-            {
-                name : "基础数学"
-            },
-            {
-                name : "计算数学"
-            },
-            {
-                name : "应用数学"
-            },
-            {
-                name : "粒子物理与原子核物理"
-            },
-            {
-                name : "凝聚态物理"
-            },
-            {
-                name : "声学"
-            },
-            {
-                name : "光学"
-            },
-            {
-                name : "无线电物理"
-            },
-            {
-                name : "大气物理学与大气环境"
-            },
-            {
-                name : "物理海洋学"
-            },
-        ],
+            // 3块专业
+            utmost:[],
+            very:[],
+            common:[]
         }
     },
     created(){
-        this.handleSpinShow()
+        this.handleSpinShow();
+        let data = this.$route.query.id;
+        axios.post('http://192.168.1.100:8080/AssessScore/showResult',
+        data,
+        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        )
+        .then((res)=>{
+            // console.log(res.data)
+            // 拿到返回的3块专业
+            let arr = res.data;
+            this.utmost = arr[0],
+            this.very = arr[1],
+            this.common = arr[2]
+            // console.log(arr[0])
+            // console.log(arr[1])
+         }),(err)=>{
+              console.log(err)
+        }
     },
     computed:{
         
@@ -234,5 +225,8 @@ export default {
     .spanL{
         display: block;
         margin: 0 auto;
+    }
+    .boxT{
+        background: rgb(194, 201, 190)
     }
 </style>

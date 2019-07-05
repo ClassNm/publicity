@@ -22,11 +22,7 @@
                 <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80" class="One"  style="width: 200px" >
                     <!-- <FormItem  prop="passwd"> -->
                     <Input type="password" v-model="formCustom.passwd"></Input>
-                    <!-- </FormItem> -->
-                    <!-- <FormItem>
-                        <Button type="primary" @click="handleSubmit('formCustom')">Submit</Button>
-                        <Button @click="handleReset('formCustom')" style="margin-left: 8px">Reset</Button>
-                    </FormItem> -->
+                   
                 </Form>
             </div>
             <br>
@@ -38,20 +34,6 @@
                 <!-- &nbsp&nbsp&nbsp -->
                 <Input v-model="value14" placeholder="姓名" clearable style="width: 200px" class="INt" />
             </div>
-            <!-- <br> -->
-            <!-- <div class="fout">
-                <span class="leis">
-                    学校：
-                </span>
-                <Input v-model="value1" placeholder="学校" clearable style="width: 200px" class="INt" />
-            </div>
-            <br> -->
-            <!-- <div class="fout">
-                <span class="leis">
-                    手机号：
-                </span>
-                <Input v-model="value21" placeholder="手机号" clearable style="width: 200px" class="INt" />
-            </div> -->
             <br>
             <div class="fout">
                 <span class="leis">

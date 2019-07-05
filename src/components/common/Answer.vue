@@ -5,7 +5,7 @@
         onselectstart="return false"
         v-bind:style="{overflow: activeColor}" 
         >
-            <!-- <div id="qindex_1" 
+            <div id="qindex_1" 
                  class="test_contents,surveydetailTw" 
                  :name="item.typ"  
                  v-for="(item,i) in title" 
@@ -34,11 +34,11 @@
                             {{item.object}}
                         </p>
                         <p class="i_bot"></p>
-                    </div> -->
+                    </div>
                     <!-- 按钮 -->
-                    <!-- <Button @click="wwww">Default</Button> -->
-                <!-- </div> -->
-            <!-- </div> -->
+                    <Button @click="wwww">Default</Button>
+                </div>
+            </div>
             <!-- 多选 -->
             <AnswerCheck></AnswerCheck>
         </div>            
