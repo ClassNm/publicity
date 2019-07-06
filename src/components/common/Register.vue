@@ -236,7 +236,7 @@ export default {
         )
         .then((res)=>{
             this.cityListO = res.data
-            console.log(res.data)
+            // console.log(res.data)
         }),(err)=>{
             console.log(error)
         }
@@ -272,7 +272,7 @@ export default {
             // 所在地  学校
             ccc(word){
                 let data = word;
-                console.log(data)
+                // console.log(data)
                 axios.post('http://192.168.1.100:8080/City/findByCode3',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
@@ -340,7 +340,7 @@ export default {
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    console.log(res);
+                    // console.log(res);
                     alert(res.data);
                     if(res.data==="注册成功"){
                         // this.$route.push({path:"/login"})
@@ -349,18 +349,6 @@ export default {
                     // this.cityList3 = res.data
                 })
             }
-            // handleSubmit (name) {
-            //     this.$refs[name].validate((valid) => {
-            //         if (valid) {
-            //             this.$Message.success('Success!');
-            //         } else {
-            //             this.$Message.error('Fail!');
-            //         }
-            //     })
-            // },
-            // handleReset (name) {
-            //     this.$refs[name].resetFields();
-            // }
         }
 }
 </script>

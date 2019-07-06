@@ -12,11 +12,8 @@
             :value="item.object" 
             @click="AnswerClick(item,i)" 
             class="checked">
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
                 <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                <!-- </CheckboxGroup> -->
             </div>
             <Button @click="resultMe">{{buttonAga}}</Button>
         </div> 
@@ -27,11 +24,8 @@
             :value="item.object" 
             @click="AnswerClick(item,i)" 
             class="checked">
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
                 <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultTwoMe">{{buttonAga}}</Button>
         </div> 
@@ -42,12 +36,10 @@
             :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeThr">{{buttonAga}}</Button>
         </div> 
@@ -58,12 +50,10 @@
             :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeFou">{{buttonAga}}</Button>
         </div> 
@@ -74,12 +64,10 @@
             <div v-for="(item,i) in resultFive" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeFiv">{{buttonAga}}</Button>
         </div> 
@@ -90,12 +78,10 @@
             <div v-for="(item,i) in resultSix" 
             :key="i" :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeSi">{{buttonAga}}</Button>
         </div> 
@@ -106,12 +92,10 @@
             <div v-for="(item,i) in resultSeven" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                <!-- </CheckboxGroup> -->
             </div>
             <Button @click="resultMeSeven">{{buttonAga}}</Button>
         </div> 
@@ -122,12 +106,10 @@
             <div v-for="(item,i) in resulteight" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeEight">{{buttonAga}}</Button>
         </div> 
@@ -138,12 +120,10 @@
             <div v-for="(item,i) in resultNine" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeNine">{{buttonAga}}</Button>
         </div> 
@@ -154,12 +134,10 @@
             <div v-for="(item,i) in resultTen" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeTen">{{buttonAga}}</Button>
         </div> 
@@ -170,12 +148,10 @@
             <div v-for="(item,i) in resulteleven" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeEleven">{{buttonAga}}</Button>
         </div> 
@@ -186,12 +162,10 @@
             <div v-for="(item,i) in resulttwelve" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeTwelve">{{buttonAga}}</Button>
         </div> 
@@ -202,12 +176,10 @@
             <div v-for="(item,i) in resultthirteen" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeThirteen">{{buttonAga}}</Button>
         </div> 
@@ -218,12 +190,10 @@
             <div v-for="(item,i) in resultfourteen" :key="i"
              :value="item.object"
               @click="AnswerClick(item,i)"
+              class="checked"
              >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeFourteen">{{buttonAga}}</Button>
         </div> 
@@ -234,12 +204,10 @@
             <div v-for="(item,i) in resultfifteen" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeFifteen">{{buttonAga}}</Button>
         </div> 
@@ -250,12 +218,10 @@
             <div v-for="(item,i) in resultsixteen" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeSixteen">{{buttonAga}}</Button>
         </div> 
@@ -266,12 +232,10 @@
             <div v-for="(item,i) in resultseveteen" 
             :key="i" :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeSeveteen">{{buttonAga}}</Button>
         </div> 
@@ -282,12 +246,10 @@
             <div v-for="(item,i) in resulteighteen" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeEighteen">{{buttonAga}}</Button>
         </div> 
@@ -298,12 +260,10 @@
             <div v-for="(item,i) in resultnineteen" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <Button @click="resultMeNineteen">{{buttonAga}}</Button>
         </div> 
@@ -314,12 +274,10 @@
             <div v-for="(item,i) in resultTwenty" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
              <Button @click="resultMeTwenty">{{buttonAga}}</Button>
         </div> 
@@ -330,12 +288,10 @@
             <div v-for="(item,i) in resultTwentyOne" :key="i" 
             :value="item.object"
              @click="AnswerClick(item,i)"
+             class="checked"
             >
-            <!-- <div @click="ddd">     -->
-                <!-- <CheckboxGroup v-model="item.value" > -->
-                <Checkbox :label="item.id"></Checkbox>
+                <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
-                </CheckboxGroup>
             </div>
             <p class="noticeCo">{{notice}}</p>
              <Button @click="resultMeTwentyOne">{{buttonLast}}</Button>
@@ -703,7 +659,9 @@ export default {
         overflow: hidden;
     }
     .checked{
-        text-align: center
+        text-align: left;
+        margin-left: 20%;
+
     }
     /* 注意事项 */
     .noticeCo{

@@ -36,7 +36,7 @@
                         <p class="i_bot"></p>
                     </div>
                     <!-- 按钮 -->
-                    <Button @click="wwww">Default</Button>
+                    <Button @click="wwww($event)">Default</Button>
                 </div>
             </div>
             <!-- 多选 -->
@@ -80,24 +80,7 @@ export default {
           fone:[
               
           ],
-          foneOne:[
-              {
-                name:"香蕉",
-                id:"1"
-              },
-              {
-                name:"香蕉",
-                id:"1"
-              },
-              {
-                name:"香蕉",
-                id:"1"
-              },
-              {
-                name:"香蕉",
-                id:"1"
-              },
-          ],
+          foneOne:[],
           // 兴趣提结果
           interset:[
               
@@ -168,7 +151,7 @@ export default {
             this.score = index.id;
             
         },
-        wwww(){
+        wwww(e){
           // 类型
           let typ = this.type;
           // 题号  
@@ -187,20 +170,25 @@ export default {
           }
           let obj = [];
           obj.push(data)
-          console.log(obj)
+        //   console.log(obj)
           axios.post('http://192.168.1.100:8080/AssessMatter/save',
           data,
           {headers:{'Content-Type':"application/json; charset=UTF-8"}}
           )
           .then((res)=>{
-              console.log(res)
+            //   console.log(res)
           }),(err)=>{
               console.log(err)
           }
-           let canvas=this.$refs.box1;
+        //   console.log(item)
+        //   console.log(e)
+        //    let canvas=this.$refs.box1 || window.event.target.box1;
+           let canvas=this.$refs.box1
+        //    console.log(canvas)
+        //    console.log(canvas.length)
            canvas[length-1].style.display = "none"
            canvas.shift()
-        // console.log(canvas.length)
+        //    console.log(canvas.length)
           
         }
     }
@@ -260,6 +248,8 @@ export default {
         display: block;
         padding-top: 5px;
         width: 640px;
+        text-align: left;
+        margin-left: 40%;
     }
     .sels_list .items .i_top, .sels_list .items .i_bot {
         height: 5px;

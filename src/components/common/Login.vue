@@ -45,7 +45,7 @@ import axios from 'axios';
                     ],
                     password: [
                         { required: true, message: 'Please fill in the password.', trigger: 'blur' },
-                        { type: 'string', min: 6, message: '请使用6位数的密码', trigger: 'blur' }
+                        { type: 'string', min: 1, message: '请使用6位数的密码', trigger: 'blur' }
                     ]
                 },
                 // 判断是否做题
@@ -109,11 +109,11 @@ import axios from 'axios';
                     }else{
                         if(this.judge==="无"){
                             let id = this.id;
-                            console.log('没做过题')
+                            // console.log('没做过题')
                             this.$router.push({path:'/answer',query:{id:id}})
                         // console.log(this.information,'登录时的id')
                         }else if(this.judge==="有"){
-                            console.log('做过题了')
+                            // console.log('做过题了')
                             let id = this.id;
                             this.$router.push({path:'/reported',query:{id:id}})
                         }

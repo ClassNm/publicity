@@ -17,10 +17,9 @@ import Answer from  './components/common/Answer.vue'
 // 报告表
 import Reported from './components/common/Reported.vue'
 
-// 柱状图  报告里的
-// import Report from  './components/common/Report.vue'
 
 export default new Router({
+  mode: 'hash',
   routes: [
     {
       path: '/',
@@ -59,14 +58,6 @@ export default new Router({
         // isLogin: true
       },
     },
-    // {
-    //   //报告图
-    //   path: '/report',
-    //   component: Report,
-    //   meta: {
-    //     // isLogin: true
-    //   },
-    // },
     {
       path: '/about',
       name: 'about',

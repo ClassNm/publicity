@@ -29,13 +29,13 @@
         </div> -->
         
         <Tabs value="name1" class="boxT">
-            <TabPane :label="reom" name="name1">
+            <TabPane :label="reom" name="name1" class="fit" type="line" style="font-size:25px;" size="25px">
                 <span v-for="(item,i) in utmost" :key="i" class="spanL">{{item}}</span>
             </TabPane>
-            <TabPane :label="reomT" name="name2">
+            <TabPane :label="reomT" name="name2"  class="fit">
                 <span v-for="(item,i) in very" :key="i" class="spanL">{{item}}</span>
             </TabPane>
-            <TabPane :label="reomThr" name="name3">
+            <TabPane :label="reomThr" name="name3"  class="fit">
                 <span v-for="(item,i) in common" :key="i" class="spanL">{{item}}</span>
             </TabPane>
         </Tabs>
@@ -59,7 +59,7 @@ export default {
         return{
             // 登录过的id
             Report:"测试报告结果",
-            reom:"极力推荐",
+            reom:"非常适合",
             test:[
                 {
                     name : "马克思主义哲学"
@@ -92,7 +92,7 @@ export default {
                     name : "经济史"
                 },
             ],
-            reomT:"很推荐",
+            reomT:"比较适合",
             testT:[
                 {
                     name : "法学理论"
@@ -125,7 +125,7 @@ export default {
                     name : "社会学"
                 },
             ],
-            reomThr:"推荐",
+            reomThr:"一般适合",
             testThr:[
                 {
                     name : "基础数学"
@@ -201,12 +201,8 @@ export default {
 }
 </script>
 
-<style scoped>
-
-
-    .header{
-        /* text-align: center */
-    }
+<style>
+    /* 为了修改Tabs的标题大小不设置 scoped 权限问题 */
     .Rep{
         margin: 20px 0;
         color: red;
@@ -219,14 +215,16 @@ export default {
     }
 
     .boxT{
-        width: 500px;
+        width: 1100px;;
         margin: 0 auto
     }
     .spanL{
         display: block;
         margin: 0 auto;
+        font-size: 25px;
+        text-align: left;
     }
-    .boxT{
-        background: rgb(194, 201, 190)
+    .ivu-tabs-nav .ivu-tabs-tab{
+        font-size: 25px;
     }
 </style>
