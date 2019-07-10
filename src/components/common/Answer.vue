@@ -12,9 +12,9 @@
                  :key="i" 
                  @click="ccc(item,i)"
                  v-bind:style="{display: activeColorOver}"
-                 ref="box1"
-                 >
                  
+                 >
+                 <!-- ref="box1" -->
                 <p class="descs fb">{{item.matter}}</p>
                 <div class="sels_list" >
                     <div class="items">
@@ -185,14 +185,9 @@ export default {
               console.log(err)
           }
 
-        //   console.log(item)
-        //   console.log(e)
         //    let canvas=this.$refs.box1 || window.event.target.box1;
         //  let canvas=document.querySelector('#cvs');
-            // console.log(ccanvas,'canvas')
         //    let canvas=this.$refs.box1
-        //    console.log(ccanvas)
-        //    console.log(canvas,'canvas')
         //    console.log(canvas[length-1])
         //    canvas[length-1].style.display = "none"
         //  canvas.style.display = "none"

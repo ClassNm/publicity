@@ -43,7 +43,7 @@
 
 
 
-        <a href="print" target="_self">打印</a>
+        <!-- <a href="print" target="_self">打印</a> -->
         <!-- 滑动按钮 -->
         <BackTop></BackTop>
         <!-- <Button type="primary" @click="handleSpinShow">整页显示，3秒后关闭</Button> -->

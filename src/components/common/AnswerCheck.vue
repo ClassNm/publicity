@@ -402,7 +402,7 @@ export default {
             // console.log(filterByName(aim,'UM'),'UM')
             this.resulttwelve = filterByName(aim,'UM')
             // console.log(filterByName(aim,'RN'),'RN')
-            this.resultthirteen = filterByName(aim,'RN')
+            this.resultthirteen = filterByName(aim,'RL')
             // console.log(filterByName(aim,'PL'),'PL')
             this.resultfourteen = filterByName(aim,'PL')
             // console.log(filterByName(aim,'UL'),'UL')
