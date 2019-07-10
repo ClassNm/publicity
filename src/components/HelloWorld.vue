@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-      <span class="size">测评报告系统</span>
+      <span class="size">职业生涯测评系统</span>
       <router-link :to="{path:'/Login'}">
         <!-- <button class="but">跳转登录页</button> -->
         <Button type="success" class="but">跳转登录页</Button>

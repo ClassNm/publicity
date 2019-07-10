@@ -5,7 +5,7 @@
         onselectstart="return false"
         v-bind:style="{overflow: activeColor}" 
         >
-            <div id="qindex_1" 
+            <div id="cvs" 
                  class="test_contents,surveydetailTw" 
                  :name="item.typ"  
                  v-for="(item,i) in title" 
@@ -15,7 +15,7 @@
                  ref="box1"
                  >
                  
-                <p class="descs fb">{{i+1}}、{{item.matter}}</p>
+                <p class="descs fb">{{item.matter}}</p>
                 <div class="sels_list" >
                     <div class="items">
                         <p class="i_top"></p>
@@ -29,6 +29,7 @@
                                 <input type="radio" 
                                 name="a1" 
                                 :value="item.id" 
+                                v-model="redio"
                                 >
                             </span>
                             {{item.object}}
@@ -99,8 +100,10 @@ export default {
           indexPrev:'green',
           activeColor: 'hidden',
           activeColorOver:'block',
-          stateNum : []
-
+          stateNum : [],
+          
+        //   radio重置
+          redio:""
         }
     },
     components:{
@@ -119,7 +122,7 @@ export default {
         )
         .then((res)=>{
             this.title = res.data
-            // console.log(title)
+            console.log(this.title)
         }),(err)=>{
             console.log(error)
         };
@@ -172,27 +175,38 @@ export default {
           obj.push(data)
         //   console.log(obj)
 
-        //   axios.post('http://47.104.245.242:8081/AssessMatter/save',
-        //   data,
-        //   {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        //   )
-        //   .then((res)=>{
-        //     //   console.log(res)
-        //   }),(err)=>{
-        //       console.log(err)
-        //   }
+          axios.post('http://47.104.245.242:8081/AssessMatter/save',
+          data,
+          {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+          )
+          .then((res)=>{
+            //   console.log(res)
+          }),(err)=>{
+              console.log(err)
+          }
 
         //   console.log(item)
         //   console.log(e)
         //    let canvas=this.$refs.box1 || window.event.target.box1;
-           let canvas=this.$refs.box1
-        //    console.log(canvas.style)
-           console.log(canvas,'canvas')
-           console.log(canvas[length-1])
-           canvas[length-1].style.display = "none"
-           canvas.shift()
-        //    console.log(canvas.length)
-          
+        //  let canvas=document.querySelector('#cvs');
+            // console.log(ccanvas,'canvas')
+        //    let canvas=this.$refs.box1
+        //    console.log(ccanvas)
+        //    console.log(canvas,'canvas')
+        //    console.log(canvas[length-1])
+        //    canvas[length-1].style.display = "none"
+        //  canvas.style.display = "none"
+        //  console.log(this.title)
+        // let i =1;
+        // i++;
+        // console.log(i,'i')
+         this.title.shift()
+         this.redio = ""
+        // let title = this.title
+        // title.splice(0,1)
+        //    canvas.shift()
+        //    console.log(this.title.length)
+            // console.log(this.title)
         }
     }
 }
