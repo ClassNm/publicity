@@ -43,7 +43,7 @@
 
 
 
-
+        <a href="print" target="_self">打印</a>
         <!-- 滑动按钮 -->
         <BackTop></BackTop>
         <!-- <Button type="primary" @click="handleSpinShow">整页显示，3秒后关闭</Button> -->
@@ -167,7 +167,7 @@ export default {
     created(){
         this.handleSpinShow();
         let data = this.$route.query.id;
-        axios.post('http://192.168.1.100:8080/AssessScore/showResult',
+        axios.post('http://47.104.245.242:8081/AssessScore/showResult',
         data,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -197,6 +197,7 @@ export default {
                 this.$Spin.hide();
             }, 3000);
         }, 
+       
     }
 }
 </script>

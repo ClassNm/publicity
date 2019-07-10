@@ -28,7 +28,7 @@ export default {
     },
     created(){
         let data = this.$route.query.id;
-        axios.post('http://192.168.1.100:8080/AssessScore/showNum',
+        axios.post('http://47.104.245.242:8081/AssessScore/showNum',
           data,
           {headers:{'Content-Type':"application/json; charset=UTF-8"}}
           )
@@ -87,7 +87,7 @@ export default {
             });
             // 处理echarts异步操作 copy的官网实例
             let data = this.$route.query.id;
-            axios.post("http://192.168.1.100:8080/AssessScore/showNum",
+            axios.post("http://47.104.245.242:8081/AssessScore/showNum",
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             ) 

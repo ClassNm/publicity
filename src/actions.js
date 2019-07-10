@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = "http://192.168.1.100:8080";
+axios.defaults.baseURL = "http://47.104.245.242:8081";
 
 
 // // 注册

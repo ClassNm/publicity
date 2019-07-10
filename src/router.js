@@ -13,7 +13,7 @@ import Answer from  './components/common/Answer.vue'
 
 // 测试
 // import test from './components/common/test.vue'
-
+ 
 // 报告表
 import Reported from './components/common/Reported.vue'
 

@@ -113,7 +113,7 @@ export default {
       //  let a = this.a;
        let data = 1;
         // console.log(data)
-        axios.post('http://192.168.1.100:8080/AssessMatter/showMatter',
+        axios.post('http://47.104.245.242:8081/AssessMatter/showMatter',
         data,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -127,7 +127,7 @@ export default {
         // 兴趣题  答案选项
         let obj3 = 3;
         // console.log(data)
-        axios.post('http://192.168.1.100:8080/AssessObject/obj3',
+        axios.post('http://47.104.245.242:8081/AssessObject/obj3',
         obj3,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -171,21 +171,24 @@ export default {
           let obj = [];
           obj.push(data)
         //   console.log(obj)
-          axios.post('http://192.168.1.100:8080/AssessMatter/save',
-          data,
-          {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-          )
-          .then((res)=>{
-            //   console.log(res)
-          }),(err)=>{
-              console.log(err)
-          }
+
+        //   axios.post('http://47.104.245.242:8081/AssessMatter/save',
+        //   data,
+        //   {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        //   )
+        //   .then((res)=>{
+        //     //   console.log(res)
+        //   }),(err)=>{
+        //       console.log(err)
+        //   }
+
         //   console.log(item)
         //   console.log(e)
         //    let canvas=this.$refs.box1 || window.event.target.box1;
            let canvas=this.$refs.box1
-        //    console.log(canvas)
-        //    console.log(canvas.length)
+        //    console.log(canvas.style)
+           console.log(canvas,'canvas')
+           console.log(canvas[length-1])
            canvas[length-1].style.display = "none"
            canvas.shift()
         //    console.log(canvas.length)
