@@ -1,7 +1,7 @@
 // 圆形图
 <template>
     <div>
-        <div id="Roundness" :style="{width: '1205px', height: '602px',margin:'0 auto'}"></div>
+        <div id="Roundness" class="RoundNes"></div>
     </div>
 </template>
 
@@ -166,5 +166,27 @@ export default {
 </script>
 
 <style scoped>
-
+    @media (min-width: 1200px) { 
+        .RoundNes{
+            width: 1205px; 
+            height: 602px;
+            margin: 0 auto;
+        }
+    }
+    @media screen and (max-width: 1200px) { 
+        .RoundNes{
+            width: 800px; 
+            height: 602px;
+            margin: 0 auto;
+            /* background: red */
+        }
+    } 
+    @media screen and (max-width: 901px) { 
+        .RoundNes{
+            width: 500px;
+            /* background: salmon; */
+            height: 602px;
+            margin: 0 auto;
+        } 
+    } 
 </style>

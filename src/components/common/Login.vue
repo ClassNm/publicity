@@ -148,13 +148,7 @@ import axios from 'axios';
     }
 </script>
 <style scoped>
-    .fox{
-        text-align: center;
-        margin: 300px;
-    }
     .font{
-        /* background: red; */
-        /* color: red; */
         width: 230px;
         margin: 0 auto;
     }
@@ -163,4 +157,25 @@ import axios from 'axios';
         text-align: center;
         margin: 50px;
     }
+
+
+
+     @media (min-width: 1200px) { 
+       .fox{
+            text-align: center;
+            margin: 300px;
+        }
+     }
+     @media screen and (max-width: 1200px) { 
+        .fox{
+            text-align: center;
+            margin: 100px;
+        }  
+    }    
+    @media screen and (max-width: 901px) { 
+        .fox{
+            text-align: center;
+            margin: 50px;
+        } 
+    } 
 </style>

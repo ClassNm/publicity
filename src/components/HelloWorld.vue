@@ -43,19 +43,47 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-    .box{
-      text-align: center;
-      margin-top: 400px;
-    }
-    .size{
-      font-size: 80px;
-      // background: red;
-      color: red;
-      display: block;
-      width: 100%;
-    }
     .but{
       width: 200px;
       height: 30px;
     }
+
+     @media (min-width: 1200px) { 
+       .box{
+          text-align: center;
+          margin-top: 300px;
+        }
+        .size{
+          font-size: 80px;
+          color: red;
+          display: block;
+          width: 100%;
+        }
+     }
+     @media screen and (max-width: 1200px) { 
+        .box{
+          text-align: center;
+          margin-top: 150px;
+        } 
+        .size{
+          font-size: 70px;
+          color: red;
+          display: block;
+          width: 100%;
+        }
+    }    
+    @media screen and (max-width: 901px) { 
+        .box{
+          text-align: center;
+          margin-top: 100px;
+        }
+        .size{
+          font-size: 40px;
+          color: red;
+          display: block;
+          width: 100%;
+        }
+    } 
+
+
 </style>

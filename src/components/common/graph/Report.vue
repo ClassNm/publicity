@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="myChart" :style="{width: '1205px', height: '602px',margin:'0 auto'}"></div>
+        <div id="myChart" class="Repor"></div>
     </div>
 </template>
 
@@ -136,6 +136,28 @@ export default {
 </script>
 
 <style scoped>
-
+    @media (min-width: 1200px) { 
+        .Repor{
+            width: 1205px; 
+            height: 602px;
+            margin: 0 auto;
+        }
+    }
+    @media screen and (max-width: 1200px) { 
+        .Repor{
+            width: 800px; 
+            height: 602px;
+            margin: 0 auto;
+            /* background: red */
+        }
+    } 
+    @media screen and (max-width: 901px) { 
+        .Repor{
+            width: 500px;
+            /* background: salmon; */
+            height: 602px;
+            margin: 0 auto;
+        } 
+    } 
 </style>
 

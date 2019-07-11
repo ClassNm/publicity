@@ -111,32 +111,26 @@ export default {
     },
     created(){
         this.ubid = this.$route.query.id;
-        // console.log(this.ubid,'ubid');
        // 兴趣题 题目
-      //  let a = this.a;
        let data = 1;
-        // console.log(data)
         axios.post('http://47.104.245.242:8081/AssessMatter/showMatter',
         data,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
         .then((res)=>{
             this.title = res.data
-            console.log(this.title)
         }),(err)=>{
             console.log(error)
         };
 
         // 兴趣题  答案选项
         let obj3 = 3;
-        // console.log(data)
         axios.post('http://47.104.245.242:8081/AssessObject/obj3',
         obj3,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
         .then((res)=>{
             this.list = res.data
-            // console.log(res.data,'res')
         }),(err)=>{
             console.log(error)
         };
@@ -144,13 +138,11 @@ export default {
     methods:{
       // 兴趣题目
         ccc(index){
-            // console.log(index)
             this.type = index.typ;
             this.topic = index.id        
         },
         // 获取兴趣题的id
         eee(index){
-          // console.log(index,'index')
             this.score = index.id;
             
         },
@@ -265,7 +257,6 @@ export default {
     }
     .sels_list .items .i_top, .sels_list .items .i_bot {
         height: 5px;
-        /* overflow: hidden; */
         width: 640px;
     }
     .sels_list .items .i_mid {

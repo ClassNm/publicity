@@ -5,7 +5,7 @@
             <h1 class="Rep">{{Report}}</h1>
             <Spin style="display:'inline-block'"></Spin>
         </div>
-        <Roundness></Roundness>
+        <Roundness class="RoundNes"></Roundness>
         <Report class="header"></Report>  
         <!-- 第一部分 -->
         <!-- <div style="background:#eee;padding: 20px">
@@ -220,9 +220,29 @@ export default {
     }
 
     .boxT{
-        width: 1100px;;
-        margin: 0 auto
+        /* width: 1100px;; */
+        /* margin: 0 auto */
     }
+    @media (min-width: 1200px) { 
+       .boxT{
+            width: 1100px;
+            margin: 0 auto;
+        }
+     }
+     @media screen and (max-width: 1200px) { 
+        .boxT{
+            width: 800px;
+            /* background: orange; */
+            margin: 0 auto;
+        }  
+    }    
+    @media screen and (max-width: 901px) { 
+        .boxT{
+            width: 500px;
+            /* background: salmon; */
+            margin: 0 auto;
+        } 
+    } 
     .spanL{
         display: block;
         margin: 0 auto;

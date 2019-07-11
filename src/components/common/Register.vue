@@ -344,21 +344,11 @@ export default {
 </script>
 
 <style scoped lang="less">
-    .box{
-        text-align: center;
-        margin-top: 200px;
-    }
     li{
         list-style: none
     }
     .leis{
-        // display: block;
-        // width:20px;
-        // background:red；
         text-align: left
-    }
-    .INt{
-        // display: block
     }
     .fout{
         margin-top: 20px
@@ -369,7 +359,25 @@ export default {
     }
     .One{
         display: inline-block;
-        // width: 200px;
     }
+    
+     @media (min-width: 1200px) { 
+       .box{
+            text-align: center;
+            margin-top: 200px;
+        }
+     }
+     @media screen and (max-width: 1200px) { 
+        .box{
+            text-align: center;
+            margin: 100px;
+        }  
+    }    
+    @media screen and (max-width: 901px) { 
+        .box{
+            text-align: center;
+            margin: 50px;
+        } 
+    } 
 
 </style>
