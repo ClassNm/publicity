@@ -5,6 +5,7 @@
             <h1 class="Rep">{{Report}}</h1>
             <Spin style="display:'inline-block'"></Spin>
         </div>
+        <Roundness></Roundness>
         <Report class="header"></Report>  
         <!-- 第一部分 -->
         <!-- <div style="background:#eee;padding: 20px">
@@ -53,7 +54,9 @@
 <script>
 import axios from 'axios'
 // 柱状图
-import Report from './Report'
+import Report from './graph/Report'
+// 圆形图
+import Roundness from './graph/Roundness' 
 export default {
     data(){
         return{
@@ -188,7 +191,8 @@ export default {
         
     },
     components:{
-        Report
+        Report,
+        Roundness
     },
     methods:{
         handleSpinShow () {

@@ -37,7 +37,7 @@
                         <p class="i_bot"></p>
                     </div>
                     <!-- 按钮 -->
-                    <Button @click="wwww($event)">Default</Button>
+                    <Button @click="wwww($event)">下一题</Button>
                 </div>
             </div>
             <!-- 多选 -->

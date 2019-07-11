@@ -10,7 +10,7 @@
                 <!-- </li>  -->
                 </span>
                 <!-- &nbsp&nbsp&nbsp -->
-                <Input v-model="value11" placeholder="手机号" clearable style="width: 200px" class="INt" />
+                <Input v-model="phone" placeholder="手机号" clearable style="width: 200px" class="INt" />
             </div>
             <br>
             <div class="fout">
@@ -32,14 +32,14 @@
                 <!-- </li>  -->
                 </span>
                 <!-- &nbsp&nbsp&nbsp -->
-                <Input v-model="value14" placeholder="姓名" clearable style="width: 200px" class="INt" />
+                <Input v-model="name" placeholder="姓名" clearable style="width: 200px" class="INt" />
             </div>
             <br>
             <div class="fout">
                 <span class="leis">
                     性别：
                 </span>
-                <Select v-model="model8" clearable style="width:200px">
+                <Select v-model="sex" clearable style="width:200px">
                     <Option v-for="item in cityListM" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
             </div>
@@ -48,7 +48,7 @@
                 <span class="leis">
                     文理：
                 </span>
-                <Select v-model="model" clearable style="width:200px">
+                <Select v-model="artsAndSciences" clearable style="width:200px">
                     <Option v-for="(item,i) in cityListO" :value="item.object" :key="i">{{ item.object }}</Option>
                 </Select>
             </div>
@@ -57,7 +57,7 @@
                 <span class="leis">
                     年级：
                 </span>
-                <Select v-model="modelY" clearable style="width:200px">
+                <Select v-model="grade" clearable style="width:200px">
                     <Option v-for="item in cityListY" :value="item.value" :key="item.value">{{ item.label }}</Option>
                 </Select>
             </div>
@@ -68,7 +68,7 @@
                 <!-- </li>  -->
                 </span>
                 <!-- &nbsp&nbsp&nbsp -->
-                <Input v-model="value21" placeholder="班级" clearable style="width: 200px" class="INt" />
+                <Input v-model="clas" placeholder="班级" clearable style="width: 200px" class="INt" />
             </div>
             <br>
             <div class="fout">
@@ -76,19 +76,19 @@
                     所在地：
                 </span>
                 <!-- 省份 -->
-                <Select v-model="model3" style="width:100px" @on-change="aaa">
+                <Select v-model="location" style="width:100px" @on-change="city">
                     <Option v-for="item in cityList" :value="item.id" :key="item.id">{{ item.name }}</Option>
                 </Select>
                 <!-- 市份 -->
-                <Select v-model="model31" style="width:100px" @on-change="bbb">
+                <Select v-model="locationSon" style="width:100px" @on-change="county">
                     <Option v-for="item in cityList1" :value="item.id" :key="item.id">{{ item.name }}</Option>
                 </Select>
                 <!-- 区县份 -->
-                <Select v-model="mode32" style="width:100px" @on-change="ccc">
+                <Select v-model="locationSonAg" style="width:100px" @on-change="school">
                     <Option v-for="item in cityList2" :value="item.name" :key="item.name">{{ item.name }}</Option>
                 </Select>
                 <!-- 学校 -->
-                <Select v-model="mode33" style="width:100px">
+                <Select v-model="schoolNa" style="width:100px">
                     <Option v-for="item in cityList3" :value="item.school" :key="item.id">{{ item.school }}</Option>
                 </Select>
             </div>
@@ -130,7 +130,7 @@ export default {
                 ],
             },
             // 姓名
-            value14: '',
+            name: '',
             // 学校
             // value1: '',
 
@@ -140,10 +140,10 @@ export default {
             value4: '',
             value5: '',
             // 账号
-            value11: '',
+            phone: '',
             value12: '',
             // 班级
-            value21: '',
+            clas: '',
             // 性别
             cityListM: [
                 {
@@ -156,7 +156,7 @@ export default {
                 }
             ],
             // 性别
-            model8: '',
+            sex: '',
             // 文理数据
             cityListO: [
                 // {
@@ -173,7 +173,7 @@ export default {
                 // },
             ],
             // 文理
-            model: '',
+            artsAndSciences: '',
             // 年级数据
             cityListY: [
                 {
@@ -190,7 +190,7 @@ export default {
                 },
             ],
             // 年级
-            modelY: '',
+            grade: '',
             // 所在地  省份
             cityList: [
                 
@@ -208,13 +208,13 @@ export default {
                 
             ],
             // 省
-            model3: '',
+            location: '',
             // 市区
-            model31: '',
+            locationSon: '',
             // 县市
-            mode32: '',
+            locationSonAg: '',
             // 学校
-            mode33: '',
+            schoolNa: '',
                 
         };
     },
@@ -243,7 +243,7 @@ export default {
     },
      methods: {
          // 所在地  市份
-            aaa(word){
+            city(word){
                 let data = word;
                 // console.log(data)
                 axios.post('http://47.104.245.242:8081/City/findById',
@@ -256,7 +256,7 @@ export default {
                 })
             },
             // 所在地  县份
-            bbb(word){
+            county(word){
                 let data = word;
                 // console.log(data)
                 // http://192.168.1.113:8080/City/findByCode2
@@ -270,7 +270,7 @@ export default {
                 })
             },
             // 所在地  学校
-            ccc(word){
+            school(word){
                 let data = word;
                 // console.log(data)
                 axios.post('http://47.104.245.242:8081/City/findByCode3',
@@ -286,68 +286,58 @@ export default {
 
             Submit(){
                 // 账号
-                let a = this.value11;
+                let phone = this.phone;
                 // 密码
-                let b = this.formCustom.passwd;
+                let passWord = this.formCustom.passwd;
                 // 姓名
-                let c = this.value14;
-                // 学校
-                // let d = this.value1;
+                let name = this.name;
                 // 性别
-                let e = this.model8;
+                let sex = this.sex;
                 // 文理
-                let f = this.model;
+                let artsAndSciences = this.artsAndSciences;
                 // 年级
-                let g = this.modelY;
-                // 手机号
-                let h = this.value21;
+                let grade = this.grade;
                 //所在地
-                let i =  this.model3;
-                let i1 = this.model31;
-                let i2 = this.mode32;
+                let location =  this.location;
+                let locationSon = this.locationSon;
+                let locationSonAg = this.locationSonAg;
                 let i3 = '+';
-                let j = i+i3+i1+i3+i2;
+                let address = location+i3+locationSon+i3+locationSonAg;
                 // 学校
-                let k = this.mode33;
+                let school = this.schoolNa;
                 // 班级
-                let l = this.value21;
+                let clas = this.clas;
 
                 let data = {
-                    phone : a,
-                    passWord : b,
-                    name : c,
-                    sex : e,
-                    artsAndSciences : f,
-                    grade : g,
-                    address : j,
-                    school : k,
-                    clas : l,
+                    phone : phone,
+                    passWord : passWord,
+                    name : name,
+                    sex : sex,
+                    artsAndSciences : artsAndSciences,
+                    grade : grade,
+                    address : address,
+                    school : school,
+                    clas : clas,
                 }
-                // console.log(data)
-                // Register(data)
-                // 注册
-                // export const Register = function(e){
-                //     let url = '/AssessUser/save'
-                //     let data = e
-                //     axios.post(url,data).then((res)=>{
-                //         console.log(res)
-                //     },(err)=>{
-                //         console.log(err)
-                //     })
-                // }
-                axios.post('http://47.104.245.242:8081/AssessUser/save',
-                data,
-                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-                )
-                .then((res)=>{
-                    // console.log(res);
-                    alert(res.data);
-                    if(res.data==="注册成功"){
-                        // this.$route.push({path:"/login"})
-                        this.$router.push('/login')
+                if(phone == "" || passWord == "" 
+                    || name == "" || sex == "" || 
+                    artsAndSciences == "" || grade == "" || 
+                    clas == "" || location == "" || locationSon =="" || locationSonAg == "" 
+                    || school == "")
+                {
+                    alert('请填写完整信息')
+                }else{
+                    axios.post('http://47.104.245.242:8081/AssessUser/save',
+                    data,
+                    {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                    )
+                    .then((res)=>{
+                        alert(res.data);
+                        if(res.data==="注册成功"){
+                            this.$router.push('/login')
+                        }
+                    })
                     }
-                    // this.cityList3 = res.data
-                })
             }
         }
 }
