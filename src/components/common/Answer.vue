@@ -22,16 +22,18 @@
                            v-for="(item,i) in list" 
                            :key="item.id"
                            :value = "item.id"
-                            @click="eee(item,i)"  
+                            @click="eee(item,i)" 
                            >
-                            <span class="sels">
+                            <!-- <span class="sels">
                                 <input type="radio" 
                                 name="a1" 
                                 :value="item.id" 
-                                v-model="redio"
+                                v-model='redio' 
                                 >
-                            </span>
-                            {{item.object}}
+                            </span> -->
+                             <RadioGroup v-model="redio">
+                                <Radio :label="item.object"></Radio>
+                            </RadioGroup>
                         </p>
                         <p class="i_bot"></p>
                     </div>
@@ -167,6 +169,7 @@ export default {
           let obj = [];
           obj.push(data)
             if(typ == "" || mid == "" || score == "" || uid == undefined ){
+                // || uid == undefined 
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
                 axios.post('http://47.104.245.242:8081/AssessMatter/save',
@@ -181,7 +184,7 @@ export default {
                 this.topic = "",
                 this.score = "",
                 this.title.shift()
-                this.redio = ""
+                this.redio = "";
             }
 
         //    let canvas=this.$refs.box1 || window.event.target.box1;
