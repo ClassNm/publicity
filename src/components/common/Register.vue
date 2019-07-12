@@ -94,17 +94,13 @@
             </div>
             <br>
         </div>
-        <!-- <router-link :to="{path:'/answer'}"> -->
             <Button type="dashed" class="But" @click="Submit">注册账号</Button>
-        <!-- </router-link> -->
-       
     </div>
 </template>
 <script>    
 
 import axios from 'axios'
 import {Register} from '../../actions.js'
-
 
 export default {
     data () {
@@ -132,8 +128,7 @@ export default {
             // 姓名
             name: '',
             // 学校
-            // value1: '',
-
+            // value1:
             value2: '',
             // 省份
             value3: '',
@@ -158,20 +153,7 @@ export default {
             // 性别
             sex: '',
             // 文理数据
-            cityListO: [
-                // {
-                //     value: '文科',
-                //     label: '文科'
-                // },
-                // {
-                //     value: '理科',
-                //     label: '理科'
-                // },
-                // {
-                //     value: '新高考',
-                //     label: '新高考'
-                // },
-            ],
+            cityListO: [],
             // 文理
             artsAndSciences: '',
             // 年级数据
@@ -196,17 +178,11 @@ export default {
                 
             ],
             // 所在地  市份
-            cityList1: [
-                
-            ],
+            cityList1: [],
             // 所在地  县份
-            cityList2: [
-                
-            ],
+            cityList2: [],
             // 所在地  学校
-            cityList3: [
-                
-            ],
+            cityList3: [],
             // 省
             location: '',
             // 市区

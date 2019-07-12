@@ -19,9 +19,6 @@
         
         <div class="font">
             <router-link :to="{path:'/register'}">
-            <!-- <h3>
-                注册账号
-            </h3> -->
             <Button type="success" long>注册账号</Button>
         </router-link>
         </div>
@@ -83,27 +80,18 @@ import axios from 'axios';
                     school : '',
                     
                     clas : '',
-                    
+
                 }
-                // console.log(data)
-                // console.log(this.formInline.user);
-                // console.log(this.formInline.password);
-                // axios.post('http://192.168.1.113:8080/fingByPassWord?p=123')
                 let uid = ""
                 axios.post('http://47.104.245.242:8081/AssessUser/fingByPassWord',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    // console.log(res.data,'res.data')
-                    // console.log(typeof(res.data))
                     this.information = res.data
                     let arr = res.data.split(',')
                     this.id = arr[0]
                     this.judge = arr[1];
-                    // console.log(arr[0]);
-                    // console.log(arr[1])
-                    // console.log(this.information,'res.data')
                     if(this.information==="用户名或密码错误"){
                         alert(this.information)
                     }else{
@@ -122,14 +110,7 @@ import axios from 'axios';
                     // uid = res.data
                     // this.cityList1 = res.data
                 })
-                // console.log(this.information)
-                // console.log(this.information)
-                // if(this.information=="用户名或密码错误"){
-                //     alert('用户名或密码错误')
-                // }else{
-                //     // this.$router.push({path:'/register',query:obj})
-                //     console.log(111)
-                // }
+                
                 
 
                 // 登录

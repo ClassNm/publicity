@@ -15,8 +15,9 @@
             class="checked" 
             >
              <CheckboxGroup v-model="checkAllGroup">
-                <Checkbox :label="item.id" class="checked"></Checkbox>
-                {{item.object}}
+                <Checkbox :label="item.id" class="checked">
+                    {{item.object}}
+                </Checkbox>
             </CheckboxGroup>
                 
             </div>
@@ -30,8 +31,9 @@
             @click="AnswerClick(item,i)" 
             class="checked">
                <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultTwoMe">{{buttonAga}}</Button>
@@ -46,8 +48,9 @@
              class="checked"
             >
                <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
+                    <Checkbox :label="item.id" class="checked">
                     {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeThr">{{buttonAga}}</Button>
@@ -62,8 +65,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeFou">{{buttonAga}}</Button>
@@ -78,8 +82,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeFiv">{{buttonAga}}</Button>
@@ -94,8 +99,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
+                    <Checkbox :label="item.id" class="checked">
                     {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeSi">{{buttonAga}}</Button>
@@ -110,8 +116,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeSeven">{{buttonAga}}</Button>
@@ -126,8 +133,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeEight">{{buttonAga}}</Button>
@@ -142,8 +150,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeNine">{{buttonAga}}</Button>
@@ -158,8 +167,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeTen">{{buttonAga}}</Button>
@@ -174,8 +184,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeEleven">{{buttonAga}}</Button>
@@ -190,8 +201,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeTwelve">{{buttonAga}}</Button>
@@ -206,8 +218,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeThirteen">{{buttonAga}}</Button>
@@ -222,8 +235,9 @@
               class="checked"
              >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeFourteen">{{buttonAga}}</Button>
@@ -238,8 +252,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeFifteen">{{buttonAga}}</Button>
@@ -254,8 +269,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeSixteen">{{buttonAga}}</Button>
@@ -270,8 +286,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeSeveteen">{{buttonAga}}</Button>
@@ -286,8 +303,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeEighteen">{{buttonAga}}</Button>
@@ -302,8 +320,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <Button @click="resultMeNineteen">{{buttonAga}}</Button>
@@ -318,8 +337,9 @@
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
              <Button @click="resultMeTwenty">{{buttonAga}}</Button>
@@ -334,8 +354,9 @@
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                    <Checkbox :label="item.id" class="checked">
+                        {{item.object}}
+                    </Checkbox>
                 </CheckboxGroup>
             </div>
             <p class="noticeCo">{{notice}}</p>
@@ -466,7 +487,6 @@ export default {
             this.resultTwenty = filterByName(aim,'PI')
             // console.log(filterByName(aim,'UI'),'UI')
             this.resultTwentyOne = filterByName(aim,'UI')
-
         }),(err)=>{
             console.log(err)
         }

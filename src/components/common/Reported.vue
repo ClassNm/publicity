@@ -13,22 +13,7 @@
                 <p slot="title">{{reom}}</p>
                 <p v-for="(item,i) in test" :key="i">{{i+1}},{{item.name}}</p>
             </Card>
-        </div> -->
-        <!-- 第二部分 -->
-        <!-- <div style="background:#eee;padding: 20px">
-            <Card :bordered="false">
-                <p slot="title">{{reomT}}</p>
-                <p v-for="(item,i) in testT" :key="i">{{i+1}},{{item.name}}</p>
-            </Card>
-        </div> -->
-        <!-- 第三部分 -->
-        <!-- <div style="background:#eee;padding: 20px">
-            <Card :bordered="false">
-                <p slot="title">{{reomThr}}</p>
-                <p v-for="(item,i) in testThr" :key="i">{{i+1}},{{item.name}}</p>
-            </Card>
-        </div> -->
-        
+        </div> -->   
         <Tabs value="name1" class="boxT">
             <TabPane :label="reom" name="name1" class="fit" type="line" style="font-size:25px;" size="25px">
                 <span v-for="(item,i) in utmost" :key="i" class="spanL">{{item}}</span>
@@ -96,71 +81,7 @@ export default {
                 },
             ],
             reomT:"比较适合",
-            testT:[
-                {
-                    name : "法学理论"
-                },
-                {
-                    name : "法律史"
-                },
-                {
-                    name : "宪法学与行政法学"
-                },
-                {
-                    name : "刑法学"
-                },
-                {
-                    name : "诉讼法学"
-                },
-                {
-                    name : "经济法学"
-                },
-                {
-                    name : "环境与资源保护法学"
-                },
-                {
-                    name : "军事法学"
-                },
-                {
-                    name : "国际政治"
-                },
-                {
-                    name : "社会学"
-                },
-            ],
             reomThr:"一般适合",
-            testThr:[
-                {
-                    name : "基础数学"
-                },
-                {
-                    name : "计算数学"
-                },
-                {
-                    name : "应用数学"
-                },
-                {
-                    name : "粒子物理与原子核物理"
-                },
-                {
-                    name : "凝聚态物理"
-                },
-                {
-                    name : "声学"
-                },
-                {
-                    name : "光学"
-                },
-                {
-                    name : "无线电物理"
-                },
-                {
-                    name : "大气物理学与大气环境"
-                },
-                {
-                    name : "物理海洋学"
-                },
-            ],
             // 3块专业
             utmost:[],
             very:[],
@@ -186,9 +107,6 @@ export default {
          }),(err)=>{
               console.log(err)
         }
-    },
-    computed:{
-        
     },
     components:{
         Report,

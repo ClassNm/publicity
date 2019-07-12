@@ -10,7 +10,7 @@
                  :name="item.typ"  
                  v-for="(item,i) in title" 
                  :key="i" 
-                 @click="ccc(item,i)"
+                 @click="topicFun(item,i)"
                  v-bind:style="{display: activeColorOver}"
                  
                  >
@@ -22,7 +22,7 @@
                            v-for="(item,i) in list" 
                            :key="item.id"
                            :value = "item.id"
-                            @click="eee(item,i)" 
+                            @click="present(item,i)" 
                            >
                             <!-- <span class="sels">
                                 <input type="radio" 
@@ -39,7 +39,7 @@
                     </div>
 
                     <!-- 按钮 -->
-                    <Button @click="wwww($event)">下一题</Button>
+                    <Button @click="submit($event)">下一题</Button>
                 </div>
             </div>
 
@@ -47,7 +47,6 @@
             <AnswerCheck></AnswerCheck>
         </div>            
     </div>
-            <!-- <Button @click="wwww">Default</Button> -->
 </template>
 
 <script>
@@ -65,48 +64,38 @@ export default {
           // 判断下一题
           ok:true,
           // 兴趣提 1
-            a : 1,
-            // 兴趣的id
-            eeea : "",
-            // 个性提 2
-            b : 2,
-            sel : "",
-            // ubid
-            ubid:"",
-            // 多选
-            fruit: ['苹果'],
-            title:[
-           
-          ],
-            list:[
-            
-          ],
-          fone:[
-              
-          ],
-          foneOne:[],
-          // 兴趣提结果
-          interset:[
-              
-          ],
-          intersetSon:{
-
-          },
-          aaaaa:{
+        a : 1,
+        // 兴趣的id
+        eeea : "",
+        // 个性提 2
+        b : 2,
+        sel : "",
+        // ubid
+        ubid:"",
+        // 多选
+        fruit: ['苹果'],
+        title:[],
+        list:[],
+        fone:[],
+        foneOne:[],
+        // 兴趣提结果
+        interset:[],
+        intersetSon:{},
+        aaaaa:{
             name:"111"
-          },
-          aaaid:"",
-          type:"",
-          topic:"",
-          score:"",
-          seeo:"color:red",
-          indexPrev:'green',
-          activeColor: 'hidden',
-          activeColorOver:'block',
-          stateNum : [],
-          
+        },
+        aaaid:"",
+        type:"",
+        topic:"",
+        score:"",
+        seeo:"color:red",
+        indexPrev:'green',
+        activeColor: 'hidden',
+        activeColorOver:'block',
+        stateNum : [],
+        
         //   radio重置
-          redio:""
+        redio:""
         }
     },
     components:{
@@ -140,16 +129,16 @@ export default {
     },
     methods:{
       // 兴趣题目
-        ccc(index){
+        topicFun(index){
             this.type = index.typ;
             this.topic = index.id        
         },
         // 获取兴趣题的id
-        eee(index){
+        present(index){
             this.score = index.id;
             
         },
-        wwww(e){
+        submit(e){
           // 类型
           let typ = this.type;
           // 题号  
@@ -169,7 +158,6 @@ export default {
           let obj = [];
           obj.push(data)
             if(typ == "" || mid == "" || score == "" || uid == undefined ){
-                // || uid == undefined 
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
                 axios.post('http://47.104.245.242:8081/AssessMatter/save',

@@ -53,9 +53,6 @@ export default {
             this.language = language;
             this.society = society;
             this.unit = unit;
-            // console.log(aa)
-            // console.log(this.nature)
-            // console.log(this.manMade)
           }),(err)=>{
               console.log(err)
           }
