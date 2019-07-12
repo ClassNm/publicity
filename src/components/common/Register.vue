@@ -325,14 +325,15 @@ export default {
                     clas == "" || location == "" || locationSon =="" || locationSonAg == "" 
                     || school == "")
                 {
-                    alert('请填写完整信息')
+                    this.$Message.warning('请填写完整信息')
                 }else{
                     axios.post('http://47.104.245.242:8081/AssessUser/save',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
                     .then((res)=>{
-                        alert(res.data);
+                        // alert(res.data);
+                        this.$Message.info(res.data);
                         if(res.data==="注册成功"){
                             this.$router.push('/login')
                         }

@@ -8,12 +8,17 @@
         
         <div class="box"  ref="box2" v-bind:style="{display: activeColorOver}">
             <p>1,{{title}}</p>
-            <div v-for="(item,i) in result" :key="i" 
+            <div 
+            v-for="(item,i) in result" :key="i" 
             :value="item.object" 
             @click="AnswerClick(item,i)" 
-            class="checked">
+            class="checked" 
+            >
+             <CheckboxGroup v-model="checkAllGroup">
                 <Checkbox :label="item.id" class="checked"></Checkbox>
-                    {{item.object}}
+                {{item.object}}
+            </CheckboxGroup>
+                
             </div>
             <Button @click="resultMe">{{buttonAga}}</Button>
         </div> 
@@ -24,8 +29,10 @@
             :value="item.object" 
             @click="AnswerClick(item,i)" 
             class="checked">
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+               <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultTwoMe">{{buttonAga}}</Button>
         </div> 
@@ -38,8 +45,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+               <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeThr">{{buttonAga}}</Button>
         </div> 
@@ -52,8 +61,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeFou">{{buttonAga}}</Button>
         </div> 
@@ -66,8 +77,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeFiv">{{buttonAga}}</Button>
         </div> 
@@ -80,8 +93,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeSi">{{buttonAga}}</Button>
         </div> 
@@ -94,8 +109,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeSeven">{{buttonAga}}</Button>
         </div> 
@@ -108,8 +125,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeEight">{{buttonAga}}</Button>
         </div> 
@@ -122,8 +141,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeNine">{{buttonAga}}</Button>
         </div> 
@@ -136,8 +157,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeTen">{{buttonAga}}</Button>
         </div> 
@@ -150,8 +173,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeEleven">{{buttonAga}}</Button>
         </div> 
@@ -164,8 +189,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeTwelve">{{buttonAga}}</Button>
         </div> 
@@ -178,8 +205,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeThirteen">{{buttonAga}}</Button>
         </div> 
@@ -192,8 +221,10 @@
               @click="AnswerClick(item,i)"
               class="checked"
              >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeFourteen">{{buttonAga}}</Button>
         </div> 
@@ -206,8 +237,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeFifteen">{{buttonAga}}</Button>
         </div> 
@@ -220,8 +253,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeSixteen">{{buttonAga}}</Button>
         </div> 
@@ -234,8 +269,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeSeveteen">{{buttonAga}}</Button>
         </div> 
@@ -248,8 +285,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeEighteen">{{buttonAga}}</Button>
         </div> 
@@ -262,8 +301,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <Button @click="resultMeNineteen">{{buttonAga}}</Button>
         </div> 
@@ -276,8 +317,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
              <Button @click="resultMeTwenty">{{buttonAga}}</Button>
         </div> 
@@ -290,8 +333,10 @@
              @click="AnswerClick(item,i)"
              class="checked"
             >
-                <Checkbox :label="item.id" class="checked"></Checkbox>
+                 <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.id" class="checked"></Checkbox>
                     {{item.object}}
+                </CheckboxGroup>
             </div>
             <p class="noticeCo">{{notice}}</p>
              <Button @click="resultMeTwentyOne">{{buttonLast}}</Button>
@@ -342,6 +387,8 @@ export default {
             buttonAga:"下一题",
             // 用户的id
             uid : "",
+            // 取消选中
+            checkAllGroup:[]
         }
     },
     created(){
@@ -425,7 +472,6 @@ export default {
         }
     },
     methods:{
-        
         //拿到点击的选项 多选的3道  
         AnswerClick(index){
             // console.log(index.object,'item')
@@ -454,198 +500,190 @@ export default {
                 console.log(err)
             }
         },
+        // 验证是否选择3项
+        proofread(data){
+            if(data.length===3){
+                this.postBack(data);
+                this.answer = [];
+            }else{
+                this.$Message.warning('请选择三个专业并点击下一题')
+                this.answer=[]
+                this.checkAllGroup = [];
+            }
+        },
+        // style改变
+        disPl(canvas){
+            canvas.style.display = "none"
+        },
         // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 
         resultMe(){
             let data = this.answer;
-            // console.log(this.answer,'发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'发送后')
-            let canvas=this.$refs.box2;
-            canvas.style.display = "none"
+            this.proofread(data)
+            if(data.length===3){
+                let canvas=this.$refs.box2;
+                this.disPl(canvas)
+            }
         },
         resultTwoMe(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.answer = [];
-            this.postBack(data);
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultTwo;
-            canvas.style.display = "none"
+            this.proofread(data);
+             if(data.length===3){
+                let canvas=this.$refs.resultTwo;
+                this.disPl(canvas)
+            }
         },
         resultMeThr(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultThree;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultThree;
+                this.disPl(canvas)
+            }
         },
         resultMeFou(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultFour;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultFour;
+                this.disPl(canvas)
+            }
         },
         resultMeFiv(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultFive;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultFive;
+                this.disPl(canvas)
+            }
         },
         resultMeSi(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultSix;
-            canvas.style.display = "none"
+            this.proofread(data);
+             if(data.length===3){
+                let canvas=this.$refs.resultSix;
+                this.disPl(canvas)
+            }
         },
         resultMeSeven(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultSeven;
-            canvas.style.display = "none"
-            // console.log(111)
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultSeven;
+                this.disPl(canvas)
+            }
         },
         resultMeEight(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resulteight;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resulteight;
+                this.disPl(canvas)
+            }
         },
         resultMeNine(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultNine;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultNine;
+                this.disPl(canvas)
+            }
         },
         resultMeTen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultTen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultTen;
+                this.disPl(canvas)
+            }
         },
         resultMeEleven(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resulteleven;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resulteleven;
+                this.disPl(canvas)
+            }
         },
         resultMeTwelve(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resulttwelve;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resulttwelve;
+                this.disPl(canvas)
+            }
         },
         resultMeThirteen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultthirteen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultthirteen;
+                this.disPl(canvas)
+            }
         },
         resultMeFourteen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultfourteen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultfourteen;
+                this.disPl(canvas)
+            }
         },
         resultMeFifteen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultfifteen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultfifteen;
+                this.disPl(canvas)
+            }
         },
         resultMeSixteen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultsixteen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultsixteen;
+                this.disPl(canvas)
+            }
         },
         resultMeSeveteen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultseveteen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultseveteen;
+                this.disPl(canvas)
+            }
         },
         resultMeEighteen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resulteighteen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resulteighteen;
+                this.disPl(canvas)
+            }
         },
         resultMeNineteen(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultnineteen;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultnineteen;
+                this.disPl(canvas)
+            }
         },
         resultMeTwenty(){
             let data = this.answer;
-            // console.log(this.answer,'第二次发送前')
-            this.postBack(data);
-            this.answer = [];
-            // console.log(this.answer,'第二次发送后')
-            let canvas=this.$refs.resultTwenty;
-            canvas.style.display = "none"
+            this.proofread(data);
+            if(data.length===3){
+                let canvas=this.$refs.resultTwenty;
+                this.disPl(canvas)
+            }
         },
         resultMeTwentyOne(){
             let data = this.answer;
-            this.postBack(data);
-            this.answer = [];
-            alert('答题完成')
-            let id = this.uid
-            this.$router.push({path:'/reported',query:{id:id}})
-            // let canvas=this.$refs.resultTwentyOne;
-            // canvas.style.display = "none"
-            // alert('答题完成')
+            this.proofread(data);
+            if(data.length===3){
+                this.$Message.success('答题完成');
+                let id = this.uid
+                this.$router.push({path:'/reported',query:{id:id}})
+            }
         },
     }
 }

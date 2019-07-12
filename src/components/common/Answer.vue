@@ -14,7 +14,6 @@
                  v-bind:style="{display: activeColorOver}"
                  
                  >
-                 <!-- ref="box1" -->
                 <p class="descs fb">{{item.matter}}</p>
                 <div class="sels_list" >
                     <div class="items">
@@ -36,10 +35,12 @@
                         </p>
                         <p class="i_bot"></p>
                     </div>
+
                     <!-- 按钮 -->
                     <Button @click="wwww($event)">下一题</Button>
                 </div>
             </div>
+
             <!-- 多选 -->
             <AnswerCheck></AnswerCheck>
         </div>            
@@ -165,17 +166,23 @@ export default {
           }
           let obj = [];
           obj.push(data)
-        //   console.log(obj)
-
-          axios.post('http://47.104.245.242:8081/AssessMatter/save',
-          data,
-          {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-          )
-          .then((res)=>{
-            //   console.log(res)
-          }),(err)=>{
-              console.log(err)
-          }
+            if(typ == "" || mid == "" || score == "" || uid == undefined ){
+                this.$Message.warning('请选择一个答案并点击下一题');
+            }else{
+                axios.post('http://47.104.245.242:8081/AssessMatter/save',
+                    data,
+                    {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                    )
+                    .then((res)=>{
+                    }),(err)=>{
+                        console.log(err)
+                    }
+                this.type = "",
+                this.topic = "",
+                this.score = "",
+                this.title.shift()
+                this.redio = ""
+            }
 
         //    let canvas=this.$refs.box1 || window.event.target.box1;
         //  let canvas=document.querySelector('#cvs');
@@ -187,8 +194,8 @@ export default {
         // let i =1;
         // i++;
         // console.log(i,'i')
-         this.title.shift()
-         this.redio = ""
+        //  this.title.shift()
+        //  this.redio = ""
         // let title = this.title
         // title.splice(0,1)
         //    canvas.shift()
