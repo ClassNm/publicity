@@ -1,12 +1,12 @@
 <template>
     <div class="surveydetailout" id="surveydetailout" >
         <div id="bodycontent_contentbody_divSurveyGuide" 
-        class="surveydetail" 
+        class="surveydetail"
         onselectstart="return false"
         v-bind:style="{overflow: activeColor}" 
         >
             <div id="cvs" 
-                 class="test_contents,surveydetailTw" 
+                 class="surveydetailTw" 
                  :name="item.typ"  
                  v-for="(item,i) in title" 
                  :key="i" 
@@ -24,13 +24,6 @@
                            :value = "item.id"
                             @click="present(item,i)" 
                            >
-                            <!-- <span class="sels">
-                                <input type="radio" 
-                                name="a1" 
-                                :value="item.id" 
-                                v-model='redio' 
-                                >
-                            </span> -->
                              <RadioGroup v-model="redio">
                                 <Radio :label="item.object"></Radio>
                             </RadioGroup>
@@ -38,14 +31,14 @@
                         <p class="i_bot"></p>
                     </div>
 
-                    <!-- 按钮 -->
                     <Button @click="submit($event)">下一题</Button>
                 </div>
             </div>
 
             <!-- 多选 -->
-            <AnswerCheck></AnswerCheck>
-        </div>            
+            <AnswerCheck></AnswerCheck>     
+        </div>
+               
     </div>
 </template>
 
@@ -157,17 +150,17 @@ export default {
           }
           let obj = [];
           obj.push(data)
-            if(typ == "" || mid == "" || score == "" || uid == undefined ){
+            if(typ == "" || mid == "" || score == ""){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://47.104.245.242:8081/AssessMatter/save',
-                    data,
-                    {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-                    )
-                    .then((res)=>{
-                    }),(err)=>{
-                        console.log(err)
-                    }
+                // axios.post('http://47.104.245.242:8081/AssessMatter/save',
+                //     data,
+                //     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                //     )
+                //     .then((res)=>{
+                //     }),(err)=>{
+                //         console.log(err)
+                //     }
                 this.type = "",
                 this.topic = "",
                 this.score = "",
@@ -200,13 +193,13 @@ export default {
 <style  scoped>
     .surveydetail{
         width: 500px;
-        height: 600px;
+        height: 1000px;
         overflow: hidden;
-        margin: 100px auto
+        margin: 50px auto 300px
     }
     .surveydetailTw{
         width: 500px;
-        height: 600px;
+        height: 1000px;
         overflow: hidden;
         margin: 100px auto
     }

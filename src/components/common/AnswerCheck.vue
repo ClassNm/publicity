@@ -1,6 +1,6 @@
 <template>
 <!-- 多选 -->
-    <div>
+    <div class="checkAll">
         <!-- because 给的数据格式很奇怪 只能拆分开分21次循环 crazy... 
         他把所有的数据全放在一个接口里然后给一个typ值让我区分 没办法 
         前方高能！！！
@@ -11,32 +11,45 @@
             <div 
             v-for="(item,i) in result" :key="i" 
             :value="item.object" 
-            @click="AnswerClick(item,i)" 
             class="checked" 
             >
-             <CheckboxGroup v-model="checkAllGroup">
-                <Checkbox :label="item.id" class="checked">
-                    {{item.object}}
-                </Checkbox>
-            </CheckboxGroup>
-                
+                <CheckboxGroup v-model="checkAllGroup">
+                    <Checkbox :label="item.object" class="checked">
+                        {{item.object}}
+                    </Checkbox>
+                </CheckboxGroup>
             </div>
-            <Button @click="resultMe">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMe" class="But">{{buttonAga}}</Button>
         </div> 
         <!-- 2 -->
         <div class="box" ref="resultTwo" v-bind:style="{display: activeColorOver}">
             <p>2,{{title}}</p>
             <div v-for="(item,i) in resultTwo" :key="i" 
             :value="item.object" 
-            @click="AnswerClick(item,i)" 
             class="checked">
                <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultTwoMe">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultTwoMe" class="But">{{buttonAga}}</Button>
         </div> 
         <!-- 3 -->
         <div class="box" ref="resultThree" v-bind:style="{display: activeColorOver}">
@@ -44,16 +57,23 @@
             <div v-for="(item,i) in resultThree" 
             :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                     {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeThr">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeThr" class="But">{{buttonAga}}</Button>
         </div> 
         <!-- 4 -->
         <div class="box" ref="resultFour" v-bind:style="{display: activeColorOver}">
@@ -61,33 +81,48 @@
             <div v-for="(item,i) in resultFour" 
             :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFou">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeFou" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 5 -->
         <div class="box" ref="resultFive" v-bind:style="{display: activeColorOver}">
             <p>5,{{title}}</p>
-            <div v-for="(item,i) in resultFive" :key="i" 
+                <div v-for="(item,i) in resultFive" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFiv">{{buttonAga}}</Button>
+            
+            <div class="Annota">
+                <div class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </div>
+            </div>
+            <Button @click="resultMeFiv" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 6 -->
@@ -95,16 +130,23 @@
             <p>6,{{title}}</p>
             <div v-for="(item,i) in resultSix" 
             :key="i" :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                     {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeSi">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeSi" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 7 -->
@@ -112,16 +154,23 @@
             <p>7,{{title}}</p>
             <div v-for="(item,i) in resultSeven" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeSeven">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeSeven" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 8 -->
@@ -129,16 +178,23 @@
             <p>8,{{title}}</p>
             <div v-for="(item,i) in resulteight" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeEight">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeEight" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 9 -->
@@ -146,16 +202,23 @@
             <p>9,{{title}}</p>
             <div v-for="(item,i) in resultNine" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeNine">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeNine" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 10 -->
@@ -163,16 +226,23 @@
             <p>10,{{title}}</p>
             <div v-for="(item,i) in resultTen" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeTen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeTen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 11 -->
@@ -180,16 +250,23 @@
             <p>11,{{title}}</p>
             <div v-for="(item,i) in resulteleven" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeEleven">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeEleven" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 12 -->
@@ -197,16 +274,23 @@
             <p>12,{{title}}</p>
             <div v-for="(item,i) in resulttwelve" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeTwelve">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeTwelve" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 13 -->
@@ -214,16 +298,23 @@
             <p>13,{{title}}</p>
             <div v-for="(item,i) in resultthirteen" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeThirteen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeThirteen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 14 -->
@@ -231,16 +322,23 @@
             <p>14,{{title}}</p>
             <div v-for="(item,i) in resultfourteen" :key="i"
              :value="item.object"
-              @click="AnswerClick(item,i)"
               class="checked"
              >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFourteen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeFourteen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 15 -->
@@ -248,16 +346,23 @@
             <p>15,{{title}}</p>
             <div v-for="(item,i) in resultfifteen" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeFifteen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeFifteen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 16 -->
@@ -265,16 +370,23 @@
             <p>16,{{title}}</p>
             <div v-for="(item,i) in resultsixteen" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeSixteen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeSixteen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 17 -->
@@ -282,16 +394,23 @@
             <p>17,{{title}}</p>
             <div v-for="(item,i) in resultseveteen" 
             :key="i" :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeSeveteen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeSeveteen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 18 -->
@@ -299,16 +418,23 @@
             <p>18,{{title}}</p>
             <div v-for="(item,i) in resulteighteen" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeEighteen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeEighteen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 19 -->
@@ -316,16 +442,23 @@
             <p>19,{{title}}</p>
             <div v-for="(item,i) in resultnineteen" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-            <Button @click="resultMeNineteen">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+            <Button @click="resultMeNineteen" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 20 -->
@@ -333,16 +466,23 @@
             <p>20,{{title}}</p>
             <div v-for="(item,i) in resultTwenty" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                 <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
-             <Button @click="resultMeTwenty">{{buttonAga}}</Button>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
+             <Button @click="resultMeTwenty" class="But">{{buttonAga}}</Button>
         </div> 
 
         <!-- 21 -->
@@ -350,17 +490,24 @@
             <p>21,{{title}}</p>
             <div v-for="(item,i) in resultTwentyOne" :key="i" 
             :value="item.object"
-             @click="AnswerClick(item,i)"
              class="checked"
             >
                  <CheckboxGroup v-model="checkAllGroup">
-                    <Checkbox :label="item.id" class="checked">
+                    <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
+            <div class="Annota">
+                <span class="annotation" 
+                v-for="(item,i) in checkAllGroup"
+                :key="i"
+                >
+                    {{i+1}},{{item}}
+                </span>
+            </div>
             <p class="noticeCo">{{notice}}</p>
-             <Button @click="resultMeTwentyOne">{{buttonLast}}</Button>
+             <Button @click="resultMeTwentyOne" class="But">{{buttonLast}}</Button>
         </div> 
 
         
@@ -399,8 +546,6 @@ export default {
             resultnineteen:[],
             resultTwenty:[],
             resultTwentyOne:[],
-            // 选中的答案
-            answer:[],
             // 注释  注意事项
             notice:"注意：请您认真作答，确认提交后将无法对试题答案进行修改",
             // 点击按钮
@@ -409,7 +554,16 @@ export default {
             // 用户的id
             uid : "",
             // 取消选中
-            checkAllGroup:[]
+            checkAllGroup:[],
+            // 判定被选中的三个替换值
+            optionOne:{},
+            optionTwe:{},
+            optionThre:{},
+            optionOnea:{},
+            optionTwea:{},
+            optionThrea:{},
+            // 选中的答案
+            Answer:[]
         }
     },
     created(){
@@ -492,23 +646,6 @@ export default {
         }
     },
     methods:{
-        //拿到点击的选项 多选的3道  
-        AnswerClick(index){
-            // console.log(index.object,'item')
-            let uid = this.uid
-            let typ = index.typ
-            let mid = index.id
-            let score = index.object
-            let answer = this.answer
-            let obj = {
-                uid : uid,
-                typ : typ,
-                mid : mid,
-                score : score
-            }
-            answer.push(obj)
-            // console.log(this.answer,'answer')
-        },
         //发送数据给后台
         postBack(data){
             axios.post('http://47.104.245.242:8081/AssessMatter/save2',
@@ -522,187 +659,409 @@ export default {
         },
         // 验证是否选择3项
         proofread(data){
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
                 this.postBack(data);
-                this.answer = [];
+                this.Answer = [];
+                this.optionOne = ""
+                this.optionTwe = ""
+                this.optionThre = ""
+                this.optionOnea = {}
+                this.optionTwea = {}
+                this.optionThrea = {}
+                // this.checkAllGroup = [];
             }else{
                 this.$Message.warning('请选择三个专业并点击下一题')
-                this.answer=[]
-                this.checkAllGroup = [];
+                this.Answer=[]
             }
         },
         // style改变
         disPl(canvas){
             canvas.style.display = "none"
         },
+        // 根据v-model的名字筛选选中的值
+        rise(data){
+            let aim = data;
+            // 根据单个名字筛选
+            function filterByName(aim, object) {
+                return aim.filter(item => item.object == object)
+            }
+            let ever = this.checkAllGroup;
+            // console.log(ever[0])
+            this.optionOne = filterByName(aim,ever[0])
+            this.optionTwe = filterByName(aim,ever[1])
+            this.optionThre = filterByName(aim,ever[2])
+
+            this.optionOnea = this.optionOne[0]
+            this.optionTwea = this.optionTwe[0]
+            this.optionThrea = this.optionThre[0]
+            // console.log(this.optionOnea,'1')
+            // console.log(this.optionTwea,'2')
+            // console.log(this.optionThrea,'3')
+        },
+        // 拿值发送
+        AnswerClick(){
+            // 第一项
+            let optionOnea = this.optionOnea
+            let uid = this.uid
+            let typ = optionOnea.typ
+            let mid = optionOnea.id
+            let score = optionOnea.object
+            // 第二项
+            let optionTwea = this.optionTwea
+            let uidTwe = this.uid
+            let typTwe = optionTwea.typ
+            let midTwe = optionTwea.id
+            let scoreTwe = optionTwea.object
+            // 第三项
+            let optionThrea = this.optionThrea
+            let uidThr = this.uid
+            let typThr = optionThrea.typ
+            let midThr = optionThrea.id
+            let scoreThr = optionThrea.object
+
+            // let answer = this.answer
+            let obj = {
+                uid : uid,
+                typ : typ,
+                mid : mid,
+                score : score
+            }
+            let objTwe = {
+                uid : uidTwe,
+                typ : typTwe,
+                mid : midTwe,
+                score : scoreTwe
+            }
+            let objThr = {
+                uid : uidThr,
+                typ : typThr,
+                mid : midThr,
+                score : scoreThr
+            }
+            let Answer = this.Answer;
+            Answer[0] = obj;
+            Answer[1] = objTwe;
+            Answer[2] = objThr;
+        },
+        // 警告只能选3个
+        err(){
+            this.$Message.error('只能选3个');
+        },
         // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 
         resultMe(){
-            let data = this.answer;
-            this.proofread(data)
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.result;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.box2;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultTwoMe(){
-            let data = this.answer;
-            this.proofread(data);
-             if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultTwo;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultTwo;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeThr(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultThree;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultThree;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeFou(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultFour;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultFour;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeFiv(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultFive;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultFive;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeSi(){
-            let data = this.answer;
-            this.proofread(data);
-             if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultSix;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultSix;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeSeven(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultSeven;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultSeven;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeEight(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resulteight;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resulteight;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeNine(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultNine;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultNine;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeTen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultTen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultTen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeEleven(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resulteleven;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resulteleven;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeTwelve(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resulttwelve;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resulttwelve;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeThirteen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultthirteen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultthirteen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeFourteen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultfourteen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultfourteen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeFifteen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultfifteen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultfifteen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeSixteen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultsixteen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultsixteen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeSeveteen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultseveteen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultseveteen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeEighteen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resulteighteen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resulteighteen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeNineteen(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultnineteen;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultnineteen;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeTwenty(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultTwenty;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 let canvas=this.$refs.resultTwenty;
                 this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
             }
         },
         resultMeTwentyOne(){
-            let data = this.answer;
-            this.proofread(data);
-            if(data.length===3){
+            if(this.checkAllGroup.length===3){
+                let arr = this.resultTwentyOne;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                console.log(data)
+                this.proofread(data)
                 this.$Message.success('答题完成');
+                this.checkAllGroup = []
                 let id = this.uid
                 this.$router.push({path:'/reported',query:{id:id}})
+            }else{
+                this.err();
             }
         },
     }
@@ -710,9 +1069,16 @@ export default {
 </script>
 
 <style scoped>
+    .checkAll{
+        width: 500px;
+        height: 1000px;
+        margin: 50px auto;
+        overflow: hidden;
+    }
     .box{
         width: 500px;
-        height: 600px;
+        height: 1000px;
+        margin: 100px auto;
         /* background: rgb(255, 230, 0); */
         overflow: hidden;
     }
@@ -724,5 +1090,20 @@ export default {
     /* 注意事项 */
     .noticeCo{
         color: red;
+    }
+    .Annota{
+        /* display: inline-block; */
+        margin-top: 6px;
+        height: 60px;
+        overflow: hidden;
+    }
+    .annotation{
+        color: red;
+        display: inline-block;
+    }
+    .But{
+        height: 40px;
+        display: block;
+        margin: 0 auto;
     }
 </style>
