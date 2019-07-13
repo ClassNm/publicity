@@ -590,56 +590,32 @@ export default {
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
         .then((res)=>{
-            // this.stateNum = res.data
-            // console.log(res.data)
-
             let aim = res.data;
             // 根据单个名字筛选
             function filterByName(aim, typ) {
                 return aim.filter(item => item.typ == typ)
             }
             // 输入 aim 'Leila' 期望输出为 [{name:'Leila', age: 16, gender:'female'}]
-            // console.log(filterByName(aim,'RN'),'RN')
             this.result = filterByName(aim,'RN')
-            // console.log(filterByName(aim,'PN'),'PN')
             this.resultTwo = filterByName(aim,'PN')
-            // console.log(filterByName(aim,'UN'),'UN')
             this.resultThree = filterByName(aim,'UN')
-            // console.log(filterByName(aim,'RT'),'RT')
             this.resultFour = filterByName(aim,'RT')
-            // console.log(filterByName(aim,'PT'),'PT')
             this.resultFive = filterByName(aim,'PT')
-            // console.log(filterByName(aim,'UT'),'UT')
             this.resultSix = filterByName(aim,'UT')
-            // console.log(filterByName(aim,'RA'),'RA')
             this.resultSeven = filterByName(aim,'RA')
-            // console.log(filterByName(aim,'PA'),'PA')
             this.resulteight = filterByName(aim,'PA')
-            // console.log(filterByName(aim,'UA'),'UA')
             this.resultNine = filterByName(aim,'UA')
-            // console.log(filterByName(aim,'RM'),'RM')
             this.resultTen = filterByName(aim,'RM')
-            // console.log(filterByName(aim,'PM'),'PM')
             this.resulteleven = filterByName(aim,'PM')
-            // console.log(filterByName(aim,'UM'),'UM')
             this.resulttwelve = filterByName(aim,'UM')
-            // console.log(filterByName(aim,'RN'),'RN')
             this.resultthirteen = filterByName(aim,'RL')
-            // console.log(filterByName(aim,'PL'),'PL')
             this.resultfourteen = filterByName(aim,'PL')
-            // console.log(filterByName(aim,'UL'),'UL')
             this.resultfifteen = filterByName(aim,'UL')
-            // console.log(filterByName(aim,'RS'),'RS')
             this.resultsixteen = filterByName(aim,'RS')
-            // console.log(filterByName(aim,'PS'),'PS')
             this.resultseveteen = filterByName(aim,'PS')
-            // console.log(filterByName(aim,'US'),'US')
             this.resulteighteen = filterByName(aim,'US')
-            // console.log(filterByName(aim,'RI'),'RI')
             this.resultnineteen = filterByName(aim,'RI')
-            // console.log(filterByName(aim,'PI'),'PI')
             this.resultTwenty = filterByName(aim,'PI')
-            // console.log(filterByName(aim,'UI'),'UI')
             this.resultTwentyOne = filterByName(aim,'UI')
         }),(err)=>{
             console.log(err)
@@ -668,7 +644,6 @@ export default {
                 this.optionOnea = {}
                 this.optionTwea = {}
                 this.optionThrea = {}
-                // this.checkAllGroup = [];
             }else{
                 this.$Message.warning('请选择三个专业并点击下一题')
                 this.Answer=[]
@@ -686,7 +661,6 @@ export default {
                 return aim.filter(item => item.object == object)
             }
             let ever = this.checkAllGroup;
-            // console.log(ever[0])
             this.optionOne = filterByName(aim,ever[0])
             this.optionTwe = filterByName(aim,ever[1])
             this.optionThre = filterByName(aim,ever[2])
@@ -694,9 +668,6 @@ export default {
             this.optionOnea = this.optionOne[0]
             this.optionTwea = this.optionTwe[0]
             this.optionThrea = this.optionThre[0]
-            // console.log(this.optionOnea,'1')
-            // console.log(this.optionTwea,'2')
-            // console.log(this.optionThrea,'3')
         },
         // 拿值发送
         AnswerClick(){
@@ -754,7 +725,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.box2;
                 this.disPl(canvas)
@@ -769,7 +739,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultTwo;
                 this.disPl(canvas)
@@ -784,7 +753,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultThree;
                 this.disPl(canvas)
@@ -799,7 +767,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultFour;
                 this.disPl(canvas)
@@ -814,7 +781,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultFive;
                 this.disPl(canvas)
@@ -829,7 +795,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultSix;
                 this.disPl(canvas)
@@ -844,7 +809,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultSeven;
                 this.disPl(canvas)
@@ -859,7 +823,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resulteight;
                 this.disPl(canvas)
@@ -874,7 +837,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultNine;
                 this.disPl(canvas)
@@ -889,7 +851,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultTen;
                 this.disPl(canvas)
@@ -904,7 +865,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resulteleven;
                 this.disPl(canvas)
@@ -919,7 +879,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resulttwelve;
                 this.disPl(canvas)
@@ -934,7 +893,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultthirteen;
                 this.disPl(canvas)
@@ -949,7 +907,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultfourteen;
                 this.disPl(canvas)
@@ -964,7 +921,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultfifteen;
                 this.disPl(canvas)
@@ -979,7 +935,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultsixteen;
                 this.disPl(canvas)
@@ -994,7 +949,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultseveteen;
                 this.disPl(canvas)
@@ -1009,7 +963,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resulteighteen;
                 this.disPl(canvas)
@@ -1024,7 +977,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultnineteen;
                 this.disPl(canvas)
@@ -1039,7 +991,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 let canvas=this.$refs.resultTwenty;
                 this.disPl(canvas)
@@ -1054,7 +1005,6 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
-                console.log(data)
                 this.proofread(data)
                 this.$Message.success('答题完成');
                 this.checkAllGroup = []
