@@ -73,17 +73,13 @@ export default {
                     bottom: '3%',
                     containLabel: true
                 },
-                xAxis : [
-                    {
-                        type : 'category',
-                        data:this.tit
-                    }
-                ],
-                yAxis : [
-                    {
-                        type : 'value'
-                    }
-                ],
+                 xAxis:  {
+                    type: 'value'
+                },
+                yAxis: {
+                    type: 'category',
+                    data: this.tit
+                },
             });
             // 处理echarts异步操作 copy的官网实例
             let data = this.$route.query.id;
@@ -103,29 +99,42 @@ export default {
                 myChart.setOption({                       
                         series : [
                             {
-                                name:this.stateOne,
-                                type:'bar',
-                                data:this.study
+                                name: this.stateOne,
+                                type: 'bar',
+                                stack: '总量',
+                                label: {
+                                    normal: {
+                                        show: true,
+                                        position: 'insideRight'
+                                    }
+                                },
+                                data: this.study
                             },
                             {
-                                name:this.stateTwe,
-                                type:'bar',
-                                stack: '广告',
-                                data:this.design
+                                name: this.stateTwe,
+                                type: 'bar',
+                                stack: '总量',
+                                label: {
+                                    normal: {
+                                        show: true,
+                                        position: 'insideRight'
+                                    }
+                                },
+                                data: this.design
                             },
                             {
-                                name:this.stateThree,
-                                type:'bar',
-                                data:this.use,
-                                markLine : {
-                                    lineStyle: {
-                                        normal: {
-                                            type: 'dashed'
-                                        }
-                                    },
-                                }
-                            },
-                ]
+                                name: this.stateThree,
+                                type: 'bar',
+                                stack: '总量',
+                                label: {
+                                    normal: {
+                                        show: true,
+                                        position: 'insideRight'
+                                    }
+                                },
+                                data: this.use
+                            }
+                        ]
                 });
             })
                 // myChart.setOption(option);//设置option

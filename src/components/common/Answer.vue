@@ -150,7 +150,7 @@ export default {
           }
           let obj = [];
           obj.push(data)
-            if(typ == "" || mid == "" || score == ""){
+            if(typ == "" || mid == "" || score == "" || uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
                 // axios.post('http://47.104.245.242:8081/AssessMatter/save',

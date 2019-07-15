@@ -1,27 +1,19 @@
 <template>
     <div class="fox">
-        <h1 class="size">登录信息页面</h1>
-        <Form ref="formInline" :model="formInline" :rules="ruleInline" inline>
-            <FormItem prop="user">
-                <Input type="text" v-model="formInline.user" placeholder="账号">
-                    <Icon type="ios-person-outline" slot="prepend"></Icon>
-                </Input>
-            </FormItem>
-            <FormItem prop="password">
-                <Input type="password" v-model="formInline.password" placeholder="密码">
-                    <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                </Input>
-            </FormItem>
-            <FormItem>
-                <Button type="primary" @click="handleSubmit('formInline')">登录</Button>
-            </FormItem>
-        </Form>
-        
-        <div class="font">
-            <router-link :to="{path:'/register'}">
-            <Button type="success" long>注册账号</Button>
-        </router-link>
+        <div class="popUp">
+            <h1 class="size">登录信息页面</h1>
+            <Input v-model="formInline.user" size="large" placeholder="账号" class="inputText"/></Input>
+            <br>
+            <Input type="password" v-model="formInline.password" size="large" placeholder="密码" class="inputText"></Input>
+            <br>
+            <Button type="primary" @click="handleSubmit('formInline')" class="numberUser">登录</Button>
+            <div class="font">
+                <router-link :to="{path:'/register'}">
+                    <Button type="success" long class="numberUser">注册账号</Button>
+                </router-link>
+            </div>
         </div>
+        
     </div>
 </template>
 <script>
@@ -37,11 +29,11 @@ import axios from 'axios';
                 information:"",
                 ruleInline: {
                     user: [
-                        { required: true, message: 'Please fill in the user name', trigger: 'blur' },
+                        { required: true, message: '请填写用户名', trigger: 'blur' },
                         { type: 'string', message: '请使用数字', trigger: 'blur' }
                     ],
                     password: [
-                        { required: true, message: 'Please fill in the password.', trigger: 'blur' },
+                        { required: true, message: '请填写密码', trigger: 'blur' },
                         { type: 'string', min: 1, message: '请使用6位数的密码', trigger: 'blur' }
                     ]
                 },
@@ -57,8 +49,12 @@ import axios from 'axios';
                 let user = this.formInline.user;
                 // let b = JSON.stringify(this.formInline.password);
                 let password = this.formInline.password
-                
-                let data = {
+                console.log(this.formInline.user)
+                if(user == "" || password == ""){
+                    this.$Message.warning('请输入账号密码');
+                }else{
+                    console.log(user)
+                    let data = {
                     
 
                     phone : user,
@@ -93,7 +89,8 @@ import axios from 'axios';
                     this.id = arr[0]
                     this.judge = arr[1];
                     if(this.information==="用户名或密码错误"){
-                        alert(this.information)
+                        // alert(this.information)
+                        this.$Message.error(this.information);
                     }else{
                         if(this.judge==="无"){
                             let id = this.id;
@@ -107,45 +104,50 @@ import axios from 'axios';
                         }
                         
                     }
-                    // uid = res.data
-                    // this.cityList1 = res.data
                 })
-                
-                
-
-                // 登录
-// export const Login = function(e){
-//     let url = '/fingByPassWord'
-//     let data = e
-//     axios.post(url,data).then((res)=>{
-//         console.log(res)
-//     },(err)=>{
-//         console.log(err)
-//     })
-// }
-                
+                }              
             }
         }
     }
 </script>
 <style scoped>
-    .font{
-        width: 230px;
-        margin: 0 auto;
-    }
     .size{
         color: red;
-        text-align: center;
-        margin: 50px;
+        margin-top: 30px;
     }
 
-
+    .popUp{
+        width: 500px;
+        height: 500px;
+        margin-left: 60%;
+        background: white;
+        position: absolute;
+        top: 20%;
+    }
+    .numberUser{
+        width: 300px;
+        height: 50px;
+        margin-top: 30px;
+     }
+    .inputText{
+        height:50px;
+        width:300px;
+        margin-top: 30px;
+    }
 
      @media (min-width: 1200px) { 
        .fox{
-            text-align: center;
-            margin: 300px;
+            /* text-align: center; */
+            width: 100%;
+            height: 1000px;
+            /* margin: 0; */
+            background: url('../../../public/photo.jpg') no-repeat;height:1000px;
+            /* background-image:url('../../../public/photo.jpg'); */
+            /* background-repeat:no-repeat; */
+            background-size: 100%;
+            position: relative;
         }
+        /* img{max-width:100%}; */
      }
      @media screen and (max-width: 1200px) { 
         .fox{
