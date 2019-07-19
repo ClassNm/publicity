@@ -7,13 +7,23 @@
         -->
         
         <div class="box"  ref="box2" v-bind:style="{display: activeColorOver}">
-            <p>1,{{title}}</p>
+            <p class="PPP">1,{{title}}</p>
+            <!-- 意见反馈 -->
+            <a type="primary" @click="modal1 = true">(意见反馈)</a>
+            <Modal
+                v-model="modal1"
+                title="意见反馈"
+                @on-ok="ok"
+                @on-cancel="cancel">
+                <Input v-model="value5" type="textarea" placeholder="填写你的建议" />
+            </Modal>
+            <!-- 答案选项 -->
             <div 
             v-for="(item,i) in result" :key="i" 
             :value="item.object" 
             class="checked" 
             >
-                <CheckboxGroup v-model="checkAllGroup">
+                <CheckboxGroup v-model="checkAllGroup" :title="item.object">
                     <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
@@ -515,7 +525,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
     data(){
         return{
@@ -523,7 +533,7 @@ export default {
             // 隐藏
             activeColorOver:'block',
             // 题目
-            title:"在下面的专业中，选出你最感兴趣的3个专业并排列出顺序",
+            title:"在下面的专业中，选出感兴趣的3个专业并排列顺序",
             fone:[],
             result:[],
             resultTwo:[],
@@ -563,75 +573,91 @@ export default {
             optionTwea:{},
             optionThrea:{},
             // 选中的答案
-            Answer:[]
+            Answer:[],
+            // 意见反馈
+            modal1: false,
+            // 意见
+            value5: '',
+            // 页面加载时的时间
+            CreaTime:"",
         }
     },
     created(){
+        // this.CreaTime = new Date()
+        // console.log(this.CreaTime)
+        
         // 用户的uid
         this.uid = this.$route.query.id;
 
-        let see = 2;
-        axios.post('http://47.104.245.242:8081/AssessMatter/showMatter2',
-        see,
-        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        )
-        .then((res)=>{
-          // 题目
-            this.fone = res.data;
-        }),(err)=>{
-            console.log(error)
-        }
+        // let see = this.uid;
+        // axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
+        // see,
+        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        // )
+        // .then((res)=>{
+        //   // 题目
+        //     this.fone = res.data;
+        // }),(err)=>{
+        //     console.log(error)
+        // }
 
         // 答案选项
          // 多选答案
-        let typ = 5;
-        axios.post('http://47.104.245.242:8081/AssessObject/obj5',
-        typ,
-        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        )
-        .then((res)=>{
-            let aim = res.data;
-            // 根据单个名字筛选
-            function filterByName(aim, typ) {
-                return aim.filter(item => item.typ == typ)
-            }
-            // 输入 aim 'Leila' 期望输出为 [{name:'Leila', age: 16, gender:'female'}]
-            this.result = filterByName(aim,'RN')
-            this.resultTwo = filterByName(aim,'PN')
-            this.resultThree = filterByName(aim,'UN')
-            this.resultFour = filterByName(aim,'RT')
-            this.resultFive = filterByName(aim,'PT')
-            this.resultSix = filterByName(aim,'UT')
-            this.resultSeven = filterByName(aim,'RA')
-            this.resulteight = filterByName(aim,'PA')
-            this.resultNine = filterByName(aim,'UA')
-            this.resultTen = filterByName(aim,'RM')
-            this.resulteleven = filterByName(aim,'PM')
-            this.resulttwelve = filterByName(aim,'UM')
-            this.resultthirteen = filterByName(aim,'RL')
-            this.resultfourteen = filterByName(aim,'PL')
-            this.resultfifteen = filterByName(aim,'UL')
-            this.resultsixteen = filterByName(aim,'RS')
-            this.resultseveteen = filterByName(aim,'PS')
-            this.resulteighteen = filterByName(aim,'US')
-            this.resultnineteen = filterByName(aim,'RI')
-            this.resultTwenty = filterByName(aim,'PI')
-            this.resultTwentyOne = filterByName(aim,'UI')
-        }),(err)=>{
-            console.log(err)
-        }
+        // let typ = 5;
+        // axios.post('http://192.168.1.100:8080/AssessObject/obj5',
+        // typ,
+        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        // )
+        // .then((res)=>{
+        //     let aim = res.data;
+        //     // 根据单个名字筛选
+        //     function filterByName(aim, typ) {
+        //         return aim.filter(item => item.typ == typ)
+        //     }
+        //     this.result = filterByName(aim,'RN')
+        //     this.resultTwo = filterByName(aim,'PN')
+        //     this.resultThree = filterByName(aim,'UN')
+        //     this.resultFour = filterByName(aim,'RT')
+        //     this.resultFive = filterByName(aim,'PT')
+        //     this.resultSix = filterByName(aim,'UT')
+        //     this.resultSeven = filterByName(aim,'RA')
+        //     this.resulteight = filterByName(aim,'PA')
+        //     this.resultNine = filterByName(aim,'UA')
+        //     this.resultTen = filterByName(aim,'RM')
+        //     this.resulteleven = filterByName(aim,'PM')
+        //     this.resulttwelve = filterByName(aim,'UM')
+        //     this.resultthirteen = filterByName(aim,'RL')
+        //     this.resultfourteen = filterByName(aim,'PL')
+        //     this.resultfifteen = filterByName(aim,'UL')
+        //     this.resultsixteen = filterByName(aim,'RS')
+        //     this.resultseveteen = filterByName(aim,'PS')
+        //     this.resulteighteen = filterByName(aim,'US')
+        //     this.resultnineteen = filterByName(aim,'RI')
+        //     this.resultTwenty = filterByName(aim,'PI')
+        //     this.resultTwentyOne = filterByName(aim,'UI')
+        // }),(err)=>{
+        //     console.log(err)
+        // }
     },
     methods:{
+        // 意见方法
+        ok () {
+            this.$Message.info('收到您的意见');
+            console.log(this.value5)
+        },
+        cancel () {
+            this.$Message.info('返回');
+        },
         //发送数据给后台
         postBack(data){
-            axios.post('http://47.104.245.242:8081/AssessMatter/save2',
-            data,
-            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-            )
-            .then((res)=>{})
-            ,(err)=>{
-                console.log(err)
-            }
+            // axios.post('http://192.168.1.100:8080/AssessMatter/save2',
+            // data,
+            // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            // )
+            // .then((res)=>{})
+            // ,(err)=>{
+            //     console.log(err)
+            // }
         },
         // 验证是否选择3项
         proofread(data){
@@ -720,18 +746,26 @@ export default {
         },
         // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 
         resultMe(){
-            if(this.checkAllGroup.length===3){
-                let arr = this.result;
-                this.rise(arr);
-                this.AnswerClick()
-                let data = this.Answer;
-                this.proofread(data)
-                let canvas=this.$refs.box2;
-                this.disPl(canvas)
-                this.checkAllGroup = []
-            }else{
-                this.err();
-            }
+            // if(this.checkAllGroup.length===3){
+            //     let arr = this.result;
+            //     this.rise(arr);
+            //     this.AnswerClick()
+            //     let data = this.Answer;
+            //     this.proofread(data)
+            //     let canvas=this.$refs.box2;
+            //     this.disPl(canvas)
+            //     this.checkAllGroup = []
+            // }else{
+            //     this.err();
+            // }
+            // 时间test实验
+
+            // let time = new Date()
+            // let TimeCl = time.getTime();
+            // let CreaTime = this.CreaTime;
+            // let TimeCre = CreaTime.getTime();
+            // let delaT = (TimeCl - TimeCre)/1000;
+            // console.log(delaT,'时间差')
         },
         resultTwoMe(){
             if(this.checkAllGroup.length===3){
@@ -1055,5 +1089,8 @@ export default {
         height: 40px;
         display: block;
         margin: 0 auto;
+    }
+    .PPP{
+        display: inline-block;
     }
 </style>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = "http://47.104.245.242:8081";
+// axios.defaults.baseURL = "http://192.168.1.100:8080";
 
 
 // // 注册
@@ -17,14 +17,16 @@ axios.defaults.baseURL = "http://47.104.245.242:8081";
 
 
 
-// // 登录
-// export const Login = function(e){
-//     let url = '/fingByPassWord'
+// // 发id  Answer
+// export const AnsID = function(e){
+//     let url = '/AssessMatter/saveMatter'
 //     let data = e
-//     axios.post(url,data).then((res)=>{
+//     axios.post(url,data)
+//     .then((res)=>{
 //         console.log(res)
 //     },(err)=>{
 //         console.log(err)
 //     })
 // }
+
   

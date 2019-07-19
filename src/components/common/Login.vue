@@ -1,19 +1,20 @@
 <template>
     <div class="fox">
-        <div class="popUp">
-            <h1 class="size">登录信息页面</h1>
-            <Input v-model="formInline.user" size="large" placeholder="账号" class="inputText"/></Input>
-            <br>
-            <Input type="password" v-model="formInline.password" size="large" placeholder="密码" class="inputText"></Input>
-            <br>
-            <Button type="primary" @click="handleSubmit('formInline')" class="numberUser">登录</Button>
-            <div class="font">
-                <router-link :to="{path:'/register'}">
-                    <Button type="success" long class="numberUser">注册账号</Button>
-                </router-link>
+        <Affix :offset-top="100">
+            <div class="popUp">
+                <h1 class="size">登录信息页面</h1>
+                <Input v-model="formInline.user" size="large" placeholder="账号" class="inputText" />
+                <br>
+                <Input type="password" v-model="formInline.password" size="large" placeholder="密码" class="inputText" />
+                <br>
+                <Button type="primary" @click="handleSubmit('formInline')" class="numberUser">登录</Button>
+                <div class="font">
+                    <router-link :to="{path:'/register'}">
+                        <Button type="success" long class="numberUser">注册账号</Button>
+                    </router-link>
+                </div>
             </div>
-        </div>
-        
+        </Affix>  
     </div>
 </template>
 <script>
@@ -45,15 +46,11 @@ import axios from 'axios';
         },
         methods: {
             handleSubmit(name) {
-                
                 let user = this.formInline.user;
-                // let b = JSON.stringify(this.formInline.password);
                 let password = this.formInline.password
-                console.log(this.formInline.user)
                 if(user == "" || password == ""){
                     this.$Message.warning('请输入账号密码');
                 }else{
-                    console.log(user)
                     let data = {
                     
 
@@ -79,12 +76,13 @@ import axios from 'axios';
 
                 }
                 let uid = ""
-                axios.post('http://47.104.245.242:8081/AssessUser/fingByPassWord',
+                axios.post('http://192.168.1.100:8080/AssessUser/fingByPassWord',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
                     this.information = res.data
+                    // console.log(res.data,'res')
                     let arr = res.data.split(',')
                     this.id = arr[0]
                     this.judge = arr[1];
@@ -92,13 +90,11 @@ import axios from 'axios';
                         // alert(this.information)
                         this.$Message.error(this.information);
                     }else{
-                        if(this.judge==="无"){
+                        if(this.judge==="没有答过题"||this.judge==="部分答完"){
                             let id = this.id;
-                            // console.log('没做过题')
-                            this.$router.push({path:'/answer',query:{id:id}})
-                        // console.log(this.information,'登录时的id')
-                        }else if(this.judge==="有"){
-                            // console.log('做过题了')
+                            let judge = this.judge;
+                            this.$router.push({path:'/answer',query:{id:id,judge:judge}})
+                        }else if(this.judge==="全部答完"){
                             let id = this.id;
                             this.$router.push({path:'/reported',query:{id:id}})
                         }
@@ -111,19 +107,16 @@ import axios from 'axios';
     }
 </script>
 <style scoped>
+    /* .popUp{
+            width: 500px;
+            height: 500px;
+            margin-left: 60%;
+            background: white;
+    }
     .size{
         color: red;
-        margin-top: 30px;
-    }
-
-    .popUp{
-        width: 500px;
-        height: 500px;
-        margin-left: 60%;
-        background: white;
-        position: absolute;
-        top: 20%;
-    }
+        padding-top: 30px;
+    } 
     .numberUser{
         width: 300px;
         height: 50px;
@@ -133,32 +126,67 @@ import axios from 'axios';
         height:50px;
         width:300px;
         margin-top: 30px;
-    }
+    } */
 
-     @media (min-width: 1200px) { 
+    @media screen and (min-width: 1200px){ 
        .fox{
-            /* text-align: center; */
             width: 100%;
-            height: 1000px;
-            /* margin: 0; */
-            background: url('../../../public/photo.jpg') no-repeat;height:1000px;
+            height: 100%;
+            background: url('../../../public/1920.jpg') no-repeat;height:1000px;
             /* background-image:url('../../../public/photo.jpg'); */
             /* background-repeat:no-repeat; */
             background-size: 100%;
-            position: relative;
         }
-        /* img{max-width:100%}; */
-     }
-     @media screen and (max-width: 1200px) { 
-        .fox{
-            text-align: center;
-            margin: 100px;
-        }  
-    }    
-    @media screen and (max-width: 901px) { 
-        .fox{
-            text-align: center;
-            margin: 50px;
+        .popUp{
+            width: 500px;
+            height: 500px;
+            margin-left: 70%;
+            background: white;
+        }
+        .size{
+            color: red;
+            padding-top: 30px;
         } 
-    } 
+        .numberUser{
+            width: 300px;
+            height: 50px;
+            margin-top: 30px;
+        }
+        .inputText{
+            height:50px;
+            width:300px;
+            margin-top: 30px;
+        }
+     }
+     @media screen and (max-width: 1199px){
+        .fox{
+            width: 100%;
+            height: 100%;
+            background: url('../../../public/1080.jpg') no-repeat;height:1000px;
+            /* background-image:url('../../../public/photo.jpg'); */
+            /* background-repeat:no-repeat; */
+            background-size: 100%;
+        }
+        .popUp{
+            width: 300px;
+            height: 300px;
+            margin-left: 70%;
+            background: white;
+        }
+        .size{
+            font-size: 20px;
+            color: red;
+            padding-top: 10px;
+        } 
+        .inputText{
+            height:40px;
+            width:150px;
+            margin-top: 10px;
+        }
+        .numberUser{
+            width: 150px;
+            height: 30px;
+            margin-top: 10px;
+        }
+    }    
 </style>

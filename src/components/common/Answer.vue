@@ -12,7 +12,6 @@
                  :key="i" 
                  @click="topicFun(item,i)"
                  v-bind:style="{display: activeColorOver}"
-                 
                  >
                 <p class="descs fb">{{item.matter}}</p>
                 <div class="sels_list" >
@@ -22,11 +21,17 @@
                            v-for="(item,i) in list" 
                            :key="item.id"
                            :value = "item.id"
-                            @click="present(item,i)" 
                            >
-                             <RadioGroup v-model="redio">
-                                <Radio :label="item.object"></Radio>
-                            </RadioGroup>
+                           <!-- @click="present(item,i)"  -->
+                             <!-- <RadioGroup v-model="redio" vertical @on-change="present(item,i)">
+                                <Radio :label="item.object">
+                                    <span>{{item.object}}</span>
+                                </Radio>
+                            </RadioGroup> -->
+                            <label>
+                                <input type="radio" v-model="redio" :value="item.object" @click="present(item,i)"/>
+                                {{item.object}}
+                            </label>
                         </p>
                         <p class="i_bot"></p>
                     </div>
@@ -36,7 +41,7 @@
             </div>
 
             <!-- 多选 -->
-            <AnswerCheck></AnswerCheck>     
+            <!-- <AnswerCheck></AnswerCheck>      -->
         </div>
                
     </div>
@@ -44,12 +49,15 @@
 
 <script>
 
-import AnswerCheck from './AnswerCheck'
+// import AnswerCheck from './AnswerCheck'
 
 // import {Test} from '../../actions.js'
 import axios from 'axios';
 import { constants } from 'crypto';
 // import { setTimeout } from 'timers';
+
+// axios方法
+import { AnsID } from '../../actions'
 
 export default {
     data(){
@@ -65,92 +73,143 @@ export default {
         sel : "",
         // ubid
         ubid:"",
+        judge:"",
         // 多选
-        fruit: ['苹果'],
         title:[],
         list:[],
-        fone:[],
-        foneOne:[],
         // 兴趣提结果
-        interset:[],
-        intersetSon:{},
-        aaaaa:{
-            name:"111"
-        },
-        aaaid:"",
         type:"",
         topic:"",
+        matter:"",
         score:"",
-        seeo:"color:red",
-        indexPrev:'green',
         activeColor: 'hidden',
         activeColorOver:'block',
-        stateNum : [],
-        
         //   radio重置
-        redio:""
+        redio:"",
+        // 页面加载时的时间
+        CreaTime:"",
+        aaa:""
         }
     },
     components:{
-        AnswerCheck
+        // AnswerCheck
     },
     created(){
+        // this.CreaTime = new Date()
         this.ubid = this.$route.query.id;
-       // 兴趣题 题目
-       let data = 1;
-        axios.post('http://47.104.245.242:8081/AssessMatter/showMatter',
-        data,
-        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        )
-        .then((res)=>{
-            this.title = res.data
-        }),(err)=>{
-            console.log(error)
-        };
-
-        // 兴趣题  答案选项
-        let obj3 = 3;
-        axios.post('http://47.104.245.242:8081/AssessObject/obj3',
-        obj3,
-        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        )
-        .then((res)=>{
-            this.list = res.data
-        }),(err)=>{
-            console.log(error)
-        };
+        this.judge = this.$route.query.judge;
+        
+        // let AnsIDNumb = this.$route.query.id;
+        // AnsID(AnsIDNumb)
+        
+        
+    },
+    mounted(){
+        // 如果没答过题先发一遍ID
+        if(this.judge === "没有答过题"){
+            this.condition()    
+        }else{
+            console.log('答过题了')
+        }
+        //    兴趣题 题目  答案选项
+        this.rubric();
+        
     },
     methods:{
+        // 判断条件发id
+        condition(){
+            let save = this.ubid;
+            console.log('第一遍id发送')
+            axios.post('http://192.168.1.100:8080/AssessMatter/saveMatter',
+            save,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+
+            }),(err)=>{
+                console.log(err,'err')
+            }
+        },
+        // 展示的题跟答案
+        rubric(){
+            // 题目
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.100:8080/AssessMatter/showMatter',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.title = res.data
+            }),(err)=>{
+                console.log(err,'err')
+            };
+            this.answer();    
+        },
+        answer(){
+            // 选项
+            let obj3 = 3;
+            axios.post('http://192.168.1.100:8080/AssessObject/obj3',
+            obj3,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.list = res.data
+            }),(err)=>{
+                console.log(err,'err')
+            };
+        },
+
       // 兴趣题目
         topicFun(index){
             this.type = index.typ;
-            this.topic = index.id        
+            this.topic = index.id
+            this.matter = index.matter   
+            // console.log(index,'indexaaaaaaaaa')     
         },
         // 获取兴趣题的id
         present(index){
             this.score = index.id;
-            
+            console.log(index,'index')
         },
         submit(e){
-          // 类型
-          let typ = this.type;
-          // 题号  
-          let mid =  this.topic;
-          // 分值 id
-          let score = this.score;
-          // 用户id router传参的值
-          // let uid = 20
-          let uid = this.ubid;
-
-          let data = {
-            typ : typ,
-            mid : mid,
-            score : score,
-            uid : uid
-          }
-          let obj = [];
-          obj.push(data)
-            if(typ == "" || mid == "" || score == "" || uid == undefined){
+            // 类型
+            let typ = this.type;
+            // 题号  
+            let mid =  this.topic;
+            // 分值 id
+            let score = this.score;
+            // 用户id router传参的值
+            let uid = this.ubid;
+            // 题
+            let matter = this.matter;
+            
+            // 时间test实验
+            // let time = new Date();
+            // let TimeCl = time.getTime();
+            // let CreaTime = this.CreaTime;
+            // let TimeCre = CreaTime.getTime();
+            // this.aaa = (TimeCl - TimeCre)/1000;
+            // let a = this.aaa;
+            // let aa = this.aaa - a;
+            // let bb = ""
+            // if(aa === 0){
+            //     aa = a;
+            // }else{
+            
+            // }
+            
+            let data = {
+                typ : typ,
+                mid : mid,
+                score : score,
+                uid : uid,
+                matter : matter
+                // time:a
+            }
+            let obj = [];
+            obj.push(data)
+            if(typ == "" || mid == "" || score == "" || matter == ""){
+            // if(typ == "" || mid == "" || score == "" || uid == undefined){    
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
                 // axios.post('http://47.104.245.242:8081/AssessMatter/save',
@@ -159,32 +218,17 @@ export default {
                 //     )
                 //     .then((res)=>{
                 //     }),(err)=>{
-                //         console.log(err)
+                //         console.log(err,'err')
                 //     }
-                this.type = "",
-                this.topic = "",
-                this.score = "",
+                // this.type = "",
+                // this.topic = "",
+                // this.score = "",
                 this.title.shift()
                 this.redio = "";
+                // this.matter = ""
+                // this.aaa = ""
+                console.log(data,'data')
             }
-
-        //    let canvas=this.$refs.box1 || window.event.target.box1;
-        //  let canvas=document.querySelector('#cvs');
-        //    let canvas=this.$refs.box1
-        //    console.log(canvas[length-1])
-        //    canvas[length-1].style.display = "none"
-        //  canvas.style.display = "none"
-        //  console.log(this.title)
-        // let i =1;
-        // i++;
-        // console.log(i,'i')
-        //  this.title.shift()
-        //  this.redio = ""
-        // let title = this.title
-        // title.splice(0,1)
-        //    canvas.shift()
-        //    console.log(this.title.length)
-            // console.log(this.title)
         }
     }
 }

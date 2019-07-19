@@ -2,21 +2,16 @@
     <div class="box">
       <span class="size">职业生涯测评系统</span>
       <router-link :to="{path:'/Login'}">
-        <!-- <button class="but">跳转登录页</button> -->
         <Button type="success" class="but">跳转登录页</Button>
-        <!-- <Button type="primary" class="but">跳转登录页</Button> -->
       </router-link>
       
-      <!-- <Login></Login> -->
-      <!-- <Carousel></Carousel> -->
-      <!-- <Footer></Footer> -->
     </div>
 </template>
 
 
 <script>
 // 头部导航
-import Login from './common/Login'
+// import Login from './common/Login'
 // 轮播图
 // import Carousel from './common/Carousel'
 // 底部
@@ -29,7 +24,7 @@ export default {
     }
   },
   components:{
-    Login,
+    // Login,
     // Carousel,
     // Footer
   },
