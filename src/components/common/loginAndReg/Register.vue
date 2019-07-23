@@ -21,7 +21,7 @@
                 <!-- <Input v-model="value12" placeholder="密码" clearable style="width: 200px" class="INt" /> -->
                 <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80" class="One"  style="width: 200px" >
                     <!-- <FormItem  prop="passwd"> -->
-                    <Input type="password" v-model="formCustom.passwd"></Input>
+                    <Input type="password" v-model="formCustom.passwd" />
                    
                 </Form>
             </div>
@@ -100,7 +100,7 @@
 <script>    
 
 import axios from 'axios'
-import {Register} from '../../actions.js'
+import {Register} from '../../../actions.js'
 
 export default {
     data () {

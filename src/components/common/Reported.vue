@@ -7,6 +7,7 @@
         </div>
         <!-- <Roundness class="RoundNes"></Roundness> -->
         <Report class="header"></Report>  
+        <Radar></Radar>
         <!-- 第一部分 -->
         <!-- <div style="background:#eee;padding: 20px">
             <Card :bordered="false">
@@ -14,7 +15,7 @@
                 <p v-for="(item,i) in test" :key="i">{{i+1}},{{item.name}}</p>
             </Card>
         </div> -->   
-        <Tabs value="name1" class="boxT">
+        <!-- <Tabs value="name1" class="boxT">
             <TabPane :label="reom" name="name1" class="fit" type="line" style="font-size:25px;" size="25px">
                 <span v-for="(item,i) in utmost" :key="i" class="spanL">{{item}}</span>
             </TabPane>
@@ -24,7 +25,7 @@
             <TabPane :label="reomThr" name="name3"  class="fit">
                 <span v-for="(item,i) in common" :key="i" class="spanL">{{item}}</span>
             </TabPane>
-        </Tabs>
+        </Tabs> -->
 
 
 
@@ -41,7 +42,9 @@ import axios from 'axios'
 // 柱状图
 import Report from './graph/Report'
 // 圆形图
-import Roundness from './graph/Roundness' 
+// import Roundness from './graph/Roundness' 
+// 雷达图
+import Radar from './graph/Radar'
 export default {
     data(){
         return{
@@ -90,27 +93,24 @@ export default {
     },
     created(){
         this.handleSpinShow();
-        let data = this.$route.query.id;
-        axios.post('http://192.168.1.100:8080/AssessScore/showResult',
-        data,
-        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        )
-        .then((res)=>{
-            // console.log(res.data)
-            // 拿到返回的3块专业
-            let arr = res.data;
-            this.utmost = arr[0],
-            this.very = arr[1],
-            this.common = arr[2]
-            // console.log(arr[0])
-            // console.log(arr[1])
-         }),(err)=>{
-              console.log(err)
-        }
+        // let data = this.$route.query.id;
+        // axios.post('http://192.168.1.100:8080/AssessScore/showResult',
+        // data,
+        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        // )
+        // .then((res)=>{
+        //     let arr = res.data;
+        //     this.utmost = arr[0],
+        //     this.very = arr[1],
+        //     this.common = arr[2]
+        //  }),(err)=>{
+        //       console.log(err)
+        // }
     },
     components:{
         Report,
-        Roundness
+        // Roundness,
+        Radar
     },
     methods:{
         handleSpinShow () {

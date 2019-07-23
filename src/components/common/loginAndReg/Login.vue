@@ -14,7 +14,7 @@
                     </router-link>
                 </div>
             </div>
-        </Affix>  
+        </Affix>
     </div>
 </template>
 <script>
@@ -107,32 +107,12 @@ import axios from 'axios';
     }
 </script>
 <style scoped>
-    /* .popUp{
-            width: 500px;
-            height: 500px;
-            margin-left: 60%;
-            background: white;
-    }
-    .size{
-        color: red;
-        padding-top: 30px;
-    } 
-    .numberUser{
-        width: 300px;
-        height: 50px;
-        margin-top: 30px;
-     }
-    .inputText{
-        height:50px;
-        width:300px;
-        margin-top: 30px;
-    } */
 
     @media screen and (min-width: 1200px){ 
        .fox{
             width: 100%;
             height: 100%;
-            background: url('../../../public/1920.jpg') no-repeat;height:1000px;
+            background: url('../../../../public/1920.jpg') no-repeat;height:1000px;
             /* background-image:url('../../../public/photo.jpg'); */
             /* background-repeat:no-repeat; */
             background-size: 100%;
@@ -162,7 +142,7 @@ import axios from 'axios';
         .fox{
             width: 100%;
             height: 100%;
-            background: url('../../../public/1080.jpg') no-repeat;height:1000px;
+            background: url('../../../../public/1080.jpg') no-repeat;height:1000px;
             /* background-image:url('../../../public/photo.jpg'); */
             /* background-repeat:no-repeat; */
             background-size: 100%;

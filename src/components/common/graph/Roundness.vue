@@ -1,4 +1,3 @@
-// 圆形图
 <template>
     <div>
         <div id="Roundness" class="RoundNes"></div>
@@ -6,6 +5,7 @@
 </template>
 
 <script>
+// 圆形图
 import axios from 'axios';
 export default {
     data(){

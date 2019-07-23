@@ -12,8 +12,6 @@
 <script>
 // 头部导航
 // import Login from './common/Login'
-// 轮播图
-// import Carousel from './common/Carousel'
 // 底部
 // import Footer from './common/Footer'
 export default {

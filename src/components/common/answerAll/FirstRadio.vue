@@ -1,5 +1,5 @@
 <template>
-    <div class="surveydetailout" id="surveydetailout" >
+    <div>
         <div id="bodycontent_contentbody_divSurveyGuide" 
         class="surveydetail"
         onselectstart="return false"
@@ -34,75 +34,58 @@
                             </label>
                         </p>
                         <p class="i_bot"></p>
-                    </div>
-
-                    <Button @click="submit($event)">下一题</Button>
                 </div>
-            </div>
 
-            <!-- 多选 -->
-            <!-- <AnswerCheck></AnswerCheck>      -->
+                <Button @click="submit($event)">下一题</Button>
+            </div>
+            </div>
         </div>
-               
     </div>
 </template>
 
 <script>
 
-// import AnswerCheck from './AnswerCheck'
-
-// import {Test} from '../../actions.js'
 import axios from 'axios';
-import { constants } from 'crypto';
-// import { setTimeout } from 'timers';
-
-// axios方法
-import { AnsID } from '../../actions'
 
 export default {
     data(){
         return{
-          // 判断下一题
-          ok:true,
-          // 兴趣提 1
-        a : 1,
-        // 兴趣的id
-        eeea : "",
-        // 个性提 2
-        b : 2,
-        sel : "",
-        // ubid
-        ubid:"",
-        judge:"",
-        // 多选
-        title:[],
-        list:[],
-        // 兴趣提结果
-        type:"",
-        topic:"",
-        matter:"",
-        score:"",
-        activeColor: 'hidden',
-        activeColorOver:'block',
-        //   radio重置
-        redio:"",
-        // 页面加载时的时间
-        CreaTime:"",
-        aaa:""
+            // 判断下一题
+            ok:true,
+            // 兴趣提 1
+            a : 1,
+            // 兴趣的id
+            eeea : "",
+            // 个性提 2
+            b : 2,
+            sel : "",
+            // ubid
+            ubid:"",
+            judge:"",
+            // 多选
+            title:[],
+            list:[],
+            // 兴趣提结果
+            type:"",
+            topic:"",
+            matter:"",
+            score:"",
+            activeColor: 'hidden',
+            activeColorOver:'block',
+            //   radio重置
+            redio:"",
+            // 页面加载时的时间
+            CreaTime:"",
+            aaa:""
         }
-    },
-    components:{
-        // AnswerCheck
     },
     created(){
         // this.CreaTime = new Date()
         this.ubid = this.$route.query.id;
         this.judge = this.$route.query.judge;
-        
+        console.log('Firstrrrrrrrrrrrrrrrrrrrrrr')
         // let AnsIDNumb = this.$route.query.id;
         // AnsID(AnsIDNumb)
-        
-        
     },
     mounted(){
         // 如果没答过题先发一遍ID
@@ -234,8 +217,8 @@ export default {
 }
 </script>
 
-<style  scoped>
-    .surveydetail{
+<style scoped>
+     .surveydetail{
         width: 500px;
         height: 1000px;
         overflow: hidden;
@@ -247,10 +230,7 @@ export default {
         overflow: hidden;
         margin: 100px auto
     }
-    .surveydetailout {
-        position: relative;
-    };
-    div {
+     div {
         display: block;
     };
     .test_contents {
