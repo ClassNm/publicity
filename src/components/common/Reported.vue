@@ -5,9 +5,12 @@
             <h1 class="Rep">{{Report}}</h1>
             <Spin style="display:'inline-block'"></Spin>
         </div>
-        <!-- <Roundness class="RoundNes"></Roundness> -->
-        <Report class="header"></Report>  
+        <Header></Header>
+        <Divider class="segmentation" size="default"/>
         <Radar></Radar>
+        <Roundness></Roundness>
+        <Major></Major>
+        <!-- <Report class="header"></Report>   -->
         <!-- 第一部分 -->
         <!-- <div style="background:#eee;padding: 20px">
             <Card :bordered="false">
@@ -39,12 +42,16 @@
 
 <script>
 import axios from 'axios'
+// 表头 姓名 
+import Header from './graph/Header'
 // 柱状图
 import Report from './graph/Report'
 // 圆形图
-// import Roundness from './graph/Roundness' 
+import Roundness from './graph/Roundness' 
 // 雷达图
 import Radar from './graph/Radar'
+// 专业
+import Major from './graph/Major'
 export default {
     data(){
         return{
@@ -108,9 +115,11 @@ export default {
         // }
     },
     components:{
+        Header,
         Report,
-        // Roundness,
-        Radar
+        Roundness,
+        Radar,
+        Major
     },
     methods:{
         handleSpinShow () {
@@ -124,7 +133,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     /* 为了修改Tabs的标题大小不设置 scoped 权限问题 */
     .Rep{
         margin: 20px 0;
@@ -136,15 +145,17 @@ export default {
     .demo-spin-icon-load{
         animation: ani-demo-spin 1s linear infinite;
     }
-
-    .boxT{
-        /* width: 1100px;; */
-        /* margin: 0 auto */
-    }
     @media (min-width: 1200px) { 
        .boxT{
             width: 1100px;
             margin: 0 auto;
+        }
+        .segmentation{
+            height: 3px;
+            width: 800px;
+            display: block;
+            min-width: 1200px;
+            margin: 24px auto;
         }
      }
      @media screen and (max-width: 1200px) { 
@@ -153,6 +164,13 @@ export default {
             /* background: orange; */
             margin: 0 auto;
         }  
+        .segmentation{
+            height: 3px;
+            width: 800px;
+            display: block;
+            min-width: 800px;
+            margin: 24px auto;
+        }
     }    
     @media screen and (max-width: 901px) { 
         .boxT{
