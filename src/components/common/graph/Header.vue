@@ -12,28 +12,12 @@
 
 </template>
 <script>
+import axios from 'axios';
     export default {
         data () {
             return {
                 explain:[
-                    {
-                        name:"1,本报告为年度报告，每年发布一次。"
-                    },
-                    {
-                        name:"2,除特殊说明外，本报告引用的数据、资料均来自中国泛海内部的报表、刊物、网站与相关统计，使用的货币单位均为人民币（元）。"
-                    },
-                    {
-                        name:"3,本报告依据全球报告倡议组织（GRI）《可持续发展报告指南（4.0版）》，参考中国社科院《中国企业社会责任报告编写指南3.0"
-                    },
-                    {
-                        name:"4,中国泛海控股集团有限公司（以下简称“中国泛海控股集团”“中国泛海”或“公司”）向社会公开发布的第九份企业社会责任报"
-                    },
-                    {
-                        name:"5,。本报告从股东、客户、员工、合作伙伴、环境、社会等利益相关方角度披露"
-                    },
-                    {
-                        name:"6,以下简称“中国泛海控股集团”“中国泛海”或“公司”）向社会公开发布的第九份企业社会责任报告。本报告从股东、客户、员工、合作伙伴、环境、社会等利益相关方角度披露了中国泛海2017年企业社会责任的履行情况。中国泛海董事会全体成员保证本报告所披露信息的真"
-                    }
+                    
                 ],
                 columns1: [
                     {
@@ -63,15 +47,49 @@
                 ],
                 data1: [
                     {
-                        name: '孙小明',
-                        age: '男',
-                        class:"三年级二班",
-                        subject: '理科',
-                        time: '2019-07-24',
-                        schedu: '10分50秒',
+                        name: '',
+                        age: '',
+                        class:"",
+                        subject: '',
+                        time: '',
+                        schedu: '',
                         date: '2016-10-03',
                     }
                 ]
+            }
+        },
+        mounted(){
+            this.Report();
+            this.ShowUser();
+        },
+        methods:{
+            Report(){
+                axios.post('http://192.168.1.100:8080/assessReport/show_Report',
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    this.explain = res.data
+                }),(err)=>{
+                    console.log(err)
+                }
+            },
+            ShowUser(){
+                let data = this.$route.query.id;
+                // let data = 43
+                axios.post('http://192.168.1.100:8080/assessReport/show_User',
+                data,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    let arr = res.data[0]
+                    let ary = this.data1[0]
+                    ary.name = arr.name;
+                    ary.age = arr.sex;
+                    ary.class = arr.grade;
+                    ary.subject = arr.artsAndSciences;
+                }),(err)=>{
+                    console.log(err)
+                }
             }
         }
     }

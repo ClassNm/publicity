@@ -9,29 +9,8 @@
         <Divider class="segmentation" size="default"/>
         <Radar></Radar>
         <Roundness></Roundness>
+        <Report class="header"></Report>  
         <Major></Major>
-        <!-- <Report class="header"></Report>   -->
-        <!-- 第一部分 -->
-        <!-- <div style="background:#eee;padding: 20px">
-            <Card :bordered="false">
-                <p slot="title">{{reom}}</p>
-                <p v-for="(item,i) in test" :key="i">{{i+1}},{{item.name}}</p>
-            </Card>
-        </div> -->   
-        <!-- <Tabs value="name1" class="boxT">
-            <TabPane :label="reom" name="name1" class="fit" type="line" style="font-size:25px;" size="25px">
-                <span v-for="(item,i) in utmost" :key="i" class="spanL">{{item}}</span>
-            </TabPane>
-            <TabPane :label="reomT" name="name2"  class="fit">
-                <span v-for="(item,i) in very" :key="i" class="spanL">{{item}}</span>
-            </TabPane>
-            <TabPane :label="reomThr" name="name3"  class="fit">
-                <span v-for="(item,i) in common" :key="i" class="spanL">{{item}}</span>
-            </TabPane>
-        </Tabs> -->
-
-
-
 
         <!-- <a href="print" target="_self">打印</a> -->
         <!-- 滑动按钮 -->
@@ -44,12 +23,12 @@
 import axios from 'axios'
 // 表头 姓名 
 import Header from './graph/Header'
-// 柱状图
-import Report from './graph/Report'
-// 圆形图
-import Roundness from './graph/Roundness' 
 // 雷达图
 import Radar from './graph/Radar'
+// 第二个雷达图
+import Roundness from './graph/Roundness' 
+// 柱状图
+import Report from './graph/Report'
 // 专业
 import Major from './graph/Major'
 export default {
@@ -57,62 +36,7 @@ export default {
         return{
             // 登录过的id
             Report:"测试报告结果",
-            reom:"非常适合",
-            test:[
-                {
-                    name : "马克思主义哲学"
-                },
-                {
-                    name : "中国哲学"
-                },
-                {
-                    name : "外国哲学"
-                },
-                {
-                    name : "逻辑学"
-                },
-                {
-                    name : "伦理学"
-                },
-                {
-                    name : "美学"
-                },
-                {
-                    name : "宗教学"
-                },
-                {
-                    name : "科学技术哲学"
-                },
-                {
-                    name : "政治经济学"
-                },
-                {
-                    name : "经济史"
-                },
-            ],
-            reomT:"比较适合",
-            reomThr:"一般适合",
-            // 3块专业
-            utmost:[],
-            very:[],
-            common:[]
         }
-    },
-    created(){
-        this.handleSpinShow();
-        // let data = this.$route.query.id;
-        // axios.post('http://192.168.1.100:8080/AssessScore/showResult',
-        // data,
-        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        // )
-        // .then((res)=>{
-        //     let arr = res.data;
-        //     this.utmost = arr[0],
-        //     this.very = arr[1],
-        //     this.common = arr[2]
-        //  }),(err)=>{
-        //       console.log(err)
-        // }
     },
     components:{
         Header,
@@ -120,15 +44,6 @@ export default {
         Roundness,
         Radar,
         Major
-    },
-    methods:{
-        handleSpinShow () {
-            this.$Spin.show();
-            setTimeout(() => {
-                this.$Spin.hide();
-            }, 3000);
-        }, 
-       
     }
 }
 </script>

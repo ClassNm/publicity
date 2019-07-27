@@ -82,7 +82,7 @@ import axios from 'axios';
                 )
                 .then((res)=>{
                     this.information = res.data
-                    // console.log(res.data,'res')
+                    console.log(res.data,'res')
                     let arr = res.data.split(',')
                     this.id = arr[0]
                     this.judge = arr[1];
@@ -90,11 +90,11 @@ import axios from 'axios';
                         // alert(this.information)
                         this.$Message.error(this.information);
                     }else{
-                        if(this.judge==="没有答过题"||this.judge==="部分答完"){
+                        if(this.judge==="第一部分没做"||this.judge==="第一部分没做完"||this.judge==="第二部分没做"||this.judge==="第二部分没做完"||this.judge==="第三部分没做"||this.judge==="第三部分没做完"||this.judge==="第四部分没做"||this.judge==="第四部分没做完"){
                             let id = this.id;
                             let judge = this.judge;
                             this.$router.push({path:'/answer',query:{id:id,judge:judge}})
-                        }else if(this.judge==="全部答完"){
+                        }else if(this.judge==="全部做完,可查看报告"){
                             let id = this.id;
                             this.$router.push({path:'/reported',query:{id:id}})
                         }

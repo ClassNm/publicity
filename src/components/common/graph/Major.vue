@@ -7,13 +7,13 @@
                 </div>
                 <div style="margin-bottom:5px;font-size:15px;"> 
                     <li style="color:#708090;display:inline-block;">
-                        专业(类)名称
+                        {{designation}}
                     </li> 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    专业简介
+                    {{synopsis}}
                 </div>
                 <Divider />
-                <li v-for="(item,i) in headerTit" :key="i" style="font-size:15px;margin:5px 0;">{{item.name}}</li>
+                <li v-for="(item,i) in utmost" :key="i" style="font-size:15px;margin:5px 0;">{{item}}</li>
             </ul>
         </div>
         <div class="maj">
@@ -23,13 +23,13 @@
                 </div>
                 <div style="margin-bottom:5px;font-size:15px;"> 
                     <li style="color:#708090;display:inline-block;">
-                        专业(类)名称
+                        {{designation}}
                     </li> 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    专业简介
+                    {{synopsis}}
                 </div>
                 <Divider />
-                <li v-for="(item,i) in headerTit" :key="i" style="font-size:15px;margin:5px 0;">{{item.name}}</li>
+                <li v-for="(item,i) in very" :key="i" style="font-size:15px;margin:5px 0;">{{item}}</li>
             </ul>
         </div>
        <div class="maj">
@@ -39,54 +39,50 @@
                 </div>
                 <div style="margin-bottom:5px;font-size:15px;"> 
                     <li style="color:#708090;display:inline-block;">
-                        专业(类)名称
+                        {{designation}}
                     </li> 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    专业简介
+                    {{synopsis}}
                 </div>
                 <Divider />
-                <li v-for="(item,i) in headerTit" :key="i" style="font-size:15px;margin:5px 0;">{{item.name}}</li>
+                <li v-for="(item,i) in common" :key="i" style="font-size:15px;margin:5px 0;">{{item}}</li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data(){
         return{
-            headerTit:[
-                {
-                    name:"物联网工程"
-                },
-                {
-                    name:"电子计算机"
-                },
-                {
-                    name:"网络空间安全"
-                },
-                {
-                    name:"新媒体运行"
-                },
-                {
-                    name:"自动化"
-                },
-                {
-                    name:"轨道交通信号与控制"
-                },
-                {
-                    name:"机器人工程"
-                },
-                {
-                    name:"邮政工程"
-                },
-                {
-                    name:"飞行器制造"
-                },
-                {
-                    name:"飞行器控制工程"
-                },
-            ]
+            designation : "专业(类)名称",
+            synopsis : "专业简介",
+            // 3块专业
+            utmost:[],
+            very:[],
+            common:[]
+        }
+    },
+    created(){
+        this.category();
+    },
+    methods:{
+        category(){
+            let data = this.$route.query.id;
+            // let data = 43
+            axios.post('http://192.168.1.100:8080/AssessScore/showResult',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                let arr = res.data;
+                this.utmost = arr[0],
+                this.very = arr[1],
+                this.common = arr[2]
+             }),(err)=>{
+                  console.log(err)
+            }
         }
     }
 }

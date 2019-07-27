@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="box">
         <h1 style="text-align:left;">{{header}}</h1>
         <div id="myChart" class="Repor"></div>
     </div>
@@ -148,8 +148,12 @@ export default {
 
 <style scoped>
     @media (min-width: 1200px) { 
-        .Repor{
+        .box{
             width: 1205px; 
+            margin: 0 auto;
+        }
+        .Repor{
+            width: 1105px; 
             height: 602px;
             margin: 0 auto;
         }

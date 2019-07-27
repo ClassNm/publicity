@@ -1,11 +1,10 @@
 <template>
 <!-- 多选 -->
-    <div class="checkAll">
+    <div class="checkAll" ref="HeaderBox">
         <!-- because 给的数据格式很奇怪 只能拆分开分21次循环 crazy... 
         他把所有的数据全放在一个接口里然后给一个typ值让我区分 没办法 
         前方高能！！！
         -->
-        
         <div class="box"  ref="box2" v-bind:style="{display: activeColorOver}">
             <p class="PPP">1,{{title}}</p>
             <!-- 意见反馈 -->
@@ -40,7 +39,7 @@
             <Button @click="resultMe" class="But">{{buttonAga}}</Button>
         </div> 
         <!-- 2 -->
-        <div class="box" ref="resultTwo" v-bind:style="{display: activeColorOver}">
+        <div class="box" ref="resultTwo" v-bind:style="{display: activeColorOver}" v-if="Onb">
             <p>2,{{title}}</p>
             <div v-for="(item,i) in resultTwo" :key="i" 
             :value="item.object" 
@@ -62,7 +61,7 @@
             <Button @click="resultTwoMe" class="But">{{buttonAga}}</Button>
         </div> 
         <!-- 3 -->
-        <div class="box" ref="resultThree" v-bind:style="{display: activeColorOver}">
+        <div class="box" ref="resultThree" v-bind:style="{display: activeColorOver}" v-if="Twoee">
             <p>3,{{title}}</p>
             <div v-for="(item,i) in resultThree" 
             :key="i" 
@@ -94,7 +93,8 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            
+            Onb:true,
+            Twoee:true,
             // 隐藏
             activeColorOver:'block',
             // 题目
@@ -135,38 +135,25 @@ export default {
         
         // 用户的uid
         this.uid = this.$route.query.id;
-
+        let see = 44;
         // let see = this.uid;
-        // axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
-        // see,
-        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        // )
-        // .then((res)=>{
-        //   // 题目
-        //     this.fone = res.data;
-        // }),(err)=>{
-        //     console.log(error)
-        // }
-
-        // 答案选项
-         // 多选答案
-        // let typ = 5;
-        // axios.post('http://192.168.1.100:8080/AssessObject/obj5',
-        // typ,
-        // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        // )
-        // .then((res)=>{
-        //     let aim = res.data;
-        //     // 根据单个名字筛选
-        //     function filterByName(aim, typ) {
-        //         return aim.filter(item => item.typ == typ)
-        //     }
-        //     this.result = filterByName(aim,'RN')
-        //     this.resultTwo = filterByName(aim,'PN')
-        //     this.resultThree = filterByName(aim,'UN')
-        // }),(err)=>{
-        //     console.log(err)
-        // }
+        axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
+        see,
+        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+        )
+        .then((res)=>{
+          // 答案
+            this.fone = res.data;
+            // console.log(this.fone)
+            this.result = res.data[0]
+            this.resultTwo = res.data[1]
+            this.resultThree = res.data[2]
+            // console.log(this.result,'1')
+            // console.log(this.resultTwo,'2')
+            // console.log(this.resultThree,'3')
+        }),(err)=>{
+            console.log(error)
+        }
     },
     methods:{
         // 意见方法
@@ -179,14 +166,14 @@ export default {
         },
         //发送数据给后台
         postBack(data){
-            // axios.post('http://192.168.1.100:8080/AssessMatter/save2',
-            // data,
-            // {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-            // )
-            // .then((res)=>{})
-            // ,(err)=>{
-            //     console.log(err)
-            // }
+            axios.post('http://192.168.1.100:8080/AssessMatter/save2',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{})
+            ,(err)=>{
+                console.log(err)
+            }
         },
         // 验证是否选择3项
         proofread(data){
@@ -249,20 +236,23 @@ export default {
             let obj = {
                 uid : uid,
                 typ : typ,
-                mid : mid,
-                score : score
+                matter : mid,
+                score : score,
+                code : 1
             }
             let objTwe = {
                 uid : uidTwe,
                 typ : typTwe,
-                mid : midTwe,
-                score : scoreTwe
+                matter : midTwe,
+                score : scoreTwe,
+                code : 1,
             }
             let objThr = {
                 uid : uidThr,
                 typ : typThr,
-                mid : midThr,
-                score : scoreThr
+                matter : midThr,
+                score : scoreThr,
+                code : 1
             }
             let Answer = this.Answer;
             Answer[0] = obj;
@@ -275,18 +265,18 @@ export default {
         },
         // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 
         resultMe(){
-            // if(this.checkAllGroup.length===3){
-            //     let arr = this.result;
-            //     this.rise(arr);
-            //     this.AnswerClick()
-            //     let data = this.Answer;
-            //     this.proofread(data)
-            //     let canvas=this.$refs.box2;
-            //     this.disPl(canvas)
-            //     this.checkAllGroup = []
-            // }else{
-            //     this.err();
-            // }
+            if(this.checkAllGroup.length===3){
+                let arr = this.result;
+                this.rise(arr);
+                this.AnswerClick()
+                let data = this.Answer;
+                this.proofread(data)
+                let canvas=this.$refs.box2;
+                this.disPl(canvas)
+                this.checkAllGroup = []
+            }else{
+                this.err();
+            }
             // 时间test实验
 
             // let time = new Date()
@@ -318,7 +308,9 @@ export default {
                 let data = this.Answer;
                 this.proofread(data)
                 let canvas=this.$refs.resultThree;
+                let headbox = this.$refs.HeaderBox;
                 this.disPl(canvas)
+                headbox.style.display = "none"
                 this.checkAllGroup = []
             }else{
                 this.err();
@@ -332,14 +324,13 @@ export default {
     .checkAll{
         width: 500px;
         height: 1000px;
-        margin: 50px auto;
+        margin: 50px auto 300px;
         overflow: hidden;
     }
     .box{
         width: 500px;
         height: 1000px;
         margin: 100px auto;
-        /* background: rgb(255, 230, 0); */
         overflow: hidden;
     }
     .checked{

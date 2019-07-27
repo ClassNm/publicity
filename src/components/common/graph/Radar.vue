@@ -30,7 +30,7 @@ export default {
     data(){
         return{
             tit:"一,职业人格维度",
-            headerTit:"制造者",
+            headerTit:"",
             fouterTit:"注：蛛网图中，得分越接近八边形边角区域说明你的职业人格特点越典型，如蛛网图接近正八边形，说明对所有的职业人格倾向存在相同程度的喜好，可能因未认真作答引起",
             // 用户uid
             uid:"",
@@ -48,38 +48,46 @@ export default {
                         title: '主要特征',
                         key: 'address'
                     }
-                ],
-                data1: [
-                    {
-                        name: '制造者',
-                        age: '灵活，另，我判断类型一般不会判出一个以上的类型。在我看来，只有没塑造好的角色才会混杂了一个以上的类型。就像现实中的人，也绝不会有拥有两个MBTI类型的。MBTI只是运行功能。(MBTI人格是固定的，不能因为可塑的性格的变化而认为是变了人格。人在不同的环',
-                        address: '1，他们把注意力集中在何处，从哪里获得动力（外向、内向）；2，他们获取信息的方式（实感、直觉）；3，他们做决定的方法（思维、情感）；4，他们对外在世界如何取向；通过认知的过程或判断的过程（判断、知觉）',
-                        date: '2016-10-03'
-                    }
-                ]
-            }
+            ],
+            data1: [
+                {
+                    name: '',
+                    age: '',
+                    address: '',
+                    date: '2016-10-03'
+                }
+            ],
+            // 8项分值
+            score:""
+        }
     },
     created(){
-        // let data = this.$route.query.id;
-        // axios.post('http://192.168.1.100:8080/AssessScore/showNum',
-        //   data,
-        //   {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        //   )
-        //   .then((res)=>{
-        //     let aa = res.data;
-        //     // let aa = this.graph;
-        //   }),(err)=>{
-        //       console.log(err)
-        //   }
-
-        
     },
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
+        this.describeTit();
 
     },
     methods:{
+        // 信息
+        describeTit(){
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.100:8080/AssessScoreMbti/show_mbti',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                let arr = this.data1[0]
+                console.log(arr,'arr')
+                arr.age = res.data.object
+                arr.address = res.data.object1
+                arr.name = res.data.typ
+                this.headerTit = res.data.typ
+             }),(err)=>{
+                console.log(err)
+            }
+        },
         // echarts调用方法 的案例
         drawLine(){
             var myChart = this.$echarts.init(document.getElementById('Radar'));//获取容器元素
@@ -99,27 +107,41 @@ export default {
                         }
                         },
                         indicator: [
-                        { name: '内向（Introverted）', max: 6500},
-                        { name: '具体（Specific）', max: 16000},
-                        { name: '理性（Reason）', max: 30000},
-                        { name: '严谨（Preciseness）', max: 38000},
-                        { name: '外向（Extroversion）', max: 52000},
-                        { name: '抽象（Abstract）', max: 25000},
-                        { name: '感性（Sensibility）', max: 45000}  ,
-                        { name: '灵活（Agility）', max: 55000}
+                        { name: '内向（Introverted）', max: 21},
+                        { name: '具体（Specific）', max: 21},
+                        { name: '理性（Reason）', max: 21},
+                        { name: '严谨（Preciseness）', max: 21},
+                        { name: '外向（Extroversion）', max: 21},
+                        { name: '抽象（Abstract）', max: 21},
+                        { name: '感性（Sensibility）', max: 21}  ,
+                        { name: '灵活（Agility）', max: 21}
+                        // 最大值20
                         ]
-                    },
-                    series: [{
+                    }
+            })
+            // 处理echarts异步操作 copy的官网实例
+            let data = this.$route.query.id;
+            // let data = 33;
+            axios.post('http://192.168.1.100:8080/AssessScoreMbti/mbti_num',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res) => {
+                // console.log(res.data,'eeeeeeeeeeeeeeee')
+                this.score = res.data;
+                myChart.setOption({
+                     series: [{
                         name: '预算 vs 开销（Budget vs spending）',
                         type: 'radar',
                         // areaStyle: {normal: {}},
                         data : [
                             {
-                                value : [4300, 10000, 28000, 35000, 50000, 19000,40000,45000],
+                                value : this.score,
                                 name : '预算分配（Allocated Budget）'
                             }
                         ]
                     }]
+                })
             })
         }
     }

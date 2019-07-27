@@ -24,7 +24,7 @@ export default {
     data(){
         return{
             tit:"二，心理格局维度",
-            headerTit:"成人水平",
+            headerTit:"",
             trait:[
                 {
                     name:"在几千年的历史发展过程中,中国文化传统形成了深厚的孝文化理念,这在儒家表现得尤为突出;即便"
@@ -66,7 +66,9 @@ export default {
             // tit标题
             Tit:['N自然事物', 'T人造事物', 'A艺术符号','M数字符号','L语言符号','S社会制度','I个体生命'],
             // 背景3
-            backg:['研究与探索','设计与实施','使用与维护']
+            backg:['研究与探索','设计与实施','使用与维护'],
+            //  4个分值
+            score:[]
         }
     },
     created(){
@@ -99,9 +101,22 @@ export default {
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
-
+        this.ShowXin();
     },
     methods:{
+        ShowXin(){
+            let data = this.$route.query.id;
+            // let data = 43;
+            axios.post('http://192.168.1.100:8080/AssessScoreXinli/show_xinli',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.headerTit = res.data
+             }),(err)=>{
+                console.log(err)
+            }
+        },
         drawLine(){
             var myChart = this.$echarts.init(document.getElementById('RadarLtwo'));//获取容器元素
             myChart.setOption({
@@ -120,121 +135,38 @@ export default {
                         }
                         },
                         indicator: [
-                        { name: 'I', max: 6500},
-                        { name: 'U', max: 16000},
-                        { name: 'I', max: 30000},
-                        { name: 'U', max: 38000},
+                        { name: 'I+', max: 21},
+                        { name: 'U', max: 21},
+                        { name: 'I', max: 21},
+                        { name: 'U+', max: 21},
+                        // 最大值20
                         ]
-                    },
-                    series: [{
+                    }
+            });
+            // 处理echarts异步操作 copy的官网实例
+            let data = this.$route.query.id;
+            // let data = 33;
+            axios.post('http://192.168.1.100:8080/AssessScoreXinli/xinli_num',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res) => {
+                // console.log(res.data,'eeeeeeeeeeeeeeee')
+                this.score = res.data;
+                myChart.setOption({
+                     series: [{
                         type: 'radar',
                         // areaStyle: {normal: {}},
                         data : [
                             {
-                                value : [4300, 10000, 28000, 35000],
+                                value : this.score,
                                 name : '预算分配（Allocated Budget）'
                             }
                         ]
                     }]
+                })
             })
         }
-
-
-
-        // drawLine(){
-        //     var myChart = this.$echarts.init(document.getElementById('Roundness'));//获取容器元素
-        //     // app.title = '极坐标系下的堆叠柱状图报告';
-
-        //      let data = this.$route.query.id;
-        //     axios.post('http://192.168.1.100:8080/AssessScore/showNum',
-        //     data,
-        //     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        //     )
-        //     .then((res)=>{
-        //         let aa = res.data;
-        //         // let aa = this.graph;
-        //         let nature = [aa[0],aa[1],aa[2]];
-        //         let manMade = [aa[3],aa[4],aa[5]]
-        //         let art = [aa[6],aa[7],aa[8]]
-        //         let number = [aa[9],aa[10],aa[11]]
-        //         let language = [aa[12],aa[13],aa[14]]
-        //         let society = [aa[15],aa[16],aa[17]]
-        //         let unit = [aa[18],aa[19],aa[20]]
-        //         this.nature = nature;
-        //         this.manMade = manMade;
-        //         this.art = art;
-        //         this.number = number;
-        //         this.language = language;
-        //         this.society = society;
-        //         this.unit = unit;
-        //         // console.log(aa)
-        //         // console.log(this.nature)
-        //         // console.log(this.manMade)
-
-        //         myChart.setOption({
-        //         angleAxis: {
-        //         },
-        //         radiusAxis: {
-        //             type: 'category',
-        //             data: this.backg,
-        //             z: 10,
-        //              rotate:-75
-        //         },
-        //         polar: {
-        //         },
-        //         series: [{
-        //             type: 'bar',
-        //             data: this.nature,
-        //             coordinateSystem: 'polar',
-        //             name: 'N自然事物',
-        //             stack: 'a'
-        //         }, {
-        //             type: 'bar',
-        //             data: this.manMade,
-        //             coordinateSystem: 'polar',
-        //             name: 'T人造事物',
-        //             stack: 'a'
-        //         }, {
-        //             type: 'bar',
-        //             data: this.art,
-        //             coordinateSystem: 'polar',
-        //             name: 'A艺术符号',
-        //             stack: 'a'
-        //         },{
-        //             type: 'bar',
-        //             data: this.number,
-        //             coordinateSystem: 'polar',
-        //             name: 'M数字符号',
-        //             stack: 'a'
-        //         },{
-        //             type: 'bar',
-        //             data: this.language,
-        //             coordinateSystem: 'polar',
-        //             name: 'L语言符号',
-        //             stack: 'a'
-        //         },{
-        //             type: 'bar',
-        //             data: this.society,
-        //             coordinateSystem: 'polar',
-        //             name: 'S社会制度',
-        //             stack: 'a'
-        //         },{
-        //             type: 'bar',
-        //             data: this.unit,
-        //             coordinateSystem: 'polar',
-        //             name: 'I个体生命',
-        //             stack: 'a'
-        //         }],
-        //         legend: {
-        //             show: true,
-        //             data: this.Tit
-        //         }
-        //     });
-
-        //     }),(err)=>{
-        //         console.log(err)
-        //     }
-        // }
     }
 }
 </script>
