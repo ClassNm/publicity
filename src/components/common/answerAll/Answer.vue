@@ -1,9 +1,9 @@
 <template>
     <div class="surveydetailout" id="surveydetailout" >
-        <FirstRadio v-if="ok"></FirstRadio>
-        <AnswerCheck v-if="Two"></AnswerCheck>
-        <TwoRadio v-if="Thr"></TwoRadio>  
-        <FourRadio></FourRadio>   
+        <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio>
+        <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck>
+        <!-- <TwoRadio v-if="Thr"></TwoRadio>   -->
+        <!-- <FourRadio></FourRadio>    -->
         <button @click="disPla">显示</button>
     </div>
 </template>
@@ -13,9 +13,9 @@
 import FirstRadio from './FirstRadio'
 // 3道多选
 import AnswerCheck from './AnswerCheck'
-// xinli 单选
+// xinli 单选 16
 import TwoRadio from './TwoRadio'
-// MBTI 单选
+// MBTI 单选 32
 import FourRadio from './FourRadio'
 
 import axios from 'axios';
@@ -33,7 +33,8 @@ export default {
             ok : true,
             Two : true,
             Thr : true,
-            Fourr : true
+            Fourr : true,
+            typTwo:"1"
         }
     },
     components:{
@@ -49,21 +50,25 @@ export default {
         if(this.judge==="第二部分没做"||this.judge==="第二部分没做完"){
             this.ok = false
         }else if(this.judge==="第三部分没做"||this.judge==="第三部分没做完"){
-            this.Two = false
             this.ok = false
+            this.Two = false
         }else if(this.judge==="第四部分没做"||this.judge==="第四部分没做完"){
-            this.Two = false
             this.ok = false
+            this.Two = false
             this.Thr = false
         }
         // let AnsIDNumb = this.$route.query.id;
         // AnsID(AnsIDNumb)
     },
     mounted(){
+        // console.log(this.typTwo,'2222222222222222')
     },
     methods:{
         disPla(){
             this.ok = true
+        },
+        helloFn(){
+            this.typTwo = 2
         }
     }
 }

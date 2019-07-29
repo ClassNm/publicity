@@ -91,6 +91,7 @@
 <script>
 import axios from 'axios';
 export default {
+    props:["typTwo"],
     data(){
         return{
             Onb:true,
@@ -127,35 +128,61 @@ export default {
             value5: '',
             // 页面加载时的时间
             CreaTime:"",
+            // TYPtWO : ""
         }
     },
+    // props:["typTwo"],
     created(){
-        // this.CreaTime = new Date()
-        // console.log(this.CreaTime)
-        
-        // 用户的uid
         this.uid = this.$route.query.id;
-        let see = 44;
-        // let see = this.uid;
-        axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
-        see,
-        {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        )
-        .then((res)=>{
-          // 答案
-            this.fone = res.data;
-            // console.log(this.fone)
-            this.result = res.data[0]
-            this.resultTwo = res.data[1]
-            this.resultThree = res.data[2]
-            // console.log(this.result,'1')
-            // console.log(this.resultTwo,'2')
-            // console.log(this.resultThree,'3')
-        }),(err)=>{
-            console.log(error)
+        // let TYPtWO = this.typTwo
+        // this.CreaTime = new Date()
+    },
+    watch:{
+        typTwo(n,o){
+            if(n==2||o==2){
+                this.acquire();
+            }
         }
+    },
+    mounted(){
+        console.log(this.typTwo,'TYPOWWW')
+        // this.confirm();
+        // if(this.typTwo == 2){
+        //     this.acquire();
+        // }
     },
     methods:{
+        
+        // confirm () {
+        //         this.$Modal.confirm({
+        //             title: 'Title',
+        //             content: '<p>3道题</p>',
+        //             onOk: () => {
+        //                 this.acquire();
+        //             }
+        //         });
+        // },
+        // 拿数据
+        acquire(){
+                // 用户的uid
+            // this.uid = this.$route.query.id;
+            // let see = 44;
+            let see = this.uid;
+            axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
+            see,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+            // 答案
+                this.fone = res.data;
+                // console.log(this.fone)
+                this.result = res.data[0]
+                this.resultTwo = res.data[1]
+                this.resultThree = res.data[2]
+            }),(err)=>{
+                console.log(error)
+            }
+        },
         // 意见方法
         ok () {
             this.$Message.info('收到您的意见');
@@ -273,7 +300,14 @@ export default {
                 this.proofread(data)
                 let canvas=this.$refs.box2;
                 this.disPl(canvas)
+                if(this.fone.length === 1){
+                    let headbox = this.$refs.HeaderBox;
+                    headbox.style.display = "none"
+                    this.Onb = false
+                    this.Twoee = false
+                }
                 this.checkAllGroup = []
+                
             }else{
                 this.err();
             }
@@ -295,6 +329,13 @@ export default {
                 this.proofread(data)
                 let canvas=this.$refs.resultTwo;
                 this.disPl(canvas)
+                if(this.fone.length === 2){
+                    let headbox = this.$refs.HeaderBox;
+                    headbox.style.display = "none"
+                    this.Twoee = false
+                }
+                // console.log(this.fone.length)
+               
                 this.checkAllGroup = []
             }else{
                 this.err();

@@ -29,6 +29,7 @@ export default {
         }
     },
     created(){
+        // console.log(this.$route.query.id,'aa')
         let data = this.$route.query.id;
         axios.post('http://192.168.1.100:8080/AssessScore/showNum',
           data,

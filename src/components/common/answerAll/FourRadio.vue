@@ -86,22 +86,37 @@ export default {
         // this.CreaTime = new Date()
         this.ubid = this.$route.query.id;
         this.judge = this.$route.query.judge;
-        // console.log('Firstrrrrrrrrrrrrrrrrrrrrrr')
         // let AnsIDNumb = this.$route.query.id;
         // AnsID(AnsIDNumb)
+        // console.log("MBTI")
     },
     mounted(){
         // 如果没答过题先发一遍ID
-        this.condition()
-        if(this.mentality == 0 ){
-            this.condition()
-        }else{
-            console.log('答过题了')
-        }
-        //    兴趣题 题目  答案选项
-        this.rubric();
+       this.async();
     },
     methods:{
+        async () {
+            this.$Modal.confirm({
+                title: '提示信息',
+                content: '<p>32道题</p>',
+                loading: true,
+                onOk: () => {
+                    setTimeout(() => {
+                        this.$Modal.remove();
+                        this.$Message.info('MBTI题');
+                    }, 2000);
+                     this.condition()
+                    if(this.mentality == 0 ){
+                        this.condition()
+                    }else{
+                        console.log('答过题了')
+                    }
+                    //    兴趣题 题目  答案选项
+                    this.rubric();
+                },
+            });
+        },
+
         // 判断条件发id
         condition(){
             let save = this.ubid;
@@ -112,7 +127,7 @@ export default {
             )
             .then((res)=>{
                 this.mentality = res.data.typ
-                console.log('111111111111111111111')
+                // console.log('111111111111111111111')
             }),(err)=>{
                 console.log(err,'err')
             }
@@ -158,13 +173,13 @@ export default {
         // 获取兴趣题的id
         present(index){
             this.score = index.id;
-            console.log(index,'index')
+            // console.log(index,'index')
         },
         submit(e){
             // 类型
             let typ = this.type;
             // 题号  
-            let mid =  this.topic;
+            // let mid =  this.topic;
             // 分值 id
             let score = this.score;
             // 用户id router传参的值
@@ -189,7 +204,7 @@ export default {
             
             let data = {
                 typ : typ,
-                mid : mid,
+                // mid : mid,
                 score : score,
                 uid : uid,
                 matter : matter,
@@ -198,10 +213,10 @@ export default {
             }
             let obj = [];
             obj.push(data)
-            if(typ == "" || mid == "" || score == "" || matter == ""|| uid == undefined){
+            if(typ == "" || score == "" || matter == ""|| uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://192.168.1.100:8080/AssessScoreXinli/save_xinli',
+                axios.post('http://192.168.1.100:8080/AssessScoreMbti/save_mbti',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
@@ -216,10 +231,13 @@ export default {
                 this.redio = "";
                 this.matter = ""
                 if(this.title.length == 0){
+                    let headbox = this.$refs.headbox
                     headbox.style.display = "none"
+                    let id = this.ubid;
+                    this.$router.push({path:'/reported',query:{id:id}})
                 }
                 // this.aaa = ""
-                console.log(data,'data')
+                console.log(this.title,'title')
             }
         }
     }

@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <div id="bodycontent_contentbody_divSurveyGuide" 
         class="surveydetail"
         onselectstart="return false"
@@ -87,20 +88,44 @@ export default {
         // console.log('Firstrrrrrrrrrrrrrrrrrrrrrr')
         // let AnsIDNumb = this.$route.query.id;
         // AnsID(AnsIDNumb)
-    },
-    mounted(){
-        // 如果没答过题先发一遍ID
         if(this.judge === "第一部分没做"){
             this.condition()
+            // console.log('第一次id发送')
         }else{
-            console.log('答过题了')
+            this.rubric();
         }
+        this.confirm();
+        // this.async();
+    },
+    mounted(){
+        // if(this.judge === "第一部分没做"){
+        //     this.condition()
+        //     console.log('第一次id发送')
+        // }else{
+        //     this.rubric();
+        // }
+        // 如果没答过题先发一遍ID
+        // if(this.judge === "第一部分没做"){
+        //     this.condition()
+        //     console.log('第一次id发送')
+        // }
+        // this.rubric();
         //    兴趣题 题目  答案选项
-        this.rubric();
     },
     methods:{
+        confirm () {
+                this.$Modal.confirm({
+                    title: 'Title',
+                    content: '<p>105道题</p>',
+                    onOk: () => {
+                        // this.$Message.info('Clicked ok');
+                        // console.log('aaaaaaaaaaa');
+                    }
+                });
+        },
         // 判断条件发id
         condition(){
+            // console.log('第一次id发送')
             let save = this.ubid;
             // console.log('第一遍id发送')
             axios.post('http://192.168.1.100:8080/AssessMatter/saveMatter',
@@ -108,7 +133,7 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-
+                this.rubric();
             }),(err)=>{
                 console.log(err,'err')
             }
@@ -116,17 +141,19 @@ export default {
         // 展示的题跟答案
         rubric(){
             // 题目
-            let data = this.$route.query.id;
+            let data = this.ubid;
             axios.post('http://192.168.1.100:8080/AssessMatter/showMatter',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.title = res.data
+                console.log(this.title,'title---------------')
             }),(err)=>{
                 console.log(err,'err')
             };
-            this.answer();    
+            this.answer();
+            // console.log('第二次id发送')
         },
         answer(){
             // 选项
@@ -137,6 +164,7 @@ export default {
             )
             .then((res)=>{
                 this.list = res.data
+                // console.log('选项')
             }),(err)=>{
                 console.log(err,'err')
             };
@@ -152,7 +180,7 @@ export default {
         // 获取兴趣题的id
         present(index){
             this.score = index.id;
-            console.log(index,'index')
+            // console.log(index,'index')
         },
         submit(e){
             // 类型
@@ -162,7 +190,7 @@ export default {
             // 分值 id
             let score = this.score;
             // 用户id router传参的值
-            let uid = this.ubid;
+            let uid = JSON.parse(this.ubid);
             // 题
             let matter = this.matter;
             
@@ -183,7 +211,7 @@ export default {
             
             let data = {
                 typ : typ,
-                mid : mid,
+                id : mid,
                 score : score,
                 uid : uid,
                 matter : matter,
@@ -192,11 +220,11 @@ export default {
             }
             let obj = [];
             obj.push(data)
-            if(typ == "" || mid == "" || score == "" || matter == ""){
-            // if(typ == "" || mid == "" || score == "" || uid == undefined){    
+            if(typ == "" || mid == "" || score == "" || matter == "" || uid == undefined){
+            // if(typ == "" || mid == "" || score == "" || uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://47.104.245.242:8081/AssessMatter/save',
+                axios.post('http://192.168.1.100:8080/AssessMatter/save',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
@@ -210,13 +238,18 @@ export default {
                 this.title.shift()
                 this.redio = "";
                 this.matter = ""
-                // this.aaa = ""
+                // this.aaa = ""\
                 if(this.title.length == 0){
+                    let headbox = this.$refs.headbox
                     headbox.style.display = "none"
+                    this.sendMsg();
                 }
                 console.log(this.title)
                 // console.log(data,'data')
             }
+        },
+        sendMsg(){
+            this.$emit('listTop','this.message')
         }
     }
 }

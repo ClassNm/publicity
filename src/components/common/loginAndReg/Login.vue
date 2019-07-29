@@ -82,7 +82,7 @@ import axios from 'axios';
                 )
                 .then((res)=>{
                     this.information = res.data
-                    console.log(res.data,'res')
+                    // console.log(res.data,'res')
                     let arr = res.data.split(',')
                     this.id = arr[0]
                     this.judge = arr[1];

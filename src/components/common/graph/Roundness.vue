@@ -99,6 +99,7 @@ export default {
         //   }
     },
     mounted(){
+        console.log(this.$route.query.id,'aaa')
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
         this.ShowXin();
