@@ -92,28 +92,25 @@ export default {
     },
     mounted(){
         // 如果没答过题先发一遍ID
-       this.async();
+        this.condition()
+        // if(this.mentality == 0 ){
+        //     this.rubric()
+        // }else{
+        //     console.log('答过题了')
+        // }
+        //    兴趣题 题目  答案选项
+        // this.rubric();
+        // this.confirm();
     },
     methods:{
-        async () {
+        confirm () {
             this.$Modal.confirm({
-                title: '提示信息',
+                title: 'MBTI',
                 content: '<p>32道题</p>',
-                loading: true,
                 onOk: () => {
-                    setTimeout(() => {
-                        this.$Modal.remove();
-                        this.$Message.info('MBTI题');
-                    }, 2000);
-                     this.condition()
-                    if(this.mentality == 0 ){
-                        this.condition()
-                    }else{
-                        console.log('答过题了')
-                    }
-                    //    兴趣题 题目  答案选项
-                    this.rubric();
-                },
+                    // this.$Message.info('Clicked ok');
+                    // console.log('aaaaaaaaaaa');
+                }
             });
         },
 
@@ -126,7 +123,8 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                this.mentality = res.data.typ
+                this.mentality = res.data[0].typ
+                this.rubric();
                 // console.log('111111111111111111111')
             }),(err)=>{
                 console.log(err,'err')
@@ -179,7 +177,7 @@ export default {
             // 类型
             let typ = this.type;
             // 题号  
-            // let mid =  this.topic;
+            let mid =  this.topic;
             // 分值 id
             let score = this.score;
             // 用户id router传参的值
@@ -204,7 +202,7 @@ export default {
             
             let data = {
                 typ : typ,
-                // mid : mid,
+                id : mid,
                 score : score,
                 uid : uid,
                 matter : matter,
@@ -234,12 +232,32 @@ export default {
                     let headbox = this.$refs.headbox
                     headbox.style.display = "none"
                     let id = this.ubid;
+                    this.Starting();
                     this.$router.push({path:'/reported',query:{id:id}})
+                    // let time = new Date()
                 }
                 // this.aaa = ""
                 console.log(this.title,'title')
             }
-        }
+        },
+        Starting(){
+            let timec = new Date();
+            let time = timec.getTime();
+            let uid  = this.$route.query.id;
+            let data = {
+                stop : time,
+                uid : uid,
+            }
+            axios.post('http://192.168.1.100:8080/AssessTime/save_stop',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+
+            }),(err)=>{
+
+            }
+        },
     }
 }
 </script>

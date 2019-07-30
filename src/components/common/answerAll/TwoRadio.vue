@@ -85,41 +85,41 @@ export default {
         // AnsID(AnsIDNumb)
     },
     mounted(){
-        this.async();
+        // this.async();
+        this.condition()
+        // if(this.mentality == 0 ){
+        //     this.rubric()
+        // }else{
+        //     this.rubric();
+        // }
+        //    兴趣题 题目  答案选项
+        // this.rubric();
+        // this.confirm();
     },
     methods:{
-        async () {
-            this.$Modal.confirm({
-                title: '提示信息',
-                content: '<p>16道题</p>',
-                loading: true,
-                onOk: () => {
-                    setTimeout(() => {
-                        this.$Modal.remove();
-                        this.$Message.info('心理题');
-                    }, 2000);
-                    // 如果没答过题先发一遍ID
-                    this.condition()
-                    if(this.mentality == 0 ){
-                        this.condition()
-                    }else{
-                        console.log('答过题了')
+        confirm () {
+                this.$Modal.confirm({
+                    title: '心理题',
+                    content: '<p>16道题</p>',
+                    onOk: () => {
+                        // this.$Message.info('Clicked ok');
+                        // console.log('aaaaaaaaaaa');
                     }
-                    //    兴趣题 题目  答案选项
-                    this.rubric();
-                },
-            });
+                });
         },
         // 判断条件发id
         condition(){
             let save = this.ubid;
+            // let save = 10;
             // console.log('第一遍id发送')
             axios.post('http://192.168.1.100:8080/AssessMatter/Matter_xinLi',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                this.mentality = res.data.typ
+                this.mentality = res.data[0].typ
+                console.log(this.mentality)
+                this.rubric();
             }),(err)=>{
                 console.log(err,'err')
             }
@@ -171,7 +171,7 @@ export default {
             // 类型
             let typ = this.type;
             // 题号  
-            // let mid =  this.topic;
+            let mid =  this.topic;
             // 分值 id
             let score = this.score;
             // 用户id router传参的值
@@ -196,7 +196,7 @@ export default {
             
             let data = {
                 typ : typ,
-                // mid : mid,
+                id : mid,
                 score : score,
                 uid : uid,
                 matter : matter,

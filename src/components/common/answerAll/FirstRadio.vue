@@ -82,40 +82,20 @@ export default {
         }
     },
     created(){
-        // this.CreaTime = new Date()
         this.ubid = this.$route.query.id;
         this.judge = this.$route.query.judge;
-        // console.log('Firstrrrrrrrrrrrrrrrrrrrrrr')
-        // let AnsIDNumb = this.$route.query.id;
-        // AnsID(AnsIDNumb)
         if(this.judge === "第一部分没做"){
             this.condition()
-            // console.log('第一次id发送')
         }else{
             this.rubric();
         }
         this.confirm();
-        // this.async();
     },
-    mounted(){
-        // if(this.judge === "第一部分没做"){
-        //     this.condition()
-        //     console.log('第一次id发送')
-        // }else{
-        //     this.rubric();
-        // }
-        // 如果没答过题先发一遍ID
-        // if(this.judge === "第一部分没做"){
-        //     this.condition()
-        //     console.log('第一次id发送')
-        // }
-        // this.rubric();
-        //    兴趣题 题目  答案选项
-    },
+    mounted(){},
     methods:{
         confirm () {
                 this.$Modal.confirm({
-                    title: 'Title',
+                    title: '兴趣题',
                     content: '<p>105道题</p>',
                     onOk: () => {
                         // this.$Message.info('Clicked ok');
@@ -125,9 +105,7 @@ export default {
         },
         // 判断条件发id
         condition(){
-            // console.log('第一次id发送')
             let save = this.ubid;
-            // console.log('第一遍id发送')
             axios.post('http://192.168.1.100:8080/AssessMatter/saveMatter',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
@@ -153,7 +131,6 @@ export default {
                 console.log(err,'err')
             };
             this.answer();
-            // console.log('第二次id发送')
         },
         answer(){
             // 选项
@@ -164,7 +141,6 @@ export default {
             )
             .then((res)=>{
                 this.list = res.data
-                // console.log('选项')
             }),(err)=>{
                 console.log(err,'err')
             };
@@ -175,12 +151,10 @@ export default {
             this.type = index.typ;
             this.topic = index.id
             this.matter = index.matter   
-            // console.log(index,'indexaaaaaaaaa')     
         },
         // 获取兴趣题的id
         present(index){
             this.score = index.id;
-            // console.log(index,'index')
         },
         submit(e){
             // 类型

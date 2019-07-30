@@ -10,7 +10,7 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            header:"三,职业兴趣维度",
+            header:"三，职业兴趣维度",
             // 用户uid
             uid:"",
             tit:['N自然事物','T人造事物','A艺术符号','M数字符号','L语言符号','S社会制度','I个体生命'],

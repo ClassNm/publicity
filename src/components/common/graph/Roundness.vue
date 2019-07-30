@@ -5,12 +5,12 @@
             <div style="color:red;margin-top:15px;font-size:15px;">您的心理格局类型是：{{headerTit}}</div>
         </div>
         <div id="RadarLtwo" class="RoundNes"></div>
-        <div class="fouter">
+        <!-- <div class="fouter">
             <ul style="text-align:left;">
                 <h1>心理格局特点</h1>
                 <li v-for="(item,i) in trait" :key="i" style="font-size:15px;margin-top:10px;">{{item.name}}</li>
             </ul>
-        </div>
+        </div> -->
         <p style="width:400px;margin-left:15%;margin-bottom:15px;">
             {{fouterBot}}
         </p>

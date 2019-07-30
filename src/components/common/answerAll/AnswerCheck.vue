@@ -8,7 +8,7 @@
         <div class="box"  ref="box2" v-bind:style="{display: activeColorOver}">
             <p class="PPP">1,{{title}}</p>
             <!-- 意见反馈 -->
-            <a type="primary" @click="modal1 = true">(意见反馈)</a>
+            <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
             <Modal
                 v-model="modal1"
                 title="意见反馈"
@@ -22,7 +22,7 @@
             :value="item.object" 
             class="checked" 
             >
-                <CheckboxGroup v-model="checkAllGroup" :title="item.object">
+                <CheckboxGroup v-model="checkAllGroup" :title="item.object1">
                     <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
@@ -44,7 +44,7 @@
             <div v-for="(item,i) in resultTwo" :key="i" 
             :value="item.object" 
             class="checked">
-               <CheckboxGroup v-model="checkAllGroup">
+               <CheckboxGroup v-model="checkAllGroup" :title="item.object1">
                     <Checkbox :label="item.object" class="checked">
                         {{item.object}}
                     </Checkbox>
@@ -68,9 +68,9 @@
             :value="item.object"
              class="checked"
             >
-               <CheckboxGroup v-model="checkAllGroup">
+               <CheckboxGroup v-model="checkAllGroup" :title="item.object1">
                     <Checkbox :label="item.object" class="checked">
-                    {{item.object}}
+                        {{item.object}}
                     </Checkbox>
                 </CheckboxGroup>
             </div>
@@ -148,20 +148,19 @@ export default {
         console.log(this.typTwo,'TYPOWWW')
         // this.confirm();
         // if(this.typTwo == 2){
-        //     this.acquire();
+            // this.acquire();
         // }
     },
-    methods:{
-        
-        // confirm () {
-        //         this.$Modal.confirm({
-        //             title: 'Title',
-        //             content: '<p>3道题</p>',
-        //             onOk: () => {
-        //                 this.acquire();
-        //             }
-        //         });
-        // },
+    methods:{ 
+        confirm () {
+                this.$Modal.confirm({
+                    title: '个性题',
+                    content: '<p>3道题</p>',
+                    onOk: () => {
+                        // this.acquire();
+                    }
+                });
+        },
         // 拿数据
         acquire(){
                 // 用户的uid

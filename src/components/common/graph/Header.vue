@@ -61,6 +61,7 @@ import axios from 'axios';
         mounted(){
             this.Report();
             this.ShowUser();
+            this.echo();
         },
         methods:{
             Report(){
@@ -89,6 +90,52 @@ import axios from 'axios';
                     ary.subject = arr.artsAndSciences;
                 }),(err)=>{
                     console.log(err)
+                }
+            },
+            // 获取时间  后台给的毫秒自己换算
+            getMyDate(str) {
+                var oDate = new Date(str),
+                oYear = oDate.getFullYear(),
+                oMonth = oDate.getMonth()+1,
+                oDay = oDate.getDate(),
+                oHour = oDate.getHours(),
+                oMin = oDate.getMinutes(),
+                oSen = oDate.getSeconds(),
+                oTime = oYear +'-'+ this.addZero(oMonth) +'-'+ this.addZero(oDay) +' '+ this.addZero(oHour) +':'+
+                this.addZero(oMin) +':'+this.addZero(oSen);
+                return oTime;
+            },
+            addZero(num){
+                if(parseInt(num) < 10){
+                    num = '0'+num;
+                }
+                return num;
+            },
+            echo(){
+                let uid  = this.$route.query.id;
+                // let uid = 3;
+                axios.post('http://192.168.1.100:8080/AssessTime/show_time',
+                uid,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    console.log(res.data)
+                    let arr = res.data;
+                    let timeStart = arr.start;
+                    let timeStop = arr.stop;
+                    let Difference = timeStop - timeStart;
+                    var dateTime = this.getMyDate(parseInt(timeStart));
+                    // var dateTimeDiff = this.getMyDate(parseInt(Difference));
+                    var minutes = parseInt((Difference % (1000 * 60 * 60)) / (1000 * 60));
+                    // let aa = a.toLocaleString( );
+                    console.log(minutes,'sto')
+                    // console.log(dateTime,'a')
+                    let ary = this.data1[0]
+                    ary.time = dateTime
+                    ary.schedu = minutes+"分钟"
+                    // var mytime=time.toLocaleTimeString();
+                }),(err)=>{
+
                 }
             }
         }
