@@ -16,6 +16,14 @@
                  v-bind:style="{display: activeColorOver}"
                  >
                 <p class="descs fb">{{item.matter}}</p>
+                <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
+                <Modal
+                    v-model="modal1"
+                    title="意见反馈"
+                    @on-ok="ok"
+                    @on-cancel="cancel">
+                    <Input v-model="value5" type="textarea" placeholder="填写你的建议" />
+                </Modal>
                 <div class="sels_list" >
                     <div class="items">
                         <p class="i_top"></p>
@@ -24,12 +32,6 @@
                            :key="item.id"
                            :value = "item.id"
                            >
-                           <!-- @click="present(item,i)"  -->
-                             <!-- <RadioGroup v-model="redio" vertical @on-change="present(item,i)">
-                                <Radio :label="item.object">
-                                    <span>{{item.object}}</span>
-                                </Radio>
-                            </RadioGroup> -->
                             <label>
                                 <input type="radio" v-model="redio" :value="item.object" @click="present(item,i)"/>
                                 {{item.object}}
@@ -52,8 +54,11 @@ import axios from 'axios';
 export default {
     data(){
         return{
+             // 反馈
+            value5:"",
+            modal1: false,
             // 判断下一题
-            ok:true,
+            // ok:true,
             // 兴趣提 1
             a : 1,
             // 兴趣的id
@@ -93,13 +98,37 @@ export default {
     },
     mounted(){},
     methods:{
+        // 意见方法
+        ok () {
+            this.$Message.info('收到您的意见');
+            if(this.value5!=""){
+                let data = {
+                    matter:this.matter,
+                    content:this.value5,
+                    uid:this.ubid
+                }
+                console.log(data,'反馈')
+                axios.post('http://192.168.1.100:8080/AssessFeedback/save_feedback',
+                data,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    
+                }),(err)=>{
+                    console.log(err)
+                }
+                this.value5 = ""
+            }
+            
+        },
+        cancel () {
+            this.$Message.info('返回');
+        },
         confirm () {
                 this.$Modal.confirm({
                     title: '兴趣题',
                     content: '<p>105道题</p>',
                     onOk: () => {
-                        // this.$Message.info('Clicked ok');
-                        // console.log('aaaaaaaaaaa');
                     }
                 });
         },
@@ -261,6 +290,7 @@ export default {
     .descs {
         font-size: 14px;
         font-weight: bold;
+        display: inline-block;
     }
     p {
         display: block;

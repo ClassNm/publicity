@@ -40,7 +40,15 @@
         </div> 
         <!-- 2 -->
         <div class="box" ref="resultTwo" v-bind:style="{display: activeColorOver}" v-if="Onb">
-            <p>2,{{title}}</p>
+            <p class="PPP">2,{{title}}</p>
+            <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
+            <Modal
+                v-model="modal1"
+                title="意见反馈"
+                @on-ok="ok"
+                @on-cancel="cancel">
+                <Input v-model="value5" type="textarea" placeholder="填写你的建议" />
+            </Modal>
             <div v-for="(item,i) in resultTwo" :key="i" 
             :value="item.object" 
             class="checked">
@@ -62,7 +70,15 @@
         </div> 
         <!-- 3 -->
         <div class="box" ref="resultThree" v-bind:style="{display: activeColorOver}" v-if="Twoee">
-            <p>3,{{title}}</p>
+            <p class="PPP">3,{{title}}</p>
+            <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
+            <Modal
+                v-model="modal1"
+                title="意见反馈"
+                @on-ok="ok"
+                @on-cancel="cancel">
+                <Input v-model="value5" type="textarea" placeholder="填写你的建议" />
+            </Modal>
             <div v-for="(item,i) in resultThree" 
             :key="i" 
             :value="item.object"
@@ -148,7 +164,7 @@ export default {
         console.log(this.typTwo,'TYPOWWW')
         // this.confirm();
         // if(this.typTwo == 2){
-            // this.acquire();
+            this.acquire();
         // }
     },
     methods:{ 
@@ -165,8 +181,8 @@ export default {
         acquire(){
                 // 用户的uid
             // this.uid = this.$route.query.id;
-            // let see = 44;
-            let see = this.uid;
+            let see = 128;
+            // let see = this.uid;
             axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
             see,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
@@ -179,13 +195,31 @@ export default {
                 this.resultTwo = res.data[1]
                 this.resultThree = res.data[2]
             }),(err)=>{
-                console.log(error)
+                console.log(err)
             }
         },
         // 意见方法
         ok () {
             this.$Message.info('收到您的意见');
-            console.log(this.value5)
+            if(this.value5!=""){
+                let data = {
+                    matter:this.title,
+                    content:this.value5,
+                    uid:this.uid
+                }
+                console.log(data,'反馈')
+                axios.post('http://192.168.1.100:8080/AssessFeedback/save_feedback',
+                data,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    
+                }),(err)=>{
+                    console.log(err)
+                }
+                this.value5 = ""
+            }
+            
         },
         cancel () {
             this.$Message.info('返回');
@@ -299,6 +333,7 @@ export default {
                 this.proofread(data)
                 let canvas=this.$refs.box2;
                 this.disPl(canvas)
+                // console.log(data)
                 if(this.fone.length === 1){
                     let headbox = this.$refs.HeaderBox;
                     headbox.style.display = "none"
@@ -325,9 +360,13 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
+                data[0].code = 2;
+                data[1].code = 2;
+                data[2].code = 2;
                 this.proofread(data)
                 let canvas=this.$refs.resultTwo;
                 this.disPl(canvas)
+                console.log(data)
                 if(this.fone.length === 2){
                     let headbox = this.$refs.HeaderBox;
                     headbox.style.display = "none"
@@ -346,10 +385,14 @@ export default {
                 this.rise(arr);
                 this.AnswerClick()
                 let data = this.Answer;
+                data[0].code = 3;
+                data[1].code = 3;
+                data[2].code = 3;
                 this.proofread(data)
                 let canvas=this.$refs.resultThree;
                 let headbox = this.$refs.HeaderBox;
                 this.disPl(canvas)
+                console.log(data)
                 headbox.style.display = "none"
                 this.checkAllGroup = []
             }else{

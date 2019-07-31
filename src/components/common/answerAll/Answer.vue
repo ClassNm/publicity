@@ -1,10 +1,9 @@
 <template>
     <div class="surveydetailout" id="surveydetailout" >
-        <!-- <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio> -->
+        <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio>
         <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck>
         <TwoRadio v-if="Thr"></TwoRadio>  
         <FourRadio></FourRadio>   
-        <!-- <button @click="disPla">显示</button> -->
     </div>
 </template>
 
@@ -44,7 +43,6 @@ export default {
         FourRadio
     },
     created(){
-        // this.CreaTime = new Date()
         this.ubid = this.$route.query.id;
         this.judge = this.$route.query.judge;
         if(this.judge==="第二部分没做"||this.judge==="第二部分没做完"){
@@ -57,32 +55,9 @@ export default {
             this.Two = false
             this.Thr = false
         }
-        // let AnsIDNumb = this.$route.query.id;
-        // AnsID(AnsIDNumb)
     },
     mounted(){
-        // 时间test实验
-            // let time = new Date();
-            // let TimeCl = time.getTime();
-            // let CreaTime = this.CreaTime;
-            // let TimeCre = CreaTime.getTime();
-            // this.aaa = (TimeCl - TimeCre)/1000;
-            // let a = this.aaa;
-            // let aa = this.aaa - a;
-            // let bb = ""
-            // if(aa === 0){
-            //     aa = a;
-            // }else{
-            
-            // }
-        let time = new Date();
-        let TimeCl = time.getTime();
-        let a = (new Date()).getTime() - 86400 * 3 * 1000;
-        let b = time.toLocaleString( ); 
-        var mytime=time.toLocaleTimeString();
-        console.log(b,'bbb')
         this.Starting();
-        // console.log(this.typTwo,'2222222222222222')
     },
     methods:{
         Starting(){
@@ -102,9 +77,6 @@ export default {
             }),(err)=>{
 
             }
-        },
-        disPla(){
-            this.ok = true
         },
         helloFn(){
             this.typTwo = 2
