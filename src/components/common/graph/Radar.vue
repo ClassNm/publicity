@@ -210,7 +210,7 @@ export default {
         margin-bottom: 25px;
         text-align: left;
     }
-    @media (min-width: 1200px) { 
+    @media screen and (min-width: 1200px){
         .box{
             width: 1205px;
             margin: 0 auto;
@@ -228,20 +228,34 @@ export default {
         .HedTit{
             text-align: left
         }
+        img{
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+        }
     }
-    @media screen and (max-width: 1200px) { 
+    @media screen and (max-width: 1199px){
+        .box{
+            width: 800px;
+            margin: 0 auto;
+        }
+        .orida{
+            width: 800px;
+            margin: 0 auto;
+        }
         .Repor{
-            width: 800px; 
+            width: 400px; 
             height: 602px;
             margin: 0 auto;
         }
-    } 
-    @media screen and (max-width: 901px) { 
-        .Repor{
-            width: 500px;
-            height: 602px;
-            margin: 0 auto;
-        } 
-    } 
+        .HedTit{
+            text-align: left
+        }
+        img{
+            width: 150px;
+            height: 150px;
+            display: inline-block;
+        }
+    }
 </style>
 

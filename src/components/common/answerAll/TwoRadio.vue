@@ -314,7 +314,6 @@ export default {
         margin-inline-end: 0px;
     }
     .sels_list {
-        /* overflow: hidden; */
         width: 500px;
         height: 600px;
     }

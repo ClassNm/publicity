@@ -5,7 +5,7 @@
             <ul style="margin-top:8px">
                 <Icon type="ios-alert" class="IvIcon" size="20"/>
                 报告说明
-                <li v-for="(item,i) in explain" :key="i" class="fouterSon">{{item.name}}</li>
+                <li v-for="(item,i) in explain" :key="i" class="fouterSon" :title="item.name">{{item.name}}</li>
             </ul>
         </div>
     </div>
@@ -149,8 +149,8 @@ import axios from 'axios';
     .IvIcon{
         color: red;
     }
-    @media (min-width: 1200px) { 
-        .Repor{
+    @media screen and (min-width: 1200px){
+         .Repor{
             width: 1205px; 
             margin: 0 auto;
         }
@@ -168,14 +168,18 @@ import axios from 'axios';
             overflow: hidden;
             text-overflow:ellipsis;
         }
-    }
-    @media screen and (max-width: 1200px) { 
+     }
+    @media screen and (max-width: 1199px){
         .Repor{
             width: 800px; 
             margin: 0 auto;
         }
         .fouter{
-            text-align: left
+            margin-top: 20px;
+            text-align: left;
+            background: #fff9f9;
+            width: 800px;
+            border: 1px dashed red;
         }
         .fouterSon{
             margin-left: 3%;
@@ -184,21 +188,6 @@ import axios from 'axios';
             overflow: hidden;
             text-overflow:ellipsis;
         }
-    } 
-    @media screen and (max-width: 901px) { 
-        .Repor{
-            width: 500px;
-            margin: 0 auto;
-        } 
-        .fouter{
-            text-align: left
-        }
-        .fouterSon{
-            margin-left: 3%;
-            margin-top: 5px;
-            white-space:nowrap;
-            overflow: hidden;
-            text-overflow:ellipsis;
-        }
-    } 
+    }
+   
 </style>

@@ -92,10 +92,19 @@ export default {
     li{
         list-style: none;
     }
-    .maj{
-        text-align: left;
-        width: 1200px;
-        margin: 40px auto;
+    @media screen and (min-width: 1200px){
+         .maj{
+            text-align: left;
+            width: 1200px;
+            margin: 40px auto;
+        }
     }
+   @media screen and (max-width: 1199px){
+       .maj{
+            text-align: left;
+            width: 800px;
+            margin: 40px auto;
+        }
+   }
 
 </style>

@@ -11,7 +11,8 @@
                 <li v-for="(item,i) in trait" :key="i" style="font-size:15px;margin-top:10px;">{{item.name}}</li>
             </ul>
         </div> -->
-        <p style="width:400px;margin-left:15%;margin-bottom:15px;">
+        <!-- <p style="width:400px;margin-left:15%;margin-bottom:15px;"> -->
+        <p style="width:400px;margin:0 auto;">
             {{fouterBot}}
         </p>
     </div>
@@ -99,7 +100,7 @@ export default {
         //   }
     },
     mounted(){
-        console.log(this.$route.query.id,'aaa')
+        // console.log(this.$route.query.id,'aaa')
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
         this.ShowXin();
@@ -182,42 +183,33 @@ export default {
         /* display: inline-block; */
         width: 400px;
         height: 602px;
-        float: left;
-        display: inline
+        display: inline-block;
     }
     li{
         list-style: none;
     }
-    @media (min-width: 1200px) {
+    @media screen and (min-width: 1200px){
         .box{
             width: 1205px; 
             margin: 0 auto;
-            
-            /* background: orange */
         }
         .RoundNes{
             width: 800px; 
             height: 602px;
-             float:left;
-             display:inline
-            /* margin: 0 auto; */
-            /* display: inline-block */
+            display:inline-block;
+            margin: 0 auto;
         }
     }
-    @media screen and (max-width: 1200px) { 
-        .RoundNes{
+   @media screen and (max-width: 1199px){
+       .box{
             width: 800px; 
-            height: 602px;
             margin: 0 auto;
-            /* background: red */
         }
-    } 
-    @media screen and (max-width: 901px) { 
         .RoundNes{
-            width: 500px;
-            /* background: salmon; */
+            width: 600px; 
             height: 602px;
+            display: inline-block;
             margin: 0 auto;
-        } 
-    } 
+        }
+   }
 </style>

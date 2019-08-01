@@ -60,11 +60,8 @@ export default {
     .demo-spin-icon-load{
         animation: ani-demo-spin 1s linear infinite;
     }
-    @media (min-width: 1200px) { 
-       .boxT{
-            width: 1100px;
-            margin: 0 auto;
-        }
+    @media screen and (min-width: 1200px){
+       
         .segmentation{
             height: 3px;
             width: 800px;
@@ -72,13 +69,9 @@ export default {
             min-width: 1200px;
             margin: 24px auto;
         }
-     }
-     @media screen and (max-width: 1200px) { 
-        .boxT{
-            width: 800px;
-            /* background: orange; */
-            margin: 0 auto;
-        }  
+    }
+   @media screen and (max-width: 1199px){
+        
         .segmentation{
             height: 3px;
             width: 800px;
@@ -86,21 +79,5 @@ export default {
             min-width: 800px;
             margin: 24px auto;
         }
-    }    
-    @media screen and (max-width: 901px) { 
-        .boxT{
-            width: 500px;
-            /* background: salmon; */
-            margin: 0 auto;
-        } 
-    } 
-    .spanL{
-        display: block;
-        margin: 0 auto;
-        font-size: 25px;
-        text-align: left;
-    }
-    .ivu-tabs-nav .ivu-tabs-tab{
-        font-size: 25px;
-    }
+   }
 </style>

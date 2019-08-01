@@ -24,6 +24,15 @@
                     @on-cancel="cancel">
                     <Input v-model="value5" type="textarea" placeholder="填写你的建议" />
                 </Modal>
+                <!-- <Button @click="modal7 = true">Disable upper right corner (including Esc key)</Button>
+                <Modal
+                    title="Title"
+                    v-model="modal7"
+                    :closable="false">
+                    <p>Content of dialog</p>
+                    <p>Content of dialog</p>
+                    <p>Content of dialog</p>
+                </Modal> -->
                 <div class="sels_list" >
                     <div class="items">
                         <p class="i_top"></p>
@@ -37,9 +46,9 @@
                                 {{item.object}}
                             </label>
                         </p>
-                        <p class="i_bot"></p>
                 </div>
 
+                        <p class="i_bot"></p>
                 <Button @click="submit($event)">下一题</Button>
             </div>
             </div>
@@ -55,6 +64,7 @@ export default {
     data(){
         return{
              // 反馈
+            modal7: false,
             value5:"",
             modal1: false,
             // 判断下一题
@@ -81,22 +91,16 @@ export default {
             activeColorOver:'block',
             //   radio重置
             redio:"",
-            // 页面加载时的时间
-            CreaTime:"",
-            aaa:""
         }
     },
     created(){
         this.ubid = this.$route.query.id;
         this.judge = this.$route.query.judge;
-        if(this.judge === "第一部分没做"){
-            this.condition()
-        }else{
-            this.rubric();
-        }
-        this.confirm();
+        // this.confirm();
     },
-    mounted(){},
+    mounted(){
+        this.condRubir();
+    },
     methods:{
         // 意见方法
         ok () {
@@ -105,7 +109,7 @@ export default {
                 let data = {
                     matter:this.matter,
                     content:this.value5,
-                    uid:this.ubid
+                    uid: this.ubid
                 }
                 console.log(data,'反馈')
                 axios.post('http://192.168.1.100:8080/AssessFeedback/save_feedback',
@@ -133,6 +137,15 @@ export default {
                 });
         },
         // 判断条件发id
+        condRubir(){
+            this.answer();
+            if(this.judge === "第一部分没做"){
+               this.condition()
+            }else{
+                this.rubric();
+                console.log('第一部分没做完。。。。。。。。。。。')
+            }
+        },
         condition(){
             let save = this.ubid;
             axios.post('http://192.168.1.100:8080/AssessMatter/saveMatter',
@@ -155,11 +168,11 @@ export default {
             )
             .then((res)=>{
                 this.title = res.data
-                console.log(this.title,'title---------------')
+                console.log(this.title,'title---------+++++++++++++++++++++------')
             }),(err)=>{
                 console.log(err,'err')
             };
-            this.answer();
+            // this.answer();
         },
         answer(){
             // 选项
@@ -197,21 +210,6 @@ export default {
             // 题
             let matter = this.matter;
             
-            // 时间test实验
-            // let time = new Date();
-            // let TimeCl = time.getTime();
-            // let CreaTime = this.CreaTime;
-            // let TimeCre = CreaTime.getTime();
-            // this.aaa = (TimeCl - TimeCre)/1000;
-            // let a = this.aaa;
-            // let aa = this.aaa - a;
-            // let bb = ""
-            // if(aa === 0){
-            //     aa = a;
-            // }else{
-            
-            // }
-            
             let data = {
                 typ : typ,
                 id : mid,
@@ -219,12 +217,10 @@ export default {
                 uid : uid,
                 matter : matter,
                 code : 1
-                // time:a
             }
             let obj = [];
             obj.push(data)
             if(typ == "" || mid == "" || score == "" || matter == "" || uid == undefined){
-            // if(typ == "" || mid == "" || score == "" || uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
                 axios.post('http://192.168.1.100:8080/AssessMatter/save',
@@ -241,16 +237,14 @@ export default {
                 this.title.shift()
                 this.redio = "";
                 this.matter = ""
-                // this.aaa = ""\
                 if(this.title.length == 0){
                     let headbox = this.$refs.headbox
                     headbox.style.display = "none"
                     this.sendMsg();
                 }
                 console.log(this.title)
-                // console.log(data,'data')
             }
-        },
+        }, 
         sendMsg(){
             this.$emit('listTop','this.message')
         }
@@ -259,7 +253,7 @@ export default {
 </script>
 
 <style scoped>
-     .surveydetail{
+     /* .surveydetail{
         width: 500px;
         height: 1000px;
         overflow: hidden;
@@ -300,7 +294,69 @@ export default {
         margin-inline-end: 0px;
     }
     .sels_list {
-        /* overflow: hidden; */
+        width: 500px;
+        height: 600px;
+    }
+    .sels_list .items {
+        cursor: pointer;
+        display: block;
+        padding-top: 5px;
+        width: 640px;
+        text-align: left;
+        margin-left: 40%;
+    }
+    .sels_list .items .i_top, .sels_list .items .i_bot {
+        height: 5px;
+        width: 640px;
+    }
+    .sels_list .items .i_mid {
+        padding: 2px 9px 2px 15px;
+    }
+    .sels_list .items .sels {
+        padding-right: 8px;
+        vertical-align: middle;
+    } */
+    .surveydetail{
+        width: 500px;
+        height: 1000px;
+        overflow: hidden;
+        margin: 50px auto 300px
+    }
+    .surveydetailTw{
+        width: 500px;
+        height: 1000px;
+        overflow: hidden;
+        margin: 100px auto
+    }
+     div {
+        display: block;
+    };
+    .test_contents {
+        border: 1px;
+        margin: 8px;
+        margin-top: 10px;
+        padding: 7px;
+        width: 670px;
+        display: block;
+    };
+    .surveydetail p {
+        line-height: 26px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .descs {
+        font-size: 14px;
+        font-weight: bold;
+        display: inline-block;
+    }
+    p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    .sels_list {
         width: 500px;
         height: 600px;
     }

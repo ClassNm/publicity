@@ -148,10 +148,10 @@ export default {
 </script>
 
 <style scoped>
-    @media (min-width: 1200px) { 
+    @media screen and (min-width: 1200px){
         .box{
             width: 1205px; 
-            margin: 0 auto;
+            margin: 20px auto;
         }
         .Repor{
             width: 1105px; 
@@ -159,21 +159,16 @@ export default {
             margin: 0 auto;
         }
     }
-    @media screen and (max-width: 1200px) { 
+    @media screen and (max-width: 1199px){
+        .box{
+            width: 800px; 
+            margin: 20px auto;
+        }
         .Repor{
             width: 800px; 
             height: 602px;
             margin: 0 auto;
-            /* background: red */
         }
-    } 
-    @media screen and (max-width: 901px) { 
-        .Repor{
-            width: 500px;
-            /* background: salmon; */
-            height: 602px;
-            margin: 0 auto;
-        } 
-    } 
+    }
 </style>
 

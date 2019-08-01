@@ -13,6 +13,7 @@
                 v-model="modal1"
                 title="意见反馈"
                 @on-ok="ok"
+                :mask-closable="false"
                 @on-cancel="cancel">
                 <Input v-model="value5" type="textarea" placeholder="填写你的建议" />
             </Modal>

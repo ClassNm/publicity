@@ -18,7 +18,6 @@ import TwoRadio from './TwoRadio'
 import FourRadio from './FourRadio'
 
 import axios from 'axios';
-// import { setTimeout } from 'timers';
 
 // axios方法
 // import { AnsID } from '../../../actions'
