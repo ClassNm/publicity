@@ -111,8 +111,7 @@ export default {
                     content:this.value5,
                     uid: this.ubid
                 }
-                console.log(data,'反馈')
-                axios.post('http://192.168.1.100:8080/AssessFeedback/save_feedback',
+                axios.post('http://47.104.245.242:8081/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -143,12 +142,11 @@ export default {
                this.condition()
             }else{
                 this.rubric();
-                console.log('第一部分没做完。。。。。。。。。。。')
             }
         },
         condition(){
             let save = this.ubid;
-            axios.post('http://192.168.1.100:8080/AssessMatter/saveMatter',
+            axios.post('http://47.104.245.242:8081/AssessMatter/saveMatter',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -162,13 +160,12 @@ export default {
         rubric(){
             // 题目
             let data = this.ubid;
-            axios.post('http://192.168.1.100:8080/AssessMatter/showMatter',
+            axios.post('http://47.104.245.242:8081/AssessMatter/showMatter',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.title = res.data
-                console.log(this.title,'title---------+++++++++++++++++++++------')
             }),(err)=>{
                 console.log(err,'err')
             };
@@ -177,7 +174,7 @@ export default {
         answer(){
             // 选项
             let obj3 = 3;
-            axios.post('http://192.168.1.100:8080/AssessObject/obj3',
+            axios.post('http://47.104.245.242:8081/AssessObject/obj3',
             obj3,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -223,7 +220,7 @@ export default {
             if(typ == "" || mid == "" || score == "" || matter == "" || uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://192.168.1.100:8080/AssessMatter/save',
+                axios.post('http://47.104.245.242:8081/AssessMatter/save',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
@@ -242,7 +239,6 @@ export default {
                     headbox.style.display = "none"
                     this.sendMsg();
                 }
-                console.log(this.title)
             }
         }, 
         sendMsg(){
@@ -253,69 +249,6 @@ export default {
 </script>
 
 <style scoped>
-     /* .surveydetail{
-        width: 500px;
-        height: 1000px;
-        overflow: hidden;
-        margin: 50px auto 300px
-    }
-    .surveydetailTw{
-        width: 500px;
-        height: 1000px;
-        overflow: hidden;
-        margin: 100px auto
-    }
-     div {
-        display: block;
-    };
-    .test_contents {
-        border: 1px;
-        margin: 8px;
-        margin-top: 10px;
-        padding: 7px;
-        width: 670px;
-        display: block;
-    };
-    .surveydetail p {
-        line-height: 26px;
-        margin: 0px;
-        padding: 0px;
-    }
-    .descs {
-        font-size: 14px;
-        font-weight: bold;
-        display: inline-block;
-    }
-    p {
-        display: block;
-        margin-block-start: 1em;
-        margin-block-end: 1em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
-    .sels_list {
-        width: 500px;
-        height: 600px;
-    }
-    .sels_list .items {
-        cursor: pointer;
-        display: block;
-        padding-top: 5px;
-        width: 640px;
-        text-align: left;
-        margin-left: 40%;
-    }
-    .sels_list .items .i_top, .sels_list .items .i_bot {
-        height: 5px;
-        width: 640px;
-    }
-    .sels_list .items .i_mid {
-        padding: 2px 9px 2px 15px;
-    }
-    .sels_list .items .sels {
-        padding-right: 8px;
-        vertical-align: middle;
-    } */
     .surveydetail{
         width: 500px;
         height: 1000px;

@@ -91,7 +91,6 @@ export default {
         // this.CreaTime = new Date()
         this.ubid = this.$route.query.id;
         this.judge = this.$route.query.judge;
-        // console.log('Firstrrrrrrrrrrrrrrrrrrrrrr')
         // let AnsIDNumb = this.$route.query.id;
         // AnsID(AnsIDNumb)
     },
@@ -117,8 +116,7 @@ export default {
                     content:this.value5,
                     uid:this.ubid
                 }
-                console.log(data,'反馈')
-                axios.post('http://192.168.1.100:8080/AssessFeedback/save_feedback',
+                axios.post('http://47.104.245.242:8081/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -140,7 +138,6 @@ export default {
                     content: '<p>16道题</p>',
                     onOk: () => {
                         // this.$Message.info('Clicked ok');
-                        // console.log('aaaaaaaaaaa');
                     }
                 });
         },
@@ -148,32 +145,29 @@ export default {
         condition(){
             let save = this.ubid;
             // let save = 10;
-            // console.log('第一遍id发送')
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_xinLi',
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_xinLi',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.mentality = res.data[0].typ
-                console.log(this.mentality)
                 this.rubric();
             }),(err)=>{
-                console.log(err,'err')
+                console.log(err)
             }
         },
         // 展示的题跟答案
         rubric(){
             // 题目
-            let data = this.$route.query.id;
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_xinLi',
+             let data = this.ubid;
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_xinLi',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.title = res.data
-                //  console.log(this.title,'16')
             }),(err)=>{
-                console.log(err,'err')
+                console.log(err)
             };
             this.answer();    
         },
@@ -181,14 +175,14 @@ export default {
         answer(){
             // 选项
             let obj3 = 3;
-            axios.post('http://192.168.1.100:8080/AssessObject/obj3',
+            axios.post('http://47.104.245.242:8081/AssessObject/obj3',
             obj3,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.list = res.data
             }),(err)=>{
-                console.log(err,'err')
+                console.log(err)
             };
         },
 
@@ -197,12 +191,10 @@ export default {
             this.type = index.typ;
             this.topic = index.id
             this.matter = index.matter   
-            // console.log(index,'indexaaaaaaaaa')     
         },
         // 获取兴趣题的id
         present(index){
             this.score = index.id;
-            console.log(index,'index')
         },
         submit(e){
             // 类型
@@ -245,13 +237,13 @@ export default {
             if(typ == "" || score == "" || matter == ""|| uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://192.168.1.100:8080/AssessScoreXinli/save_xinli',
+                axios.post('http://47.104.245.242:8081/AssessScoreXinli/save_xinli',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
                     .then((res)=>{
                     }),(err)=>{
-                        console.log(err,'err')
+                        console.log(err)
                     }
                 this.type = "",
                 this.topic = "",
@@ -264,8 +256,6 @@ export default {
                     let headbox = this.$refs.headbox
                     headbox.style.display = "none"
                 }
-                console.log(this.title)
-                // console.log(data,'data')
             }
         }
     }

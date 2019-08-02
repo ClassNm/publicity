@@ -13,9 +13,6 @@ import Setout from './components/common/loginAndReg/Setout.vue'
 // 答题页面
 import Answer from  './components/common/answerAll/Answer.vue'
 
-// 测试
-// import test from './components/common/test.vue'
- 
 // 报告表
 import Reported from './components/common/Reported.vue'
 

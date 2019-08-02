@@ -148,11 +148,8 @@ export default {
             // TYPtWO : ""
         }
     },
-    // props:["typTwo"],
     created(){
         this.uid = this.$route.query.id;
-        // let TYPtWO = this.typTwo
-        // this.CreaTime = new Date()
     },
     watch:{
         typTwo(n,o){
@@ -162,11 +159,7 @@ export default {
         }
     },
     mounted(){
-        console.log(this.typTwo,'TYPOWWW')
-        // this.confirm();
-        // if(this.typTwo == 2){
-            this.acquire();
-        // }
+            // this.acquire();
     },
     methods:{ 
         confirm () {
@@ -182,16 +175,15 @@ export default {
         acquire(){
                 // 用户的uid
             // this.uid = this.$route.query.id;
-            let see = 128;
-            // let see = this.uid;
-            axios.post('http://192.168.1.100:8080/AssessMatter/showMatter2',
+            // let see = 128;
+            let see = this.uid;
+            axios.post('http://47.104.245.242:8081/AssessMatter/showMatter2',
             see,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
             // 答案
                 this.fone = res.data;
-                // console.log(this.fone)
                 this.result = res.data[0]
                 this.resultTwo = res.data[1]
                 this.resultThree = res.data[2]
@@ -208,8 +200,7 @@ export default {
                     content:this.value5,
                     uid:this.uid
                 }
-                console.log(data,'反馈')
-                axios.post('http://192.168.1.100:8080/AssessFeedback/save_feedback',
+                axios.post('http://47.104.245.242:8081/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -227,7 +218,7 @@ export default {
         },
         //发送数据给后台
         postBack(data){
-            axios.post('http://192.168.1.100:8080/AssessMatter/save2',
+            axios.post('http://47.104.245.242:8081/AssessMatter/save2',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -334,7 +325,6 @@ export default {
                 this.proofread(data)
                 let canvas=this.$refs.box2;
                 this.disPl(canvas)
-                // console.log(data)
                 if(this.fone.length === 1){
                     let headbox = this.$refs.HeaderBox;
                     headbox.style.display = "none"
@@ -346,14 +336,6 @@ export default {
             }else{
                 this.err();
             }
-            // 时间test实验
-
-            // let time = new Date()
-            // let TimeCl = time.getTime();
-            // let CreaTime = this.CreaTime;
-            // let TimeCre = CreaTime.getTime();
-            // let delaT = (TimeCl - TimeCre)/1000;
-            // console.log(delaT,'时间差')
         },
         resultTwoMe(){
             if(this.checkAllGroup.length===3){
@@ -367,14 +349,11 @@ export default {
                 this.proofread(data)
                 let canvas=this.$refs.resultTwo;
                 this.disPl(canvas)
-                console.log(data)
                 if(this.fone.length === 2){
                     let headbox = this.$refs.HeaderBox;
                     headbox.style.display = "none"
                     this.Twoee = false
                 }
-                // console.log(this.fone.length)
-               
                 this.checkAllGroup = []
             }else{
                 this.err();
@@ -393,7 +372,6 @@ export default {
                 let canvas=this.$refs.resultThree;
                 let headbox = this.$refs.HeaderBox;
                 this.disPl(canvas)
-                console.log(data)
                 headbox.style.display = "none"
                 this.checkAllGroup = []
             }else{

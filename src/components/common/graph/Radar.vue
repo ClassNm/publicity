@@ -69,32 +69,28 @@ export default {
         }
     },
     created(){
-        // console.log(this.$route.query.id)
     },
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
         this.describeTit();
         this.complianceMeth();
-        // this.imgMeth();
     },
     methods:{
         // 信息
         describeTit(){
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.100:8080/AssessScoreMbti/show_mbti',
+            axios.post('http://47.104.245.242:8081/AssessScoreMbti/show_mbti',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 let arr = this.data1[0]
-                // console.log(arr,'arr')
                 arr.age = res.data.object
                 arr.address = res.data.object1
                 arr.name = res.data.typ
                 this.headerTit = res.data.typ
                 let typ = res.data.typ;
-                // console.log(typ,'typ')
                 this.imgMeth(typ);
              }),(err)=>{
                 console.log(err)
@@ -102,12 +98,11 @@ export default {
         },
         complianceMeth(){
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.100:8080/AssessScoreMbti/show_fuhedu',
+            axios.post('http://47.104.245.242:8081/AssessScoreMbti/show_fuhedu',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                // console.log(res.data)
                 // let arr = this.data1[0]
                 // arr.compliance
                 this.data1[0].compliance = res.data;
@@ -147,12 +142,11 @@ export default {
             // 处理echarts异步操作 copy的官网实例
             let data = this.$route.query.id;
             // let data = 33;
-            axios.post('http://192.168.1.100:8080/AssessScoreMbti/mbti_num',
+            axios.post('http://47.104.245.242:8081/AssessScoreMbti/mbti_num',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res) => {
-                // console.log(res.data,'eeeeeeeeeeeeeeee')
                 this.score = res.data;
                 myChart.setOption({
                      series: [{
@@ -171,13 +165,12 @@ export default {
         },
         imgMeth(index){
             let data = index;
-            axios.post('http://192.168.1.100:8080/AssessPictures/show_picture',
+            axios.post('http://47.104.245.242:8081/AssessPictures/show_picture',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
 
-                // console.log(res.data)
                 this.ImgLengt = res.data;
             })
         }

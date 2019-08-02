@@ -10,31 +10,20 @@
 
 
 <script>
-// 头部导航
-// import Login from './common/Login'
-// 底部
-// import Footer from './common/Footer'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-      // value1: 0
     }
-  },
-  components:{
-    // Login,
-    // Carousel,
-    // Footer
   },
   methods:{
-    caruse(){
-      this.router.push('/Login')
-    }
+    // caruse(){
+    //   this.router.push('/Login')
+    // }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
     .but{
       width: 200px;

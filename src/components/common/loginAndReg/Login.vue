@@ -76,25 +76,23 @@ import axios from 'axios';
 
                 }
                 let uid = ""
-                axios.post('http://192.168.1.100:8080/AssessUser/fingByPassWord',
+                axios.post('http://47.104.245.242:8081/AssessUser/fingByPassWord',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
                     this.information = res.data
-                    console.log(res.data,'res')
                     let arr = res.data.split(',')
                     this.id = arr[0]
                     this.judge = arr[1];
                     if(this.information==="用户名或密码错误"){
-                        // alert(this.information)
                         this.$Message.error(this.information);
                     }else{
                         if(this.judge==="第一部分没做"||this.judge==="第一部分没做完"||this.judge==="第二部分没做"||this.judge==="第二部分没做完"||this.judge==="第三部分没做"||this.judge==="第三部分没做完"||this.judge==="第四部分没做"||this.judge==="第四部分没做完"){
                             let id = this.id;
                             let judge = this.judge;
                             this.$router.push({path:'/answer',query:{id:id,judge:judge}})
-                        }else if(this.judge==="全部做完,可查看报告"){
+                        }else if(this.judge==="全部做完"){
                             let id = this.id;
                             this.$router.push({path:'/reported',query:{id:id}})
                         }
@@ -120,7 +118,7 @@ import axios from 'axios';
         .popUp{
             width: 500px;
             height: 500px;
-            margin-left: 70%;
+            margin-left: 63%;
             background: white;
         }
         .size{
@@ -135,7 +133,7 @@ import axios from 'axios';
         .inputText{
             height:50px;
             width:300px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
      }
      @media screen and (max-width: 1199px){
@@ -150,7 +148,7 @@ import axios from 'axios';
         .popUp{
             width: 300px;
             height: 300px;
-            margin-left: 70%;
+            margin-left: 63%;
             background: white;
         }
         .size{

@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <h1>
+        <h1 class="Hheader">
             注册页面
         </h1>  
         <div>
@@ -46,6 +46,36 @@
             <br>
             <div class="fout">
                 <span class="leis">
+                    地区：
+                </span>
+                <!-- 省份 -->
+                <Select v-model="location" style="width:100px;margin-right:5px;" @on-change="city">
+                    <Option v-for="item in cityList" :value="item.id" :key="item.id">{{ item.name }}</Option>
+                </Select>
+                <!-- 市份 -->
+                <Select v-model="locationSon" style="width:100px;margin-right: 5px;" @on-change="county">
+                    <Option v-for="item in cityList1" :value="item.id" :key="item.id">{{ item.name }}</Option>
+                </Select>
+                <!-- 区县份 -->
+                <Select v-model="locationSonAg" style="width:100px;margin-right: 5px;" @on-change="school">
+                    <Option v-for="item in cityList2" :value="item.name" :key="item.name">{{ item.name }}</Option>
+                </Select>
+            </div>
+            <br>
+            <div class="fout">
+                <span class="leis">
+                    学校：
+                <!-- </li>  -->
+                </span>
+                <!-- 学校 -->
+                <Select v-model="schoolNa" style="width:100px;margin-right:5px;">
+                    <Option v-for="item in cityList3" :value="item.school" :key="item.id">{{ item.school }}</Option>
+                </Select>
+               <Input v-model="school1" placeholder="如列表中无你的学校，请在此填写" title="如列表中无你的学校，请在此填写" clearable style="width: 210px;" class="INt" />
+            </div>
+            <br>
+            <div class="fout">
+                <span class="leis">
                     文理：
                 </span>
                 <Select v-model="artsAndSciences" clearable style="width:200px">
@@ -71,30 +101,10 @@
                 <Input v-model="clas" placeholder="班级" clearable style="width: 200px" class="INt" />
             </div>
             <br>
-            <div class="fout">
-                <span class="leis">
-                    所在地：
-                </span>
-                <!-- 省份 -->
-                <Select v-model="location" style="width:100px" @on-change="city">
-                    <Option v-for="item in cityList" :value="item.id" :key="item.id">{{ item.name }}</Option>
-                </Select>
-                <!-- 市份 -->
-                <Select v-model="locationSon" style="width:100px" @on-change="county">
-                    <Option v-for="item in cityList1" :value="item.id" :key="item.id">{{ item.name }}</Option>
-                </Select>
-                <!-- 区县份 -->
-                <Select v-model="locationSonAg" style="width:100px" @on-change="school">
-                    <Option v-for="item in cityList2" :value="item.name" :key="item.name">{{ item.name }}</Option>
-                </Select>
-                <!-- 学校 -->
-                <Select v-model="schoolNa" style="width:100px">
-                    <Option v-for="item in cityList3" :value="item.school" :key="item.id">{{ item.school }}</Option>
-                </Select>
-            </div>
+            
             <br>
         </div>
-            <Button type="dashed" class="But" @click="Submit">注册账号</Button>
+        <Button type="dashed" class="But" @click="Submit">注册账号</Button>
     </div>
 </template>
 <script>    
@@ -134,6 +144,7 @@ export default {
             value3: '',
             value4: '',
             value5: '',
+            school1:"",
             // 账号
             phone: '',
             value12: '',
@@ -196,23 +207,21 @@ export default {
     },
     created(){
         // 省份数据
-        axios.post('http://192.168.1.100:8080/City/findByCode')
+        axios.post('http://47.104.245.242:8081/City/findByCode')
         .then((res)=>{
             this.cityList = res.data
-            // console.log(res.data)
         }),(err)=>{
             console.log(error)
         }
 
         // 文理科
         let obj2 = 2;
-        axios.post('http://192.168.1.100:8080/AssessObject/obj2',
+        axios.post('http://47.104.245.242:8081/AssessObject/obj2',
         obj2,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
         .then((res)=>{
             this.cityListO = res.data
-            // console.log(res.data)
         }),(err)=>{
             console.log(error)
         }
@@ -221,40 +230,33 @@ export default {
          // 所在地  市份
             city(word){
                 let data = word;
-                // console.log(data)
-                axios.post('http://192.168.1.100:8080/City/findById',
+                axios.post('http://47.104.245.242:8081/City/findById',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    // console.log(res)
                     this.cityList1 = res.data
                 })
             },
             // 所在地  县份
             county(word){
                 let data = word;
-                // console.log(data)
-                // http://192.168.1.113:8080/City/findByCode2
-                axios.post('http://192.168.1.100:8080/City/findByCode2',
+                axios.post('http://47.104.245.242:8081/City/findByCode2',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    // console.log(res)
                     this.cityList2 = res.data
                 })
             },
             // 所在地  学校
             school(word){
                 let data = word;
-                // console.log(data)
-                axios.post('http://192.168.1.100:8080/City/findByCode3',
+                axios.post('http://47.104.245.242:8081/City/findByCode3',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    // console.log(res)
                     this.cityList3 = res.data
                 })
             },
@@ -281,6 +283,7 @@ export default {
                 let address = location+i3+locationSon+i3+locationSonAg;
                 // 学校
                 let school = this.schoolNa;
+                let school1 = this.school1;
                 // 班级
                 let clas = this.clas;
 
@@ -294,6 +297,7 @@ export default {
                     address : address,
                     school : school,
                     clas : clas,
+                    school1 : school1
                 }
                 if(phone == "" || passWord == "" 
                     || name == "" || sex == "" || 
@@ -303,12 +307,11 @@ export default {
                 {
                     this.$Message.warning('请填写完整信息')
                 }else{
-                    axios.post('http://192.168.1.100:8080/AssessUser/save',
+                    axios.post('http://47.104.245.242:8081/AssessUser/save',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
                     .then((res)=>{
-                        // alert(res.data);
                         this.$Message.info(res.data);
                         if(res.data==="注册成功"){
                             this.$router.push('/login')
@@ -328,33 +331,28 @@ export default {
         text-align: left
     }
     .fout{
-        margin-top: 20px
+        margin-top: 20px;
+        text-align: left;
+        width: 400px;
+        margin-left: 25%;
     }
     .But{
         margin-top: 20px;
-        width: 100px;
+        text-align: left;
+    }
+    .Hheader{
+        // width: 100px;
+        text-align: left;
+        // background: red;
+        display: inline;
     }
     .One{
         display: inline-block;
     }
-    
-     @media (min-width: 1200px) { 
-       .box{
-            text-align: center;
-            margin-top: 200px;
-        }
-     }
-     @media screen and (max-width: 1200px) { 
-        .box{
-            text-align: center;
-            margin: 100px;
-        }  
-    }    
-    @media screen and (max-width: 901px) { 
-        .box{
-            text-align: center;
-            margin: 50px;
-        } 
-    } 
+    .box{
+        // text-align: center;
+        margin: 200px auto 0 auto;
+        width: 600px;
+    }
 
 </style>

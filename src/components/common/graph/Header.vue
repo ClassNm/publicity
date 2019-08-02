@@ -65,7 +65,7 @@ import axios from 'axios';
         },
         methods:{
             Report(){
-                axios.post('http://192.168.1.100:8080/assessReport/show_Report',
+                axios.post('http://47.104.245.242:8081/assessReport/show_Report',
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
@@ -76,8 +76,7 @@ import axios from 'axios';
             },
             ShowUser(){
                 let data = this.$route.query.id;
-                // let data = 43
-                axios.post('http://192.168.1.100:8080/assessReport/show_User',
+                axios.post('http://47.104.245.242:8081/assessReport/show_User',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -113,27 +112,20 @@ import axios from 'axios';
             },
             echo(){
                 let uid  = this.$route.query.id;
-                // let uid = 3;
-                axios.post('http://192.168.1.100:8080/AssessTime/show_time',
+                axios.post('http://47.104.245.242:8081/AssessTime/show_time',
                 uid,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
-                    console.log(res.data)
                     let arr = res.data;
                     let timeStart = arr.start;
                     let timeStop = arr.stop;
                     let Difference = timeStop - timeStart;
                     var dateTime = this.getMyDate(parseInt(timeStart));
-                    // var dateTimeDiff = this.getMyDate(parseInt(Difference));
                     var minutes = parseInt((Difference % (1000 * 60 * 60)) / (1000 * 60));
-                    // let aa = a.toLocaleString( );
-                    console.log(minutes,'sto')
-                    // console.log(dateTime,'a')
                     let ary = this.data1[0]
                     ary.time = dateTime
                     ary.schedu = minutes+"分钟"
-                    // var mytime=time.toLocaleTimeString();
                 }),(err)=>{
 
                 }

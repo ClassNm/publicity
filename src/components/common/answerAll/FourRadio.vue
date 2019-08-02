@@ -88,12 +88,8 @@ export default {
         }
     },
     created(){
-        // this.CreaTime = new Date()
         this.ubid = this.$route.query.id;
         this.judge = this.$route.query.judge;
-        // let AnsIDNumb = this.$route.query.id;
-        // AnsID(AnsIDNumb)
-        // console.log("MBTI")
     },
     mounted(){
         // 如果没答过题先发一遍ID
@@ -109,8 +105,7 @@ export default {
                     content:this.value5,
                     uid:this.ubid
                 }
-                console.log(data,'反馈')
-                axios.post('http://192.168.1.100:8080/AssessFeedback/save_feedback',
+                axios.post('http://47.104.245.242:8081/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -132,7 +127,6 @@ export default {
                 content: '<p>32道题</p>',
                 onOk: () => {
                     // this.$Message.info('Clicked ok');
-                    // console.log('aaaaaaaaaaa');
                 }
             });
         },
@@ -140,15 +134,13 @@ export default {
         // 判断条件发id
         condition(){
             let save = this.ubid;
-            // console.log('第一遍id发送')
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_Mbti',
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_Mbti',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.mentality = res.data[0].typ
                 this.rubric();
-                // console.log('111111111111111111111')
             }),(err)=>{
                 console.log(err,'err')
             }
@@ -157,13 +149,12 @@ export default {
         rubric(){
             // 题目
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_Mbti',
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_Mbti',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.title = res.data
-                // console.log(this.title)
             }),(err)=>{
                 console.log(err,'err')
             };
@@ -173,7 +164,7 @@ export default {
         answer(){
             // 选项
             let obj3 = 3;
-            axios.post('http://192.168.1.100:8080/AssessObject/obj3',
+            axios.post('http://47.104.245.242:8081/AssessObject/obj3',
             obj3,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -189,12 +180,10 @@ export default {
             this.type = index.typ;
             this.topic = index.id
             this.matter = index.matter   
-            // console.log(index,'indexaaaaaaaaa')     
         },
         // 获取兴趣题的id
         present(index){
             this.score = index.id;
-            // console.log(index,'index')
         },
         submit(e){
             // 类型
@@ -208,21 +197,6 @@ export default {
             // 题
             let matter = this.matter;
             
-            // 时间test实验
-            // let time = new Date();
-            // let TimeCl = time.getTime();
-            // let CreaTime = this.CreaTime;
-            // let TimeCre = CreaTime.getTime();
-            // this.aaa = (TimeCl - TimeCre)/1000;
-            // let a = this.aaa;
-            // let aa = this.aaa - a;
-            // let bb = ""
-            // if(aa === 0){
-            //     aa = a;
-            // }else{
-            
-            // }
-            
             let data = {
                 typ : typ,
                 id : mid,
@@ -230,14 +204,13 @@ export default {
                 uid : uid,
                 matter : matter,
                 code : 1
-                // time:a`
             }
             let obj = [];
             obj.push(data)
             if(typ == "" || score == "" || matter == ""|| uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://192.168.1.100:8080/AssessScoreMbti/save_mbti',
+                axios.post('http://47.104.245.242:8081/AssessScoreMbti/save_mbti',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
@@ -257,10 +230,7 @@ export default {
                     let id = this.ubid;
                     this.Starting();
                     this.$router.push({path:'/reported',query:{id:id}})
-                    // let time = new Date()
                 }
-                // this.aaa = ""
-                console.log(this.title,'title')
             }
         },
         Starting(){
@@ -271,7 +241,7 @@ export default {
                 stop : time,
                 uid : uid,
             }
-            axios.post('http://192.168.1.100:8080/AssessTime/save_stop',
+            axios.post('http://47.104.245.242:8081/AssessTime/save_stop',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )

@@ -70,8 +70,7 @@ export default {
     methods:{
         category(){
             let data = this.$route.query.id;
-            // let data = 43
-            axios.post('http://192.168.1.100:8080/AssessScore/showResult',
+            axios.post('http://47.104.245.242:8081/AssessScore/showResult',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )

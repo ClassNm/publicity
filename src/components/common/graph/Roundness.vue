@@ -100,7 +100,6 @@ export default {
         //   }
     },
     mounted(){
-        // console.log(this.$route.query.id,'aaa')
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
         this.ShowXin();
@@ -109,7 +108,7 @@ export default {
         ShowXin(){
             let data = this.$route.query.id;
             // let data = 43;
-            axios.post('http://192.168.1.100:8080/AssessScoreXinli/show_xinli',
+            axios.post('http://47.104.245.242:8081/AssessScoreXinli/show_xinli',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -148,12 +147,11 @@ export default {
             // 处理echarts异步操作 copy的官网实例
             let data = this.$route.query.id;
             // let data = 33;
-            axios.post('http://192.168.1.100:8080/AssessScoreXinli/xinli_num',
+            axios.post('http://47.104.245.242:8081/AssessScoreXinli/xinli_num',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res) => {
-                // console.log(res.data,'eeeeeeeeeeeeeeee')
                 this.score = res.data;
                 myChart.setOption({
                      series: [{
