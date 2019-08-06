@@ -135,30 +135,44 @@ import axios from 'axios';
 </script>
 
 <style scoped>
+    @media print { body { color: #000; background: #fff; } }
     li{
         list-style: none
     }
     .IvIcon{
         color: red;
     }
+    /* ul{
+        display: block;
+        margin:0;
+        padding:0
+    } */
     @media screen and (min-width: 1200px){
          .Repor{
             width: 1205px; 
             margin: 0 auto;
+            /* display: flex; */
+            /* justify-content: center; */
+            /* align-items: center */
         }
         .fouter{
             margin-top: 20px;
-            text-align: left;
             width: 1205px;
             background: #fff9f9;
-            border: 1px dashed red;
+            border: 1px dashed red !important;
+
         }
         .fouterSon{
-            margin-left: 3%;
-            margin-top: 5px;
+            display: flex !important;
+            /* flex: 1 !important; */
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 5px !important;
             white-space:nowrap;
             overflow: hidden;
             text-overflow:ellipsis;
+            
         }
      }
     @media screen and (max-width: 1199px){

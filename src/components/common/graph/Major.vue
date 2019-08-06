@@ -9,11 +9,17 @@
                     <li style="color:#708090;display:inline-block;">
                         {{designation}}
                     </li> 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{synopsis}}
                 </div>
                 <Divider />
-                <li v-for="(item,i) in utmost" :key="i" style="font-size:15px;margin:5px 0;">{{item}}</li>
+                <li v-for="(item,i) in test" :key="i" style="font-size:15px;margin-top:5px;">
+                    <div style="display:inline-block;width:600px;">
+                        {{item.name}}
+                    </div>
+                    <div style="display:inline-block;width: 600px;">
+                        <Rate clearable :value="item.num" disabled :count="12" /> 
+                    </div>
+                
+                </li>
             </ul>
         </div>
         <div class="maj">
@@ -25,11 +31,16 @@
                     <li style="color:#708090;display:inline-block;">
                         {{designation}}
                     </li> 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{synopsis}}
                 </div>
                 <Divider />
-                <li v-for="(item,i) in very" :key="i" style="font-size:15px;margin:5px 0;">{{item}}</li>
+                <li v-for="(item,i) in very" :key="i" style="font-size:15px;margin:5px 0;">
+                    <div style="display:inline-block;width: 600px;">
+                        {{item}}
+                    </div>
+                    <div style="display:inline-block;width: 600px;">
+                        <Rate clearable v-model="value1" disabled  :count="12" /> 
+                    </div>
+                </li>
             </ul>
         </div>
        <div class="maj">
@@ -41,11 +52,16 @@
                     <li style="color:#708090;display:inline-block;">
                         {{designation}}
                     </li> 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    {{synopsis}}
                 </div>
                 <Divider />
-                <li v-for="(item,i) in common" :key="i" style="font-size:15px;margin:5px 0;">{{item}}</li>
+                <li v-for="(item,i) in common" :key="i" style="font-size:15px;margin:5px 0;">
+                    <div style="display:inline-block;width: 600px;">
+                        {{item}}
+                    </div>
+                    <div style="display:inline-block;width: 600px;">
+                        <Rate clearable v-model="value1" disabled  :count="12" /> 
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
@@ -57,11 +73,49 @@ export default {
     data(){
         return{
             designation : "专业(类)名称",
-            synopsis : "专业简介",
             // 3块专业
             utmost:[],
             very:[],
-            common:[]
+            common:[],
+            value1:10,
+            lengNum:[
+                1,
+                3,
+                4,
+                6,
+                2,
+                9,
+                11,
+                12,
+                9,
+                1
+            ],
+            test:[
+                {
+                    name:"应用生物科学",
+                    num:"10"
+                },
+                {
+                    name:"动物医学",
+                     num:"1"
+                },
+                {
+                    name:"动物药学",
+                     num:3
+                },
+                {
+                    name:"生物医学",
+                     num:1
+                },
+                {
+                    name:"基础医学",
+                     num:9
+                },
+                {
+                    name:"生物医学科学",
+                     num:12
+                },
+            ],
         }
     },
     created(){

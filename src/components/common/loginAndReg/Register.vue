@@ -68,10 +68,18 @@
                 <!-- </li>  -->
                 </span>
                 <!-- 学校 -->
-                <Select v-model="schoolNa" style="width:100px;margin-right:5px;">
+                <Select v-model="schoolNa" style="width:100px;margin-right:5px;" :disabled = decide>
                     <Option v-for="item in cityList3" :value="item.school" :key="item.id">{{ item.school }}</Option>
                 </Select>
-               <Input v-model="school1" placeholder="如列表中无你的学校，请在此填写" title="如列表中无你的学校，请在此填写" clearable style="width: 210px;" class="INt" />
+               <Input 
+               v-model="school1" 
+               @on-change="field"
+               placeholder="如列表中无你的学校，请在此填写" 
+               title="如列表中无你的学校，请在此填写" 
+               clearable 
+               style="width: 210px;" 
+               class="INt" 
+               />
             </div>
             <br>
             <div class="fout">
@@ -202,6 +210,7 @@ export default {
             locationSonAg: '',
             // 学校
             schoolNa: '',
+            decide:false
                 
         };
     },
@@ -260,6 +269,15 @@ export default {
                     this.cityList3 = res.data
                 })
             },
+            // 学习input
+            field(){
+                if(this.school1!=""){
+                    this.schoolNa ="",
+                    this.decide=true
+                }
+                // console.log('111aaa')
+                // console.log(this.school1)
+            },
 
 
             Submit(){
@@ -302,8 +320,7 @@ export default {
                 if(phone == "" || passWord == "" 
                     || name == "" || sex == "" || 
                     artsAndSciences == "" || grade == "" || 
-                    clas == "" || location == "" || locationSon =="" || locationSonAg == "" 
-                    || school == "")
+                    clas == "" || location == "" || locationSon =="" || locationSonAg == "")
                 {
                     this.$Message.warning('请填写完整信息')
                 }else{

@@ -15,7 +15,7 @@
                  @click="topicFun(item,i)"
                  v-bind:style="{display: activeColorOver}"
                  >
-                <p class="descs fb">{{item.matter}}</p>
+                <p class="descs fb">{{item.tid}}，{{item.matter}}</p>
                 <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
                 <Modal
                     v-model="modal1"
@@ -146,7 +146,7 @@ export default {
         },
         condition(){
             let save = this.ubid;
-            axios.post('http://47.104.245.242:8081/AssessMatter/saveMatter',
+            axios.post('http://192.168.1.100:8080/AssessMatter/saveMatter',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -160,12 +160,13 @@ export default {
         rubric(){
             // 题目
             let data = this.ubid;
-            axios.post('http://47.104.245.242:8081/AssessMatter/showMatter',
+            axios.post('http://192.168.1.100:8080/AssessMatter/showMatter',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.title = res.data
+                console.log(this.title)
             }),(err)=>{
                 console.log(err,'err')
             };

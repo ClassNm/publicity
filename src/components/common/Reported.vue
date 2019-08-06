@@ -7,11 +7,11 @@
         </div>
         <Header></Header>
         <Divider class="segmentation" size="default"/>
-        <Radar></Radar>
-        <Roundness></Roundness>
-        <Report class="header"></Report>  
-        <Major></Major>
-
+        <Radar style="break-after:page;page-break-after: always;"></Radar>
+        <Roundness style="break-after:page;page-break-after: always;"></Roundness>
+        <Report class="header" style="break-after:page;page-break-after: always;"></Report>  
+        <Major style="break-after:page;page-break-after: always;"></Major>
+        <Analysis style="break-after:page;page-break-after: always;"></Analysis>
         <!-- 滑动按钮 -->
         <BackTop></BackTop>
     </div>
@@ -29,6 +29,8 @@ import Roundness from './graph/Roundness'
 import Report from './graph/Report'
 // 专业
 import Major from './graph/Major'
+// 专业解析
+import Analysis from './graph/Analysis'
 export default {
     data(){
         return{
@@ -41,12 +43,17 @@ export default {
         Report,
         Roundness,
         Radar,
-        Major
+        Major,
+        Analysis
     }
 }
 </script>
 
 <style scoped>
+    *{
+        margin: 0;
+        padding: 0;
+    }
     /* 为了修改Tabs的标题大小不设置 scoped 权限问题 */
     .Rep{
         margin: 20px 0;

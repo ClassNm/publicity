@@ -6,7 +6,7 @@
         前方高能！！！
         -->
         <div class="box"  ref="box2" v-bind:style="{display: activeColorOver}">
-            <p class="PPP">1,{{title}}</p>
+            <p class="PPP">{{title}}</p>
             <!-- 意见反馈 -->
             <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
             <Modal
@@ -41,7 +41,7 @@
         </div> 
         <!-- 2 -->
         <div class="box" ref="resultTwo" v-bind:style="{display: activeColorOver}" v-if="Onb">
-            <p class="PPP">2,{{title}}</p>
+            <p class="PPP">{{title}}</p>
             <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
             <Modal
                 v-model="modal1"
@@ -71,7 +71,7 @@
         </div> 
         <!-- 3 -->
         <div class="box" ref="resultThree" v-bind:style="{display: activeColorOver}" v-if="Twoee">
-            <p class="PPP">3,{{title}}</p>
+            <p class="PPP">{{title}}</p>
             <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
             <Modal
                 v-model="modal1"
