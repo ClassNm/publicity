@@ -134,7 +134,7 @@ import axios from 'axios';
     }
 </script>
 
-<style scoped>
+<style scoped midia="print">
     @media print { body { color: #000; background: #fff; } }
     li{
         list-style: none
@@ -155,6 +155,27 @@ import axios from 'axios';
             /* justify-content: center; */
             /* align-items: center */
         }
+        
+        @media print {
+            body, article {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .Repor{
+                width: 1205px; 
+            }
+            .fouter{
+            margin-top: 20px;
+            width: 1205px;
+            background: #fff9f9;
+            border: 1px dashed red !important;
+
+            }
+            .fouterSon{
+                width: 100%;
+            }
+        }
         .fouter{
             margin-top: 20px;
             width: 1205px;
@@ -164,15 +185,12 @@ import axios from 'axios';
         }
         .fouterSon{
             display: flex !important;
-            /* flex: 1 !important; */
             width: 100%;
-            display: flex;
             justify-content: flex-start;
             margin-top: 5px !important;
             white-space:nowrap;
             overflow: hidden;
             text-overflow:ellipsis;
-            
         }
      }
     @media screen and (max-width: 1199px){
