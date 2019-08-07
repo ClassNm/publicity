@@ -56,7 +56,7 @@ export default {
     data(){
         return{
             objLe:[],
-            headerT:"四，高等院校部分学科,专业解析",
+            headerT:"四、高等院校部分学科,专业解析",
             major:"",
         }
     },

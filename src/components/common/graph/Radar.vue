@@ -30,7 +30,7 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            tit:"一，职业人格维度",
+            tit:"一、职业人格维度",
             headerTit:"",
             fouterTit:"注：蛛网图中，得分越接近八边形边角区域说明你的职业人格特点越典型，如蛛网图接近正八边形，说明对所有的职业人格倾向存在相同程度的喜好，可能因未认真作答引起",
             // 用户uid
@@ -127,14 +127,22 @@ export default {
                         }
                         },
                         indicator: [
-                        { name: '内向（Introverted）', max: 21},
-                        { name: '具体（Specific）', max: 21},
-                        { name: '理性（Reason）', max: 21},
-                        { name: '严谨（Preciseness）', max: 21},
-                        { name: '外向（Extroversion）', max: 21},
-                        { name: '抽象（Abstract）', max: 21},
-                        { name: '感性（Sensibility）', max: 21}  ,
-                        { name: '灵活（Agility）', max: 21}
+                        // { name: '内向（Introverted）', max: 21},
+                        // { name: '具体（Specific）', max: 21},
+                        // { name: '理性（Reason）', max: 21},
+                        // { name: '严谨（Preciseness）', max: 21},
+                        // { name: '外向（Extroversion）', max: 21},
+                        // { name: '抽象（Abstract）', max: 21},
+                        // { name: '感性（Sensibility）', max: 21}  ,
+                        // { name: '灵活（Agility）', max: 21}
+                         { name: '内向', max: 21},
+                        { name: '具体', max: 21},
+                        { name: '理性', max: 21},
+                        { name: '严谨', max: 21},
+                        { name: '外向', max: 21},
+                        { name: '抽象', max: 21},
+                        { name: '感性', max: 21}  ,
+                        { name: '灵活', max: 21}
                         // 最大值20
                         ]
                     }

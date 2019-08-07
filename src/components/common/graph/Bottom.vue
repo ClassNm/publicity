@@ -3,8 +3,8 @@
         <div style="background:red;color:#fff;margin-bottom:20px;width:120px;">
             <h1 style="text-align:center;">{{headerT}}</h1>
         </div>
-        <div class="box" style="text-align:left;width:1205px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{content}}
+        <div class="box" style="text-align:left;width:1205px;" v-for="(item,i) in content" :key="i">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}
         </div>
         
     </div>
@@ -16,7 +16,7 @@ export default {
     data(){
         return{
             headerT:"结束语",
-            content:""
+            content:[]
         }
     },
     mounted(){
@@ -30,7 +30,8 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                this.content = res.data[0].name;
+                // console.log(res.data)
+                this.content = res.data;
             })
         }
     }

@@ -24,7 +24,7 @@ import axios from 'axios';
 export default {
     data(){
         return{
-            tit:"二，心理格局维度",
+            tit:"二、心理格局维度",
             headerTit:"",
             trait:[
                 {
