@@ -12,6 +12,7 @@
         <Report class="header" style="break-after:page;page-break-after: always;"></Report>  
         <Major style="break-after:page;page-break-after: always;"></Major>
         <Analysis style="break-after:page;page-break-after: always;"></Analysis>
+        <Bottom style="break-after:page;page-break-after: always;"></Bottom>
         <!-- 滑动按钮 -->
         <BackTop></BackTop>
     </div>
@@ -31,6 +32,8 @@ import Report from './graph/Report'
 import Major from './graph/Major'
 // 专业解析
 import Analysis from './graph/Analysis'
+// 结束语
+import Bottom from './graph/Bottom'
 export default {
     data(){
         return{
@@ -44,7 +47,8 @@ export default {
         Roundness,
         Radar,
         Major,
-        Analysis
+        Analysis,
+        Bottom
     }
 }
 </script>

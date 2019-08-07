@@ -1,8 +1,8 @@
 <template>
     <div class="box">
         <div class="HedTit">
-            <h1>{{tit}}</h1>
-            <div style="color:red;margin-top:15px;font-size:15px;">您的职业人格类型是：{{headerTit}}</div>
+            <h1 style="text-align:left;">{{tit}}</h1>
+            <div style="color:red;margin-top:15px;font-size:15px;text-align:left;">您的职业人格类型是：{{headerTit}}</div>
         </div>
         <Layout class="orida">
             <Content>
@@ -219,7 +219,8 @@ export default {
             /* margin: 0 auto; */
         }
         .HedTit{
-            text-align: left
+            text-align: left;
+            width:400px;
         }
         img{
             width: 200px;

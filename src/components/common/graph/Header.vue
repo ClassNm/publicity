@@ -1,11 +1,16 @@
 <template>
     <div class="Repor">
         <Table :columns="columns1" :data="data1" ></Table>
-        <div class="fouter">
-            <ul style="margin-top:8px">
-                <Icon type="ios-alert" class="IvIcon" size="20"/>
+        <div class="fouter" style="width:1205px;text-align:left;margin-top:10px;">
+            <ul class="explain" style="margin-top:8px;text-align:left;">
+                <Icon type="ios-alert" class="IvIcon" size="20" style="text-align:left;"/>
                 报告说明
-                <li v-for="(item,i) in explain" :key="i" class="fouterSon" :title="item.name">{{item.name}}</li>
+                <li 
+                v-for="(item,i) in explain" 
+                :key="i" class="fouterSon" 
+                :title="item.name" 
+                style="text-align:left;margin:0;"
+                >{{item.name}}</li>
             </ul>
         </div>
     </div>
@@ -65,7 +70,9 @@ import axios from 'axios';
         },
         methods:{
             Report(){
+                let data = 1;
                 axios.post('http://47.104.245.242:8081/assessReport/show_Report',
+                data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
@@ -142,55 +149,33 @@ import axios from 'axios';
     .IvIcon{
         color: red;
     }
-    /* ul{
-        display: block;
-        margin:0;
-        padding:0
-    } */
     @media screen and (min-width: 1200px){
          .Repor{
             width: 1205px; 
-            margin: 0 auto;
-            /* display: flex; */
-            /* justify-content: center; */
-            /* align-items: center */
-        }
-        
-        @media print {
-            body, article {
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            .Repor{
-                width: 1205px; 
-            }
-            .fouter{
-            margin-top: 20px;
-            width: 1205px;
-            background: #fff9f9;
-            border: 1px dashed red !important;
-
-            }
-            .fouterSon{
-                width: 100%;
-            }
+            margin: 10px auto;
         }
         .fouter{
             margin-top: 20px;
             width: 1205px;
+            text-align: left;
             background: #fff9f9;
             border: 1px dashed red !important;
 
         }
         .fouterSon{
             display: flex !important;
-            width: 100%;
+            width: 1205px;
+            text-align: left;
             justify-content: flex-start;
             margin-top: 5px !important;
             white-space:nowrap;
             overflow: hidden;
             text-overflow:ellipsis;
+        }
+        .explain{
+            margin-top:8px;
+            width:1000px;
+            text-align:left;
         }
      }
     @media screen and (max-width: 1199px){
@@ -198,11 +183,16 @@ import axios from 'axios';
             width: 800px; 
             margin: 0 auto;
         }
+        .explain{
+            margin-top:8px;
+            width:800px;
+            text-align:left;
+        }
         .fouter{
             margin-top: 20px;
             text-align: left;
             background: #fff9f9;
-            width: 800px;
+            width: 800px !important;
             border: 1px dashed red;
         }
         .fouterSon{

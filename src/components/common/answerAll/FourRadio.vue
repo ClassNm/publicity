@@ -134,7 +134,7 @@ export default {
         // 判断条件发id
         condition(){
             let save = this.ubid;
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_Mbti',
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_Mbti',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -149,7 +149,7 @@ export default {
         rubric(){
             // 题目
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_Mbti',
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_Mbti',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )

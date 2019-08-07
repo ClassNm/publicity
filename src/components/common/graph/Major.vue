@@ -5,20 +5,19 @@
                 <div style="background:red;color:#fff;margin-bottom:20px;width:120px;">
                     <h1 style="text-align:center;">非常适合</h1>
                 </div>
-                <div style="margin-bottom:5px;font-size:15px;"> 
-                    <li style="color:#708090;display:inline-block;">
+                <div style="width:600px;font-size:15px;text-align:left;"> 
+                    <li style="color:#708090;display:inline-block;text-align:left;">
                         {{designation}}
                     </li> 
                 </div>
                 <Divider />
-                <li v-for="(item,i) in test" :key="i" style="font-size:15px;margin-top:5px;">
-                    <div style="display:inline-block;width:600px;">
-                        {{item.name}}
+                <li v-for="(item,i) in utmost" :key="i" style="font-size:15px;width:600px;text-align:left;">
+                    <div style="display:inline-block;width:600px;text-align:left;">
+                        {{item}}
                     </div>
-                    <div style="display:inline-block;width: 600px;">
+                    <!-- <div style="display:inline-block;width: 600px;">
                         <Rate clearable :value="item.num" disabled :count="12" /> 
-                    </div>
-                
+                    </div> -->
                 </li>
             </ul>
         </div>
@@ -27,19 +26,19 @@
                 <div style="background:red;color:#fff;margin-bottom:20px;width:120px;">
                     <h1 style="text-align:center;">比较适合</h1>
                 </div>
-                <div style="margin-bottom:5px;font-size:15px;"> 
-                    <li style="color:#708090;display:inline-block;">
+                <div style="margin-bottom:5px;font-size:15px;width:600px;text-align:left;"> 
+                    <li style="color:#708090;display:inline-block;text-align:left;">
                         {{designation}}
                     </li> 
                 </div>
                 <Divider />
-                <li v-for="(item,i) in very" :key="i" style="font-size:15px;margin:5px 0;">
-                    <div style="display:inline-block;width: 600px;">
+                <li v-for="(item,i) in very" :key="i" style="font-size:15px;margin:5px 0;width:600px;text-align:left;">
+                    <div style="display:inline-block;width: 600px;text-align:left;">
                         {{item}}
                     </div>
-                    <div style="display:inline-block;width: 600px;">
+                    <!-- <div style="display:inline-block;width: 600px;">
                         <Rate clearable v-model="value1" disabled  :count="12" /> 
-                    </div>
+                    </div> -->
                 </li>
             </ul>
         </div>
@@ -48,19 +47,19 @@
                 <div style="background:red;color:#fff;margin-bottom:20px;width:120px;">
                     <h1 style="text-align:center;">一般适合</h1>
                 </div>
-                <div style="margin-bottom:5px;font-size:15px;"> 
-                    <li style="color:#708090;display:inline-block;">
+                <div style="margin-bottom:5px;font-size:15px;width:600px;text-align:left;"> 
+                    <li style="color:#708090;display:inline-block;text-align:left;">
                         {{designation}}
                     </li> 
                 </div>
                 <Divider />
-                <li v-for="(item,i) in common" :key="i" style="font-size:15px;margin:5px 0;">
-                    <div style="display:inline-block;width: 600px;">
+                <li v-for="(item,i) in common" :key="i" style="font-size:15px;margin:5px 0;width:600px;text-align:left;">
+                    <div style="display:inline-block;width: 600px;text-align:left;">
                         {{item}}
                     </div>
-                    <div style="display:inline-block;width: 600px;">
+                    <!-- <div style="display:inline-block;width: 600px;">
                         <Rate clearable v-model="value1" disabled  :count="12" /> 
-                    </div>
+                    </div> -->
                 </li>
             </ul>
         </div>
@@ -89,32 +88,6 @@ export default {
                 12,
                 9,
                 1
-            ],
-            test:[
-                {
-                    name:"应用生物科学",
-                    num:"10"
-                },
-                {
-                    name:"动物医学",
-                     num:"1"
-                },
-                {
-                    name:"动物药学",
-                     num:3
-                },
-                {
-                    name:"生物医学",
-                     num:1
-                },
-                {
-                    name:"基础医学",
-                     num:9
-                },
-                {
-                    name:"生物医学科学",
-                     num:12
-                },
             ],
         }
     },

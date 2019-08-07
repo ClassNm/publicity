@@ -146,7 +146,7 @@ export default {
         condition(){
             let save = this.ubid;
             // let save = 10;
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_xinLi',
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_xinLi',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -161,7 +161,7 @@ export default {
         rubric(){
             // 题目
              let data = this.ubid;
-            axios.post('http://192.168.1.100:8080/AssessMatter/Matter_xinLi',
+            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_xinLi',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
