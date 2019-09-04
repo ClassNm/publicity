@@ -7,9 +7,7 @@
             <div class="fout">
                 <span class="leis">
                     账号：
-                <!-- </li>  -->
                 </span>
-                <!-- &nbsp&nbsp&nbsp -->
                 <Input v-model="phone" placeholder="手机号" clearable style="width: 200px" class="INt" />
             </div>
             <br>
@@ -17,21 +15,15 @@
                 <span class="leis">
                     密码：
                 </span>
-                <!-- &nbsp&nbsp&nbsp -->
-                <!-- <Input v-model="value12" placeholder="密码" clearable style="width: 200px" class="INt" /> -->
                 <Form ref="formCustom" :model="formCustom" :rules="ruleCustom" :label-width="80" class="One"  style="width: 200px" >
-                    <!-- <FormItem  prop="passwd"> -->
                     <Input type="password" v-model="formCustom.passwd" />
-                   
                 </Form>
             </div>
             <br>
             <div class="fout">
                 <span class="leis">
                     姓名：
-                <!-- </li>  -->
                 </span>
-                <!-- &nbsp&nbsp&nbsp -->
                 <Input v-model="name" placeholder="姓名" clearable style="width: 200px" class="INt" />
             </div>
             <br>
@@ -65,7 +57,6 @@
             <div class="fout">
                 <span class="leis">
                     学校：
-                <!-- </li>  -->
                 </span>
                 <!-- 学校 -->
                 <Select v-model="schoolNa" style="width:100px;margin-right:5px;" :disabled = decide>
@@ -103,9 +94,7 @@
             <div class="fout">
                 <span class="leis">
                     班级：
-                <!-- </li>  -->
                 </span>
-                <!-- &nbsp&nbsp&nbsp -->
                 <Input v-model="clas" placeholder="班级" clearable style="width: 200px" class="INt" />
             </div>
             <br>
@@ -118,7 +107,7 @@
 <script>    
 
 import axios from 'axios'
-import {Register} from '../../../actions.js'
+// import {Register} from '../../../actions.js'
 
 export default {
     data () {
@@ -275,12 +264,17 @@ export default {
                     this.schoolNa ="",
                     this.decide=true
                 }
-                // console.log('111aaa')
-                // console.log(this.school1)
             },
-
-
+            PhoneNum(){
+                var phone = this.phone;
+                if(!(/^1[3456789]\d{9}$/.test(phone))){ 
+                    this.$Message.warning('账号为11位手机号码格式，请重填')
+                    this.phone=""
+                    return false; 
+                }
+            },
             Submit(){
+                this.PhoneNum();
                 // 账号
                 let phone = this.phone;
                 // 密码

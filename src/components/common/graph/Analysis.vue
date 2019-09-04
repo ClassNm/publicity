@@ -3,9 +3,9 @@
         <div style="margin-bottom:20px;width:400px;">
             <h1 style="text-align:left;">{{headerT}}</h1>
         </div>
-        <div class="box" v-for="(item,i) in objLe" :key="i" style="width:1200px;">
+        <div class="box" v-for="(item,i) in objLe" :key="i" style="width:1100px;">
             <div style="font-size:20px;height:50px;line-height:50px;background:pink;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</div>
-            <ul class="outer" style="width:1200px;text-align:left;">
+            <ul class="outer" style="width:1100px;text-align:left;">
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专业类概述&nbsp;▼
                 <br>
@@ -13,7 +13,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.generalize}}
                 </li>
             </ul>
-            <ul class="inside" style="width:1200px;text-align:left;">
+            <ul class="inside" style="width:1100px;text-align:left;">
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;适用专业&nbsp;▼
                 <br>
@@ -21,7 +21,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.suit}}
                 </li>
             </ul>
-            <ul class="outer" style="width:1200px;text-align:left;">
+            <ul class="outer" style="width:1100px;text-align:left;">
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;培养目标&nbsp;▼
                 <br>
@@ -29,7 +29,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.target}}
                 </li>
             </ul>
-            <ul class="inside" style="width:1200px;text-align:left;">
+            <ul class="inside" style="width:1100px;text-align:left;" v-if="item.direction.length==0?false:true" >
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;培养方向&nbsp;▼
                 <br>
@@ -37,7 +37,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.direction}}
                 </li>
             </ul>
-            <ul class="outer" style="width:1200px;text-align:left;">
+            <ul class="outer" style="width:1100px;text-align:left;">
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;院校示例&nbsp;▼
                 <br>
@@ -52,12 +52,14 @@
 
 <script>
 import axios from 'axios';
+import { truncate } from 'fs';
 export default {
     data(){
         return{
             objLe:[],
             headerT:"四、高等院校部分学科,专业解析",
             major:"",
+            Typtit:true
         }
     },
     mounted(){
@@ -89,21 +91,21 @@ export default {
         }
          .maj{
             text-align: left;
-            width: 1200px;
+            width: 1100px;
             margin: 40px auto;
             
         }
         .box{
             text-align: left;
-            width: 1200px;
+            width: 1100px;
             margin-top: 30px;
             border: 2px solid  lightgray    ;
         }
         .outer{
             background: #f7f7f7;
             text-align: left;
-            height: 400px;
-            width: 1200px;
+            /* height: 400px; */
+            width: 1100px;
             font-size: 20px;
             overflow: hidden;
             text-overflow:ellipsis;
@@ -112,8 +114,8 @@ export default {
         .inside{
             background: white;
             text-align: left;
-            height: 400px;
-             width: 1200px;
+            /* height: 400px; */
+             width: 1100px;
             font-size: 20px;
              overflow: hidden;
             text-overflow:ellipsis;

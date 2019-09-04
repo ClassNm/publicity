@@ -1,14 +1,23 @@
 <template>
     <div class="box">
-        <!-- <h1 style="text-align:left;">{{header}}</h1> -->
+        <h1 style="margin-bottom:60px;">第一部分：全职兴趣测验结果</h1>
+        <span style="font-weight:bolder;text-align:left;display:block;font-size:18px;margin:50px 0 80px 0;">一，您在全职兴趣测验中的得分如下：</span>
         <div id="myChart" class="Repor"></div>
+        <ul style="text-align:left;font-weight:bolder;margin-top:80px;">
+            结果说明：
+            <li>（1）在七类对象中，你对“个体生命”、“语言符号”、“社会制度”三类对象的得分明显高于其他对象，说明你对这三类对象有较高的兴趣；</li>
+            <li>（2）在三个加工水平中，你的得分从高到低排序是“使用与维护”“规划与实施”、“研究与探索”，说明你更愿意从事“使用与维护”性质的职业。</li>
+            <li>（3）在全部21中职业类型中，超过15分的职业类别包括：“个体生命-规划与实施”......</li>
+        </ul>
+        <span style="font-weight:bolder;text-align:left;font-size:18px;display:block;margin-top:50px;">二，根据以上测验和调查，你感兴趣职业类别和想报考的学科如下：</span>
+        <div id="myChartTwo" class="Repor"></div>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
 export default {
-    data(){
+     data(){
         return{
             // header:"三、职业兴趣维度",
             // 用户uid
@@ -27,8 +36,8 @@ export default {
             // 传过来的Array
             //  graph:[]
         }
-    },
-    created(){
+     },
+     created(){
         let data = this.$route.query.id;
         axios.post('http://47.104.245.242:8081/AssessScore/showNum',
           data,
@@ -51,6 +60,7 @@ export default {
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
+        this.drawLineTwo();
 
     },
     methods:{
@@ -137,17 +147,61 @@ export default {
                         ]
                 });
             })
+        },
+        drawLineTwo(){
+            var myChartTwo = this.$echarts.init(document.getElementById('myChartTwo'));//获取容器元素
+            myChartTwo.setOption({
+                title: {
+                    // text: '世界人口总量',
+                    // subtext: '数据来自网络'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    // data: ['2011年', '2012年']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    boundaryGap: [0, 0.01]
+                },
+                yAxis: {
+                    type: 'category',
+                    data: ['会计学','光信息科学与技术','信息管理与信息系统','保险','新闻学','政治学与行政学','国际经济与贸易','财政学','金融学','经济学','法学','旅游管理',]
+                },
+                series: [
+                    {
+                        // name: '2011年',
+                        type: 'bar',
+                        data: [18, 23, 29, 10, 13, 6,22,34,14,11,21,33]
+                    }
+                ]
+            });
         }
-    }
+    }        
 }
-
 </script>
 
 <style scoped>
+    li{
+        list-style: none;
+        margin-top: 20px;
+        margin-left: 30px;
+    }
     @media screen and (min-width: 1200px){
         .box{
             width: 1100px; 
             margin: 20px auto;
+            margin-top: 150px;
         }
         .Repor{
             width: 1100px; 
@@ -159,6 +213,7 @@ export default {
         .box{
             width: 800px; 
             margin: 20px auto;
+            margin-top: 150px;
         }
         .Repor{
             width: 800px; 
@@ -167,4 +222,3 @@ export default {
         }
     }
 </style>
-

@@ -3,7 +3,7 @@
         <div style="background:red;color:#fff;margin-bottom:20px;width:120px;">
             <h1 style="text-align:center;">{{headerT}}</h1>
         </div>
-        <div class="box" style="text-align:left;width:1205px;" v-for="(item,i) in content" :key="i">
+        <div class="box" style="text-align:left;width:1100px;" v-for="(item,i) in content" :key="i">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}
         </div>
         
@@ -30,7 +30,6 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                // console.log(res.data)
                 this.content = res.data;
             })
         }
@@ -46,7 +45,7 @@ export default {
         }
          .maj{
             text-align: left;
-            width: 1200px;
+            width: 1100px;
             margin: 40px auto;
             
         }
@@ -64,7 +63,7 @@ export default {
         .box{
             margin-top: 30px;
             width: 800px !important;
-            border: 2px solid  lightgray    ;
+            border: 2px solid  lightgray;
         }
    }
 </style>

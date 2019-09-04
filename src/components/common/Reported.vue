@@ -1,11 +1,18 @@
 <template>
     <div>
-        <div>
+        <Cover style="break-after:page;page-break-after: always;"></Cover>
+        <!-- <div>
             <Icon type="md-boat" size="30" />
             <h1 class="Rep">{{Report}}</h1>
             <Spin style="display:'inline-block'"></Spin>
-        </div>
-        <Header></Header>
+        </div> -->
+        <Header style="break-after:page;page-break-after: always;"></Header>
+        <Preface style="break-after:page;page-break-after: always;"></Preface>
+        <Interest style="break-after:page;page-break-after: always;"></Interest>
+        <Personality style="break-after:page;page-break-after: always;"></Personality>
+
+
+
         <Divider class="segmentation" size="default"/>
         <Radar style="break-after:page;page-break-after: always;"></Radar>
         <Roundness style="break-after:page;page-break-after: always;"></Roundness>
@@ -20,8 +27,19 @@
 
 <script>
 import axios from 'axios'
+// 封面
+import Cover from './graph/Cover'
 // 表头 姓名 
 import Header from './graph/Header'
+// 前言preface
+import Preface from './graph/Preface'
+// 第一部分：全职兴趣测验结果
+import Interest from './graph/Interest'
+// 第二部分:职业人格测验结果
+import Personality from './graph/Personality'
+
+
+
 // 雷达图
 import Radar from './graph/Radar'
 // 第二个雷达图
@@ -42,7 +60,14 @@ export default {
         }
     },
     components:{
+        Cover,
         Header,
+        Preface,
+        Interest,
+        Personality,
+
+
+
         Report,
         Roundness,
         Radar,
@@ -75,7 +100,7 @@ export default {
             height: 3px;
             width: 800px;
             display: block;
-            min-width: 1200px;
+            min-width: 1100px;
             margin: 24px auto;
         }
     }

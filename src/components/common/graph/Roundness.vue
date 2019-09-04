@@ -72,33 +72,7 @@ export default {
             score:[]
         }
     },
-    created(){
-        // let data = this.$route.query.id;
-        // axios.post('http://192.168.1.100:8080/AssessScore/showNum',
-        //   data,
-        //   {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-        //   )
-        //   .then((res)=>{
-        //     let aa = res.data;
-        //     // let aa = this.graph;
-        //     let nature = [aa[0],aa[1],aa[2]];
-        //     let manMade = [aa[3],aa[4],aa[5]]
-        //     let art = [aa[6],aa[7],aa[8]]
-        //     let number = [aa[9],aa[10],aa[11]]
-        //     let language = [aa[12],aa[13],aa[14]]
-        //     let society = [aa[15],aa[16],aa[17]]
-        //     let unit = [aa[18],aa[19],aa[20]]
-        //     this.nature = nature;
-        //     this.manMade = manMade;
-        //     this.art = art;
-        //     this.number = number;
-        //     this.language = language;
-        //     this.society = society;
-        //     this.unit = unit;
-        //   }),(err)=>{
-        //       console.log(err)
-        //   }
-    },
+    created(){},
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
@@ -122,11 +96,7 @@ export default {
             var myChart = this.$echarts.init(document.getElementById('RadarLtwo'));//获取容器元素
             myChart.setOption({
                     tooltip: {},
-                    // legend: {
-                    //     data: this.header
-                    // },
                     radar: {
-                        // shape: 'circle', 
                         name: {
                             textStyle: {
                                 color: '#fff',
@@ -146,7 +116,6 @@ export default {
             });
             // 处理echarts异步操作 copy的官网实例
             let data = this.$route.query.id;
-            // let data = 33;
             axios.post('http://47.104.245.242:8081/AssessScoreXinli/xinli_num',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
@@ -160,7 +129,7 @@ export default {
                         data : [
                             {
                                 value : this.score,
-                                name : '预算分配（Allocated Budget）'
+                                name : '心理格局维度'
                             }
                         ]
                     }]
@@ -178,7 +147,6 @@ export default {
         margin-top: 20px;
     }
     .fouter{
-        /* display: inline-block; */
         width: 400px;
         height: 602px;
         display: inline-block;
@@ -188,7 +156,7 @@ export default {
     }
     @media screen and (min-width: 1200px){
         .box{
-            width: 1205px; 
+            width: 1100px; 
             margin: 0 auto;
         }
         .RoundNes{

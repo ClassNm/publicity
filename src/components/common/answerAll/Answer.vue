@@ -1,9 +1,9 @@
 <template>
     <div class="surveydetailout" id="surveydetailout" >
-        <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio>
+        <!-- <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio> -->
         <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck>
         <TwoRadio v-if="Thr"></TwoRadio>  
-        <FourRadio></FourRadio>   
+        <!-- <FourRadio></FourRadio>    -->
     </div>
 </template>
 
@@ -18,9 +18,6 @@ import TwoRadio from './TwoRadio'
 import FourRadio from './FourRadio'
 
 import axios from 'axios';
-
-// axios方法
-// import { AnsID } from '../../../actions'
 
 export default {
     data(){

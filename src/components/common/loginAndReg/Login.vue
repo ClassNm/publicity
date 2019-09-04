@@ -111,8 +111,6 @@ import axios from 'axios';
             width: 100%;
             height: 100%;
             background: url('../../../../public/1920.jpg') no-repeat;height:1000px;
-            /* background-image:url('../../../public/photo.jpg'); */
-            /* background-repeat:no-repeat; */
             background-size: 100%;
         }
         .popUp{
@@ -141,8 +139,6 @@ import axios from 'axios';
             width: 100%;
             height: 100%;
             background: url('../../../../public/1080.jpg') no-repeat;height:1000px;
-            /* background-image:url('../../../public/photo.jpg'); */
-            /* background-repeat:no-repeat; */
             background-size: 100%;
         }
         .popUp{

@@ -15,7 +15,7 @@
                  v-bind:style="{display: activeColorOver}"
                  >
                  <!-- ref="displayTit" -->
-                <p class="descs fb">{{item.tid}}，{{item.matter}}</p>
+                <p class="descs fb">{{item.tid}}、{{item.matter}}</p>
                 <a type="primary" @click="modal1 = true" style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;意见反馈</a>
                 <Modal
                     v-model="modal1"

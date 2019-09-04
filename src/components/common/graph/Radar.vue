@@ -18,10 +18,6 @@
         </Layout>
         <p class="fouter">{{fouterTit}}</p>
         <Table border :columns="columns1" :data="data1"></Table>
-            <!-- <div>
-                代表人物
-            </div> -->
-           
     </div>
 </template>
 
@@ -103,8 +99,6 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                // let arr = this.data1[0]
-                // arr.compliance
                 this.data1[0].compliance = res.data;
             })
         },
@@ -113,11 +107,7 @@ export default {
             var myChart = this.$echarts.init(document.getElementById('Radar'));//获取容器元素
             myChart.setOption({
                     tooltip: {},
-                    // legend: {
-                    //     data: this.header
-                    // },
                     radar: {
-                        // shape: 'circle', 
                         name: {
                             textStyle: {
                                 color: '#fff',
@@ -127,14 +117,6 @@ export default {
                         }
                         },
                         indicator: [
-                        // { name: '内向（Introverted）', max: 21},
-                        // { name: '具体（Specific）', max: 21},
-                        // { name: '理性（Reason）', max: 21},
-                        // { name: '严谨（Preciseness）', max: 21},
-                        // { name: '外向（Extroversion）', max: 21},
-                        // { name: '抽象（Abstract）', max: 21},
-                        // { name: '感性（Sensibility）', max: 21}  ,
-                        // { name: '灵活（Agility）', max: 21}
                          { name: '内向', max: 21},
                         { name: '具体', max: 21},
                         { name: '理性', max: 21},
@@ -158,13 +140,12 @@ export default {
                 this.score = res.data;
                 myChart.setOption({
                      series: [{
-                        name: '预算 vs 开销（Budget vs spending）',
+                        name: '职业人格维度',
                         type: 'radar',
-                        // areaStyle: {normal: {}},
                         data : [
                             {
                                 value : this.score,
-                                name : '预算分配（Allocated Budget）'
+                                name : '职业人格维度'
                             }
                         ]
                     }]
@@ -178,7 +159,6 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-
                 this.ImgLengt = res.data;
             })
         }
@@ -192,7 +172,6 @@ export default {
         width: 200px;
         height: 200px;
         display: inline-block;
-        /* margin-bottom: 10px;     */
     }
     .ivu-layout{
         background:white
@@ -206,25 +185,23 @@ export default {
     }
     .fouter{
         width: 400px;
-        /* margin: 0 auto; */
         margin-left: 25%;
         margin-bottom: 25px;
         text-align: left;
     }
     @media screen and (min-width: 1200px){
         .box{
-            width: 1205px;
+            width: 1100px;
             margin: 0 auto;
         }
         .orida{
-            width: 1205px;
+            width: 1100px;
             margin: 0 auto;
         }
         .Repor{
             width: 600px; 
             height: 602px;
             display: inline-block
-            /* margin: 0 auto; */
         }
         .HedTit{
             text-align: left;

@@ -121,7 +121,7 @@ export default {
     @media screen and (min-width: 1200px){
          .maj{
             text-align: left;
-            width: 1200px;
+            width: 1100px;
             margin: 40px auto;
         }
     }
