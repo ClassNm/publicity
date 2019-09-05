@@ -35,8 +35,8 @@ export default {
         margin: 10px 0;
     }
     img{
-        width: 300px;
-        height: 300px;
+        width: 400px;
+        height: 400px;
         margin-bottom:50px;
         margin-top: 50px;
     }

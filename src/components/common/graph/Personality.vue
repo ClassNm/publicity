@@ -1,24 +1,216 @@
 <template>
     <div class="box">
         <h1 style="margin-bottom:60px;">第二部分:职业人格测验结果</h1>
-        <span style="text-align:left;display:block;font-size:18px;font-weight:bolder;">一、你的职业人格雷达图</span>
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;">一、你的职业人格雷达图</span>
         <div id="Radar" class="Repor"></div>
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;">二、你的职业人格类型</span>
+        <span style="text-align:left;display:block;font-size:16px;font-weight:bolder;margin-top:50px;">
+            人格类型:思想者（粘液质--顾问型）
+        </span>
+        <span style="text-align:left;display:block;font-size:16px;font-weight:bolder;margin-top:30px;">
+            符合程度:比较高
+        </span>
+        <span style="text-align:left;display:block;font-size:18px;font-weight:bolder;margin-top:50px;">基本描述</span>
+        <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:30px;">
+            喜欢理论性的和抽象的事物，热衷于思考而非社交活动。对自己感兴趣的任何事物都寻求找到合理的解释，有超凡的集中精力深度解决问题的能力。多疑，有时会有点挑剔。
+        </div>
+        <ul style="margin-top:50px;">
+            <h3 style="margin-bottom:30px;">主要特征</h3> 
+            <li>1.不喜欢与其他人（陌生人）聚会闲聊；</li>
+            <li>2.与熟人相处时，非常放松而友好；</li>
+            <li>3.不喜欢平庸，喜欢提出新颖的想法；</li>
+            <li>4.喜欢挑战其他人的观点；</li>
+            <li>5.善于发现其他人话语之间的纰漏；</li>
+            <li>6.喜欢在与别人的谈话中分享未完全成熟的想法；</li>
+            <li>7.不喜欢按部就班的常规活动或维护工作；</li>
+            <li>8.喜欢深入探究与问题相关的各种因素和细节；</li>
+            <li>9.经常在自己的头脑中进行激烈的辩论；</li>
+            <li>能够利用条理清晰的建议解决复杂问题。</li>
+        </ul>
+        <ul style="margin-top:50px;">
+            <h3 style="margin-bottom:30px;">适合的职业类别</h3>
+            <li>数学符号-研究与探索；</li>
+            <li>语言符号-研究与探索.</li>
+        </ul>
+        <span style="margin-top:50px;text-align:left;display:block;font-size:20px;font-weight:bolder;">三、代表人物</span>
+        <div v-for="(item,i) in ImgLengt" :key="i" style="display:inline-block;width: 200px;margin-right: 100px;margin-top:100px;">
+            <img  :src="item.url" alt="">
+            <h1 style="font-size:20px;margin: 0 0 15px 0;">{{item.name}}</h1>
+        </div>
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:80px;">四、你感兴趣的职业类别与人格类型的匹配度</span>
+        <Table height="200" :columns="columns1" :data="data2" style="margin-top:50px;"></Table>
+        <div style="text-align:left;display:block;font-size:17px;margin-top:50px;margin-bottom:50px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你感兴趣的职业类别与人格类别不匹配，下面是一些你感兴趣的程度较低，但与你的人格类型相匹配的职业类别。对于每一种职业类别，请在其所包含的学科中，选出自己想学的1-3个学科：
+        </div>
+        <Table border :columns="columns2" :data="data1"></Table>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
 export default {
-     mounted(){
+    data(){
+        return{
+            ImgLengt:[],
+            columns1: [
+                    {
+                        title: '职业类别',
+                        key: 'name'
+                    },
+                    {
+                        title: '你想报考的学科',
+                        key: 'age'
+                    },
+                    {
+                        title: '与人格类型是否匹配',
+                        key: 'address'
+                    }
+            ],
+            data2: [
+                {
+                    name: '个体生命-规划与实施',
+                    age: '①教育学  ②旅游管理 ③公共管理',
+                    address: '不匹配(或匹配)',
+                    date: '2016-10-03'
+                },
+                {
+                    name: '热发电',
+                    age: '①教育学  ②旅游管理 ③公共管理',
+                    address: '不匹配(或匹配)',
+                    date: '2016-10-01'
+                },
+                {
+                    name: '飞机',
+                    age: '①教育学  ②旅游管理 ③公共管理',
+                    address: '不匹配(或匹配)',
+                    date: '2016-10-02'
+                },
+            ],
+            columns2: [
+                    {
+                        title: '职业类别',
+                        key: 'name'
+                    },
+                    {
+                        title: '兴趣得分',
+                        key: 'age'
+                    },
+                    {
+                        title: '所包含的学科',
+                        key: 'address',
+                        render: (h, params) => {
+                            return h('div', [
+                            h('p',params.row.address.one),
+                            // h('div', {
+                            //     style: {
+                            //     margin: '1px 0',
+                            //     height: '1px',
+                            //     background: '#ccc',
+                            //     }
+                            // }),
+                            h('p',params.row.address.two),
+                            h('p',params.row.address.three),
+                            h('p',params.row.address.fout),
+                            h('p',params.row.address.five),
+                            ])
+                        }
+                    },
+                     {
+                        title: '你喜欢的学科',
+                        key: 'subject',
+                        render: (h, params) => {
+                            return h('div', [
+                            h('p',params.row.subject.subOne),
+                            h('p',params.row.subject.subTwe),
+                            h('p',params.row.subject.subThree),
+                            ])
+                        }
+                    }
+            ],
+            data1: [
+                    {
+                        name: '语言符号-研究与探索',
+                        age: "17分",
+                        address: {
+                            one:"外国语言与外国历史",
+                            two:"汉语言",
+                            three:"逻辑学",
+                            fout:"应用语言学",
+                            five:"挖都挖出现"
+                        },
+                        subject:{
+                            subOne:"娃达",
+                            subTwe:"2",
+                            subThree:"3"
+                        },
+                        date: '2016-10-03'
+                    },
+                    {
+                        name: '数学符号-研究与探索',
+                        age: "15分",
+                        address: {
+                            one:"哲学",
+                            two:"逻辑学",
+                            three:"宗教学",
+                            fout:"传播学"
+                        },
+                        subject:{
+                            subOne:"1挖的哇",
+                            subTwe:"2",
+                            subThree:"3"
+                        },
+                        date: '2016-10-01'
+                    },
+                    {
+                        name: '阿迪王-研究与探索',
+                        age: "12分",
+                        address: {
+                            one:"统计学",
+                            two:"数学",
+                            three:"信息科学",
+                            fout:"力学"
+                        },
+                        subject:{
+                            subOne:"1我完全",
+                            subTwe:"2",
+                            subThree:"3"
+                        },
+                        date: '2016-10-02'
+                    },
+                    {
+                        name: '挖的哇-研究与探索',
+                        age: "19分",
+                        address: {
+                            one:"wdw挖的哇",
+                            two:"挖的哇",
+                            three:"反对v吧",
+                            fout:"而乏味"
+                        },
+                        subject:{
+                            subOne:"1让人",
+                            subTwe:"2",
+                            subThree:"3"
+                        },
+                        date: '2016-10-04'
+                    }
+                ]
+        }
+    },
+    mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
+        this.describeTit();
     },
     methods:{
          // echarts调用方法 的案例
         drawLine(){
             var myChart = this.$echarts.init(document.getElementById('Radar'));//获取容器元素
             myChart.setOption({
+                
                     tooltip: {},
+                    title: {
+                        text: '四维人格测验得分模型',
+                    },
                     radar: {
                         name: {
                             textStyle: {
@@ -48,23 +240,57 @@ export default {
                 this.score = res.data;
                 myChart.setOption({
                      series: [{
-                        name: '职业人格维度',
+                        name: '四维人格测验得分模型',
                         type: 'radar',
                         data : [
                             {
                                 value : this.score,
-                                name : '职业人格维度'
+                                name : '四维人格测验得分模型'
                             }
                         ]
                     }]
                 })
             })
         },
+         // 信息
+        describeTit(){
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8081/AssessScoreMbti/show_mbti',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                let typ = res.data.typ;
+                this.imgMeth(typ);
+             }),(err)=>{
+                console.log(err)
+            }
+        },
+        imgMeth(index){
+            let data = index;
+            axios.post('http://47.104.245.242:8081/AssessPictures/show_picture',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.ImgLengt = res.data;
+            })
+        }
     }
 }
 </script>
 
 <style scoped>
+    ul,li{
+        list-style: none;
+        text-align: left;
+        /* font-weight: bolder; */
+        font-size: 15px;
+        margin: 5px 0;
+    }
+    li{
+        margin-left: 30px;
+    }
      @media screen and (min-width: 1200px){
         .box{
             width: 1100px;
@@ -75,7 +301,8 @@ export default {
             width: 600px; 
             height: 602px;
             margin: 0 auto;
-            display: inline-block
+            display: inline-block;
+            margin-top: 100px;
         }
     }
 </style>

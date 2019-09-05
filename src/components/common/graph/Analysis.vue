@@ -1,8 +1,6 @@
 <template>
     <div class="maj">
-        <div style="margin-bottom:20px;width:400px;">
-            <h1 style="text-align:left;">{{headerT}}</h1>
-        </div>
+        <h1 style="text-align:center;margin-bottom:50px;">{{headerT}}</h1>
         <div class="box" v-for="(item,i) in objLe" :key="i" style="width:1100px;">
             <div style="font-size:20px;height:50px;line-height:50px;background:pink;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</div>
             <ul class="outer" style="width:1100px;text-align:left;">
@@ -57,7 +55,7 @@ export default {
     data(){
         return{
             objLe:[],
-            headerT:"四、高等院校部分学科,专业解析",
+            headerT:"第五部分:高等院校部分学科,专业解析",
             major:"",
             Typtit:true
         }
@@ -93,7 +91,7 @@ export default {
             text-align: left;
             width: 1100px;
             margin: 40px auto;
-            
+            margin-top: 150px;
         }
         .box{
             text-align: left;

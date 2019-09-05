@@ -10,14 +10,16 @@
         <Preface style="break-after:page;page-break-after: always;"></Preface>
         <Interest style="break-after:page;page-break-after: always;"></Interest>
         <Personality style="break-after:page;page-break-after: always;"></Personality>
+        <Potency style="break-after:page;page-break-after: always;"></Potency>
+        <Location style="break-after:page;page-break-after: always;"></Location>
 
 
 
-        <Divider class="segmentation" size="default"/>
-        <Radar style="break-after:page;page-break-after: always;"></Radar>
-        <Roundness style="break-after:page;page-break-after: always;"></Roundness>
-        <Report class="header" style="break-after:page;page-break-after: always;"></Report>  
-        <Major style="break-after:page;page-break-after: always;"></Major>
+        <!-- <Divider class="segmentation" size="default"/> -->
+        <!-- <Radar style="break-after:page;page-break-after: always;"></Radar> -->
+        <!-- <Roundness style="break-after:page;page-break-after: always;"></Roundness> -->
+        <!-- <Report class="header" style="break-after:page;page-break-after: always;"></Report>   -->
+        <!-- <Major style="break-after:page;page-break-after: always;"></Major> -->
         <Analysis style="break-after:page;page-break-after: always;"></Analysis>
         <Bottom style="break-after:page;page-break-after: always;"></Bottom>
         <!-- 滑动按钮 -->
@@ -37,6 +39,15 @@ import Preface from './graph/Preface'
 import Interest from './graph/Interest'
 // 第二部分:职业人格测验结果
 import Personality from './graph/Personality'
+// 第三部分:学科潜能调查的结果
+import Potency from './graph/Potency'
+// 第四部分:心理定位测验结果
+import Location from './graph/Location'
+// 第五部分:高等院校部分学科,专业解析
+import Analysis from './graph/Analysis'
+// 结束语
+import Bottom from './graph/Bottom'
+
 
 
 
@@ -49,9 +60,6 @@ import Report from './graph/Report'
 // 专业
 import Major from './graph/Major'
 // 专业解析
-import Analysis from './graph/Analysis'
-// 结束语
-import Bottom from './graph/Bottom'
 export default {
     data(){
         return{
@@ -65,7 +73,8 @@ export default {
         Preface,
         Interest,
         Personality,
-
+        Potency,
+        Location,
 
 
         Report,

@@ -1,9 +1,9 @@
 <template>
     <div class="maj">
-        <div style="background:red;color:#fff;margin-bottom:20px;width:120px;">
+        <div style="background:red;color:#fff;margin-bottom:20px;width:120px;margin: 0 auto;">
             <h1 style="text-align:center;">{{headerT}}</h1>
         </div>
-        <div class="box" style="text-align:left;width:1100px;" v-for="(item,i) in content" :key="i">
+        <div class="box" style="text-align:left;width:1100px;font-weight:bolder;font-size:17px;letter-spacing: 3px;" v-for="(item,i) in content" :key="i">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}
         </div>
         
