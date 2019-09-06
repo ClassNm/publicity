@@ -10,7 +10,37 @@
             <li>（3）在全部21中职业类型中，超过15分的职业类别包括：“个体生命-规划与实施”......</li>
         </ul>
         <span style="font-weight:bolder;text-align:left;font-size:18px;display:block;margin-top:50px;">二，根据以上测验和调查，你感兴趣职业类别和想报考的学科如下：</span>
-        <div id="myChartTwo" class="Repor"></div>
+        <!-- <span>会计学</span> -->
+        <div style="width:1000px;height:1000px;">
+            <div style="width:300px;float:left;height:200px;display:block;">
+                <span style="width:300px;display:block;">职业类别</span>
+                <!-- <div style="width:300px;float:left;height:2px;background:#ccc;"></div> -->
+                <div style="height:200px;border:1px solid #ccc;" v-for="(item,i) in bb" :key="i">
+                    <span style="display:block;margin-top: 70px;">{{item.width}}</span>
+                </div>
+            </div>
+            <!-- <div style="width:2px;float:left;height:200px;background:#ccc;"></div> -->
+            <div style="width:333px;float:left;height:200px;display:block;">
+                <span style="display:block;">你喜欢的学科</span>
+                <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
+                <div style="height:200px;border:1px solid #ccc;" v-for="(item,i) in cc" :key="i">
+                    <span style="display:block;padding-top: 30px;" v-for="(item,i) in item.width" :key="i">{{item.name}}</span>
+                </div>
+            </div>
+            <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
+            <!-- <div style="width:2px;float:left;height:200px;background:#ccc;"></div> -->
+             <div style="width:333px;float:left;height:200px;display:block;">
+                <span style="display:block;">适合度</span>
+                <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
+                <div style="height:200px;border:1px solid #ccc;" v-for="(item,i) in aa" :key="i">
+                    <!-- <div id="myChartTwo" class="ReporTw"></div> -->
+                    <!-- <div id="myChartThrr" class="ReporTw"></div> -->
+                    <div class="rightBot" :style="{width:item.width}"></div>
+                </div>
+            </div>
+            <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
+        </div>
+        <br>
     </div>
 </template>
 
@@ -35,6 +65,70 @@ export default {
             use:[],
             // 传过来的Array
             //  graph:[]
+            color:50,
+            aa:[
+                {
+                    width:"50px"
+                },
+                {
+                    width:"80px"
+                },
+                {
+                    width:"100px"
+                }
+            ],
+            bb:[
+                {
+                    width:"个体生命"
+                },
+                {
+                    width:"个体生命"
+                },
+                {
+                    width:"个体生命"
+                }
+            ],
+             cc:[
+                {
+                    width:[
+                        {
+                            name:"①教育学"
+                        },
+                        {
+                            name:"②旅游管理"
+                        },
+                        {
+                            name:"③公共管理"
+                        },
+                    ]
+                },
+                {
+                    width:[
+                        {
+                            name:"①教育学"
+                        },
+                        {
+                            name:"②旅游管理"
+                        },
+                        {
+                            name:"③公共管理"
+                        },
+                    ]
+                },
+                {
+                    width:[
+                        {
+                            name:"①教育学"
+                        },
+                        {
+                            name:"②旅游管理"
+                        },
+                        {
+                            name:"③公共管理"
+                        },
+                    ]
+                },
+            ]
         }
      },
      created(){
@@ -60,8 +154,8 @@ export default {
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
-        this.drawLineTwo();
-
+        // this.drawLineTwo();
+        // this.drawLineThrr();
     },
     methods:{
         // echarts调用方法 的案例
@@ -168,21 +262,66 @@ export default {
                     left: '3%',
                     right: '4%',
                     bottom: '3%',
-                    containLabel: true
+                    // containLabel: true
                 },
                 xAxis: {
                     type: 'value',
-                    boundaryGap: [0, 0.01]
+                    // boundaryGap: [0, 0.01]
                 },
                 yAxis: {
                     type: 'category',
-                    data: ['会计学','光信息科学与技术','信息管理与信息系统','保险','新闻学','政治学与行政学','国际经济与贸易','财政学','金融学','经济学','法学','旅游管理',]
+                    // data: ['会计学','光信息科学与技术','信息管理与信息系统','保险','新闻学','政治学与行政学','国际经济与贸易','财政学','金融学','经济学','法学','旅游管理',]
+                    data: ['会计学']
                 },
                 series: [
                     {
                         // name: '2011年',
                         type: 'bar',
-                        data: [18, 23, 29, 10, 13, 6,22,34,14,11,21,33]
+                        // data: [18, 23, 29, 10, 13, 6,22,34,14,11,21,33]
+                        data: [18]
+
+                    }
+                ]
+            });
+        },
+        drawLineThrr(){
+            var myChartThrr = this.$echarts.init(document.getElementById('myChartThrr'));//获取容器元素
+            myChartThrr.setOption({
+                title: {
+                    // text: '世界人口总量',
+                    // subtext: '数据来自网络'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    // data: ['2011年', '2012年']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    // containLabel: true
+                },
+                xAxis: {
+                    type: 'value',
+                    // boundaryGap: [0, 0.01]
+                },
+                yAxis: {
+                    type: 'category',
+                    // data: ['会计学','光信息科学与技术','信息管理与信息系统','保险','新闻学','政治学与行政学','国际经济与贸易','财政学','金融学','经济学','法学','旅游管理',]
+                    data: ['会计学']
+                },
+                series: [
+                    {
+                        // name: '2011年',
+                        type: 'bar',
+                        // data: [18, 23, 29, 10, 13, 6,22,34,14,11,21,33]
+                        data: [25]
+
                     }
                 ]
             });
@@ -207,6 +346,15 @@ export default {
             width: 1100px; 
             height: 602px;
             margin: 0 auto;
+        }
+        .ReporTw{
+             width: 300px; 
+            height: 100px;
+        }
+        .rightBot{
+            height: 30px;
+            margin-top: 50px;
+            background: #797878;
         }
     }
     @media screen and (max-width: 1199px){

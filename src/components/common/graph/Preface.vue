@@ -7,7 +7,7 @@
         <li style="text-align:left;font-size:15px;letter-spacing: 3px;font-weight:bolder;">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“全职四维”生涯规划测验从兴趣、人格、潜能、定位四个维度，对影响学生生涯规划的四个因素进行系统的测评，并根据测评结果向学生推荐适合的学科类别。每一级推荐都在上一级推荐的基础上进行，逐渐缩小范围，确保最后的推荐结果精准匹配学生情况。
         </li>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Sanya_Sun_Photo_by_Dale_Preston_enhanced.jpg" alt="">
+        <img src="../../../assets/222.jpg" alt="">
         <span style="text-align:left;font-size:20px;display:block;font-weight:bolder;margin-bottom: 40px;">【名词释义】</span>
         <ul  style="text-align:left;font-size:15px;margin-left:30px;">
             <li>1，全职兴趣测验：按照“{{one}}”和“{{two}}”两个维度，将大学本科的学科（职业）分为21种类型，考察学生对21种类型的兴趣。</li>
@@ -35,8 +35,8 @@ export default {
         margin: 10px 0;
     }
     img{
-        width: 400px;
-        height: 400px;
+        width: 600px;
+        height: 600px;
         margin-bottom:50px;
         margin-top: 50px;
     }
