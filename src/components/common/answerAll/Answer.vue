@@ -1,8 +1,10 @@
 <template>
     <div class="surveydetailout" id="surveydetailout" >
         <!-- <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio> -->
-        <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck>
-        <TwoRadio v-if="Thr"></TwoRadio>  
+        <!-- <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck> -->
+        <FillReport></FillReport>
+        <Submitfile></Submitfile>
+        <!-- <TwoRadio v-if="Thr"></TwoRadio>   -->
         <!-- <FourRadio></FourRadio>    -->
     </div>
 </template>
@@ -14,6 +16,12 @@ import FirstRadio from './FirstRadio'
 import AnswerCheck from './AnswerCheck'
 // xinli 单选 16
 import TwoRadio from './TwoRadio'
+
+// mbti 能力  心理 
+// 填报告
+import FillReport from './FillReport'
+import Submitfile from './Submitfile'
+
 // MBTI 单选 32
 import FourRadio from './FourRadio'
 
@@ -35,6 +43,8 @@ export default {
     components:{
         FirstRadio,
         AnswerCheck,
+        FillReport,
+        Submitfile,
         TwoRadio,
         FourRadio
     },
@@ -84,8 +94,8 @@ export default {
 <style  scoped>
     .surveydetailout {
         position: relative;
-         width: 500px;
-        height: 1000px;
+        width: 500px;
+        height: 3500px;
         margin: 50px auto 300px;
         overflow: hidden;
     };

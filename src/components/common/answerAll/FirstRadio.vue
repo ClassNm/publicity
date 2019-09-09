@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <div id="bodycontent_contentbody_divSurveyGuide" 
         class="surveydetail"
         onselectstart="return false"
