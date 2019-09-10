@@ -99,31 +99,106 @@ export default {
                         title: '所包含的学科',
                         key: 'address',
                         render: (h, params) => {
-                            return h('div', [
-                            h('p',params.row.address.one),
-                            // h('div', {
-                            //     style: {
-                            //     margin: '1px 0',
-                            //     height: '1px',
-                            //     background: '#ccc',
+                            // return h('div', [
+                            // h('Button', {
+                            //     props: { type: 'primary', size: 'small' },
+                            //      style:{
+                            //         display:"block",
+                            //         marginBottom:"2px"
+                            //     },
+                            //     on: {
+                            //         click: () => { console.log(params.row.address.one) }
                             //     }
-                            // }),
-                            h('p',params.row.address.two),
-                            h('p',params.row.address.three),
-                            h('p',params.row.address.fout),
-                            h('p',params.row.address.five),
-                            ])
+                            // }, params.row.address.one),
+                            // h('Button', {
+                            //     props: { type: 'primary', size: 'small' },
+                            //     style:{
+                            //         display:"block",
+                            //         marginBottom:"2px"
+                            //     },
+                            //     on: {
+                            //         click: () => { console.log(params.row.address.two) }
+                            //     }
+                            // }, params.row.address.two),
+                            // h('Button', {
+                            //     props: { type: 'primary', size: 'small' },
+                            //      style:{
+                            //         display:"block",
+                            //         marginBottom:"2px"
+                            //     },
+                            //     on: {
+                            //         click: () => { console.log(params.row.address.three) }
+                            //     }
+                            // }, params.row.address.three),
+                            // h('Button', {
+                            //     props: { type: 'primary', size: 'small' },
+                            //      style:{
+                            //         display:"block",
+                            //         marginBottom:"2px"
+                            //     },
+                            //     on: {
+                            //         click: () => { console.log(params.row.address.fout) }
+                            //     }
+                            // }, params.row.address.fout),
+                            // h('Button', {
+                            //     props: { type: 'primary', size: 'small' },
+                            //      style:{
+                            //         display:"block",
+                            //         marginBottom:"2px"
+                            //     },
+                            //     on: {
+                            //         click: () => { console.log(params.row.address.five) }
+                            //     }
+                            // }, params.row.address.five),
+                            // ])
+                             return h('div', params.row.address.map(v => {
+                                return h('Button',
+                                    {
+                                    props: { type: 'primary', size: 'small' },
+                                     style:{
+                                        display:"block",
+                                        marginBottom:"2px"
+                                    },
+                                    on: {
+                                        click: (e) => { 
+                                            let a = params.row.subject
+                                            a.push(e.target.innerText)
+                                            // console.log(e.target.innerText)
+                                            // console.log(a)
+                                            if(a.length>3){
+                                                this.$Message.error('最多选三个');
+                                                params.row.subject = []
+                                            }
+                                        }
+                                    },
+                                    domProps: {
+                                        innerHTML: v.name
+                                    }
+                                    })
+                                })
+                            )
                         }
                     },
                      {
                         title: '你喜欢的学科',
                         key: 'subject',
+                        // render: (h, params) => {
+                        //     return h('div', [
+                        //     h('p',params.row.subject.subOne),
+                        //     h('p',params.row.subject.subTwe),
+                        //     h('p',params.row.subject.subThree),
+                        //     ])
+                        // }
                         render: (h, params) => {
-                            return h('div', [
-                            h('p',params.row.subject.subOne),
-                            h('p',params.row.subject.subTwe),
-                            h('p',params.row.subject.subThree),
-                            ])
+                            return h('div', params.row.subject.map(v => {
+                                return h('p',
+                                    {
+                                    domProps: {
+                                        innerHTML: v
+                                    }
+                                    })
+                                })
+                            )
                         }
                     }
             ],
@@ -131,67 +206,98 @@ export default {
                     {
                         name: '语言符号-研究与探索',
                         age: "17分",
-                        address: {
-                            one:"外国语言与外国历史",
-                            two:"汉语言",
-                            three:"逻辑学",
-                            fout:"应用语言学",
-                            five:"挖都挖出现"
-                        },
-                        subject:{
-                            subOne:"娃达",
-                            subTwe:"2",
-                            subThree:"3"
-                        },
-                        date: '2016-10-03'
+                        address:[
+                            {
+                                name:"外国语言与外国历史"
+                            },
+                            {
+                                name:"汉语言"
+                            },
+                            {
+                                name:"逻辑学"
+                            },
+                            {
+                                name:"应用语言学"
+                            },
+                            {
+                                name:"挖都挖出现"
+                            },
+                            {
+                                name:"汉语言"
+                            },
+                        ],
+                        subject:[],
+                        // subject:{
+                        //     subOne:"娃达",
+                        //     subTwe:"2",
+                        //     subThree:"3"
+                        // },
                     },
                     {
                         name: '数学符号-研究与探索',
                         age: "15分",
-                        address: {
-                            one:"哲学",
-                            two:"逻辑学",
-                            three:"宗教学",
-                            fout:"传播学"
-                        },
-                        subject:{
-                            subOne:"1挖的哇",
-                            subTwe:"2",
-                            subThree:"3"
-                        },
-                        date: '2016-10-01'
+                        address:[
+                            {
+                                name:"哲学"
+                            },
+                            {
+                                name:"逻辑学"
+                            },
+                            {
+                                name:"宗教学"
+                            },
+                            {
+                                name:"宗教学"
+                            },
+                            {
+                                name:"传播学"
+                            },
+                        ],
+                        subject:[],
                     },
                     {
                         name: '阿迪王-研究与探索',
                         age: "12分",
-                        address: {
-                            one:"统计学",
-                            two:"数学",
-                            three:"信息科学",
-                            fout:"力学"
-                        },
-                        subject:{
-                            subOne:"1我完全",
-                            subTwe:"2",
-                            subThree:"3"
-                        },
-                        date: '2016-10-02'
+                        address:[
+                            {
+                                name:"统计学"
+                            },
+                            {
+                                name:"数学"
+                            },
+                            {
+                                name:"信息科学"
+                            },
+                            {
+                                name:"力学"
+                            },
+                            {
+                                name:"传播学"
+                            },
+                        ],
+                        subject:[],
                     },
                     {
                         name: '挖的哇-研究与探索',
                         age: "19分",
-                        address: {
-                            one:"wdw挖的哇",
-                            two:"挖的哇",
-                            three:"反对v吧",
-                            fout:"而乏味"
-                        },
-                        subject:{
-                            subOne:"1让人",
-                            subTwe:"2",
-                            subThree:"3"
-                        },
-                        date: '2016-10-04'
+                        address:[
+                            {
+                                name:"wdw挖的哇"
+                            },
+                            {
+                                name:"挖的哇"
+                            },
+                            {
+                                name:"反对v吧"
+                            },
+                            {
+                                name:"而乏味"
+                            },
+                            {
+                                name:"反对v吧"
+                            },
+                        ],
+                        subject:[],
                     }
                 ]
         }

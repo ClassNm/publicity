@@ -4,8 +4,9 @@
         <!-- <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck> -->
         <FillReport></FillReport>
         <Submitfile></Submitfile>
-        <!-- <TwoRadio v-if="Thr"></TwoRadio>   -->
         <!-- <FourRadio></FourRadio>    -->
+        <!-- 顺序换了 -->
+        <!-- <TwoRadio v-if="Thr"></TwoRadio>   -->
     </div>
 </template>
 
@@ -49,21 +50,21 @@ export default {
         FourRadio
     },
     created(){
-        this.ubid = this.$route.query.id;
-        this.judge = this.$route.query.judge;
-        if(this.judge==="第二部分没做"||this.judge==="第二部分没做完"){
-            this.ok = false
-        }else if(this.judge==="第三部分没做"||this.judge==="第三部分没做完"){
-            this.ok = false
-            this.Two = false
-        }else if(this.judge==="第四部分没做"||this.judge==="第四部分没做完"){
-            this.ok = false
-            this.Two = false
-            this.Thr = false
-        }
+        // this.ubid = this.$route.query.id;
+        // this.judge = this.$route.query.judge;
+        // if(this.judge==="第二部分没做"||this.judge==="第二部分没做完"){
+        //     this.ok = false
+        // }else if(this.judge==="第三部分没做"||this.judge==="第三部分没做完"){
+        //     this.ok = false
+        //     this.Two = false
+        // }else if(this.judge==="第四部分没做"||this.judge==="第四部分没做完"){
+        //     this.ok = false
+        //     this.Two = false
+        //     this.Thr = false
+        // }
     },
     mounted(){
-        this.Starting();
+        // this.Starting();
     },
     methods:{
         Starting(){

@@ -19,7 +19,6 @@
             line-height: 100px;
             color:#ccc;
             "
-            
             >
                 自然事物
             </div>
@@ -324,9 +323,5 @@ export default {
         overflow: hidden;
         margin: 50px auto 300px
     }
-
-
-
-
-
+    
 </style>

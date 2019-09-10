@@ -259,6 +259,8 @@ export default {
                 if(this.title.length == 0){
                     let headbox = this.$refs.headbox
                     headbox.style.display = "none"
+                    let id = this.ubid;
+                    this.$router.push({path:'/reported',query:{id:id}})
                 }
             }
         }
