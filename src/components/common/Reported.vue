@@ -23,7 +23,7 @@
         <Analysis style="break-after:page;page-break-after: always;"></Analysis>
         <Bottom style="break-after:page;page-break-after: always;"></Bottom>
         <!-- 滑动按钮 -->
-        <BackTop></BackTop>
+        <BackTop class="bottBack"></BackTop>
     </div>
 </template>
 
@@ -102,6 +102,11 @@ export default {
     /* 初始化显示的跳转等待默认样式 */
     .demo-spin-icon-load{
         animation: ani-demo-spin 1s linear infinite;
+    }
+    @media print{
+        .bottBack{
+            display: none;
+        }
     }
     @media screen and (min-width: 1200px){
        

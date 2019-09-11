@@ -2,13 +2,41 @@
     <div class="box">
         <img src="../../../assets/111.png" alt="">
         <h1 class="tit">全职四维生涯测评分析报告</h1>
-        <span class="head" style="letter-spacing: 5px;">张三</span>
-        <span class="head">2019/9/3</span>
+        <div class="head" style="letter-spacing: 5px;">张三</div>
+        <div class="head">2019/9/3</div>
         <li class="bot">一段文字.....................................</li>
     </div>
 </template>
 
-<style scoped>
+<style scoped media="print">
+    @page{
+    /* size: auto A4 landscape; */
+    /* margin-left: 3mm; */
+    }
+    @media print{
+    }
+    /* @page:right{
+        @bottom-left {
+            margin: 10pt 0 30pt 0;
+            border-top: .25pt solid #666;
+            content: "Our Cats";
+            font-size: 9pt;
+            color: #333;
+        }
+        @bottom-right { 
+            margin: 10pt 0 30pt 0;
+            border-top: .25pt solid #666;
+            content: counter(page);
+            font-size: 9pt;
+        }
+
+
+        @top-right{
+            content: "Our Cats";
+            font-size: 9pt;
+            color: red;
+        }
+    } */
     li{
         list-style: none;
     }

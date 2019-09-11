@@ -397,6 +397,17 @@ export default {
     li{
         margin-left: 30px;
     }
+    @media print{
+        .Repor{
+            width: 600px; 
+            height: 602px;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            display: inline-block;
+            margin-top: 100px;
+        }
+    }
      @media screen and (min-width: 1200px){
         .box{
             width: 1100px;
@@ -406,6 +417,8 @@ export default {
         .Repor{
             width: 600px; 
             height: 602px;
+            display: block;
+            text-align: center;
             margin: 0 auto;
             display: inline-block;
             margin-top: 100px;

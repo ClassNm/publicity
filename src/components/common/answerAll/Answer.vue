@@ -18,7 +18,7 @@ import AnswerCheck from './AnswerCheck'
 // xinli 单选 16
 import TwoRadio from './TwoRadio'
 
-// mbti 能力  心理 
+// mbti 能力  心理
 // 填报告
 import FillReport from './FillReport'
 import Submitfile from './Submitfile'
