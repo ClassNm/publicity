@@ -25,7 +25,9 @@
             :value="item.object1" 
             class="checked" 
             >
-                <CheckboxGroup v-model="checkAllGroup" :title="item.object1" @on-change="testChange(item)">
+                <CheckboxGroup v-model="checkAllGroup" 
+                :title="item.object1" 
+                @on-change="testChange(item)">
                     <Checkbox :label="item.object" class="checked" >
                         {{item.object}}
                     </Checkbox>

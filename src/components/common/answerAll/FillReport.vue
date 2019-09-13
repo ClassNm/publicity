@@ -12,86 +12,80 @@
             <tbody>
                 <tr>
                     <td style="height:60px;">物理</td>
-                    <td v-for="(item,i) in physics" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="physics">
                     </td>
                 </tr>
                <tr>
                     <td style="height:60px;">化学</td>
-                    <td v-for="(item,i) in chemistry" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="chemistry">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">生物</td>
-                    <td v-for="(item,i) in biology" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="biology">
                     </td>
                 </tr>
                  <tr>
                     <td style="height:60px;">信息技术</td>
-                    <td v-for="(item,i) in message" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="message">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">通用技术</td>
-                    <td v-for="(item,i) in common" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="common">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">美术</td>
-                    <td v-for="(item,i) in fineArts" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="fineArts">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">音乐</td>
-                    <td v-for="(item,i) in music" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="music">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">数学</td>
-                    <td v-for="(item,i) in mathematics" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="mathematics">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">语文</td>
-                    <td v-for="(item,i) in language" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="language">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">英语</td>
-                    <td v-for="(item,i) in english" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="english">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">历史</td>
-                    <td v-for="(item,i) in history" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="history">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">地理</td>
-                    <td v-for="(item,i) in geography" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="geography">
                     </td>
                 </tr>
                 <tr>
                     <td style="height:60px;">政治</td>
-                    <td v-for="(item,i) in politics" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
-                    </td>
-                </tr>
-                <tr>
-                    <td style="height:60px;">XXX</td>
-                    <td v-for="(item,i) in unit" :key="i"> 
-                        <input type="text" class="inpAll" v-model="item.name">
+                    <td> 
+                        <input type="text" class="inpAll" v-model="politics">
                     </td>
                 </tr>
             </tbody>
@@ -101,86 +95,114 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data(){
         return{
-            physics:[
-                {
-                    name:""
-                },
-            ],
-            chemistry:[
-                {
-                    name:""
-                }
-            ],
-            biology:[
-                {
-                    name:""
-                }
-            ],
-            message:[
-                {
-                    name:""
-                }
-            ],
-            common:[
-                {
-                    name:""
-                }
-            ],
-            fineArts:[
-                {
-                    name:""
-                }
-            ],
-            music:[
-                {
-                    name:""
-                }
-            ],
-            mathematics:[
-                {
-                    name:""
-                }
-            ],
-            language:[
-                {
-                    name:""
-                }
-            ],
-            english:[
-                {
-                    name:""
-                }
-            ],
-            history:[
-                {
-                    name:""
-                }
-            ],
-            geography:[
-                {
-                    name:""
-                }
-            ],
-            politics:[
-                {
-                    name:""
-                }
-            ],
-            unit:[
-                {
-                    name:""
-                }
-            ]
+            // physics:[
+            //     {
+            //         name:""
+            //     },
+            // ],
+            physics:"",
+            chemistry:"",
+            biology:"",
+            message:"",
+            common:"",
+            fineArts:"",
+            music:"",
+            mathematics:"",
+            language:"",
+            english:"",
+            history:"",
+            geography:"",
+            politics:"",
+            unit:""
         }
     },
     methods:{
         file(){
-            // console.log(111)
             let headbox = this.$refs.headbox
             headbox.style.display = "none"
+            // let uid = this.$route.query.id;
+            let uid = 150;
+            let data = [
+                {
+                    score:this.physics,
+                    typ:"N",
+                    uid:uid
+                },
+                {
+                    score:this.chemistry,
+                    typ:"N",
+                    uid:uid
+                },
+                {
+                    score:this.biology,
+                    typ:"N",
+                    uid:uid
+                },
+                {
+                    score:this.message,
+                    typ:"T",
+                    uid:uid
+                },
+                {
+                    score:this.common,
+                    typ:"T",
+                    uid:uid
+                },
+                {
+                    score:this.fineArts,
+                    typ:"A",
+                    uid:uid
+                },
+                {
+                    score:this.music,
+                    typ:"A",
+                    uid:uid
+                },
+                {
+                    score:this.mathematics,
+                    typ:"M",
+                    uid:uid
+                },
+                {
+                    score:this.language,
+                    typ:"I",
+                    uid:uid
+                },
+                {
+                    score:this.english,
+                    typ:"I",
+                    uid:uid
+                },
+                 {
+                    score:this.history,
+                    typ:"S",
+                    uid:uid
+                },
+                 {
+                    score:this.geography,
+                    typ:"S",
+                    uid:uid
+                },
+                 {
+                    score:this.politics,
+                    typ:"S",
+                    uid:uid
+                },
+            ];
+            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/save',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+
+            }),(err)=>{
+
+            }
+            console.log(data)
         }
     }
 }

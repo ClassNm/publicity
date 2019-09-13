@@ -2,9 +2,10 @@
     <div class="surveydetailout" id="surveydetailout" >
         <!-- <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio> -->
         <!-- <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck> -->
-        <FillReport></FillReport>
-        <Submitfile></Submitfile>
         <!-- <FourRadio></FourRadio>    -->
+        
+        <!-- <FillReport></FillReport> -->
+        <Submitfile></Submitfile>
         <!-- 顺序换了 -->
         <!-- <TwoRadio v-if="Thr"></TwoRadio>   -->
     </div>

@@ -5,9 +5,8 @@
         <div id="myChart" class="Repor"></div>
         <ul style="text-align:left;font-weight:bolder;margin-top:80px;">
             结果说明：
-            <li>（1）在七类对象中，你对“个体生命”、“语言符号”、“社会制度”三类对象的得分明显高于其他对象，说明你对这三类对象有较高的兴趣；</li>
-            <li>（2）在三个加工水平中，你的得分从高到低排序是“使用与维护”“规划与实施”、“研究与探索”，说明你更愿意从事“使用与维护”性质的职业。</li>
-            <li>（3）在全部21中职业类型中，超过15分的职业类别包括：“个体生命-规划与实施”......</li>
+            <!-- <li v-for="(item,i) in Arrdata" :key="i">在全部21中职业类型中，超过15分的职业类别包括：{{item}}</!--> -->
+            <li>在全部21中职业类型中，超过15分的职业类别包括：{{Arrdata}}</li>
         </ul>
         <span style="font-weight:bolder;text-align:left;font-size:18px;display:block;margin-top:50px;">二，根据以上测验和调查，你感兴趣职业类别和想报考的学科如下：</span>
         <!-- <span>会计学</span> -->
@@ -49,6 +48,7 @@ import axios from 'axios';
 export default {
      data(){
         return{
+            Arrdata:[],
             // header:"三、职业兴趣维度",
             // 用户uid
             uid:"",
@@ -156,6 +156,7 @@ export default {
         this.drawLine();
         // this.drawLineTwo();
         // this.drawLineThrr();
+        this.ArrData();
     },
     methods:{
         // echarts调用方法 的案例
@@ -325,6 +326,79 @@ export default {
                     }
                 ]
             });
+        },
+        ArrData(){
+            // let data = this.$route.query.id;
+            let data = 150;
+            axios.post('http://192.168.1.106:8080/AssessScore/showResultt',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                // console.log(res.data,'aaa')
+                var aa = res.data;
+                // var cc = aa.map(function(v){
+                //     console.log(v,'v')
+                //     if(v == "RA"){
+                //         v = "艺术形象-研究与探索"
+                //     }
+                // })
+                let bb = aa.map(item=>{
+                    if(item=="RA"){
+                        item = "艺术形象-研究与探索"
+                    }else if(item=="RN"){
+                        item = "自然事物-研究与探索"
+                    }else if(item=="UN"){
+                        item = "自然事物-使用与维护"
+                    }else if(item=="PN"){
+                        item = "自然事务-规划与实施"
+                    }else if(item=="RT"){
+                        item = "人造事物-研究与探索"
+                    }else if(item=="PT"){
+                        item = "人造事物-规划与实施"
+                    }else if(item=="UT"){
+                        item = "人造事物-使用与维护"
+                    }else if(item=="RM"){
+                        item = "数学符号-研究与探索"
+                    }else if(item=="PM"){
+                        item = "数学符号-规划与实施"
+                    }else if(item=="UM"){
+                        item = "数学符号-使用与维护"
+                    }else if(item=="RL"){
+                        item = "语言符号-研究与探索"
+                    }else if(item=="PL"){
+                        item = "语言符号-规划与实施"
+                    }else if(item=="UL"){
+                        item = "语言符号-使用与维护"
+                    }else if(item=="RA"){
+                        item = "艺术形象-研究与探索"
+                    }else if(item=="UA"){
+                        item = "艺术形象-使用与维护"
+                    }else if(item=="RS"){
+                        item = "社会制度-研究与探索"
+                    }else if(item=="PS"){
+                        item = "社会制度-规划与实施"
+                    }else if(item=="US"){
+                        item = "社会制度-使用与维护"
+                    }else if(item=="RI"){
+                        item = "个体生命-研究与探索"
+                    }else if(item=="PI"){
+                        item = "个体生命-规划与实施"
+                    }else if(item=="UI"){
+                        item = "个体生命-使用与维护"
+                    }
+                    // console.log(item,'v')
+                    // console.log(aa,'aa')
+                    return item;
+                })
+                // var arr = res.data.join(",")
+                // var b = arr.replace(/RA/,"艺术形象-研究与探索")
+                // console.log(typeof(cc),'cccbb')
+                // console.log(bb,'cccbb')
+                this.Arrdata = bb;
+             }),(err)=>{
+                console.log(err)
+            }
         }
     }        
 }

@@ -26,16 +26,31 @@
             <div style="width:400px;display:inline-block;height:450px;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加物理,化学，生物等学科比赛项目课外训练的时间有多长?
-                    <RadioGroup v-model="firstQuestiontit">
-                        <Radio v-for="(item,i) in firstQuestion" :key="i" :label="item.label">
+                    <RadioGroup v-model="firstQuestiontit.one.one"
+                    v-for="(item,i) in firstQuestion" 
+                    :title="item.label"
+                    :key="i" 
+                    @on-change="parent(item)"
+                    >
+                        <Radio 
+                    :label="item.label" 
+                    >
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
                 </div>
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加物理,化学,生物学科地市级以上比赛有多少次?
-                    <RadioGroup v-model="Twotit">
-                        <Radio v-for="(item,i) in TwoQuestion" :key="i" :label="item.label">
+                    <RadioGroup v-model="firstQuestiontit.one.twe"
+                        v-for="(item,i) in TwoQuestion" 
+                        :key="i" 
+                        :title="item.label"
+                        @on-change="parentT(item)"
+                    >
+                        <Radio 
+                        :label="item.label"
+                        
+                        >
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
@@ -75,16 +90,25 @@
             <div style="width:400px;display:inline-block;height:450px;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加模型,电子，机器人科技类项目课外训练的时间有多长?
-                    <RadioGroup v-model="firstQuestiontit">
-                        <Radio v-for="(item,i) in firstQuestion" :key="i" :label="item.label">
+                    <RadioGroup v-model="firstQuestiontit.twe.one"
+                    v-for="(item,i) in firstQuestion" :key="i" 
+                    @on-change="parentTwe(item)"
+                    >
+                        <Radio 
+                       
+                        :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
                 </div>
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,在以上科技类项目中，你参加地市级以上比赛有多少次?
-                    <RadioGroup v-model="Twotit">
-                        <Radio v-for="(item,i) in TwoQuestion" :key="i" :label="item.label">
+                    <RadioGroup v-model="firstQuestiontit.twe.twe"
+                    v-for="(item,i) in TwoQuestion" :key="i"
+                    :title="item.label"
+                    @on-change="parentTweT(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
@@ -124,16 +148,24 @@
             <div style="width:400px;display:inline-block;height:450px;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加绘画,音乐，舞蹈等艺术类项目课外训练的时间有多长?
-                    <RadioGroup v-model="firstQuestiontit">
-                        <Radio v-for="(item,i) in firstQuestion" :key="i" :label="item.label">
+                    <RadioGroup v-model="firstQuestiontit.thr.one"
+                    v-for="(item,i) in firstQuestion" :key="i"
+                     :title="item.label"
+                    @on-change="parentThr(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
                 </div>
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加绘画,音乐，舞蹈等艺术类项目地市级以上比赛有多少次?
-                    <RadioGroup v-model="Twotit">
-                        <Radio v-for="(item,i) in TwoQuestion" :key="i" :label="item.label">
+                    <RadioGroup v-model="firstQuestiontit.thr.twe"
+                    v-for="(item,i) in TwoQuestion" :key="i"
+                     :title="item.label"
+                    @on-change="parentThrT(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
@@ -173,16 +205,26 @@
             <div style="width:400px;display:inline-block;height:450px;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加数学,编程等项目课外训练的时间有多长?
-                    <RadioGroup v-model="firstQuestiontit">
-                        <Radio v-for="(item,i) in firstQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.four.one"
+                    v-for="(item,i) in firstQuestion" :key="i"
+                    :title="item.label"
+                    @on-change="parentFour(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
                 </div>
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加数学,编程等项目地市级以上比赛有多少次?
-                    <RadioGroup v-model="Twotit">
-                        <Radio v-for="(item,i) in TwoQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.four.twe"
+                    v-for="(item,i) in TwoQuestion" :key="i"
+                    :title="item.label"
+                    @on-change="parentFourTw(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
@@ -222,16 +264,27 @@
             <div style="width:400px;display:inline-block;height:450px;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加语文和英语类项目课外训练的时间有多长?
-                    <RadioGroup v-model="firstQuestiontit">
-                        <Radio v-for="(item,i) in firstQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.five.one"
+                    v-for="(item,i) in firstQuestion" :key="i"
+                    :title="item.label"
+                    @on-change="parentFive(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
                 </div>
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加语文和英语类项目地市级以上比赛有多少次?
-                    <RadioGroup v-model="Twotit">
-                        <Radio v-for="(item,i) in TwoQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.five.twe"
+                    v-for="(item,i) in TwoQuestion" :key="i"
+                    :title="item.label"
+                    @on-change="parentFiveTw(item)"
+                    >
+                    <!-- v-model="firstQuestiontit" -->
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
@@ -271,16 +324,27 @@
             <div style="width:400px;display:inline-block;height:450px;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加历史,地理,政治等人文社会类课外活动有多少次?
-                    <RadioGroup v-model="firstQuestiontit">
-                        <Radio v-for="(item,i) in firstQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.six.one"
+                    v-for="(item,i) in firstQuestion" :key="i"
+                     :title="item.label"
+                    @on-change="parentSix(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
                 </div>
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加以历史和文化为主题的游学(研学旅行)活动有多少次?
-                    <RadioGroup v-model="Twotit">
-                        <Radio v-for="(item,i) in TwoQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.six.twe"
+                    v-for="(item,i) in TwoQuestion" :key="i"
+                     :title="item.label"
+                    @on-change="parentSixTW(item)"
+                    >
+                    <!-- v-model="firstQuestiontit" -->
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
@@ -320,16 +384,26 @@
             <div style="width:400px;display:inline-block;height:450px;border-bottom:1px solid #ccc;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加社会实践或志愿者服务的课外活动有多少次?
-                    <RadioGroup v-model="firstQuestiontit">
-                        <Radio v-for="(item,i) in firstQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.seve.one"
+                    v-for="(item,i) in firstQuestion" :key="i"
+                    :title="item.label"
+                    @on-change="parentSeve(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
                 </div>
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加体育类项目地市级以上比赛有多少次?
-                    <RadioGroup v-model="Twotit">
-                        <Radio v-for="(item,i) in TwoQuestion" :key="i" :label="item.label">
+                    <RadioGroup 
+                    v-model="firstQuestiontit.seve.twe"
+                    v-for="(item,i) in TwoQuestion" :key="i"
+                    :title="item.label"
+                    @on-change="parentSeveTw(item)"
+                    >
+                        <Radio  :label="item.label">
                             <span>{{item.name}}</span>
                         </Radio>
                     </RadioGroup>
@@ -362,73 +436,138 @@
                 </div>
             </div>
         </div>
-        <button @click="aa">提交</button>
+        <button @click="postAx">提交</button>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data () {
         return {
-            firstQuestiontit: '',
+            radiotit:{
+                one:{
+                    one:"",
+                    twe:"",
+                },
+                twe:{
+                    one:"",
+                    twe:"",
+                },
+                thr:{
+                    one:"",
+                    twe:"",
+                },
+                four:{
+                    one:"",
+                    twe:"",
+                },
+                five:{
+                    one:"",
+                    twe:"",
+                },
+                six:{
+                    one:"",
+                    twe:"",
+                },
+                seve:{
+                    one:"",
+                    twe:"",
+                },
+                eight:{
+                    one:"",
+                    twe:"",
+                },
+            },
+            // firstQuestiontit: '',
+            Twotit:"",
+            firstQuestiontit:{
+                 one:{
+                    one:"",
+                    twe:"",
+                },
+                twe:{
+                    one:"",
+                    twe:"",
+                },
+                thr:{
+                    one:"",
+                    twe:"",
+                },
+                four:{
+                    one:"",
+                    twe:"",
+                },
+                five:{
+                    one:"",
+                    twe:"",
+                },
+                six:{
+                    one:"",
+                    twe:"",
+                },
+                seve:{
+                    one:"",
+                    twe:"",
+                }
+            },
             firstQuestion:[
                 {
                     name:"没有",
-                    label:"没有"
+                    label:"0"
                 },
                 {
                     name:"不到1年",
-                    label:"不到1年"
+                    label:"1"
                 },
                 {
                     name:"2年",
-                    label:"2年"
+                    label:"3"
                 },
                 {
                     name:"3年",
-                    label:"3年"
+                    label:"5"
                 },
                 {
                     name:"4年",
-                    label:"4年"
+                    label:"7"
                 },
                 {
                     name:"5年及以上",
-                    label:"5年及以上"
+                    label:"9"
                 },
             ],
-            Twotit:"",
             TwoQuestion:[
                 {
                     name:"没有",
-                    label:"没有"
+                    label:"0"
                 },
                 {
                     name:"1-2次",
-                    label:"1-2次"
+                    label:"1"
                 },
                 {
                     name:"3-5次",
-                    label:"3-5次"
+                    label:"3"
                 },
                 {
                     name:"6-8次",
-                    label:"6-8次"
+                    label:"5"
                 },
                 {
                     name:"9-12次",
-                    label:"9-12次"
+                    label:"7"
                 },
                 {
                     name:"12次以上",
-                    label:"12次以上"
+                    label:"9"
                 },
             ],
             // 自然事物
             natural:{
                 prefecture:{
                     one:"",
-                    two:1,
+                    two:"",
                     three:"",
                 },
                 provincial:{
@@ -588,11 +727,188 @@ export default {
         }
     },
    methods:{
-       aa(){
-        //    console.log(typeof(this.natural.prefecture.two))
-        //    console.log(this.natural)
-        // console.log(typeof(this.age))
-       }
+       postAx(){
+           let data = [
+                {
+                    matterOne: this.radiotit.one.one,
+                    matterTwo: this.radiotit.one.twe,
+                    matterTree1: this.natural.prefecture.one*3,
+                    matterTree2: this.natural.prefecture.two*2,
+                    matterTree3: this.natural.prefecture.three*1,
+                    matterTree4: this.natural.provincial.one*5,
+                    matterTree5: this.natural.provincial.two*4,
+                    matterTree6: this.natural.provincial.three*3,
+                    matterTree7: this.natural.state.one*7,
+                    matterTree8: this.natural.state.two*6,
+                    matterTree9: this.natural.state.three*5,
+                    matterTree10: this.natural.international.one*9,
+                    matterTree11: this.natural.international.two*8,
+                    matterTree12: this.natural.international.three*7,
+                    typ: "N",
+                    uid: 35
+                },
+                {
+                    matterOne: this.radiotit.twe.one,
+                    matterTwo: this.radiotit.twe.twe,
+                    matterTree1: this.manMade.prefecture.one*3,
+                    matterTree2: this.manMade.prefecture.two*2,
+                    matterTree3: this.manMade.prefecture.three*1,
+                    matterTree4: this.manMade.provincial.one*5,
+                    matterTree5: this.manMade.provincial.two*4,
+                    matterTree6: this.manMade.provincial.three*3,
+                    matterTree7: this.manMade.state.one*7,
+                    matterTree8: this.manMade.state.two*6,
+                    matterTree9: this.manMade.state.three*5,
+                    matterTree10: this.manMade.international.one*9,
+                    matterTree11: this.manMade.international.two*8,
+                    matterTree12: this.manMade.international.three*7,
+                    typ: "T",
+                    uid: 35
+                },
+                {
+                    matterOne: this.radiotit.thr.one,
+                    matterTwo: this.radiotit.thr.twe,
+                    matterTree1: this.art.prefecture.one*3,
+                    matterTree2: this.art.prefecture.two*2,
+                    matterTree3: this.art.prefecture.three*1,
+                    matterTree4: this.art.provincial.one*5,
+                    matterTree5: this.art.provincial.two*4,
+                    matterTree6: this.art.provincial.three*3,
+                    matterTree7: this.art.state.one*7,
+                    matterTree8: this.art.state.two*6,
+                    matterTree9: this.art.state.three*5,
+                    matterTree10: this.art.international.one*9,
+                    matterTree11: this.art.international.two*8,
+                    matterTree12: this.art.international.three*7,
+                    typ: "A",
+                    uid: 35
+                },
+                {
+                    matterOne: this.radiotit.four.one,
+                    matterTwo: this.radiotit.four.twe,
+                    matterTree1: this.mathematics.prefecture.one*3,
+                    matterTree2: this.mathematics.prefecture.two*2,
+                    matterTree3: this.mathematics.prefecture.three*1,
+                    matterTree4: this.mathematics.provincial.one*5,
+                    matterTree5: this.mathematics.provincial.two*4,
+                    matterTree6: this.mathematics.provincial.three*3,
+                    matterTree7: this.mathematics.state.one*7,
+                    matterTree8: this.mathematics.state.two*6,
+                    matterTree9: this.mathematics.state.three*5,
+                    matterTree10: this.mathematics.international.one*9,
+                    matterTree11: this.mathematics.international.two*8,
+                    matterTree12: this.mathematics.international.three*7,
+                    typ: "M",
+                    uid: 35
+                },
+                {
+                    matterOne: this.radiotit.five.one,
+                    matterTwo: this.radiotit.five.twe,
+                    matterTree1: this.language.prefecture.one*3,
+                    matterTree2: this.language.prefecture.two*2,
+                    matterTree3: this.language.prefecture.three*1,
+                    matterTree4: this.language.provincial.one*5,
+                    matterTree5: this.language.provincial.two*4,
+                    matterTree6: this.language.provincial.three*3,
+                    matterTree7: this.language.state.one*7,
+                    matterTree8: this.language.state.two*6,
+                    matterTree9: this.language.state.three*5,
+                    matterTree10: this.language.international.one*9,
+                    matterTree11: this.language.international.two*8,
+                    matterTree12: this.language.international.three*7,
+                    typ: "L",
+                    uid: 35
+                },
+                {
+                    matterOne: this.radiotit.six.one,
+                    matterTwo: this.radiotit.six.twe,
+                    matterTree1: this.society.prefecture.one*3,
+                    matterTree2: this.society.prefecture.two*2,
+                    matterTree3: this.society.prefecture.three*1,
+                    matterTree4: this.society.provincial.one*5,
+                    matterTree5: this.society.provincial.two*4,
+                    matterTree6: this.society.provincial.three*3,
+                    matterTree7: this.society.state.one*7,
+                    matterTree8: this.society.state.two*6,
+                    matterTree9: this.society.state.three*5,
+                    matterTree10: this.society.international.one*9,
+                    matterTree11: this.society.international.two*8,
+                    matterTree12: this.society.international.three*7,
+                    typ: "S",
+                    uid: 35
+                },
+                {
+                    matterOne: this.radiotit.seve.one,
+                    matterTwo: this.radiotit.seve.twe,
+                    matterTree1: this.unit.prefecture.one*3,
+                    matterTree2: this.unit.prefecture.two*2,
+                    matterTree3: this.unit.prefecture.three*1,
+                    matterTree4: this.unit.provincial.one*5,
+                    matterTree5: this.unit.provincial.two*4,
+                    matterTree6: this.unit.provincial.three*3,
+                    matterTree7: this.unit.state.one*7,
+                    matterTree8: this.unit.state.two*6,
+                    matterTree9: this.unit.state.three*5,
+                    matterTree10: this.unit.international.one*9,
+                    matterTree11: this.unit.international.two*8,
+                    matterTree12: this.unit.international.three*7,
+                    typ: "I",
+                    uid: 35
+                }
+           ]
+            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/save1',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+
+            }),(err)=>{
+
+            }
+           console.log(data)
+       },
+       parent(index){
+           this.radiotit.one.one = index.label
+       },
+       parentT(index){
+           this.radiotit.one.twe = index.label
+       },
+       parentTwe(index){
+           this.radiotit.twe.one = index.label
+       },
+       parentTweT(index){
+           this.radiotit.twe.twe = index.label
+       },
+       parentThr(index){
+           this.radiotit.thr.one = index.label
+       },
+       parentThrT(index){
+           this.radiotit.thr.twe = index.label
+       },
+       parentFour(index){
+           this.radiotit.four.one = index.label
+       },
+       parentFourTw(index){
+           this.radiotit.four.twe = index.label
+       },
+       parentFive(index){
+           this.radiotit.five.one = index.label
+       },
+       parentFiveTw(index){
+           this.radiotit.five.twe = index.label
+       },
+       parentSix(index){
+           this.radiotit.six.one = index.label
+       },
+       parentSixTW(index){
+           this.radiotit.six.twe = index.label
+       },
+       parentSeve(index){
+           this.radiotit.seve.one = index.label
+       },
+       parentSeveTw(index){
+           this.radiotit.seve.twe = index.label
+       },
    }
 }
 </script>
