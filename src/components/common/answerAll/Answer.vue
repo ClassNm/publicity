@@ -3,9 +3,9 @@
         <!-- <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio> -->
         <!-- <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck> -->
         <!-- <FourRadio></FourRadio>    -->
-        
-        <!-- <FillReport></FillReport> -->
-        <Submitfile></Submitfile>
+        <Supplement></Supplement>
+        <FillReport></FillReport>
+        <!-- <Submitfile></Submitfile> -->
         <!-- 顺序换了 -->
         <!-- <TwoRadio v-if="Thr"></TwoRadio>   -->
     </div>
@@ -16,16 +16,20 @@
 import FirstRadio from './FirstRadio'
 // 3道多选
 import AnswerCheck from './AnswerCheck'
-// xinli 单选 16
-import TwoRadio from './TwoRadio'
+
+// MBTI 单选 32
+import FourRadio from './FourRadio'
+
+// 补充题
+import Supplement from './Supplement'
 
 // mbti 能力  心理
 // 填报告
 import FillReport from './FillReport'
 import Submitfile from './Submitfile'
 
-// MBTI 单选 32
-import FourRadio from './FourRadio'
+// xinli 单选 16
+import TwoRadio from './TwoRadio'
 
 import axios from 'axios';
 
@@ -45,6 +49,7 @@ export default {
     components:{
         FirstRadio,
         AnswerCheck,
+        Supplement,
         FillReport,
         Submitfile,
         TwoRadio,

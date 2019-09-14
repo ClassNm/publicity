@@ -6,34 +6,34 @@
             <div style="width:200px;display: inline-block;">{{this.data1[0].name}}</div>
             <!-- {{this.data1[0].name}} -->
         </div>
-        <div class="tit">
+        <!-- <div class="tit">
             <div style="width:200px;display: inline-block;">出生年月：</div>
             <div style="width:200px;display: inline-block;">瓦达瓦达瓦我</div>
-        </div>
+        </div> -->
         <div class="tit">
             <div style="width:200px;display: inline-block;">学校：</div>
-            <div style="width:200px;display: inline-block;">瓦达瓦达瓦我</div>
+            <div style="width:200px;display: inline-block;">{{schoolT}}</div>
             <!-- 瓦达瓦吊袜带哇 -->
         </div>
         <div class="tit">
             <div style="width:200px;display: inline-block;">班级：</div>
-            <div style="width:200px;display: inline-block;">瓦达瓦达瓦我</div>
+            <div style="width:200px;display: inline-block;">{{clas}}</div>
             <!-- 瓦达瓦达瓦多 -->
         </div>
-        <div class="tit">
+        <div class="tit" style="margin-bottom:150px;">
             <div style="width:200px;display: inline-block;">报告日期：</div>
             <div style="width:200px;display: inline-block;">{{this.data1[0].time}}</div>
             <!-- {{this.data1[0].time}} -->
         </div>
         
-        <div style="border:1px solid black;width:900px;margin:0 auto;margin-top:200px;margin-bottom:50px;height: 260px;">
+        <!-- <div style="border:1px solid black;width:900px;margin:0 auto;margin-top:200px;margin-bottom:50px;height: 260px;">
             <h1 style="text-align:left;margin-left:30px;margin-top: 30px;">温馨提示</h1>
             <div class="titBot">请凭测试账号，密码和测试地址登录系统，我们还为你准备了更丰富的有关大学，专业，学习以及未来职业发展相关的信息，欢迎登录了解</div>
             <div class="titBot">账号：aiwaodj21211232</div>
             <div class="titBot">密码：531232</div>
         </div>
 
-        <div style="letter-spacing: 5px;font-weight: bolder;margin-bottom:50px;display:block;">*保密：个人账号未经许可不得传阅</div>
+        <div style="letter-spacing: 5px;font-weight: bolder;margin-bottom:50px;display:block;">*保密：个人账号未经许可不得传阅</div> -->
 
         <!-- <Table :columns="columns1" :data="data1" ></Table> -->
 
@@ -57,6 +57,8 @@ import axios from 'axios';
     export default {
         data () {
             return {
+                schoolT:"",
+                clas:"",
                 explain:[
                     
                 ],
@@ -130,6 +132,9 @@ import axios from 'axios';
                     ary.age = arr.sex;
                     ary.class = arr.grade;
                     ary.subject = arr.artsAndSciences;
+                    this.schoolT = arr.school
+                    this.clas = arr.clas
+                    console.log(res.data)
                 }),(err)=>{
                     console.log(err)
                 }

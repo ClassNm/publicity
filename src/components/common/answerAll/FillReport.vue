@@ -202,7 +202,7 @@ export default {
             }),(err)=>{
 
             }
-            console.log(data)
+            // console.log(data)
         }
     }
 }

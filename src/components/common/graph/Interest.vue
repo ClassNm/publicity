@@ -9,36 +9,35 @@
             <li>在全部21中职业类型中，超过15分的职业类别包括：{{Arrdata}}</li>
         </ul>
         <span style="font-weight:bolder;text-align:left;font-size:18px;display:block;margin-top:50px;">二，根据以上测验和调查，你感兴趣职业类别和想报考的学科如下：</span>
-        <!-- <span>会计学</span> -->
-        <div style="width:1000px;height:1000px;">
-            <div style="width:300px;float:left;height:200px;display:block;">
-                <span style="width:300px;display:block;">职业类别</span>
-                <!-- <div style="width:300px;float:left;height:2px;background:#ccc;"></div> -->
-                <div style="height:200px;border:1px solid #ccc;" v-for="(item,i) in bb" :key="i">
-                    <span style="display:block;margin-top: 70px;">{{item.width}}</span>
-                </div>
+         <div style="width:1000px;margin-top:40px;">
+            <div style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+                <div style="margin-top: 70px;">职业类别</div>
             </div>
-            <!-- <div style="width:2px;float:left;height:200px;background:#ccc;"></div> -->
-            <div style="width:333px;float:left;height:200px;display:block;">
-                <span style="display:block;">你喜欢的学科</span>
-                <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
-                <div style="height:200px;border:1px solid #ccc;" v-for="(item,i) in cc" :key="i">
-                    <span style="display:block;padding-top: 30px;" v-for="(item,i) in item.width" :key="i">{{item.name}}</span>
-                </div>
+            <div style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+                <div style="margin-top: 70px;">你喜欢的学科</div>
             </div>
-            <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
-            <!-- <div style="width:2px;float:left;height:200px;background:#ccc;"></div> -->
-             <div style="width:333px;float:left;height:200px;display:block;">
-                <span style="display:block;">适合度</span>
-                <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
-                <div style="height:200px;border:1px solid #ccc;" v-for="(item,i) in aa" :key="i">
-                    <!-- <div id="myChartTwo" class="ReporTw"></div> -->
-                    <!-- <div id="myChartThrr" class="ReporTw"></div> -->
-                    <div class="rightBot" :style="{width:item.width}"></div>
-                </div>
+            <div style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+                <div style="margin-top: 70px;">适合度</div>
             </div>
-            <!-- <div style="width:333px;float:left;height:2px;background:#ccc;"></div> -->
+            <!-- <div style="width:1000px;" v-for="(item,index) in arr" :key="index"> -->
+            <div style="width:1000px;">
+                <!-- <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;">{{item.typ}}</div>
+                </div>  -->
+                <!-- <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;">{{item.part}}</div>
+                </div> -->
+                <div v-for="(item,i) in kkk" :key="i" style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;" v-for="(item,i) in item.name" :key="i">{{item.name}}</div>
+                </div>
+                <!-- <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                    <div class="rightBot" :style="{width:item.part}" :title="item.part">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div> -->
+            </div>
+            
+                <!-- <div class="rightBot" :style="{width:item.part+px}">111</div> -->
         </div>
+       
         <br>
     </div>
 </template>
@@ -49,6 +48,47 @@ export default {
      data(){
         return{
             Arrdata:[],
+            kkk:[
+                {
+                    name:[
+                        {
+                            name:"11",
+                        },
+                        {
+                            name:"12",
+                        },
+                        {
+                            name:"13",
+                        }
+                    ]
+                },
+                {
+                    name:[
+                        {
+                            name:"121",
+                        },
+                        {
+                            name:"122",
+                        },
+                        {
+                            name:"123",
+                        }
+                    ]
+                },
+                {
+                    name:[
+                        {
+                            name:"131",
+                        },
+                        {
+                            name:"132",
+                        },
+                        {
+                            name:"133",
+                        }
+                    ]
+                },
+            ],
             // header:"三、职业兴趣维度",
             // 用户uid
             uid:"",
@@ -66,28 +106,6 @@ export default {
             // 传过来的Array
             //  graph:[]
             color:50,
-            aa:[
-                {
-                    width:"50px"
-                },
-                {
-                    width:"80px"
-                },
-                {
-                    width:"100px"
-                }
-            ],
-            bb:[
-                {
-                    width:"个体生命"
-                },
-                {
-                    width:"个体生命"
-                },
-                {
-                    width:"个体生命"
-                }
-            ],
              cc:[
                 {
                     width:[
@@ -128,7 +146,9 @@ export default {
                         },
                     ]
                 },
-            ]
+            ],
+            arr:[],
+            test:[]
         }
      },
      created(){
@@ -157,8 +177,23 @@ export default {
         // this.drawLineTwo();
         // this.drawLineThrr();
         this.ArrData();
+        this.category();
     },
     methods:{
+        category(){
+            let data = 150;
+            axios.post('http://192.168.1.106:8080/AssessScore/showResult1',data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                let test = res.data;
+                this.arr = res.data;
+                let a = res.data;
+                a.forEach((item)=>{
+                    item.part+="px"
+                })
+            })
+        },
         // echarts调用方法 的案例
         drawLine(){
             var myChart = this.$echarts.init(document.getElementById('myChart'));//获取容器元素
@@ -428,7 +463,8 @@ export default {
         .rightBot{
             height: 30px;
             margin-top: 50px;
-            background: #797878;
+            background: pink;
+            margin-top: 70px;
         }
     }
     @media screen and (max-width: 1199px){
