@@ -724,6 +724,9 @@ export default {
                     three:"",
                 }
             }, 
+            uid:150,
+        
+        
         }
     },
    methods:{
@@ -745,7 +748,7 @@ export default {
                     matterTree11: this.natural.international.two*8,
                     matterTree12: this.natural.international.three*7,
                     typ: "N",
-                    uid: 35
+                    uid: this.uid
                 },
                 {
                     matterOne: this.radiotit.twe.one,
@@ -763,7 +766,7 @@ export default {
                     matterTree11: this.manMade.international.two*8,
                     matterTree12: this.manMade.international.three*7,
                     typ: "T",
-                    uid: 35
+                    uid: this.uid
                 },
                 {
                     matterOne: this.radiotit.thr.one,
@@ -781,7 +784,7 @@ export default {
                     matterTree11: this.art.international.two*8,
                     matterTree12: this.art.international.three*7,
                     typ: "A",
-                    uid: 35
+                    uid: this.uid
                 },
                 {
                     matterOne: this.radiotit.four.one,
@@ -799,7 +802,7 @@ export default {
                     matterTree11: this.mathematics.international.two*8,
                     matterTree12: this.mathematics.international.three*7,
                     typ: "M",
-                    uid: 35
+                    uid: this.uid
                 },
                 {
                     matterOne: this.radiotit.five.one,
@@ -817,7 +820,7 @@ export default {
                     matterTree11: this.language.international.two*8,
                     matterTree12: this.language.international.three*7,
                     typ: "L",
-                    uid: 35
+                    uid: this.uid
                 },
                 {
                     matterOne: this.radiotit.six.one,
@@ -835,7 +838,7 @@ export default {
                     matterTree11: this.society.international.two*8,
                     matterTree12: this.society.international.three*7,
                     typ: "S",
-                    uid: 35
+                    uid: this.uid
                 },
                 {
                     matterOne: this.radiotit.seve.one,
@@ -853,7 +856,7 @@ export default {
                     matterTree11: this.unit.international.two*8,
                     matterTree12: this.unit.international.three*7,
                     typ: "I",
-                    uid: 35
+                    uid: this.uid
                 }
            ]
             axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/save1',
@@ -865,7 +868,9 @@ export default {
             }),(err)=>{
 
             }
-           console.log(data)
+        //    console.log(data)
+            let headbox = this.$refs.headbox;
+            headbox.style.display = "none"
        },
        parent(index){
            this.radiotit.one.one = index.label

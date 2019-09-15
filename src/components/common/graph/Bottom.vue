@@ -25,7 +25,7 @@ export default {
     methods:{
         majorMeth(){
             let data = 2
-            axios.post('http://47.104.245.242:8081/assessReport/show_Report',
+            axios.post('http://192.168.1.106:8080/assessReport/show_Report',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )

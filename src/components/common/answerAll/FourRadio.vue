@@ -105,7 +105,7 @@ export default {
                     content:this.value5,
                     uid:this.ubid
                 }
-                axios.post('http://47.104.245.242:8081/AssessFeedback/save_feedback',
+                axios.post('http://192.168.1.106:8080/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -134,7 +134,7 @@ export default {
         // 判断条件发id
         condition(){
             let save = this.ubid;
-            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_Mbti',
+            axios.post('http://192.168.1.106:8080/AssessMatter/Matter_Mbti',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -149,7 +149,7 @@ export default {
         rubric(){
             // 题目
             let data = this.$route.query.id;
-            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_Mbti',
+            axios.post('http://192.168.1.106:8080/AssessMatter/Matter_Mbti',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -164,7 +164,7 @@ export default {
         answer(){
             // 选项
             let obj3 = 3;
-            axios.post('http://47.104.245.242:8081/AssessObject/obj3',
+            axios.post('http://192.168.1.106:8080/AssessObject/obj3',
             obj3,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -210,7 +210,7 @@ export default {
             if(typ == "" || score == "" || matter == ""|| uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://47.104.245.242:8081/AssessScoreMbti/save_mbti',
+                axios.post('http://192.168.1.106:8080/AssessScoreMbti/save_mbti',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
@@ -228,27 +228,9 @@ export default {
                     let headbox = this.$refs.headbox
                     headbox.style.display = "none"
                     // let id = this.ubid;
-                    this.Starting();
+                    // this.Starting();
                     // this.$router.push({path:'/reported',query:{id:id}})
                 }
-            }
-        },
-        Starting(){
-            let timec = new Date();
-            let time = timec.getTime();
-            let uid  = this.$route.query.id;
-            let data = {
-                stop : time,
-                uid : uid,
-            }
-            axios.post('http://47.104.245.242:8081/AssessTime/save_stop',
-            data,
-            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-            )
-            .then((res)=>{
-
-            }),(err)=>{
-
             }
         },
     }
@@ -258,13 +240,13 @@ export default {
 <style scoped>
      .surveydetail{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         overflow: hidden;
         margin: 50px auto 300px
     }
     .surveydetailTw{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         overflow: hidden;
         margin: 100px auto
     }

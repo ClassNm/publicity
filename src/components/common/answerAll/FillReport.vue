@@ -122,10 +122,8 @@ export default {
     },
     methods:{
         file(){
-            let headbox = this.$refs.headbox
-            headbox.style.display = "none"
-            // let uid = this.$route.query.id;
-            let uid = 150;
+            let uid = this.$route.query.id;
+            // let uid = 150;
             let data = [
                 {
                     score:this.physics,
@@ -202,6 +200,8 @@ export default {
             }),(err)=>{
 
             }
+            let headbox = this.$refs.headbox
+            headbox.style.display = "none"
             // console.log(data)
         }
     }

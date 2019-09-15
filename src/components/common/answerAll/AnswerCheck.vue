@@ -82,7 +82,6 @@ export default {
     },
     created(){
         this.uid = this.$route.query.id;
-        this.acquire();
     },
     watch:{
         typTwo(n,o){
@@ -118,7 +117,7 @@ export default {
             .then((res)=>{
             // 答案
                 this.AllData = res.data
-                console.log(res.data)
+                // console.log(res.data)
             }),(err)=>{
                 console.log(err)
             }
@@ -132,7 +131,7 @@ export default {
                     content:this.value5,
                     uid:this.uid
                 }
-                axios.post('http://47.104.245.242:8081/AssessFeedback/save_feedback',
+                axios.post('http://192.168.1.106:8080/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -245,13 +244,13 @@ export default {
 <style scoped>
     .checkAll{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         margin: 50px auto 300px;
         overflow: hidden;
     }
     .box{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         margin: 100px auto;
         overflow: hidden;
     }

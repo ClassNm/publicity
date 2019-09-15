@@ -19,20 +19,21 @@
             <div style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
                 <div style="margin-top: 70px;">适合度</div>
             </div>
-            <!-- <div style="width:1000px;" v-for="(item,index) in arr" :key="index"> -->
-            <div style="width:1000px;">
-                <!-- <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
-                    <div style="margin-top: 70px;">{{item.typ}}</div>
-                </div>  -->
-                <!-- <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
-                    <div style="margin-top: 70px;">{{item.part}}</div>
-                </div> -->
-                <div v-for="(item,i) in kkk" :key="i" style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
-                    <div style="margin-top: 70px;" v-for="(item,i) in item.name" :key="i">{{item.name}}</div>
+            <div style="width:1000px;" v-for="(item,index) in arrTw" :key="index">
+            <!-- <div style="width:1000px;"> -->
+                <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.typ}}</div>
+                </div>  
+                <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
                 </div>
-                <!-- <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
-                    <div class="rightBot" :style="{width:item.part}" :title="item.part">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <!-- <div v-for="(item,i) in kkk" :key="i" style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;" v-for="(item,i) in item.name" :key="i">{{item.name}}</div>
                 </div> -->
+
+                <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                    <div class="rightBot" :style="{width:item.code}" :title="item.code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                </div>
             </div>
             
                 <!-- <div class="rightBot" :style="{width:item.part+px}">111</div> -->
@@ -47,7 +48,7 @@ import axios from 'axios';
 export default {
      data(){
         return{
-            Arrdata:[],
+            Arrdata:"",
             kkk:[
                 {
                     name:[
@@ -148,12 +149,13 @@ export default {
                 },
             ],
             arr:[],
-            test:[]
+            test:[],
+            arrTw:[],
         }
      },
      created(){
         let data = this.$route.query.id;
-        axios.post('http://47.104.245.242:8081/AssessScore/showNum',
+        axios.post('http://192.168.1.106:8080/AssessScore/showNum',
           data,
           {headers:{'Content-Type':"application/json; charset=UTF-8"}}
           )
@@ -177,21 +179,30 @@ export default {
         // this.drawLineTwo();
         // this.drawLineThrr();
         this.ArrData();
-        this.category();
+        this.categoryTw();
     },
     methods:{
-        category(){
-            let data = 150;
-            axios.post('http://192.168.1.106:8080/AssessScore/showResult1',data,
+        categoryTw(){
+            // let data = 150;
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.106:8080/AssessScore/show_xueke',data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                let test = res.data;
-                this.arr = res.data;
                 let a = res.data;
                 a.forEach((item)=>{
-                    item.part+="px"
+                    item.code+="px"
                 })
+                this.arrTw = a;
+                // let selected = this.typSele
+                // let all = res.data;
+                // let items = []
+                // selected.forEach(item=>{
+                //     all.forEach(i=>{
+                //         (item == i.typ) && items.push(i)
+                //     })
+                // })
+                // console.log(res.data,'item')
             })
         },
         // echarts调用方法 的案例
@@ -224,7 +235,7 @@ export default {
             });
             // 处理echarts异步操作 copy的官网实例
             let data = this.$route.query.id;
-            axios.post("http://47.104.245.242:8081/AssessScore/showNum",
+            axios.post("http://192.168.1.106:8080/AssessScore/showNum",
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             ) 
@@ -364,20 +375,14 @@ export default {
         },
         ArrData(){
             // let data = this.$route.query.id;
-            let data = 150;
+            // let data = 150;
+            let data = this.$route.query.id;
             axios.post('http://192.168.1.106:8080/AssessScore/showResultt',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                // console.log(res.data,'aaa')
                 var aa = res.data;
-                // var cc = aa.map(function(v){
-                //     console.log(v,'v')
-                //     if(v == "RA"){
-                //         v = "艺术形象-研究与探索"
-                //     }
-                // })
                 let bb = aa.map(item=>{
                     if(item=="RA"){
                         item = "艺术形象-研究与探索"
@@ -422,15 +427,13 @@ export default {
                     }else if(item=="UI"){
                         item = "个体生命-使用与维护"
                     }
-                    // console.log(item,'v')
-                    // console.log(aa,'aa')
                     return item;
                 })
                 // var arr = res.data.join(",")
                 // var b = arr.replace(/RA/,"艺术形象-研究与探索")
                 // console.log(typeof(cc),'cccbb')
                 // console.log(bb,'cccbb')
-                this.Arrdata = bb;
+                this.Arrdata = bb.join(",");
              }),(err)=>{
                 console.log(err)
             }

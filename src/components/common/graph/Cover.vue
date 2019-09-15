@@ -28,7 +28,7 @@ export default {
     methods:{
         ShowUser(){
                 let data = this.$route.query.id;
-                axios.post('http://47.104.245.242:8081/assessReport/show_User',
+                axios.post('http://192.168.1.106:8080/assessReport/show_User',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -41,44 +41,44 @@ export default {
                 }
         },
         // 获取时间  后台给的毫秒自己换算
-            getMyDate(str) {
-                var oDate = new Date(str),
-                oYear = oDate.getFullYear(),
-                oMonth = oDate.getMonth()+1,
-                oDay = oDate.getDate(),
-                oHour = oDate.getHours(),
-                oMin = oDate.getMinutes(),
-                oSen = oDate.getSeconds(),
-                oTime = oYear +'-'+ this.addZero(oMonth) +'-'+ this.addZero(oDay) +' '+ this.addZero(oHour) +':'+
-                this.addZero(oMin) +':'+this.addZero(oSen);
-                return oTime;
-            },
-            addZero(num){
-                if(parseInt(num) < 10){
-                    num = '0'+num;
-                }
-                return num;
-            },
-            echo(){
-                let uid  = this.$route.query.id;
-                axios.post('http://47.104.245.242:8081/AssessTime/show_time',
-                uid,
-                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-                )
-                .then((res)=>{
-                    let arr = res.data;
-                    let timeStart = arr.start;
-                    let timeStop = arr.stop;
-                    let Difference = timeStop - timeStart;
-                    var dateTime = this.getMyDate(parseInt(timeStart));
-                    var minutes = parseInt((Difference % (1000 * 60 * 60)) / (1000 * 60));
-                    let ary = this.data1[0]
-                    ary.time = dateTime
-                    ary.schedu = minutes+"分钟"
-                }),(err)=>{
-
-                }
+        getMyDate(str) {
+            var oDate = new Date(str),
+            oYear = oDate.getFullYear(),
+            oMonth = oDate.getMonth()+1,
+            oDay = oDate.getDate(),
+            oHour = oDate.getHours(),
+            oMin = oDate.getMinutes(),
+            oSen = oDate.getSeconds(),
+            oTime = oYear +'-'+ this.addZero(oMonth) +'-'+ this.addZero(oDay) +' '+ this.addZero(oHour) +':'+
+            this.addZero(oMin) +':'+this.addZero(oSen);
+            return oTime;
+        },
+        addZero(num){
+            if(parseInt(num) < 10){
+                num = '0'+num;
             }
+            return num;
+        },
+        echo(){
+            let uid  = this.$route.query.id;
+            axios.post('http://192.168.1.106:8080/AssessTime/show_time',
+            uid,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                let arr = res.data;
+                let timeStart = arr.start;
+                let timeStop = arr.stop;
+                let Difference = timeStop - timeStart;
+                var dateTime = this.getMyDate(parseInt(timeStart));
+                var minutes = parseInt((Difference % (1000 * 60 * 60)) / (1000 * 60));
+                let ary = this.data1[0]
+                ary.time = dateTime
+                ary.schedu = minutes+"分钟"
+            }),(err)=>{
+
+            }
+        }
     }
 }
 </script>

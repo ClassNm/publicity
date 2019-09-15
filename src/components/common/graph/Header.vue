@@ -109,7 +109,7 @@ import axios from 'axios';
         methods:{
             Report(){
                 let data = 1;
-                axios.post('http://47.104.245.242:8081/assessReport/show_Report',
+                axios.post('http://192.168.1.106:8080/assessReport/show_Report',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -121,7 +121,7 @@ import axios from 'axios';
             },
             ShowUser(){
                 let data = this.$route.query.id;
-                axios.post('http://47.104.245.242:8081/assessReport/show_User',
+                axios.post('http://192.168.1.106:8080/assessReport/show_User',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -134,7 +134,7 @@ import axios from 'axios';
                     ary.subject = arr.artsAndSciences;
                     this.schoolT = arr.school
                     this.clas = arr.clas
-                    console.log(res.data)
+                    // console.log(res.data)
                 }),(err)=>{
                     console.log(err)
                 }
@@ -160,7 +160,7 @@ import axios from 'axios';
             },
             echo(){
                 let uid  = this.$route.query.id;
-                axios.post('http://47.104.245.242:8081/AssessTime/show_time',
+                axios.post('http://192.168.1.106:8080/AssessTime/show_time',
                 uid,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )

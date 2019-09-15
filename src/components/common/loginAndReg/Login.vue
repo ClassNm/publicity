@@ -76,7 +76,7 @@ import axios from 'axios';
 
                 }
                 let uid = ""
-                axios.post('http://47.104.245.242:8081/AssessUser/fingByPassWord',
+                axios.post('http://192.168.1.106:8080/AssessUser/fingByPassWord',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )

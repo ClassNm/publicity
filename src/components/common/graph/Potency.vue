@@ -3,106 +3,120 @@
         <h1>第三部分:学科潜能调查的结果</h1>
         <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">一、你的学科潜能分布情况</span>
         <div id="myChartThr" class="Repor"></div>
-        <span style="text-align:left;display:block;font-size:18px;margin-top:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#需要该部分测验结果的解释#</span>
+        <!-- <span style="text-align:left;display:block;font-size:18px;margin-top:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#需要该部分测验结果的解释#</span> -->
         <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-bottom:50px;">二、你喜欢并适合人格类型的职业类别的综合学科潜能</span>
-        <Table border :columns="columns2" :data="data1"></Table>
-        <span style="text-align:left;display:block;font-size:16px;margin:50px 0 50px 30px;">
+        <Table border :columns="columns2" :data="arr"></Table>
+        <!-- <span style="text-align:left;display:block;font-size:16px;margin:50px 0 50px 30px;">
             恭喜你， 语言符号 的 研究与探索 类职业所对应的学科专业能够完美的匹配你的兴趣、人格类型和学科潜能。
         </span>
          <span style="text-align:left;display:block;font-size:16px;margin:50px 0 50px 30px;">
             #需要该部分测验结果的解释,比如ABQ=80（八级）#
-        </span>
+        </span> -->
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data(){
         return{
-             columns2: [
+            columns2: [
                     {
                         title: '职业类别',
-                        key: 'name'
+                        key: 'typ'
                     },
                     {
                         title: '你喜欢、并适合人格类型的学科',
-                        key: 'address',
-                        render: (h, params) => {
-                            return h('div', [
-                            h('p',params.row.address.one),
-                            h('div', {
-                                style: {
-                                margin: '1px 0',
-                                height: '1px',
-                                background: '#ccc',
-                                }
-                            }),
-                            h('p',params.row.address.two),
-                            h('div', {
-                                style: {
-                                margin: '1px 0',
-                                height: '1px',
-                                background: '#ccc',
-                                }
-                            }),
-                            h('p',params.row.address.three),
-                            ])
-                        }
+                        key: 'score',
+                        // render: (h, params) => {
+                        //     return h('div', [
+                        //     h('p',params.row.address.one),
+                        //     h('div', {
+                        //         style: {
+                        //         margin: '1px 0',
+                        //         height: '1px',
+                        //         background: '#ccc',
+                        //         }
+                        //     }),
+                        //     h('p',params.row.address.two),
+                        //     h('div', {
+                        //         style: {
+                        //         margin: '1px 0',
+                        //         height: '1px',
+                        //         background: '#ccc',
+                        //         }
+                        //     }),
+                        //     h('p',params.row.address.three),
+                        //     ])
+                        // }
                     },
                      {
                         title: '综合学科潜能',
-                        key: 'subject'
+                        key: 'matter'
                     }
             ],
             data1: [
                     {
                         name: '语言符号-研究与探索',
-                        address: {
-                            one:"①传播学 ",
-                            two:"②应用语言学",
-                            three:"③外国语言与外国历史",
-                        },
+                        // address: {
+                        //     one:"①传播学 ",
+                        //     two:"②应用语言学",
+                        //     three:"③外国语言与外国历史",
+                        // },
+                        address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-03'
                     },
                     {
                         name: '数学符号-研究与探索',
-                        address: {
-                            one:"哲学",
-                            two:"逻辑学",
-                            three:"宗教学",
-                        },
+                        // address: {
+                        //     one:"哲学",
+                        //     two:"逻辑学",
+                        //     three:"宗教学",
+                        // },
+                        address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-01'
                     },
                     {
                         name: '阿迪王-研究与探索',
-                        address: {
-                            one:"①传播学 ",
-                            two:"②应用语言学",
-                            three:"③外国语言与外国历史",
-                        },
+                        // address: {
+                        //     one:"①传播学 ",
+                        //     two:"②应用语言学",
+                        //     three:"③外国语言与外国历史",
+                        // },
+                        address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-02'
                     },
                     {
                         name: '挖的哇-研究与探索',
-                        address: {
-                            one:"wdw挖的哇",
-                            two:"挖的哇",
-                            three:"反对v吧",
-                        },
+                        // address: {
+                        //     one:"wdw挖的哇",
+                        //     two:"挖的哇",
+                        //     three:"反对v吧",
+                        // },
+                        address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-04'
                     }
-                ]
+            ],
+            arr:[],
+            kool:[],
+            score:[],
         }
+    },
+    created(){
+       
     },
     mounted(){
         this.drawLineTwo();
+        this.dataTit();
+        
+        
     },
     methods:{
-         drawLineTwo(){
+        drawLineTwo(){
             var myChartThr = this.$echarts.init(document.getElementById('myChartThr'));//获取容器元素
             myChartThr.setOption({
                 title: {
@@ -132,14 +146,76 @@ export default {
                     type: 'category',
                     data: ['N自然事物','T人造事物','M数学符号','L语言符号','A艺术形象','S社会制度','I个体生命']
                 },
-                series: [
-                    {
-                        // name: '2011年',
-                        type: 'bar',
-                        data: [45,30,60,80,70,50,40]
-                    }
-                ]
             });
+            // 处理echarts异步操作 copy的官网实例
+            // let data = this.$route.query.id;
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/show_numb',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res) => {
+                this.score = res.data;
+                myChartThr.setOption({
+                        series: [
+                            {
+                                // name: '2011年',
+                                type: 'bar',
+                                data: this.score
+                            }
+                        ],
+                })
+            })
+        },
+        dataTit(){
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/show_xueke',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.arr = res.data
+                this.dataTitTW();
+             }),(err)=>{
+                console.log(err)
+            }
+            
+        },
+        dataTitTW(){
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/show_jibie',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.kool = res.data
+                this.foon();
+                // console.log(this.arr,'2111111111')
+             }),(err)=>{
+                console.log(err)
+            }
+            
+        },
+        foon(){
+            let arr = this.arr;
+            let kool = this.kool;
+            // console.log(arr,'2111111111')
+            //  console.log(kool,'2111111111')
+            // console.log(this.kool,'scort')
+            // let items = []
+            arr.forEach(item=>{
+                kool.forEach(i=>{
+                    // console.log(item.typ,'item')
+                    // console.log(item,'1111111111111')
+                    if(item.typ === i.typ){
+                        item.matter = i.matter
+                    }
+                })
+            })
+            // aa.map(((item,index)=>{
+            //     arr.push(Object.assign({},item,{uid:this.uid}))
+            // }))
+            // console.log(arr,'arr')
         }
     }
 }

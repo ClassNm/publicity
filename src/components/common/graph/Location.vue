@@ -13,22 +13,31 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要特征：  {{object1}}
         </span>
         <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">二、心理定位与职业类型适合度</span>
-        <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            再次恭喜你，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（  折中型  ）并没有不适合之处。显然，这一职业类别及学科专业就是当前最适合你的 
-        </span>
-        <Table border :columns="columns2" :data="data1"></Table>
-         <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            #如果出现不适合的情况，表达方式如下#
-        </span>
-        <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            非常遗憾，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（ 胆小退缩型 ）并不适合。建议寻找专业的心理咨询师，对自己的心理定位进行调整！
-        </span>
-        <Table border :columns="columns1" :data="data2"></Table>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">综合你在四个方面的测试或调查结果，推荐以下职业类别或专业供参考：</span>
-        <Table border :columns="columns3" :data="data3"></Table>
+        <!-- 符合展示1 3  不符合展示2 -->
+        <div v-if="Twethdy">
+            <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                再次恭喜你，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（  折中型  ）并没有不适合之处。显然，这一职业类别及学科专业就是当前最适合你的 
+            </span>
+            <Table border :columns="columns2" :data="arr"></Table>
+        </div>
+        
+        <div v-if="TwethdyTw">
+            <!-- <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                #如果出现不适合的情况，表达方式如下#
+            </span> -->
+            <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                非常遗憾，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（ 胆小退缩型 ）并不适合。建议寻找专业的心理咨询师，对自己的心理定位进行调整！
+            </span>
+            <Table border :columns="columns1" :data="arr"></Table>
+         </div>
+
+         <div v-if="Twethdy">
+            <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">综合你在四个方面的测试或调查结果，推荐以下职业类别或专业供参考：</span>
+            <Table border :columns="columns3" :data="arr"></Table>
+         </div>
     </div>
 </template>
 
@@ -43,32 +52,32 @@ export default {
             columns2: [
                 {
                     title: '职业类别',
-                    key: 'name'
+                    key: 'typ'
                 },
                 {
                     title: '想报考的学科',
-                    key: 'address',
-                    render: (h, params) => {
-                        return h('div', [
-                        h('p',params.row.address.one),
-                        h('div', {
-                            style: {
-                            margin: '1px 0',
-                            height: '1px',
-                            background: '#ccc',
-                            }
-                        }),
-                        h('p',params.row.address.two),
-                        h('div', {
-                            style: {
-                            margin: '1px 0',
-                            height: '2px',
-                            background: '#ccc',
-                            }
-                        }),
-                        h('p',params.row.address.three),
-                        ])
-                    }
+                    key: 'score',
+                    // render: (h, params) => {
+                    //     return h('div', [
+                    //     h('p',params.row.address.one),
+                    //     h('div', {
+                    //         style: {
+                    //         margin: '1px 0',
+                    //         height: '1px',
+                    //         background: '#ccc',
+                    //         }
+                    //     }),
+                    //     h('p',params.row.address.two),
+                    //     h('div', {
+                    //         style: {
+                    //         margin: '1px 0',
+                    //         height: '2px',
+                    //         background: '#ccc',
+                    //         }
+                    //     }),
+                    //     h('p',params.row.address.three),
+                    //     ])
+                    // }
                 },
             ],
             data1: [
@@ -109,74 +118,37 @@ export default {
                     date: '2016-10-04'
                 }
             ],
+            arr:[],
             columns1: [
                 {
                     title: '职业类别',
-                    key: 'name'
+                    key: 'typ'
                 },
                 {
                     title: '想报考的学科',
-                    key: 'address',
-                    render: (h, params) => {
-                        return h('div', [
-                        h('p',params.row.address.one),
-                        h('div', {
-                            style: {
-                            margin: '1px 0',
-                            height: '1px',
-                            background: '#ccc',
-                            }
-                        }),
-                        h('p',params.row.address.two),
-                        h('div', {
-                            style: {
-                            margin: '1px 0',
-                            height: '2px',
-                            background: '#ccc',
-                            }
-                        }),
-                        h('p',params.row.address.three),
-                        ])
-                    }
+                    key: 'score',
+                    // render: (h, params) => {
+                    //     return h('div', [
+                    //     h('p',params.row.address.one),
+                    //     h('div', {
+                    //         style: {
+                    //         margin: '1px 0',
+                    //         height: '1px',
+                    //         background: '#ccc',
+                    //         }
+                    //     }),
+                    //     h('p',params.row.address.two),
+                    //     h('div', {
+                    //         style: {
+                    //         margin: '1px 0',
+                    //         height: '2px',
+                    //         background: '#ccc',
+                    //         }
+                    //     }),
+                    //     h('p',params.row.address.three),
+                    //     ])
+                    // }
                 },
-            ],
-            data2: [
-                {
-                    name: '社会制度-规划与实施',
-                    address: {
-                        one:"①公安学  ",
-                        two:"②经济学",
-                        three:"③电子商务",
-                    },
-                    date: '2016-10-03'
-                },
-                {
-                    name: '数学符号-研究与探索',
-                    address: {
-                        one:"哲学",
-                        two:"逻辑学",
-                        three:"宗教学",
-                    },
-                    date: '2016-10-01'
-                },
-                {
-                    name: '社会制度-规划与实施',
-                    address: {
-                        one:"①传播学 ",
-                        two:"②应用语言学",
-                        three:"③外国语言与外国历史",
-                    },
-                    date: '2016-10-02'
-                },
-                {
-                    name: '挖的哇-研究与探索',
-                    address: {
-                        one:"wdw挖的哇",
-                        two:"挖的哇",
-                        three:"反对v吧",
-                    },
-                    date: '2016-10-04'
-                }
             ],
             columns3: [
                 {
@@ -185,15 +157,11 @@ export default {
                 },
                 {
                     title: '推荐专业',
-                    key: 'address',
-                },
-                {
-                    title: '兴趣得分',
-                    key: 'interest',
+                    key: 'typ',
                 },
                 {
                     title: '人格类型适合度',
-                    key: 'typ',
+                    key: 'mentality',
                 },
                 {
                     title: '学科潜能匹配度',
@@ -205,50 +173,53 @@ export default {
                 },
                 {
                     title: '包含的学科',
-                    key: 'subject',
+                    key: 'score',
                 },
             ],
-            data3: [
-                {
-                    name: '1',
-                    address: "",
-                    interest: "",
-                    typ: "适合",
-                    potency: "匹配",
-                    mentality: "适合",
-                    subject: "",
-                    date: '2016-10-03'
-                },
-                {
-                    name: '2',
-                    address: "",
-                    interest: "",
-                    typ: "适合",
-                    potency: "匹配",
-                    mentality: "适合",
-                    subject: "",
-                    date: '2016-10-03'
-                },
-                {
-                    name: '3',
-                    address: "",
-                    interest: "",
-                    typ: "适合",
-                    potency: "匹配",
-                    mentality: "适合",
-                    subject: "",
-                    date: '2016-10-03'
-                },
-            ],
-            
+            matter:"",
+            Twethdy:true,
+            TwethdyTw:true
+
+        }
+    },
+    watch:{
+        matter(n,o){
+            if(n=="不匹配"||o=="不匹配"){
+                this.Twethdy = false
+            }else{
+                this.TwethdyTw = false
+            }
         }
     },
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
         this.describeTit();
+        this.typTeach();
     },
     methods:{
+        typTeach(){
+            // let data = this.$route.query.id;
+            // let data = 150;
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.106:8080/AssessScoreXinli/show_xueke',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.matter = res.data[0].matter
+                // console.log(this.matter,'atter')
+                let a = res.data
+                let arrT = []
+                let id = 0;
+                a.map(((item,index)=>{
+                    arrT.push(Object.assign({},item,{potency:"匹配",mentality:"适合",name:id+=1}))
+                }))
+                this.arr = arrT;
+             }),(err)=>{
+                console.log(err)
+            }
+        },
         drawLine(){
             var myChart = this.$echarts.init(document.getElementById('RadarLtwo'));//获取容器元素
             myChart.setOption({
@@ -273,8 +244,9 @@ export default {
             });
             // 处理echarts异步操作 copy的官网实例
             // let data = this.$route.query.id;
-            let data = 150;
-            axios.post('http://47.104.245.242:8081/AssessScoreXinli/xinli_num',
+            // let data = 150;
+            let data = this.$route.query.id;
+            axios.post('http://192.168.1.106:8080/AssessScoreXinli/xinli_num',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -295,13 +267,13 @@ export default {
         },
         describeTit(){
             // let data = this.$route.query.id;
-            let data = 150;
+            // let data = 150;
+            let data = this.$route.query.id;
             axios.post('http://192.168.1.106:8080/AssessScoreXinli/show_xinli',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                console.log(res.data)
                 this.object = res.data.object
                 this.object1 = res.data.object1
              }),(err)=>{

@@ -117,7 +117,7 @@ export default {
                     content:this.value5,
                     uid:this.ubid
                 }
-                axios.post('http://47.104.245.242:8081/AssessFeedback/save_feedback',
+                axios.post('http://192.168.1.106:8080/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -146,7 +146,7 @@ export default {
         condition(){
             let save = this.ubid;
             // let save = 10;
-            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_xinLi',
+            axios.post('http://192.168.1.106:8080/AssessMatter/Matter_xinLi',
             save,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -161,7 +161,7 @@ export default {
         rubric(){
             // 题目
              let data = this.ubid;
-            axios.post('http://47.104.245.242:8081/AssessMatter/Matter_xinLi',
+            axios.post('http://192.168.1.106:8080/AssessMatter/Matter_xinLi',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -176,7 +176,7 @@ export default {
         answer(){
             // 选项
             let obj3 = 3;
-            axios.post('http://47.104.245.242:8081/AssessObject/obj3',
+            axios.post('http://192.168.1.106:8080/AssessObject/obj3',
             obj3,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -208,22 +208,7 @@ export default {
             let uid = this.ubid;
             // 题
             let matter = this.matter;
-            
-            // 时间test实验
-            // let time = new Date();
-            // let TimeCl = time.getTime();
-            // let CreaTime = this.CreaTime;
-            // let TimeCre = CreaTime.getTime();
-            // this.aaa = (TimeCl - TimeCre)/1000;
-            // let a = this.aaa;
-            // let aa = this.aaa - a;
-            // let bb = ""
-            // if(aa === 0){
-            //     aa = a;
-            // }else{
-            
-            // }
-            
+
             let data = {
                 typ : typ,
                 id : mid,
@@ -238,7 +223,7 @@ export default {
             if(typ == "" || score == "" || matter == ""|| uid == undefined){
                 this.$Message.warning('请选择一个答案并点击下一题');
             }else{
-                axios.post('http://47.104.245.242:8081/AssessScoreXinli/save_xinli',
+                axios.post('http://192.168.1.106:8080/AssessScoreXinli/save_xinli',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
@@ -262,8 +247,27 @@ export default {
                     let id = this.ubid;
                     this.$router.push({path:'/reported',query:{id:id}})
                 }
+                 this.Starting();
             }
-        }
+        },
+         Starting(){
+            let timec = new Date();
+            let time = timec.getTime();
+            let uid  = this.$route.query.id;
+            let data = {
+                stop : time,
+                uid : uid,
+            }
+            axios.post('http://192.168.1.106:8080/AssessTime/save_stop',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+
+            }),(err)=>{
+
+            }
+        },
     }
 }
 </script>
@@ -271,13 +275,13 @@ export default {
 <style scoped>
      .surveydetail{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         overflow: hidden;
         margin: 50px auto 300px
     }
     .surveydetailTw{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         overflow: hidden;
         margin: 100px auto
     }

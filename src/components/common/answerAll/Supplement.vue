@@ -74,7 +74,6 @@ export default {
     },
     created(){
         this.uid = this.$route.query.id;
-        // this.acquire();
         this.verify();
     },
     watch:{
@@ -82,9 +81,6 @@ export default {
             if(n===0||o===0){
                 this.acquire();
             }else{
-                // let headbox = this.$refs.HeaderBox;
-                // headbox.style.display = "none" 
-                // console.log("awdwadwadawdwdw")
                 this.actiontyp = false;
             }
         }
@@ -216,13 +212,13 @@ export default {
 <style scoped>
     .checkAll{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         margin: 50px auto 300px;
         overflow: hidden;
     }
     .box{
         width: 500px;
-        height: 1000px;
+        height: 3500px;
         margin: 100px auto;
         overflow: hidden;
     }
