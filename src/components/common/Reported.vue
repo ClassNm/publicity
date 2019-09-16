@@ -1,29 +1,27 @@
 <template>
     <div>
-        <Cover style="break-after:page;page-break-after: always;"></Cover>
         <!-- <div>
             <Icon type="md-boat" size="30" />
             <h1 class="Rep">{{Report}}</h1>
             <Spin style="display:'inline-block'"></Spin>
         </div> -->
+
+        <Cover style="break-after:page;page-break-after: always;"></Cover>
         <Header style="break-after:page;page-break-after: always;"></Header>
         <Preface style="break-after:page;page-break-after: always;"></Preface>
         <Interest style="break-after:page;page-break-after: always;"></Interest>
         <Personality style="break-after:page;page-break-after: always;"></Personality>
         <Potency style="break-after:page;page-break-after: always;"></Potency>
         <Location style="break-after:page;page-break-after: always;"></Location>
-
-
-
+        <Analysis style="break-after:page;page-break-after: always;"></Analysis>
+        <Bottom style="break-after:page;page-break-after: always;"></Bottom>
+        <BackTop class="bottBack"></BackTop>
         <!-- <Divider class="segmentation" size="default"/> -->
         <!-- <Radar style="break-after:page;page-break-after: always;"></Radar> -->
         <!-- <Roundness style="break-after:page;page-break-after: always;"></Roundness> -->
         <!-- <Report class="header" style="break-after:page;page-break-after: always;"></Report>   -->
         <!-- <Major style="break-after:page;page-break-after: always;"></Major> -->
-        <Analysis style="break-after:page;page-break-after: always;"></Analysis>
-        <Bottom style="break-after:page;page-break-after: always;"></Bottom>
         <!-- 滑动按钮 -->
-        <BackTop class="bottBack"></BackTop>
     </div>
 </template>
 
@@ -87,7 +85,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped media="print">
     *{
         margin: 0;
         padding: 0;
@@ -98,18 +96,17 @@ export default {
         color: red;
         display: inline-block;
     }
-
     /* 初始化显示的跳转等待默认样式 */
     .demo-spin-icon-load{
         animation: ani-demo-spin 1s linear infinite;
     }
     @media print{
         .bottBack{
-            display: none;
+            display: none !important;
+            /* background: red; */
         }
     }
     @media screen and (min-width: 1200px){
-       
         .segmentation{
             height: 3px;
             width: 800px;
@@ -119,7 +116,6 @@ export default {
         }
     }
    @media screen and (max-width: 1199px){
-        
         .segmentation{
             height: 3px;
             width: 800px;

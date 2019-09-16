@@ -205,7 +205,7 @@ export default {
     },
     created(){
         // 省份数据
-        axios.post('http://192.168.1.106:8080/City/findByCode')
+        axios.post('http://47.104.245.242:8085/City/findByCode')
         .then((res)=>{
             this.cityList = res.data
         }),(err)=>{
@@ -214,7 +214,7 @@ export default {
 
         // 文理科
         let obj2 = 2;
-        axios.post('http://192.168.1.106:8080/AssessObject/obj2',
+        axios.post('http://47.104.245.242:8085/AssessObject/obj2',
         obj2,
         {headers:{'Content-Type':"application/json; charset=UTF-8"}}
         )
@@ -228,7 +228,7 @@ export default {
          // 所在地  市份
             city(word){
                 let data = word;
-                axios.post('http://192.168.1.106:8080/City/findById',
+                axios.post('http://47.104.245.242:8085/City/findById',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -239,7 +239,7 @@ export default {
             // 所在地  县份
             county(word){
                 let data = word;
-                axios.post('http://192.168.1.106:8080/City/findByCode2',
+                axios.post('http://47.104.245.242:8085/City/findByCode2',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -250,7 +250,7 @@ export default {
             // 所在地  学校
             school(word){
                 let data = word;
-                axios.post('http://192.168.1.106:8080/City/findByCode3',
+                axios.post('http://47.104.245.242:8085/City/findByCode3',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -274,7 +274,7 @@ export default {
                 }
             },
             Submit(){
-                // this.PhoneNum();
+                this.PhoneNum();
                 // 账号
                 let phone = this.phone;
                 // 密码
@@ -318,7 +318,7 @@ export default {
                 {
                     this.$Message.warning('请填写完整信息')
                 }else{
-                    axios.post('http://192.168.1.106:8080/AssessUser/save',
+                    axios.post('http://47.104.245.242:8085/AssessUser/save',
                     data,
                     {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                     )
@@ -335,8 +335,8 @@ export default {
 </script>
 
 <style scoped lang="less">
-    .ivu-select-dropdown{
-        top: 0 !important;
+    body .ivu-modal .ivu-select-dropdown{
+        position: fixed !important;
     }
     li{
         list-style: none
@@ -356,8 +356,9 @@ export default {
     }
     .Hheader{
         // width: 100px;
-        text-align: left;
         // background: red;
+        
+        text-align: left;
         display: inline;
     }
     .One{
@@ -365,8 +366,9 @@ export default {
     }
     .box{
         // text-align: center;
-        margin: 200px auto 0 auto;
+        margin: 0 auto;
         width: 600px;
+        padding-top: 200px;
     }
 
 </style>

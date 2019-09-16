@@ -90,9 +90,9 @@ export default {
     methods:{
         // 验证code值为0  则需要做题 
         verify(){
-            // let see = this.uid;
-            let see = 150;
-            axios.post('http://192.168.1.106:8080/AssessScoreMbti/show_mbti',
+            let see = this.uid;
+            // let see = 150;
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_mbti',
             see,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -111,10 +111,8 @@ export default {
         },
         // 拿数据
         acquire(){
-            // let see = this.uid;
-            // console.log(this.code)
             let see = this.typ;
-            axios.post('http://192.168.1.106:8080/AssessScoreMbti/show_matter',
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_matter',
             see,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -128,7 +126,7 @@ export default {
         },
         // 发送数据给后台
         postBack(data){
-            axios.post('http://192.168.1.106:8080/AssessMatter/save2',
+            axios.post('http://47.104.245.242:8085/AssessMatter/save2',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -185,7 +183,6 @@ export default {
                         item.matter=0
                     }
                 })
-                // console.log(arr)
                 this.postBack(arr)
         },
         // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 
@@ -211,20 +208,20 @@ export default {
 
 <style scoped>
     .checkAll{
-        width: 500px;
+        width: 800px;
         height: 3500px;
         margin: 50px auto 300px;
         overflow: hidden;
     }
     .box{
-        width: 500px;
+        width: 800px;
         height: 3500px;
         margin: 100px auto;
         overflow: hidden;
     }
     .checked{
         text-align: left;
-        margin-left: 20%;
+        margin-left: 25%;
 
     }
     /* 注意事项 */

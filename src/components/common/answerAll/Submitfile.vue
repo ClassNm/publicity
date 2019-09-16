@@ -1,16 +1,16 @@
 <template>
     <div class="surveydetail" ref="headbox">
         <div style="border:1px solid #ccc;">
-            <div style="width:82px;display:inline-block;border-right:1px solid #ccc;height:60px;line-height:60px; color:#ccc;">
+            <div style="width:90px;display:inline-block;border-right:1px solid #ccc;height:60px;line-height:60px; color:#ccc;">
                 职业领域
             </div>
-            <div style="width:400px;display:inline-block;font-weight:bolder;font-size: 18px;">
+            <div style="width:700px;display:inline-block;font-weight:bolder;font-size: 18px;">
                 参加课外活动项目的时间、作品及获奖
             </div>
         </div>
-        <div style="width:500px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;">
             <div style="width:90px;
-            height:450px;
+            height:400px;
             display:inline-block;
             float: left;
             border-right:1px solid #ccc;
@@ -23,8 +23,8 @@
                 自然事物
             </div>
             <!-- <div style="width:2px;background:#ccc;height:300px;display:inline-block;"></div> -->
-            <div style="width:400px;display:inline-block;height:450px;">
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+            <div style="width:700px;display:inline-block;height:400px;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加物理,化学，生物等学科比赛项目课外训练的时间有多长?
                     <RadioGroup v-model="firstQuestiontit.one.one"
                     v-for="(item,i) in firstQuestion" 
@@ -39,7 +39,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加物理,化学,生物学科地市级以上比赛有多少次?
                     <RadioGroup v-model="firstQuestiontit.one.twe"
                         v-for="(item,i) in TwoQuestion" 
@@ -55,7 +55,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:250px;display:inline-block;text-align:left;">
+                <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在以上学科项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
                         <input type="number" style="width:50px;" v-model="natural.prefecture.one">次；二等奖
@@ -83,12 +83,12 @@
                 </div>
             </div>
         </div>
-        <div style="width:500px;border:1px solid #ccc;">
-            <div style="width:90px; color:#ccc;height:450px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
+        <div style="width:800px;border:1px solid #ccc;">
+            <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 人造事物
             </div>
-            <div style="width:400px;display:inline-block;height:450px;">
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+            <div style="width:700px;display:inline-block;height:400px;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加模型,电子，机器人科技类项目课外训练的时间有多长?
                     <RadioGroup v-model="firstQuestiontit.twe.one"
                     v-for="(item,i) in firstQuestion" :key="i" 
@@ -101,7 +101,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,在以上科技类项目中，你参加地市级以上比赛有多少次?
                     <RadioGroup v-model="firstQuestiontit.twe.twe"
                     v-for="(item,i) in TwoQuestion" :key="i"
@@ -113,7 +113,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:250px;display:inline-block;text-align:left;">
+                <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在以上科技类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
                         <input type="number" style="width:50px;" v-model="manMade.prefecture.one">次；二等奖
@@ -141,12 +141,12 @@
                 </div>
             </div>
         </div>
-        <div style="width:500px;border:1px solid #ccc;">
-            <div style="width:90px; color:#ccc;height:450px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
+        <div style="width:800px;border:1px solid #ccc;">
+             <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 艺术符号
             </div>
-            <div style="width:400px;display:inline-block;height:450px;">
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+            <div style="width:700px;display:inline-block;height:400px;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加绘画,音乐，舞蹈等艺术类项目课外训练的时间有多长?
                     <RadioGroup v-model="firstQuestiontit.thr.one"
                     v-for="(item,i) in firstQuestion" :key="i"
@@ -158,7 +158,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加绘画,音乐，舞蹈等艺术类项目地市级以上比赛有多少次?
                     <RadioGroup v-model="firstQuestiontit.thr.twe"
                     v-for="(item,i) in TwoQuestion" :key="i"
@@ -170,7 +170,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:250px;display:inline-block;text-align:left;">
+                <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在艺术类项目中,你参加不同级别竞赛获奖的次数有多少?
                      <div>地市级：一等奖
                         <input type="number" style="width:50px;" v-model="art.prefecture.one">次；二等奖
@@ -198,12 +198,12 @@
                 </div>
             </div>
         </div>
-        <div style="width:500px;border:1px solid #ccc;">
-            <div style="width:90px; color:#ccc;height:450px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
+        <div style="width:800px;border:1px solid #ccc;">
+            <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 数学符号
             </div>
-            <div style="width:400px;display:inline-block;height:450px;">
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+            <div style="width:700px;display:inline-block;height:400px;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加数学,编程等项目课外训练的时间有多长?
                     <RadioGroup 
                     v-model="firstQuestiontit.four.one"
@@ -216,7 +216,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加数学,编程等项目地市级以上比赛有多少次?
                     <RadioGroup 
                     v-model="firstQuestiontit.four.twe"
@@ -229,7 +229,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:250px;display:inline-block;text-align:left;">
+                <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在数学,编程等项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
                         <input type="number" style="width:50px;" v-model="mathematics.prefecture.one">次；二等奖
@@ -257,12 +257,12 @@
                 </div>
             </div>
         </div>
-        <div style="width:500px;border:1px solid #ccc;">
-            <div style="width:90px; color:#ccc;height:450px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
+        <div style="width:800px;border:1px solid #ccc;">
+            <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 语言符号
             </div>
-            <div style="width:400px;display:inline-block;height:450px;">
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+            <div style="width:700px;display:inline-block;height:400px;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加语文和英语类项目课外训练的时间有多长?
                     <RadioGroup 
                     v-model="firstQuestiontit.five.one"
@@ -275,7 +275,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加语文和英语类项目地市级以上比赛有多少次?
                     <RadioGroup 
                     v-model="firstQuestiontit.five.twe"
@@ -289,7 +289,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:250px;display:inline-block;text-align:left;">
+                <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在语文和英语类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
                         <input type="number" style="width:50px;" v-model="language.prefecture.one">次；二等奖
@@ -317,12 +317,12 @@
                 </div>
             </div>
         </div>
-        <div style="width:500px;border:1px solid #ccc;">
-            <div style="width:90px; color:#ccc;height:450px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
+        <div style="width:800px;border:1px solid #ccc;">
+            <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 社会制度
             </div>
-            <div style="width:400px;display:inline-block;height:450px;">
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+            <div style="width:700px;display:inline-block;height:400px;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加历史,地理,政治等人文社会类课外活动有多少次?
                     <RadioGroup 
                     v-model="firstQuestiontit.six.one"
@@ -335,7 +335,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加以历史和文化为主题的游学(研学旅行)活动有多少次?
                     <RadioGroup 
                     v-model="firstQuestiontit.six.twe"
@@ -349,7 +349,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:250px;display:inline-block;text-align:left;">
+                <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在人文和社会类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
                         <input type="number" style="width:50px;" v-model="society.prefecture.one">次；二等奖
@@ -377,11 +377,11 @@
                 </div>
             </div>
         </div>
-        <div style="width:500px;border:1px solid #ccc;">
-            <div style="width:90px; color:#ccc;height:450px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
+        <div style="width:800px;border:1px solid #ccc;">
+            <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 个体生命
             </div>
-            <div style="width:400px;display:inline-block;height:450px;border-bottom:1px solid #ccc;">
+            <div style="width:700px;display:inline-block;height:400px;">
                 <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     1,初中以来,你参加社会实践或志愿者服务的课外活动有多少次?
                     <RadioGroup 
@@ -395,7 +395,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
+                <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加体育类项目地市级以上比赛有多少次?
                     <RadioGroup 
                     v-model="firstQuestiontit.seve.twe"
@@ -408,7 +408,7 @@
                         </Radio>
                     </RadioGroup>
                 </div>
-                <div style="width:400px;height:250px;display:inline-block;text-align:left;">
+                <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在体育类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
                         <input type="number" style="width:50px;" v-model="unit.prefecture.one">次；二等奖
@@ -436,7 +436,7 @@
                 </div>
             </div>
         </div>
-        <button @click="postAx">提交</button>
+        <Button type="primary" ghost @click="postAx">提交</Button>
     </div>
 </template>
 
@@ -473,11 +473,7 @@ export default {
                 seve:{
                     one:"",
                     twe:"",
-                },
-                eight:{
-                    one:"",
-                    twe:"",
-                },
+                }
             },
             // firstQuestiontit: '',
             Twotit:"",
@@ -724,14 +720,35 @@ export default {
                     three:"",
                 }
             }, 
-            uid:150,
+            uid:"",
         
         
         }
     },
+    created(){
+        this.uid = this.$route.query.id;
+    },
    methods:{
        postAx(){
-           let data = [
+           if(
+                this.radiotit.one.one===""||
+                this.radiotit.one.twe===""||
+                this.radiotit.twe.one===""||
+                this.radiotit.twe.twe===""||
+                this.radiotit.thr.one===""||
+                this.radiotit.thr.twe===""||
+                this.radiotit.four.one===""||
+                this.radiotit.four.twe===""||
+                this.radiotit.five.one===""||
+                this.radiotit.five.twe===""||
+                this.radiotit.six.one===""||
+                this.radiotit.six.twe===""||
+                this.radiotit.seve.one===""||
+                this.radiotit.seve.twe===""
+           ){
+                this.$Message.warning('请选择选项并答完题');
+           }else{
+               let data = [
                 {
                     matterOne: this.radiotit.one.one,
                     matterTwo: this.radiotit.one.twe,
@@ -858,19 +875,20 @@ export default {
                     typ: "I",
                     uid: this.uid
                 }
-           ]
-            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/save1',
-            data,
-            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-            )
-            .then((res)=>{
+                ]
+                    axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/save1',
+                    data,
+                    {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                    )
+                    .then((res)=>{
 
-            }),(err)=>{
+                    }),(err)=>{
 
-            }
-        //    console.log(data)
-            let headbox = this.$refs.headbox;
-            headbox.style.display = "none"
+                    }
+                    let headbox = this.$refs.headbox;
+                    headbox.style.display = "none"
+           }
+           
        },
        parent(index){
            this.radiotit.one.one = index.label
@@ -920,10 +938,10 @@ export default {
 
 <style scoped>
     .surveydetail{
-        width: 500px;;
+        width: 800px;;
         height: 3500px;
         overflow: hidden;
-        margin: 50px auto 300px
+        margin: 0 auto;
     }
     
 </style>

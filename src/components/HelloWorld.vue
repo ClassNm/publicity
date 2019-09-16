@@ -1,15 +1,17 @@
 <template>
     <div class="box">
-      <span class="size">职业生涯测评系统</span>
+      <!-- <span class="size">职业生涯测评系统</span>
       <router-link :to="{path:'/Login'}">
         <Button type="success" class="but">跳转登录页</Button>
-      </router-link>
-      
+      </router-link> -->
+      <Login></Login>
     </div>
 </template>
 
 
 <script>
+// import Login from './components/common/loginAndReg/Login.vue'
+import Login from '../components/common/loginAndReg/Login'
 export default {
   name: 'HelloWorld',
   data () {
@@ -20,7 +22,11 @@ export default {
     // caruse(){
     //   this.router.push('/Login')
     // }
+  },
+  components:{
+    Login
   }
+
 }
 </script>
 
@@ -33,7 +39,7 @@ export default {
      @media (min-width: 1200px) { 
        .box{
           text-align: center;
-          margin-top: 300px;
+          // margin-top: 300px;
         }
         .size{
           font-size: 80px;
@@ -57,7 +63,7 @@ export default {
     @media screen and (max-width: 901px) { 
         .box{
           text-align: center;
-          margin-top: 100px;
+          // margin-top: 100px;
         }
         .size{
           font-size: 40px;

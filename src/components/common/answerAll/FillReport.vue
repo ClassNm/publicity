@@ -5,8 +5,8 @@
         <form action="" style="border:1px solid #ccc">
             <thead>
                 <tr>
-                    <th style="width:250px;height:100px;">学科</th>
-                    <th style="width:250px;height:100px;">考试成绩I</th>
+                    <th style="width:400px;height:100px;">学科</th>
+                    <th style="width:400px;height:100px;">考试成绩I</th>
                 </tr>
             </thead>
             <tbody>
@@ -167,12 +167,12 @@ export default {
                 },
                 {
                     score:this.language,
-                    typ:"I",
+                    typ:"L",
                     uid:uid
                 },
                 {
                     score:this.english,
-                    typ:"I",
+                    typ:"L",
                     uid:uid
                 },
                  {
@@ -191,7 +191,7 @@ export default {
                     uid:uid
                 },
             ];
-            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/save',
+            axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/save',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -210,7 +210,7 @@ export default {
 
 <style scoped>
     .surveydetail{
-        width: 500px;;
+        width: 800px;;
         height: 3500px;
         overflow: hidden;
         margin: 50px auto 300px

@@ -110,7 +110,7 @@ export default {
         // 拿数据
         acquire(){
             let see = this.uid;
-            axios.post('http://192.168.1.106:8080/AssessMatter/showMatter2',
+            axios.post('http://47.104.245.242:8085/AssessMatter/showMatter2',
             see,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -131,7 +131,7 @@ export default {
                     content:this.value5,
                     uid:this.uid
                 }
-                axios.post('http://192.168.1.106:8080/AssessFeedback/save_feedback',
+                axios.post('http://47.104.245.242:8085/AssessFeedback/save_feedback',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -149,7 +149,7 @@ export default {
         },
         //发送数据给后台
         postBack(data){
-            axios.post('http://192.168.1.106:8080/AssessMatter/save2',
+            axios.post('http://47.104.245.242:8085/AssessMatter/save2',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -243,21 +243,20 @@ export default {
 
 <style scoped>
     .checkAll{
-        width: 500px;
+        width: 800px;
         height: 3500px;
         margin: 50px auto 300px;
         overflow: hidden;
     }
     .box{
-        width: 500px;
+        width: 800px;
         height: 3500px;
         margin: 100px auto;
         overflow: hidden;
     }
     .checked{
         text-align: left;
-        margin-left: 20%;
-
+        margin-left: 25%;
     }
     /* 注意事项 */
     .noticeCo{

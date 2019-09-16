@@ -17,7 +17,7 @@
         <div v-if="Twethdy">
             <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                再次恭喜你，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（  折中型  ）并没有不适合之处。显然，这一职业类别及学科专业就是当前最适合你的 
+                再次恭喜你，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（  {{object}}  ）并没有不适合之处。显然，这一职业类别及学科专业就是当前最适合你的 
             </span>
             <Table border :columns="columns2" :data="arr"></Table>
         </div>
@@ -199,16 +199,13 @@ export default {
     },
     methods:{
         typTeach(){
-            // let data = this.$route.query.id;
-            // let data = 150;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreXinli/show_xueke',
+            axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_xueke',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 this.matter = res.data[0].matter
-                // console.log(this.matter,'atter')
                 let a = res.data
                 let arrT = []
                 let id = 0;
@@ -246,7 +243,7 @@ export default {
             // let data = this.$route.query.id;
             // let data = 150;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreXinli/xinli_num',
+            axios.post('http://47.104.245.242:8085/AssessScoreXinli/xinli_num',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -266,10 +263,8 @@ export default {
             })
         },
         describeTit(){
-            // let data = this.$route.query.id;
-            // let data = 150;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreXinli/show_xinli',
+            axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_xinli',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -285,15 +280,30 @@ export default {
 </script>
 
 <style  scoped>
-     .box{
-        width: 1100px;
-        margin: 0 auto;
-        margin-top: 100px;
+     @media screen and (min-width: 1200px){
+        .box{
+            width: 1100px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .RoundNes{
+            width: 1000px; 
+            height: 602px;
+            display:inline-block;
+            margin: 0 auto;
+        }
     }
-    .RoundNes{
-        width: 1000px; 
-        height: 602px;
-        display:inline-block;
-        margin: 0 auto;
-    }
+   @media screen and (max-width: 1199px){
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .RoundNes{
+            width: 800px; 
+            height: 502px;
+            display:inline-block;
+            margin: 0 auto;
+        }
+   }
 </style>

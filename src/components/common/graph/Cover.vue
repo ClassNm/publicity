@@ -28,7 +28,7 @@ export default {
     methods:{
         ShowUser(){
                 let data = this.$route.query.id;
-                axios.post('http://192.168.1.106:8080/assessReport/show_User',
+                axios.post('http://47.104.245.242:8085/assessReport/show_User',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -61,7 +61,7 @@ export default {
         },
         echo(){
             let uid  = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessTime/show_time',
+            axios.post('http://47.104.245.242:8085/AssessTime/show_time',
             uid,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -89,29 +89,8 @@ export default {
     /* margin-left: 3mm; */
     }
     @media print{
+      
     }
-    /* @page:right{
-        @bottom-left {
-            margin: 10pt 0 30pt 0;
-            border-top: .25pt solid #666;
-            content: "Our Cats";
-            font-size: 9pt;
-            color: #333;
-        }
-        @bottom-right { 
-            margin: 10pt 0 30pt 0;
-            border-top: .25pt solid #666;
-            content: counter(page);
-            font-size: 9pt;
-        }
-
-
-        @top-right{
-            content: "Our Cats";
-            font-size: 9pt;
-            color: red;
-        }
-    } */
     li{
         list-style: none;
     }

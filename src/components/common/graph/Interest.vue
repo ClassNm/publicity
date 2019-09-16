@@ -10,28 +10,28 @@
         </ul>
         <span style="font-weight:bolder;text-align:left;font-size:18px;display:block;margin-top:50px;">二，根据以上测验和调查，你感兴趣职业类别和想报考的学科如下：</span>
          <div style="width:1000px;margin-top:40px;">
-            <div style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+            <div style="height:200px;width:330px;display:inline-block;border:1px solid #ccc;">
                 <div style="margin-top: 70px;">职业类别</div>
             </div>
-            <div style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+            <div style="height:200px;width:330px;display:inline-block;border:1px solid #ccc;">
                 <div style="margin-top: 70px;">你喜欢的学科</div>
             </div>
-            <div style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
+            <div style="height:200px;width:330px;display:inline-block;border:1px solid #ccc;">
                 <div style="margin-top: 70px;">适合度</div>
             </div>
             <div style="width:1000px;" v-for="(item,index) in arrTw" :key="index">
             <!-- <div style="width:1000px;"> -->
-                <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                <div style="width:330px;height:200px;display:inline-block;border:1px solid #ccc;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.typ}}</div>
                 </div>  
-                <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                <div style="width:330px;height:200px;display:inline-block;border:1px solid #ccc;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
                 </div>
                 <!-- <div v-for="(item,i) in kkk" :key="i" style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
                     <div style="margin-top: 70px;" v-for="(item,i) in item.name" :key="i">{{item.name}}</div>
                 </div> -->
 
-                <div style="width:330px;height:300px;display:inline-block;border:1px solid #ccc;">
+                <div style="width:330px;height:200px;display:inline-block;border:1px solid #ccc;">
                     <div class="rightBot" :style="{width:item.code}" :title="item.code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                 </div>
             </div>
@@ -155,7 +155,7 @@ export default {
      },
      created(){
         let data = this.$route.query.id;
-        axios.post('http://192.168.1.106:8080/AssessScore/showNum',
+        axios.post('http://47.104.245.242:8085/AssessScore/showNum',
           data,
           {headers:{'Content-Type':"application/json; charset=UTF-8"}}
           )
@@ -183,14 +183,15 @@ export default {
     },
     methods:{
         categoryTw(){
-            // let data = 150;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScore/show_xueke',data,
+            axios.post('http://47.104.245.242:8085/AssessScore/show_xueke',data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
                 let a = res.data;
                 a.forEach((item)=>{
+                    item.code = item.code*10;
+                    // c+="px"
                     item.code+="px"
                 })
                 this.arrTw = a;
@@ -235,7 +236,7 @@ export default {
             });
             // 处理echarts异步操作 copy的官网实例
             let data = this.$route.query.id;
-            axios.post("http://192.168.1.106:8080/AssessScore/showNum",
+            axios.post("http://47.104.245.242:8085/AssessScore/showNum",
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             ) 
@@ -377,7 +378,7 @@ export default {
             // let data = this.$route.query.id;
             // let data = 150;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScore/showResultt',
+            axios.post('http://47.104.245.242:8085/AssessScore/showResultt',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -442,11 +443,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped media="print">
     li{
         list-style: none;
         margin-top: 20px;
         margin-left: 30px;
+    }
+    @media print{
+       .rightBot{
+            height: 30px;
+            background: black;
+            -webkit-print-color-adjust: exact; 
+            margin-top: 70px;
+        }
     }
     @media screen and (min-width: 1200px){
         .box{
@@ -464,9 +473,8 @@ export default {
             height: 100px;
         }
         .rightBot{
-            height: 30px;
-            margin-top: 50px;
-            background: pink;
+            /* height: 30px; */
+            background: black;
             margin-top: 70px;
         }
     }
@@ -480,6 +488,16 @@ export default {
             width: 800px; 
             height: 602px;
             margin: 0 auto;
+        }
+         .ReporTw{
+             width: 200px; 
+            height: 100px;
+        }
+        .rightBot{
+            height: 30px;
+            margin-top: 50px;
+            background: pink;
+            margin-top: 70px;
         }
     }
 </style>

@@ -308,7 +308,7 @@ export default {
         titdata(){
             // let data = this.$route.query.id;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreMbti/show_mbti',
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_mbti',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -324,7 +324,7 @@ export default {
         titdataMbt(){
             // let data = this.$route.query.id;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreMbti/show_fuhedu',
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_fuhedu',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -363,10 +363,8 @@ export default {
                     }
             })
             // 处理echarts异步操作 copy的官网实例
-            // let data = this.$route.query.id;
-            // let data = 150;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreMbti/mbti_num',
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/mbti_num',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -389,7 +387,7 @@ export default {
          // 信息
         describeTit(){
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreMbti/show_mbti',
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_mbti',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -402,7 +400,7 @@ export default {
         },
         imgMeth(index){
             let data = index;
-            axios.post('http://192.168.1.106:8080/AssessPictures/show_picture',
+            axios.post('http://47.104.245.242:8085/AssessPictures/show_picture',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -418,7 +416,6 @@ export default {
     ul,li{
         list-style: none;
         text-align: left;
-        /* font-weight: bolder; */
         font-size: 15px;
         margin: 5px 0;
     }
@@ -452,4 +449,21 @@ export default {
             margin-top: 100px;
         }
     }
+     @media screen and (max-width: 1199px){
+        
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 150px;
+        }
+        .Repor{
+            width: 500px; 
+            height: 502px;
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            display: inline-block;
+            margin-top: 100px;
+        }
+   }
 </style>

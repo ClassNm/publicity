@@ -66,7 +66,7 @@ export default {
     methods:{
         majorMeth(){
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessProfessionalIntroduction/show',
+            axios.post('http://47.104.245.242:8085/AssessProfessionalIntroduction/show',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -112,7 +112,6 @@ export default {
         .inside{
             background: white;
             text-align: left;
-            /* height: 400px; */
              width: 1100px;
             font-size: 20px;
              overflow: hidden;

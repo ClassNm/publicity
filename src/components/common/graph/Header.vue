@@ -109,7 +109,7 @@ import axios from 'axios';
         methods:{
             Report(){
                 let data = 1;
-                axios.post('http://192.168.1.106:8080/assessReport/show_Report',
+                axios.post('http://47.104.245.242:8085/assessReport/show_Report',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -121,7 +121,7 @@ import axios from 'axios';
             },
             ShowUser(){
                 let data = this.$route.query.id;
-                axios.post('http://192.168.1.106:8080/assessReport/show_User',
+                axios.post('http://47.104.245.242:8085/assessReport/show_User',
                 data,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -134,7 +134,6 @@ import axios from 'axios';
                     ary.subject = arr.artsAndSciences;
                     this.schoolT = arr.school
                     this.clas = arr.clas
-                    // console.log(res.data)
                 }),(err)=>{
                     console.log(err)
                 }
@@ -160,7 +159,7 @@ import axios from 'axios';
             },
             echo(){
                 let uid  = this.$route.query.id;
-                axios.post('http://192.168.1.106:8080/AssessTime/show_time',
+                axios.post('http://47.104.245.242:8085/AssessTime/show_time',
                 uid,
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
@@ -183,7 +182,12 @@ import axios from 'axios';
 </script>
 
 <style scoped midia="print">
-    @media print { body { color: #000; background: #fff; } }
+    @media print { 
+        body { color: #000; background: #fff; } 
+        .tit{
+            margin: 40px 0;
+        }
+    }
     li{
         list-style: none
     }
@@ -205,7 +209,6 @@ import axios from 'axios';
             font-size: 20px;
             line-height: 20px;
             margin-bottom: 50px;
-            /* display: inline-block; */
         }
         .titBot{
             font-size: 15px;

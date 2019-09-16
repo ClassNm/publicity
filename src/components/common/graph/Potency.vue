@@ -150,7 +150,7 @@ export default {
             // 处理echarts异步操作 copy的官网实例
             // let data = this.$route.query.id;
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/show_numb',
+            axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/show_numb',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -169,7 +169,7 @@ export default {
         },
         dataTit(){
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/show_xueke',
+            axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/show_xueke',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -183,7 +183,7 @@ export default {
         },
         dataTitTW(){
             let data = this.$route.query.id;
-            axios.post('http://192.168.1.106:8080/AssessScoreTechangWeb/show_jibie',
+            axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/show_jibie',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -199,38 +199,43 @@ export default {
         foon(){
             let arr = this.arr;
             let kool = this.kool;
-            // console.log(arr,'2111111111')
-            //  console.log(kool,'2111111111')
-            // console.log(this.kool,'scort')
-            // let items = []
             arr.forEach(item=>{
                 kool.forEach(i=>{
-                    // console.log(item.typ,'item')
-                    // console.log(item,'1111111111111')
                     if(item.typ === i.typ){
                         item.matter = i.matter
                     }
                 })
             })
-            // aa.map(((item,index)=>{
-            //     arr.push(Object.assign({},item,{uid:this.uid}))
-            // }))
-            // console.log(arr,'arr')
         }
     }
 }
 </script>
 
 <style scoped>
-    .box{
-        width: 1100px;
-        margin: 0 auto;
-        margin-top: 100px;
-    }
-    .Repor{
+    @media screen and (min-width: 1200px){
+        .box{
+            width: 1100px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .Repor{
             width: 1000px; 
             height: 602px;
             margin: 0 auto;
             margin-top: 50px;
         }
+    }
+   @media screen and (max-width: 1199px){
+        .box{
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 100px;
+        }
+        .Repor{
+            width: 800px; 
+            height: 502px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+   }
 </style>

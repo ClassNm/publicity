@@ -2,12 +2,12 @@
     <div class="surveydetailout" id="surveydetailout" >
         <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio>
         <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck>
-        <FourRadio></FourRadio>   
-        <Supplement></Supplement>
-        <FillReport></FillReport>
-        <Submitfile></Submitfile>
-        <!-- 顺序换了 -->
+        <FourRadio v-if="Four"></FourRadio>   
+        <Supplement v-if="SupOne"></Supplement>
+        <FillReport v-if="SupTw"></FillReport>
+        <Submitfile v-if="SupThr"></Submitfile>
         <TwoRadio v-if="Thr"></TwoRadio>  
+        <!-- 顺序换了 -->
     </div>
 </template>
 
@@ -43,6 +43,10 @@ export default {
             Two : true,
             Thr : true,
             Fourr : true,
+            Four:true,
+            SupOne:true,
+            SupTw:true,
+            SupThr:true,
             typTwo:"1"
         }
     },
@@ -56,21 +60,25 @@ export default {
         FourRadio
     },
     created(){
-        // this.ubid = this.$route.query.id;
-        // this.judge = this.$route.query.judge;
-        // if(this.judge==="第二部分没做"||this.judge==="第二部分没做完"){
-        //     this.ok = false
-        // }else if(this.judge==="第三部分没做"||this.judge==="第三部分没做完"){
-        //     this.ok = false
-        //     this.Two = false
-        // }else if(this.judge==="第四部分没做"||this.judge==="第四部分没做完"){
-        //     this.ok = false
-        //     this.Two = false
-        //     this.Thr = false
-        // }
+        this.ubid = this.$route.query.id;
+        this.judge = this.$route.query.judge;
+        if(this.judge==="第二部分没做"||this.judge==="第二部分没做完"){
+            this.ok = false
+        }else if(this.judge==="第三部分没做"||this.judge==="第三部分没做完"){
+            this.ok = false
+            this.Two = false
+        }else if(this.judge==="第四部分没做"||this.judge==="第四部分没做完"){
+            this.ok = false
+            this.Two = false
+            this.Four = false
+            this.SupOne = false
+            this.SupTw = false
+            this.SupThr = false
+
+        }
     },
     mounted(){
-        // this.Starting();
+        this.Starting();
     },
     methods:{
         Starting(){
@@ -81,7 +89,7 @@ export default {
                 start : time,
                 uid : uid,
             }
-            axios.post('http://47.104.245.242:8081/AssessTime/save_start',
+            axios.post('http://47.104.245.242:8085/AssessTime/save_start',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
@@ -101,7 +109,7 @@ export default {
 <style  scoped>
     .surveydetailout {
         position: relative;
-        width: 500px;
+        width: 800px;
         height: 3500px;
         margin: 50px auto 300px;
         overflow: hidden;
