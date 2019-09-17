@@ -197,7 +197,7 @@ export default {
                     headbox.style.display = "none"
                 }
                 this.checkAllGroup = []
-                
+                this.checkAlldata = []
             }else{
                 this.err();
             }

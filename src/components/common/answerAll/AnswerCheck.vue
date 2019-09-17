@@ -75,7 +75,6 @@ export default {
             value5: '',
             // 页面加载时的时间
             CreaTime:"",
-            // TYPtWO : ""
             AllData:[],
             checkAlldata:[]
         }
@@ -142,7 +141,6 @@ export default {
                 }
                 this.value5 = ""
             }
-            
         },
         cancel () {
             this.$Message.info('返回');
@@ -219,6 +217,7 @@ export default {
                     arr.push(Object.assign({},item,{uid:this.uid,code:1}))
                 }))
                 this.postBack(arr)
+                // console.log(arr)
         },
         // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 
         resultMe(){
@@ -232,7 +231,7 @@ export default {
                     headbox.style.display = "none"
                 }
                 this.checkAllGroup = []
-                
+                this.checkAlldata = []
             }else{
                 this.err();
             }
