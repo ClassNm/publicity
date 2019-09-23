@@ -1,38 +1,47 @@
 <template>
     <div class="box">
         <h1 style="margin-bottom:60px;">第一部分：全职兴趣测验结果</h1>
-        <span style="font-weight:bolder;text-align:left;display:block;font-size:18px;margin:50px 0 80px 0;">一，您在全职兴趣测验中的得分如下：</span>
+        <span style="font-weight:bolder;text-align:left;display:block;font-size:18px;margin:50px 0 20px 0;">（一）测验概要</span>
+        <div style="text-align:left;display:block;font-size:18px;margin-bottom:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全职兴趣测验按照“对象”和“活动”两个维度，将职业分为21种类型，系统考察学生对21种职业类别的兴趣，并据此推荐相应的大学本科学科门类。</div>
+        <span style="font-weight:bolder;text-align:left;display:block;font-size:18px;margin:50px 0 20px 0;">（二）测试结果</span>
+        <div style="text-align:left;display:block;font-size:18px;margin-bottom:20px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您在全职兴趣测验中的得分如下：
+        </div>
         <div id="myChart" class="Repor"></div>
-        <ul style="text-align:left;font-weight:bolder;margin-top:80px;">
+        <!-- <ul style="text-align:left;font-weight:bolder;margin-top:80px;">
             结果说明：
-            <!-- <li v-for="(item,i) in Arrdata" :key="i">在全部21中职业类型中，超过15分的职业类别包括：{{item}}</!--> -->
             <li>在全部21中职业类型中，超过15分的职业类别包括：{{Arrdata}}</li>
-        </ul>
-        <span style="font-weight:bolder;text-align:left;font-size:18px;display:block;margin-top:50px;">二，根据以上测验和调查，你感兴趣职业类别和想报考的学科如下：</span>
+        </ul> -->
+        <span style="font-weight:bolder;text-align:left;font-size:18px;display:block;margin-top:50px;">（三）适合的职业类别与学科门类</span>
+        <div style="text-align: left;margin-bottom:50px;margin-top:20px;font-size:18px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据测验结果，在21种职业类别中，你的得分超过18分的前8种职业类别及相应学科门类如下：
+        </div>
          <div style="width:1000px;margin-top:40px;">
-            <div style="height:200px;width:330px;display:inline-block;border:1px solid #ccc;">
+             <div style="height:200px;width:240px;display:inline-block;border:1px solid #ccc;">
+                <div style="margin-top: 70px;">序号</div>
+            </div>
+            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;">
                 <div style="margin-top: 70px;">职业类别</div>
             </div>
-            <div style="height:200px;width:330px;display:inline-block;border:1px solid #ccc;">
-                <div style="margin-top: 70px;">你喜欢的学科</div>
+            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;">
+                <div style="margin-top: 70px;">得分</div>
             </div>
-            <div style="height:200px;width:330px;display:inline-block;border:1px solid #ccc;">
-                <div style="margin-top: 70px;">适合度</div>
+            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;">
+                <div style="margin-top: 70px;">这一类型下感兴趣的大学本科学科门类</div>
             </div>
             <div style="width:1000px;" v-for="(item,index) in arrTw" :key="index">
             <!-- <div style="width:1000px;"> -->
-                <div style="width:330px;height:200px;display:inline-block;border:1px solid #ccc;">
+                 <div style="width:240px;height:200px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{index+1}}</div>
+                </div>
+                <div style="width:250px;height:200px;display:inline-block;border:1px solid #ccc;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.typ}}</div>
                 </div>  
-                <div style="width:330px;height:200px;display:inline-block;border:1px solid #ccc;">
-                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
+                <div style="width:250px;height:200px;display:inline-block;border:1px solid #ccc;">
+                    <div class="rightBot" :title="item.code">&nbsp;&nbsp;&nbsp;&nbsp;{{item.code}}</div>
                 </div>
-                <!-- <div v-for="(item,i) in kkk" :key="i" style="height:300px;width:330px;display:inline-block;border:1px solid #ccc;">
-                    <div style="margin-top: 70px;" v-for="(item,i) in item.name" :key="i">{{item.name}}</div>
-                </div> -->
-
-                <div style="width:330px;height:200px;display:inline-block;border:1px solid #ccc;">
-                    <div class="rightBot" :style="{width:item.code}" :title="item.code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div style="width:250px;height:200px;display:inline-block;border:1px solid #ccc;">
+                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
                 </div>
             </div>
             
@@ -48,6 +57,7 @@ import axios from 'axios';
 export default {
      data(){
         return{
+            numI:1,
             Arrdata:"",
             kkk:[
                 {
@@ -178,7 +188,8 @@ export default {
         this.drawLine();
         // this.drawLineTwo();
         // this.drawLineThrr();
-        this.ArrData();
+        // 超过15分的类别
+        // this.ArrData();
         this.categoryTw();
     },
     methods:{
@@ -188,13 +199,12 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                let a = res.data;
-                a.forEach((item)=>{
-                    item.code = item.code*10;
-                    // c+="px"
-                    item.code+="px"
-                })
-                this.arrTw = a;
+                // let a = res.data;
+                // a.forEach((item)=>{
+                //     item.code = item.code*10;
+                //     item.code+="px"
+                // })
+                this.arrTw = res.data;
                 // let selected = this.typSele
                 // let all = res.data;
                 // let items = []
@@ -375,8 +385,6 @@ export default {
             });
         },
         ArrData(){
-            // let data = this.$route.query.id;
-            // let data = 150;
             let data = this.$route.query.id;
             axios.post('http://47.104.245.242:8085/AssessScore/showResultt',
             data,
@@ -451,9 +459,8 @@ export default {
     }
     @media print{
        .rightBot{
-            height: 30px;
-            background: black;
-            -webkit-print-color-adjust: exact; 
+            /* height: 30px; */
+            /* -webkit-print-color-adjust: exact;  */
             margin-top: 70px;
         }
     }
@@ -474,7 +481,7 @@ export default {
         }
         .rightBot{
             /* height: 30px; */
-            background: black;
+            /* background: black; */
             margin-top: 70px;
         }
     }

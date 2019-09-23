@@ -68,7 +68,7 @@
                         <input type="number" style="width:50px;" v-model="natural.provincial.two">次；三等奖
                         <input type="number" style="width:50px;" v-model="natural.provincial.three">次；
                     </div>
-                    <br>
+                    <br>   
                     <div>国家级：地市级： 一等奖
                         <input type="number" style="width:50px;" v-model="natural.state.one">次；二等奖
                         <input type="number" style="width:50px;" v-model="natural.state.two">次；三等奖

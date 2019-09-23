@@ -5,17 +5,29 @@
             <h1 class="Rep">{{Report}}</h1>
             <Spin style="display:'inline-block'"></Spin>
         </div> -->
-
-        <Cover style="break-after:page;page-break-after: always;"></Cover>
-        <Header style="break-after:page;page-break-after: always;"></Header>
-        <Preface style="break-after:page;page-break-after: always;"></Preface>
-        <Interest style="break-after:page;page-break-after: always;"></Interest>
-        <Personality style="break-after:page;page-break-after: always;"></Personality>
-        <Potency style="break-after:page;page-break-after: always;"></Potency>
-        <Location style="break-after:page;page-break-after: always;"></Location>
-        <Analysis style="break-after:page;page-break-after: always;"></Analysis>
-        <Bottom style="break-after:page;page-break-after: always;"></Bottom>
+        <div class="headerTT">
+            <img src="../../assets/111.png" 
+                 style="
+                 width:400px;
+                 height:120px;
+                 display:block;
+                 padding-bottom:60px;
+                 margin-bottom:60px;
+                 " 
+                 alt=""
+            >
+        </div>
+        <Cover style="break-after:page;page-break-after: always;margin-top:80px;"></Cover>
+        <Header style="break-after:page;page-break-after: always;margin-top:80px;"></Header>
+        <Preface style="break-after:page;page-break-after: always;margin-top:80px;"></Preface>
+        <Interest style="break-after:page;page-break-after: always;margin-top:80px;"></Interest>
+        <Personality style="break-after:page;page-break-after: always;margin-top:80px;"></Personality>
+        <Potency style="break-after:page;page-break-after: always;margin-top:80px;"></Potency>
+        <Location style="break-after:page;page-break-after: always;margin-top:80px;"></Location>
+        <Analysis style="break-after:page;page-break-after: always;margin-top:80px;"></Analysis>
+        <Bottom style="break-after:page;page-break-after: always;margin-top:80px;"></Bottom>
         <BackTop class="bottBack"></BackTop>
+        
         <!-- <Divider class="segmentation" size="default"/> -->
         <!-- <Radar style="break-after:page;page-break-after: always;"></Radar> -->
         <!-- <Roundness style="break-after:page;page-break-after: always;"></Roundness> -->
@@ -103,8 +115,26 @@ export default {
     @media print{
         .bottBack{
             display: none !important;
-            /* background: red; */
         }
+        @page {
+            margin-top: 0;
+            margin-right: 0;
+            margin-left: 0;
+        }
+        body {
+            margin-top: 2cm;
+            margin-right: 2cm;
+            margin-bottom: 2cm;
+        }
+        .headerTT {
+            position: fixed;
+            top: 0;
+        }
+        /* .footerTT {
+            position: fixed;
+            bottom: 0;
+        } */
+
     }
     @media screen and (min-width: 1200px){
         .segmentation{

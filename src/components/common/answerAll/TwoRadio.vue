@@ -38,7 +38,7 @@
                             </label>
                         </p>
                         <p class="i_bot"></p>
-                    <Button @click="submit($event)">下一题</Button>
+                    <Button @click="submit($event)" style="margin-left: 2%;">下一题</Button>
                 </div>
                 <!-- <Button @click="submit($event)">下一题</Button> -->
             </div>

@@ -1,10 +1,16 @@
 <template>
     <div class="box">
         <h1>第三部分:学科潜能调查的结果</h1>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">一、你的学科潜能分布情况</span>
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">（一）测验概要</span>
+        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从“对象”维度出发，系统考察个体在不同对象所对应的职业类别上的学科潜能，进一步判断个体是否具有从事相应职业的能力条件。
+        </div>
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">（二）测试结果</span>
         <div id="myChartThr" class="Repor"></div>
         <!-- <span style="text-align:left;display:block;font-size:18px;margin-top:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#需要该部分测验结果的解释#</span> -->
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-bottom:50px;">二、你喜欢并适合人格类型的职业类别的综合学科潜能</span>
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-bottom:50px;">
+            （三）适合的职业类别
+        </span>
         <Table border :columns="columns2" :data="arr"></Table>
         <!-- <span style="text-align:left;display:block;font-size:16px;margin:50px 0 50px 30px;">
             恭喜你， 语言符号 的 研究与探索 类职业所对应的学科专业能够完美的匹配你的兴趣、人格类型和学科潜能。

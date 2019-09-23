@@ -183,6 +183,7 @@ export default {
                         item.matter=0
                     }
                 })
+                // console.log(arr,'arr')
                 this.postBack(arr)
         },
         // 21个click按钮点击  ref的数值不一样 用同一数值则顺序会乱 

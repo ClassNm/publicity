@@ -15,9 +15,9 @@ export default {
         return{
             name:"",
             data1: [
-                    {
-                        time: '',
-                    }
+                {
+                    time: '',
+                }
             ]
         }
     },
