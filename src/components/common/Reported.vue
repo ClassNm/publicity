@@ -24,6 +24,8 @@
         <Personality style="break-after:page;page-break-after: always;margin-top:80px;"></Personality>
         <Potency style="break-after:page;page-break-after: always;margin-top:80px;"></Potency>
         <Location style="break-after:page;page-break-after: always;margin-top:80px;"></Location>
+        <Synthesize style="break-after:page;page-break-after: always;margin-top:80px;"></Synthesize>
+        <ViewS style="break-after:page;page-break-after: always;margin-top:80px;"></ViewS>
         <Analysis style="break-after:page;page-break-after: always;margin-top:80px;"></Analysis>
         <Bottom style="break-after:page;page-break-after: always;margin-top:80px;"></Bottom>
         <BackTop class="bottBack"></BackTop>
@@ -53,7 +55,11 @@ import Personality from './graph/Personality'
 import Potency from './graph/Potency'
 // 第四部分:心理定位测验结果
 import Location from './graph/Location'
-// 第五部分:高等院校部分学科,专业解析
+// 第五部分：综合测评结果
+import Synthesize from './graph/Synthesize'
+// 第六部分：专业大视野
+import ViewS from './graph/ViewS'
+// 附件：学科门类解析
 import Analysis from './graph/Analysis'
 // 结束语
 import Bottom from './graph/Bottom'
@@ -85,6 +91,8 @@ export default {
         Personality,
         Potency,
         Location,
+        Synthesize,
+        ViewS,
 
 
         Report,
@@ -129,12 +137,18 @@ export default {
         .headerTT {
             position: fixed;
             top: 0;
+            display: block !important;
         }
         /* .footerTT {
             position: fixed;
             bottom: 0;
         } */
 
+    }
+    .headerTT {
+        position: fixed;
+        top: 0;
+        display: none;
     }
     @media screen and (min-width: 1200px){
         .segmentation{

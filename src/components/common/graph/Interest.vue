@@ -44,6 +44,7 @@
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
                 </div>
             </div>
+            <div style="text-align:center;font-size:18px;margin-top:20px;font-weight:bolder;">（注：与第八种职业类别相同分数的类型顺延推荐）</div>
             
                 <!-- <div class="rightBot" :style="{width:item.part+px}">111</div> -->
         </div>

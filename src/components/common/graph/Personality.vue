@@ -25,9 +25,10 @@
         </ul>
         <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;">（三）适合的职业类别</span>
         <ul style="margin-top:50px;margin-left:20px;">
-            <h3 style="margin-bottom:30px;">适合的职业类别</h3>
+            <!-- <h3 style="margin-bottom:30px;">适合的职业类别</h3> -->
             <li v-for="(item,i) in personalityType" :key="i">{{item}}</li>
         </ul>
+        <Table border :columns="columns1" :data="data1"></Table>
         <!-- <span style="margin-top:50px;text-align:left;display:block;font-size:20px;font-weight:bolder;">三、代表人物</span>
         <div v-for="(item,i) in ImgLengt" :key="i" style="display:inline-block;width: 200px;margin-right: 100px;margin-top:100px;">
             <img  :src="item.url" alt="">
@@ -55,6 +56,47 @@ export default {
             personalityType:[],
             object1:[],
             ImgLengt:[],
+            columns1: [
+                    {
+                        title: '序号',
+                        key: 'name'
+                    },
+                    {
+                        title: '职业类别',
+                        key: 'age'
+                    },
+                    {
+                        title: '是否符合职业兴趣',
+                        key: 'address'
+                    },
+                    {
+                        title: '兴趣排序',
+                        key: 'sort'
+                    },
+                ],
+                data1: [
+                    {
+                        name: 1,
+                        age: "社会制度-规划与实施",
+                        address: '符合',
+                        sort:"第六",
+                        date: '2016-10-03'
+                    },
+                    {
+                        name: 2,
+                        age: "社会制度-规划与实施",
+                        address: '不符合',
+                        sort:"第一",
+                        date: '2016-10-01'
+                    },
+                    {
+                        name: 3,
+                        age: "数学符号-规划与实施",
+                        address: '不符合',
+                        sort:"无",
+                        date: '2016-10-02'
+                    }
+                ]
         }
     },
     mounted(){

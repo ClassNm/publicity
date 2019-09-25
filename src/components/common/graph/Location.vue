@@ -16,9 +16,15 @@
         <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要特征：  {{object1}}
         </span>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">二、心理定位与职业类型适合度</span>
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">（三）适合的职业类别</span>
+        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在感兴趣的职业类别中，与你的心理定位不匹配的是：【个体生命-使用与维护】
+        </div>
+        <div style="text-align:left;display:block;font-size:18px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在符合人格类型的职业类别中，与你的心理定位不匹配的是：无
+        </div>
         <!-- 符合展示1 3  不符合展示2 -->
-        <div v-if="Twethdy">
+        <!-- <div v-if="Twethdy">
             <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 再次恭喜你，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（  {{object}}  ）并没有不适合之处。显然，这一职业类别及学科专业就是当前最适合你的 
@@ -27,10 +33,6 @@
         </div>
         
         <div v-if="TwethdyTw">
-            <!-- <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                #如果出现不适合的情况，表达方式如下#
-            </span> -->
             <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 非常遗憾，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（ 胆小退缩型 ）并不适合。建议寻找专业的心理咨询师，对自己的心理定位进行调整！
@@ -41,7 +43,7 @@
          <div v-if="Twethdy">
             <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">综合你在四个方面的测试或调查结果，推荐以下职业类别或专业供参考：</span>
             <Table border :columns="columns3" :data="arr"></Table>
-         </div>
+         </div> -->
     </div>
 </template>
 
@@ -284,7 +286,7 @@ export default {
 </script>
 
 <style  scoped>
-     @media screen and (min-width: 1200px){
+    @media screen and (min-width: 1200px){
         .box{
             width: 1100px;
             margin: 0 auto;
