@@ -1,5 +1,6 @@
 <template>
     <div class="surveydetail" ref="headbox">
+        <button @click="testAA=true?false:true">的十分丰富的我</button>
         <div style="border:1px solid #ccc;">
             <div style="width:90px;display:inline-block;border-right:1px solid #ccc;height:60px;line-height:60px; color:#ccc;">
                 职业领域
@@ -8,7 +9,7 @@
                 参加课外活动项目的时间、作品及获奖
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;" v-if="testAA">
             <div style="width:90px;
             height:400px;
             display:inline-block;
@@ -398,6 +399,7 @@
                 <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加体育类项目地市级以上比赛有多少次?
                     <RadioGroup 
+                    style="width:700px;"
                     v-model="firstQuestiontit.seve.twe"
                     v-for="(item,i) in TwoQuestion" :key="i"
                     :title="item.label"
@@ -445,6 +447,7 @@ import axios from 'axios'
 export default {
     data () {
         return {
+            testAA:true,
             radiotit:{
                 one:{
                     one:"",
@@ -730,165 +733,159 @@ export default {
     },
    methods:{
        postAx(){
-           if(
-                this.radiotit.one.one===""||
-                this.radiotit.one.twe===""||
-                this.radiotit.twe.one===""||
-                this.radiotit.twe.twe===""||
-                this.radiotit.thr.one===""||
-                this.radiotit.thr.twe===""||
-                this.radiotit.four.one===""||
-                this.radiotit.four.twe===""||
-                this.radiotit.five.one===""||
-                this.radiotit.five.twe===""||
-                this.radiotit.six.one===""||
-                this.radiotit.six.twe===""||
-                this.radiotit.seve.one===""||
-                this.radiotit.seve.twe===""
-           ){
-                this.$Message.warning('请选择选项并答完题');
-           }else{
-               let data = [
-                {
-                    matterOne: this.radiotit.one.one,
-                    matterTwo: this.radiotit.one.twe,
-                    matterTree1: this.natural.prefecture.one*3,
-                    matterTree2: this.natural.prefecture.two*2,
-                    matterTree3: this.natural.prefecture.three*1,
-                    matterTree4: this.natural.provincial.one*5,
-                    matterTree5: this.natural.provincial.two*4,
-                    matterTree6: this.natural.provincial.three*3,
-                    matterTree7: this.natural.state.one*7,
-                    matterTree8: this.natural.state.two*6,
-                    matterTree9: this.natural.state.three*5,
-                    matterTree10: this.natural.international.one*9,
-                    matterTree11: this.natural.international.two*8,
-                    matterTree12: this.natural.international.three*7,
-                    typ: "N",
-                    uid: this.uid
-                },
-                {
-                    matterOne: this.radiotit.twe.one,
-                    matterTwo: this.radiotit.twe.twe,
-                    matterTree1: this.manMade.prefecture.one*3,
-                    matterTree2: this.manMade.prefecture.two*2,
-                    matterTree3: this.manMade.prefecture.three*1,
-                    matterTree4: this.manMade.provincial.one*5,
-                    matterTree5: this.manMade.provincial.two*4,
-                    matterTree6: this.manMade.provincial.three*3,
-                    matterTree7: this.manMade.state.one*7,
-                    matterTree8: this.manMade.state.two*6,
-                    matterTree9: this.manMade.state.three*5,
-                    matterTree10: this.manMade.international.one*9,
-                    matterTree11: this.manMade.international.two*8,
-                    matterTree12: this.manMade.international.three*7,
-                    typ: "T",
-                    uid: this.uid
-                },
-                {
-                    matterOne: this.radiotit.thr.one,
-                    matterTwo: this.radiotit.thr.twe,
-                    matterTree1: this.art.prefecture.one*3,
-                    matterTree2: this.art.prefecture.two*2,
-                    matterTree3: this.art.prefecture.three*1,
-                    matterTree4: this.art.provincial.one*5,
-                    matterTree5: this.art.provincial.two*4,
-                    matterTree6: this.art.provincial.three*3,
-                    matterTree7: this.art.state.one*7,
-                    matterTree8: this.art.state.two*6,
-                    matterTree9: this.art.state.three*5,
-                    matterTree10: this.art.international.one*9,
-                    matterTree11: this.art.international.two*8,
-                    matterTree12: this.art.international.three*7,
-                    typ: "A",
-                    uid: this.uid
-                },
-                {
-                    matterOne: this.radiotit.four.one,
-                    matterTwo: this.radiotit.four.twe,
-                    matterTree1: this.mathematics.prefecture.one*3,
-                    matterTree2: this.mathematics.prefecture.two*2,
-                    matterTree3: this.mathematics.prefecture.three*1,
-                    matterTree4: this.mathematics.provincial.one*5,
-                    matterTree5: this.mathematics.provincial.two*4,
-                    matterTree6: this.mathematics.provincial.three*3,
-                    matterTree7: this.mathematics.state.one*7,
-                    matterTree8: this.mathematics.state.two*6,
-                    matterTree9: this.mathematics.state.three*5,
-                    matterTree10: this.mathematics.international.one*9,
-                    matterTree11: this.mathematics.international.two*8,
-                    matterTree12: this.mathematics.international.three*7,
-                    typ: "M",
-                    uid: this.uid
-                },
-                {
-                    matterOne: this.radiotit.five.one,
-                    matterTwo: this.radiotit.five.twe,
-                    matterTree1: this.language.prefecture.one*3,
-                    matterTree2: this.language.prefecture.two*2,
-                    matterTree3: this.language.prefecture.three*1,
-                    matterTree4: this.language.provincial.one*5,
-                    matterTree5: this.language.provincial.two*4,
-                    matterTree6: this.language.provincial.three*3,
-                    matterTree7: this.language.state.one*7,
-                    matterTree8: this.language.state.two*6,
-                    matterTree9: this.language.state.three*5,
-                    matterTree10: this.language.international.one*9,
-                    matterTree11: this.language.international.two*8,
-                    matterTree12: this.language.international.three*7,
-                    typ: "L",
-                    uid: this.uid
-                },
-                {
-                    matterOne: this.radiotit.six.one,
-                    matterTwo: this.radiotit.six.twe,
-                    matterTree1: this.society.prefecture.one*3,
-                    matterTree2: this.society.prefecture.two*2,
-                    matterTree3: this.society.prefecture.three*1,
-                    matterTree4: this.society.provincial.one*5,
-                    matterTree5: this.society.provincial.two*4,
-                    matterTree6: this.society.provincial.three*3,
-                    matterTree7: this.society.state.one*7,
-                    matterTree8: this.society.state.two*6,
-                    matterTree9: this.society.state.three*5,
-                    matterTree10: this.society.international.one*9,
-                    matterTree11: this.society.international.two*8,
-                    matterTree12: this.society.international.three*7,
-                    typ: "S",
-                    uid: this.uid
-                },
-                {
-                    matterOne: this.radiotit.seve.one,
-                    matterTwo: this.radiotit.seve.twe,
-                    matterTree1: this.unit.prefecture.one*3,
-                    matterTree2: this.unit.prefecture.two*2,
-                    matterTree3: this.unit.prefecture.three*1,
-                    matterTree4: this.unit.provincial.one*5,
-                    matterTree5: this.unit.provincial.two*4,
-                    matterTree6: this.unit.provincial.three*3,
-                    matterTree7: this.unit.state.one*7,
-                    matterTree8: this.unit.state.two*6,
-                    matterTree9: this.unit.state.three*5,
-                    matterTree10: this.unit.international.one*9,
-                    matterTree11: this.unit.international.two*8,
-                    matterTree12: this.unit.international.three*7,
-                    typ: "I",
-                    uid: this.uid
-                }
-                ]
-                    axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/save1',
-                    data,
-                    {headers:{'Content-Type':"application/json; charset=UTF-8"}}
-                    )
-                    .then((res)=>{
-
-                    }),(err)=>{
-
+        //    if(
+        //         this.radiotit.one.one===""||
+        //         this.radiotit.one.twe===""||
+        //         this.radiotit.twe.one===""||
+        //         this.radiotit.twe.twe===""||
+        //         this.radiotit.thr.one===""||
+        //         this.radiotit.thr.twe===""||
+        //         this.radiotit.four.one===""||
+        //         this.radiotit.four.twe===""||
+        //         this.radiotit.five.one===""||
+        //         this.radiotit.five.twe===""||
+        //         this.radiotit.six.one===""||
+        //         this.radiotit.six.twe===""||
+        //         this.radiotit.seve.one===""||
+        //         this.radiotit.seve.twe===""
+        //    ){
+        //         this.$Message.warning('请选择选项并答完题');
+        //    }else{
+                let data = [
+                    {
+                        matterOne: this.radiotit.one.one,
+                        matterTwo: this.radiotit.one.twe,
+                        matterTree1: this.natural.prefecture.one*3,
+                        matterTree2: this.natural.prefecture.two*2,
+                        matterTree3: this.natural.prefecture.three*1,
+                        matterTree4: this.natural.provincial.one*5,
+                        matterTree5: this.natural.provincial.two*4,
+                        matterTree6: this.natural.provincial.three*3,
+                        matterTree7: this.natural.state.one*7,
+                        matterTree8: this.natural.state.two*6,
+                        matterTree9: this.natural.state.three*5,
+                        matterTree10: this.natural.international.one*9,
+                        matterTree11: this.natural.international.two*8,
+                        matterTree12: this.natural.international.three*7,
+                        typ: "N",
+                        uid: this.uid
+                    },
+                    {
+                        matterOne: this.radiotit.twe.one,
+                        matterTwo: this.radiotit.twe.twe,
+                        matterTree1: this.manMade.prefecture.one*3,
+                        matterTree2: this.manMade.prefecture.two*2,
+                        matterTree3: this.manMade.prefecture.three*1,
+                        matterTree4: this.manMade.provincial.one*5,
+                        matterTree5: this.manMade.provincial.two*4,
+                        matterTree6: this.manMade.provincial.three*3,
+                        matterTree7: this.manMade.state.one*7,
+                        matterTree8: this.manMade.state.two*6,
+                        matterTree9: this.manMade.state.three*5,
+                        matterTree10: this.manMade.international.one*9,
+                        matterTree11: this.manMade.international.two*8,
+                        matterTree12: this.manMade.international.three*7,
+                        typ: "T",
+                        uid: this.uid
+                    },
+                    {
+                        matterOne: this.radiotit.thr.one,
+                        matterTwo: this.radiotit.thr.twe,
+                        matterTree1: this.art.prefecture.one*3,
+                        matterTree2: this.art.prefecture.two*2,
+                        matterTree3: this.art.prefecture.three*1,
+                        matterTree4: this.art.provincial.one*5,
+                        matterTree5: this.art.provincial.two*4,
+                        matterTree6: this.art.provincial.three*3,
+                        matterTree7: this.art.state.one*7,
+                        matterTree8: this.art.state.two*6,
+                        matterTree9: this.art.state.three*5,
+                        matterTree10: this.art.international.one*9,
+                        matterTree11: this.art.international.two*8,
+                        matterTree12: this.art.international.three*7,
+                        typ: "A",
+                        uid: this.uid
+                    },
+                    {
+                        matterOne: this.radiotit.four.one,
+                        matterTwo: this.radiotit.four.twe,
+                        matterTree1: this.mathematics.prefecture.one*3,
+                        matterTree2: this.mathematics.prefecture.two*2,
+                        matterTree3: this.mathematics.prefecture.three*1,
+                        matterTree4: this.mathematics.provincial.one*5,
+                        matterTree5: this.mathematics.provincial.two*4,
+                        matterTree6: this.mathematics.provincial.three*3,
+                        matterTree7: this.mathematics.state.one*7,
+                        matterTree8: this.mathematics.state.two*6,
+                        matterTree9: this.mathematics.state.three*5,
+                        matterTree10: this.mathematics.international.one*9,
+                        matterTree11: this.mathematics.international.two*8,
+                        matterTree12: this.mathematics.international.three*7,
+                        typ: "M",
+                        uid: this.uid
+                    },
+                    {
+                        matterOne: this.radiotit.five.one,
+                        matterTwo: this.radiotit.five.twe,
+                        matterTree1: this.language.prefecture.one*3,
+                        matterTree2: this.language.prefecture.two*2,
+                        matterTree3: this.language.prefecture.three*1,
+                        matterTree4: this.language.provincial.one*5,
+                        matterTree5: this.language.provincial.two*4,
+                        matterTree6: this.language.provincial.three*3,
+                        matterTree7: this.language.state.one*7,
+                        matterTree8: this.language.state.two*6,
+                        matterTree9: this.language.state.three*5,
+                        matterTree10: this.language.international.one*9,
+                        matterTree11: this.language.international.two*8,
+                        matterTree12: this.language.international.three*7,
+                        typ: "L",
+                        uid: this.uid
+                    },
+                    {
+                        matterOne: this.radiotit.six.one,
+                        matterTwo: this.radiotit.six.twe,
+                        matterTree1: this.society.prefecture.one*3,
+                        matterTree2: this.society.prefecture.two*2,
+                        matterTree3: this.society.prefecture.three*1,
+                        matterTree4: this.society.provincial.one*5,
+                        matterTree5: this.society.provincial.two*4,
+                        matterTree6: this.society.provincial.three*3,
+                        matterTree7: this.society.state.one*7,
+                        matterTree8: this.society.state.two*6,
+                        matterTree9: this.society.state.three*5,
+                        matterTree10: this.society.international.one*9,
+                        matterTree11: this.society.international.two*8,
+                        matterTree12: this.society.international.three*7,
+                        typ: "S",
+                        uid: this.uid
+                    },
+                    {
+                        matterOne: this.radiotit.seve.one,
+                        matterTwo: this.radiotit.seve.twe,
+                        matterTree1: this.unit.prefecture.one*3,
+                        matterTree2: this.unit.prefecture.two*2,
+                        matterTree3: this.unit.prefecture.three*1,
+                        matterTree4: this.unit.provincial.one*5,
+                        matterTree5: this.unit.provincial.two*4,
+                        matterTree6: this.unit.provincial.three*3,
+                        matterTree7: this.unit.state.one*7,
+                        matterTree8: this.unit.state.two*6,
+                        matterTree9: this.unit.state.three*5,
+                        matterTree10: this.unit.international.one*9,
+                        matterTree11: this.unit.international.two*8,
+                        matterTree12: this.unit.international.three*7,
+                        typ: "I",
+                        uid: this.uid
                     }
-                    let headbox = this.$refs.headbox;
-                    headbox.style.display = "none"
-           }
-           
+                ]
+                axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/save1',
+                data,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{}),(err)=>{}
+                let headbox = this.$refs.headbox;
+                headbox.style.display = "none" 
        },
        parent(index){
            this.radiotit.one.one = index.label

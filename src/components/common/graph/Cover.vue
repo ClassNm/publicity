@@ -1,9 +1,9 @@
 <template>
     <div class="box">
         <img src="../../../assets/111.png" alt="">
-        <h1 class="tit">全职四维生涯测评分析报告</h1>
-        <div class="head" style="letter-spacing: 5px;">{{name}}</div>
-        <div class="head">{{this.data1[0].time}}</div>
+        <h1 class="tit">测评分析报告</h1>
+        <!-- <div class="head" style="letter-spacing: 5px;">{{name}}</div> -->
+        <!-- <div class="head">{{this.data1[0].time}}</div> -->
         <!-- <li class="bot">一段文字.....................................</li> -->
     </div>
 </template>
@@ -22,8 +22,8 @@ export default {
         }
     },
     mounted(){
-        this.ShowUser()
-        this.echo();
+        // this.ShowUser()
+        // this.echo();
     },
     methods:{
         ShowUser(){

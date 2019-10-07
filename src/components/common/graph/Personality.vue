@@ -23,17 +23,17 @@
             <h3 style="margin-bottom:30px;">主要特征</h3>
             <li v-for="(item,i) in object1" :key="i">{{item}}</li>
         </ul>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;">（三）适合的职业类别</span>
-        <ul style="margin-top:50px;margin-left:20px;">
-            <!-- <h3 style="margin-bottom:30px;">适合的职业类别</h3> -->
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-bottom: 50px;">（三）适合的职业类别</span>
+        <!-- 两个类别 -->
+        <!-- <ul style="margin-top:50px;margin-left:20px;">
             <li v-for="(item,i) in personalityType" :key="i">{{item}}</li>
-        </ul>
+        </ul> -->
         <Table border :columns="columns1" :data="data1"></Table>
-        <!-- <span style="margin-top:50px;text-align:left;display:block;font-size:20px;font-weight:bolder;">三、代表人物</span>
+        <span style="margin-top:50px;text-align:left;display:block;font-size:20px;font-weight:bolder;">三、代表人物</span>
         <div v-for="(item,i) in ImgLengt" :key="i" style="display:inline-block;width: 200px;margin-right: 100px;margin-top:100px;">
             <img  :src="item.url" alt="">
             <h1 style="font-size:20px;margin: 0 0 15px 0;">{{item.name}}</h1>
-        </div> -->
+        </div>
 
 
         <!-- <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:80px;">四、你感兴趣的职业类别与人格类型的匹配度</span>
@@ -102,7 +102,7 @@ export default {
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
         this.drawLine();
-        // this.describeTit();
+        this.describeTit();
         this.titdata();
         this.titdataMbt();
     },
@@ -195,7 +195,7 @@ export default {
             )
             .then((res)=>{
                 let typ = res.data.typ;
-                // this.imgMeth(typ);
+                this.imgMeth(typ);
              }),(err)=>{
                 console.log(err)
             }

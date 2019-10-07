@@ -27,7 +27,7 @@
                 <div style="margin-top: 70px;">得分</div>
             </div>
             <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;">
-                <div style="margin-top: 70px;">这一类型下感兴趣的大学本科学科门类</div>
+                <div style="margin-top: 70px;">这一类型下感兴趣的大学本科学科</div>
             </div>
             <div style="width:1000px;" v-for="(item,index) in arrTw" :key="index">
             <!-- <div style="width:1000px;"> -->
@@ -181,8 +181,6 @@ export default {
           }),(err)=>{
               console.log(err)
           }
-
-        
     },
     mounted(){
         // 调用echarts的方法实例  防止出现异步操作
@@ -200,11 +198,11 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                // let a = res.data;
-                // a.forEach((item)=>{
-                //     item.code = item.code*10;
-                //     item.code+="px"
-                // })
+                let a = res.data;
+                a.forEach((item)=>{
+                    // item.code = item.code*10;
+                    item.code+="分"
+                })
                 this.arrTw = res.data;
                 // let selected = this.typSele
                 // let all = res.data;

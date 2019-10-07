@@ -2,7 +2,7 @@
     <div class="box">
         <h1>第五部分：综合测评结果</h1>
         <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;font-weight:bolder;margin-top:50px;">根据以上四个方面的测评结果，你感兴趣的职业类别包括以下九种：</span>
-        <Table border :columns="columns1" :data="data1"></Table>
+        <Table border :columns="columns1" :data="data1" style="width: 590px;margin: 0 auto;"></Table>
         <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【规划者 (粘液质-决策型)】的职业类别是排名第 六 的职业类别【社会制度-规划与实施】，你在这一职业类别上的学科潜能指数为第    等。
         </div>

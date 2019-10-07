@@ -8,10 +8,32 @@
         <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">（二）测试结果</span>
         <div id="myChartThr" class="Repor"></div>
         <!-- <span style="text-align:left;display:block;font-size:18px;margin-top:50px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#需要该部分测验结果的解释#</span> -->
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-bottom:50px;">
+        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-bottom:40px;">
             （三）适合的职业类别
         </span>
-        <Table border :columns="columns2" :data="arr"></Table>
+        <!-- <Table border :columns="columns2" :data="arr"></Table> -->
+        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;margin-left:30px;">
+            在感兴趣的职业类别中，学科潜能较高的是：
+            <ul style="text-align:left;display:block;font-size:18px;margin-top:20px;">
+                社会制度，包含如下学科：
+                <li>哲学类</li>
+                <li>。。。</li>
+                <li>。。。</li>
+                <li>。。。</li>
+                <li>。。。</li>
+            </ul>
+        </div>
+        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;margin-left:30px;">
+           在符合人格类型的职业类别中，学科潜能较高的是：
+            <ul style="text-align:left;display:block;font-size:18px;margin-top:20px;">
+                社会制度，包含如下学科：
+                <li>哲学类</li>
+                <li>。。。</li>
+                <li>。。。</li>
+                <li>。。。</li>
+                <li>。。。</li>
+            </ul>
+        </div>
         <!-- <span style="text-align:left;display:block;font-size:16px;margin:50px 0 50px 30px;">
             恭喜你， 语言符号 的 研究与探索 类职业所对应的学科专业能够完美的匹配你的兴趣、人格类型和学科潜能。
         </span>
@@ -218,6 +240,9 @@ export default {
 </script>
 
 <style scoped>
+    ul li {
+        list-style: none;
+    }
     @media screen and (min-width: 1200px){
         .box{
             width: 1100px;

@@ -5,7 +5,8 @@
             <h1 class="Rep">{{Report}}</h1>
             <Spin style="display:'inline-block'"></Spin>
         </div> -->
-        <div class="headerTT">
+        <!-- logo -->
+        <!-- <div class="headerTT">
             <img src="../../assets/111.png" 
                  style="
                  width:400px;
@@ -16,8 +17,8 @@
                  " 
                  alt=""
             >
-        </div>
-        <Cover style="break-after:page;page-break-after: always;margin-top:80px;"></Cover>
+        </div> -->
+        <!-- <Cover style="break-after:page;page-break-after: always;margin-top:80px;"></Cover> -->
         <Header style="break-after:page;page-break-after: always;margin-top:80px;"></Header>
         <Preface style="break-after:page;page-break-after: always;margin-top:80px;"></Preface>
         <Interest style="break-after:page;page-break-after: always;margin-top:80px;"></Interest>
@@ -125,9 +126,9 @@ export default {
             display: none !important;
         }
         @page {
-            margin-top: 0;
-            margin-right: 0;
-            margin-left: 0;
+            margin-top: 10px;
+            /* margin-right: 0; */
+            /* margin-left: 0; */
         }
         body {
             margin-top: 2cm;

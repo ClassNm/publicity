@@ -1,29 +1,33 @@
 <template>
     <div class="Repor">
-        <h1 style="letter-spacing: 60px;margin-bottom:100px;margin-top:80px;">个人信息</h1>
+        <img src="../../../assets/111.png" alt="">
+        <h1 class="tittt">测评分析报告</h1>
+        <h1 style="font-size:30px;margin-bottom:100px;margin-top:180px;">个人信息</h1>
         <div class="tit">
-            <div style="width:200px;display: inline-block;">姓&nbsp;名：</div>
-            <div style="width:200px;display: inline-block;">{{this.data1[0].name}}</div>
-            <!-- {{this.data1[0].name}} -->
-        </div>
-        <!-- <div class="tit">
-            <div style="width:200px;display: inline-block;">出生年月：</div>
-            <div style="width:200px;display: inline-block;">瓦达瓦达瓦我</div>
-        </div> -->
-        <div class="tit">
-            <div style="width:200px;display: inline-block;">学校：</div>
-            <div style="width:200px;display: inline-block;">{{schoolT}}</div>
-            <!-- 瓦达瓦吊袜带哇 -->
+            <div style="width:250px;display: inline-block;">姓&nbsp;名：</div>
+            <div style="width:250px;display: inline-block;">{{this.data1[0].name}}</div>
         </div>
         <div class="tit">
-            <div style="width:200px;display: inline-block;">班级：</div>
-            <div style="width:200px;display: inline-block;">{{clas}}</div>
-            <!-- 瓦达瓦达瓦多 -->
+            <div style="width:250px;display: inline-block;">学校：</div>
+            <div style="width:250px;display: inline-block;">{{schoolT}}</div>
+        </div>
+        <div class="tit">
+            <div style="width:250px;display: inline-block;">年级：</div>
+            <div style="width:250px;display: inline-block;">{{grade}}</div>
+        </div>
+        <div class="tit">
+            <div style="width:250px;display: inline-block;">班级：</div>
+            <div style="width:250px;display: inline-block;">{{clas}}</div>
         </div>
         <div class="tit" style="margin-bottom:150px;">
-            <div style="width:200px;display: inline-block;">报告日期：</div>
-            <div style="width:200px;display: inline-block;">{{this.data1[0].time}}</div>
-            <!-- {{this.data1[0].time}} -->
+            <div style="width:250px;display: inline-block;">报告日期：</div>
+            <div style="width:250px;display: inline-block;">{{this.data1[0].time}}</div>
+        </div>
+        <div>
+            ★FFD心理测量智能系统源自GCIDGC即全球职业生涯智能数据分析与指导中心（英国）。LGDI理论由GCIDGC联合北京师范大学李亦菲教授研究并提出★
+            <span style="display:block;margin:20px 0;">
+                温馨提示：个人报告未经许可不得传阅
+            </span> 
         </div>
         
         <!-- <div style="border:1px solid black;width:900px;margin:0 auto;margin-top:200px;margin-bottom:50px;height: 260px;">
@@ -98,7 +102,8 @@ import axios from 'axios';
                         schedu: '',
                         date: '2016-10-03',
                     }
-                ]
+                ],
+                grade:"",
             }
         },
         mounted(){
@@ -134,6 +139,8 @@ import axios from 'axios';
                     ary.subject = arr.artsAndSciences;
                     this.schoolT = arr.school
                     this.clas = arr.clas
+                    this.grade = arr.grade
+                    // console.log(res.data)
                 }),(err)=>{
                     console.log(err)
                 }
@@ -185,7 +192,29 @@ import axios from 'axios';
     @media print { 
         body { color: #000; background: #fff; } 
         .tit{
-            margin: 40px 0;
+            margin: 20px 0;
+            margin-left: 30%;
+            width: 500px;
+            text-align: left;
+            font-size: 20px;
+            line-height: 20px;
+            margin-bottom: 50px;
+        }
+        .tittt{
+            margin-bottom: 300px;
+            margin-top: 150px;
+            font-size: 50px;
+        }
+         img{
+            width: 900px;;
+            height: 150px;
+            margin: 50px 0 100px 0;
+        }
+         .Repor{
+            width: 1000px; 
+            margin: 10px auto;
+            margin-top: 100px;
+            border: 1px solid blue;
         }
     }
     li{
@@ -199,12 +228,21 @@ import axios from 'axios';
             width: 1100px; 
             margin: 10px auto;
             margin-top: 100px;
-            border: 1px solid black;
+            border: 1px solid blue;
+        }
+         img{
+            width: 900px;;
+            height: 150px;
+            margin: 50px 0 100px 0;
+        }
+        .tittt{
+            margin-bottom: 300px;
+            font-size: 50px;
         }
         .tit{
             margin: 20px 0;
-            margin-left: 37%;
-            width: 400px;
+            margin-left: 30%;
+            width: 500px;
             text-align: left;
             font-size: 20px;
             line-height: 20px;
@@ -250,6 +288,15 @@ import axios from 'axios';
             margin-top:8px;
             width:800px;
             text-align:left;
+        }
+        img{
+            width: 600px;;
+            height: 100px;
+            margin: 50px 0 100px 0;
+        }
+        .tittt{
+            margin-bottom: 150px;
+            font-size: 25px;
         }
         .fouter{
             margin-top: 20px;

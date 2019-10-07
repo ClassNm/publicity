@@ -1,12 +1,12 @@
 <template>
     <div class="surveydetailout" id="surveydetailout" >
-        <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio>
-        <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck>
-        <FourRadio v-if="Four"></FourRadio>   
-        <Supplement v-if="SupOne"></Supplement>
-        <FillReport v-if="SupTw"></FillReport>
+        <!-- <FirstRadio v-if="ok" v-on:listTop="helloFn"></FirstRadio> -->
+        <!-- <AnswerCheck v-if="Two" :typTwo="typTwo"></AnswerCheck> -->
+        <!-- <FourRadio v-if="Four"></FourRadio>    -->
+        <!-- <Supplement v-if="SupOne"></Supplement> -->
+        <!-- <FillReport v-if="SupTw"></FillReport> -->
         <Submitfile v-if="SupThr"></Submitfile>
-        <TwoRadio v-if="Thr"></TwoRadio>  
+        <!-- <TwoRadio v-if="Thr"></TwoRadio>   -->
         <!-- 顺序换了 -->
     </div>
 </template>
