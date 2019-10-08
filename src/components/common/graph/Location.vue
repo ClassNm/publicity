@@ -1,28 +1,35 @@
 <template>
     <div class="box">
-       <h1>第四部分:心理定位测验结果</h1>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">（一）测验概要</span>
-        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;考察个体从小确立的关于自己与他人价值判断的基本信念，判断个体是否适合从事与人有关的职业。
+       <h1 style="font-size:30px;">第四部分:心理定位测验结果</h1>
+       <div class="dashedT" style="margin-top:20px;">
+           <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:30px;margin-left:20px;">（一）测验概要</span>
+            <div style="text-align:left;display:block;font-size:16px;margin:20px 0 20px 40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心理定位（Life-position），也称心理位置或心理地位，是是美国心理学家托马斯·哈里斯用来描述一个人心理成熟度的概念，指一个人从小就确立起来的有关自己、他人的基本认识和价值判断。一般分为以下四种类型：（1）“我不好，你好”，称为自卑讨好型；（2）“我好，你不好”，称为偏执攻击型；（3）“我好，你也好”，积极合作型；（4）“我不好，你也不好”，称为胆小退缩型。此外，也会有一些人不属于以上四种类型，称为折中型。
+            </div>
+       </div>
+        <div class="dashedT" style="margin-top:20px;">
+            <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-left:20px;">（二）测试结果</span>
+            <div id="RadarLtwo" class="RoundNes"></div>
+            <!-- <p style="width:400px;margin:0 auto;">
+                {{fouterBot}}
+            </p> -->
+            <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 40px;font-size:16px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据测试结果， 你的心理定位类型是 【{{object}}】
+            </span>
+            <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 40px;font-size:16px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要特征：  {{object1}}
+            </span>
         </div>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">（二）测试结果</span>
-        <div id="RadarLtwo" class="RoundNes"></div>
-        <!-- <p style="width:400px;margin:0 auto;">
-            {{fouterBot}}
-        </p> -->
-        <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据测试结果， 你的心理定位类型是 【{{object}}】
-        </span>
-        <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要特征：  {{object1}}
-        </span>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">（三）适合的职业类别</span>
-        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在感兴趣的职业类别中，与你的心理定位不匹配的是：【个体生命-使用与维护】
+        <div class="dashedT" style="margin-top:20px;">
+            <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-left:20px;">（三）适合的职业类别</span>
+            <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在感兴趣的职业类别中，与你的心理定位不匹配的是：【个体生命-使用与维护】
+            </div>
+            <div style="text-align:left;display:block;font-size:16px;margin-bottom:20px;margin-left:40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在符合人格类型的职业类别中，与你的心理定位不匹配的是：无
+            </div>
         </div>
-        <div style="text-align:left;display:block;font-size:18px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在符合人格类型的职业类别中，与你的心理定位不匹配的是：无
-        </div>
+        
         <!-- 符合展示1 3  不符合展示2 -->
         <!-- <div v-if="Twethdy">
             <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
@@ -286,6 +293,11 @@ export default {
 </script>
 
 <style  scoped>
+    @media print{
+        .dashedT{
+            border: 1px dashed black;
+        }
+    }
     @media screen and (min-width: 1200px){
         .box{
             width: 1100px;
@@ -298,12 +310,18 @@ export default {
             display:inline-block;
             margin: 0 auto;
         }
+        .dashedT{
+            border: 1px dashed black;
+        }
     }
    @media screen and (max-width: 1199px){
         .box{
             width: 800px;
             margin: 0 auto;
             margin-top: 100px;
+        }
+        .dashedT{
+            border: 1px dashed black;
         }
         .RoundNes{
             width: 800px; 

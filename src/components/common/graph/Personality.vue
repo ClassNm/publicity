@@ -1,40 +1,52 @@
 <template>
     <div class="box">
-        <h1 style="margin-bottom:60px;">第二部分:职业人格测验结果</h1>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;">（一）测验概要</span>
-        <div style="text-align:left;display:block;font-size:18px;margin-bottom:50px;margin-top:20px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;四维人格测验从心理倾向、信息偏好、认知风格、行为方式四个维度，将个体人格分为16种类型，并对应到21种职业类别，判断人格类型与职业类别的匹配程度。
+        <h1 style="margin-bottom:60px;font-size:30px;">第二部分:职业人格测验结果</h1>
+        <div class="dashedT">
+            <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin:10px 20px 0 20px;">（一）测验概要</span>
+            <div style="text-align:left;display:block;font-size:16px;margin:20px 20px 40px 40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;职业人格是一种个体内部的行为倾向，它具有整体性、结构性、持久稳定性等特点，是每个人特有的，可以对个人外显的行为、态度提供统一的、内在的解释。而不同类型的职业往往也需要不同类型的职业人格，这就需要建立个体与职业之间职业人格匹配程度的关联。
+            </div>
+            <div style="text-align:left;display:block;font-size:16px;margin:20px 20px 40px 40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;四维人格测验从心理倾向、信息偏好、认知风格、行为方式四个维度，将个体人格分为16种类型，并对应到21种职业类别，判断人格类型与职业类别的匹配程度，并依此缩小职业推荐范围。
+            </div>
         </div>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;">（二）测试结果</span>
-        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你在该人格测验中四个维度的得分情况如下：</div>
-        <div id="Radar" class="Repor"></div>
-        <span style="text-align:left;display:block;font-size:16px;font-weight:bolder;margin-top:50px;">
+       <div class="dashedT" style="margin-top:20px;">
+           <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:20px;margin-left:20px;">（二）测试结果</span>
+            <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你在该人格测验中四个维度的得分情况如下：</div>
+            <div id="Radar" class="Repor"></div>
+            <span style="margin:50px 0 0 20px;;text-align:left;display:block;font-size:20px;font-weight:bolder;">代表人物</span>
+            <div v-for="(item,i) in ImgLengt" :key="i" style="display:inline-block;width: 200px;margin-right: 100px;">
+                <img  :src="item.url" alt="">
+                <h1 style="font-size:20px;margin: 0 0 15px 0;">{{item.name}}</h1>
+            </div>
+        </div>
+        <div class="dashedT" style="margin-top:30px;">
+            <span style="text-align:left;display:block;font-size:16px;margin-top:50px;margin-left:40px;">
             根据以上得分，你的人格类型属于【{{typeTit}}】
-        </span>
-        <span style="text-align:left;display:block;font-size:16px;font-weight:bolder;margin-top:30px;">
-            符合程度:{{height}}
-        </span>
-        <span style="text-align:left;display:block;font-size:18px;font-weight:bolder;margin-top:50px;">基本描述</span>
-        <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:30px;">
-            {{objectTit}}
+            </span>
+            <span style="text-align:left;display:block;font-size:16px;margin-top:30px;margin-left:40px;">
+                符合程度:{{height}}
+            </span>
+            <span style="text-align:left;display:block;font-size:16px;margin-top:50px;margin-left:40px;">基本描述</span>
+            <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
+                {{objectTit}}
+            </div>
+            <ul style="margin-top:50px;margin-bottom:50px;margin-left:40px;">
+                <span style="margin-bottom:30px;">主要特征：</span>
+                <li v-for="(item,i) in object1" :key="i">{{item}}</li>
+            </ul>
         </div>
-        <ul style="margin-top:50px;margin-bottom:50px;">
-            <h3 style="margin-bottom:30px;">主要特征</h3>
-            <li v-for="(item,i) in object1" :key="i">{{item}}</li>
-        </ul>
-        <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-bottom: 50px;">（三）适合的职业类别</span>
-        <!-- 两个类别 -->
-        <!-- <ul style="margin-top:50px;margin-left:20px;">
-            <li v-for="(item,i) in personalityType" :key="i">{{item}}</li>
-        </ul> -->
-        <Table border :columns="columns1" :data="data1"></Table>
-        <span style="margin-top:50px;text-align:left;display:block;font-size:20px;font-weight:bolder;">三、代表人物</span>
-        <div v-for="(item,i) in ImgLengt" :key="i" style="display:inline-block;width: 200px;margin-right: 100px;margin-top:100px;">
-            <img  :src="item.url" alt="">
-            <h1 style="font-size:20px;margin: 0 0 15px 0;">{{item.name}}</h1>
+            
+        <div class="dashedT" style="margin-top:20px;">
+             <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin:10px 0 40px 20px;">（三）适合的职业类别</span>
+            <!-- 两个类别 -->
+            <!-- <ul style="margin-top:50px;margin-left:20px;">
+                <li v-for="(item,i) in personalityType" :key="i">{{item}}</li>
+            </ul> -->
+            <Table border :columns="columns1" :data="data1" style="width:1000px;margin:10px auto;"></Table>
         </div>
-
+       
 
         <!-- <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:80px;">四、你感兴趣的职业类别与人格类型的匹配度</span>
         <Table height="200" :columns="columns1" :data="data2" style="margin-top:50px;"></Table>
@@ -234,6 +246,9 @@ export default {
             display: inline-block;
             margin-top: 100px;
         }
+        .dashedT{
+            border: 1px dashed black;
+        }
     }
      @media screen and (min-width: 1200px){
         .box{
@@ -249,6 +264,9 @@ export default {
             margin: 0 auto;
             display: inline-block;
             margin-top: 100px;
+        }
+        .dashedT{
+            border: 1px dashed black;
         }
     }
      @media screen and (max-width: 1199px){
@@ -266,6 +284,9 @@ export default {
             margin: 0 auto;
             display: inline-block;
             margin-top: 100px;
+        }
+        .dashedT{
+            border: 1px dashed black;
         }
    }
 </style>

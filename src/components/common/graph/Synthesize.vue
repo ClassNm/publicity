@@ -1,18 +1,36 @@
 <template>
     <div class="box">
-        <h1>第五部分：综合测评结果</h1>
-        <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;font-weight:bolder;margin-top:50px;">根据以上四个方面的测评结果，你感兴趣的职业类别包括以下九种：</span>
-        <Table border :columns="columns1" :data="data1" style="width: 590px;margin: 0 auto;"></Table>
-        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【规划者 (粘液质-决策型)】的职业类别是排名第 六 的职业类别【社会制度-规划与实施】，你在这一职业类别上的学科潜能指数为第    等。
+        <h1 style="font-size:30px;">第五部分：综合测评结果</h1>
+        <div class="dashedT" style="margin-top:20px;">
+            <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:30px;margin-left:20px;">（一）测验概要</span>
+            <div style="text-align:left;display:block;font-size:16px;margin:20px 0 20px 40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本测评系统通过全职兴趣测验、思维人格测验、学科潜能调查和心理定位测验等几个方面分别测验了您的职业兴趣，并通过四个维度的测验逐渐缩小职业推荐范围。按照“大处着眼、小处着手”的思路，以职业适合度为导向积极准备大学阶段及现阶段的学习内容是有利于提高生涯规划效率的。也就是采用“职业—专业—学科”的顺序，将远期目标分解为阶段性目标，将大目标分解为小目标，整理清晰的成长路线，打造高效的人生。
+            </div>
+            <span 
+                style="
+                text-align:left;
+                display:block;
+                margin-bottom:20px;
+                font-size:20px;
+                font-weight:bolder;
+                margin-top:50px;
+                margin-left:20px;
+                ">
+                根据以上四个方面的测评结果，你感兴趣的职业类别包括以下九种：
+            </span>
+            <Table border :columns="columns1" :data="data1" style="width: 590px;margin: 0 auto;"></Table>
+            <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【规划者 (粘液质-决策型)】的职业类别是排名第 六 的职业类别【社会制度-规划与实施】，你在这一职业类别上的学科潜能指数为第    等。
+            </div>
+            <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：【个体生命-使用与维护】。
+            </div>
+            <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-bottom:20px;margin-left:40px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                根据以上判断，优先推荐的职业类别是：【社会制度-规划与实施】，在这一职业类别所对应的学科中，你感兴趣的学科是：公共管理、经济学、地理科学。
+            </div>
         </div>
-        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：【个体生命-使用与维护】。
-        </div>
-        <div style="text-align:left;display:block;font-size:18px;margin-top:20px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            根据以上判断，优先推荐的职业类别是：【社会制度-规划与实施】，在这一职业类别所对应的学科门类中，你感兴趣的学科是：公共管理、经济学、地理科学。
-        </div>
+        
     </div>
 </template>
 
@@ -54,13 +72,20 @@ export default {
 </script>
 
 <style scoped>
+    @media print{
+        .dashedT{
+            border: 1px dashed black;
+        }
+    }
     @media screen and (min-width: 1200px){
         .box{
             width: 1100px;
             margin: 0 auto;
             margin-top: 100px;
         }
-        
+        .dashedT{
+            border: 1px dashed black;
+        }
     }
    @media screen and (max-width: 1199px){
         .box{
@@ -68,6 +93,8 @@ export default {
             margin: 0 auto;
             margin-top: 100px;
         }
-        
+        .dashedT{
+            border: 1px dashed black;
+        }
    }
 </style>

@@ -1,11 +1,11 @@
 <template>
     <div class="maj">
-        <h1 style="text-align:center;margin-bottom:50px;">{{headerT}}</h1>
+        <h1 style="text-align:center;margin-bottom:50px;font-size:30px;">{{headerT}}</h1>
         <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;font-weight:bolder;margin-top:50px;">
-            (一)优先推荐的学科门类解析
+            (一)优先推荐的学科解析
         </span>
         <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;font-weight:bolder;margin-top:50px;">
-            (二)你感兴趣的其他职业门类解析
+            (二)你感兴趣的其他学科解析
         </span>
         <div class="box" v-for="(item,i) in objLe" :key="i">
             <div style="font-size:20px;height:50px;line-height:50px;background:pink;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</div>
@@ -61,7 +61,7 @@ export default {
     data(){
         return{
             objLe:[],
-            headerT:"附件：学科门类解析",
+            headerT:"附件：学科解析",
             major:"",
             Typtit:true
         }

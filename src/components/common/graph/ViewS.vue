@@ -1,10 +1,13 @@
 <template>
     <div class="box">
-        <h1>第六部分：专业大视野</h1>
-        <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;font-weight:bolder;margin-top:50px;">
-            根据全职四维生涯测评系统对四个因素进行系统的测评，现根据测评结果，将所有适合你学习的专业进行展示，以供参考：
-        </span>
-        <Table border :columns="columns1" :data="data1"></Table>
+        <h1 style="font-size:30px;">第六部分：专业大视野</h1>
+        <div class="dashedT" style="margin-top:20px;">
+            <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;font-weight:bolder;margin-top:50px;margin-left:20px;">
+                根据全职四维生涯测评系统对四个因素进行系统的测评，现根据测评结果，将所有适合你学习的专业进行展示，以供参考：
+            </span>
+            <Table border :columns="columns1" :data="data1" style="width:1000px;margin:0 auto;margin-bottom:20px;"></Table>
+        </div>
+        
     </div>
 </template>
 
@@ -54,11 +57,19 @@ export default {
 </script>
 
 <style scoped>
+     @media print{
+        .dashedT{
+            border: 1px dashed black;
+        }
+    }
      @media screen and (min-width: 1200px){
         .box{
             width: 1100px;
             margin: 0 auto;
             margin-top: 100px;
+        }
+        .dashedT{
+            border: 1px dashed black;
         }
         
     }
@@ -68,6 +79,8 @@ export default {
             margin: 0 auto;
             margin-top: 100px;
         }
-        
+        .dashedT{
+            border: 1px dashed black;
+        }
    }
 </style>

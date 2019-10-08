@@ -1,7 +1,29 @@
 <template>
     <div class="surveydetail" ref="headbox">
-        <button @click="testAA=true?false:true">的十分丰富的我</button>
-        <div style="border:1px solid #ccc;">
+        <div v-if="titTiLe.Ten">
+            <span style="font-weight:bolder;margin-bottom:8px;display:block;font-size:18px;">3.2.2补充题：学科特长调查</span>
+            <div style="">初中以来，你是否参加过以下类型的课外项目并获得相关奖励（可多选）。</div>
+            <CheckboxGroup v-model="fruit" style="text-align:left;margin-left:40%;">
+                <Checkbox label="A科学竞赛类；"></Checkbox>
+                <br>
+                <Checkbox label="B科技制作类；"></Checkbox>
+                <br>
+                <Checkbox label="C艺术类；"></Checkbox>
+                <br>
+                <Checkbox label="D数学与编程类；"></Checkbox>
+                <br>
+                <Checkbox label="E语文与英语类；"></Checkbox>
+                <br>
+                <Checkbox label="F历史与文化类；"></Checkbox>
+                <br>
+                <Checkbox label="G职业体验与社会服务类；"></Checkbox>
+                <br>
+                <Checkbox label="H没有过参加过以上任何课外项目；"></Checkbox>
+            </CheckboxGroup>
+            <Button type="primary" @click="OneHunty">提交</Button>
+        </div>
+        
+        <div style="border:1px solid #ccc;" v-if="titTiLe.one">
             <div style="width:90px;display:inline-block;border-right:1px solid #ccc;height:60px;line-height:60px; color:#ccc;">
                 职业领域
             </div>
@@ -9,7 +31,7 @@
                 参加课外活动项目的时间、作品及获奖
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;" v-if="testAA">
+        <div style="width:800px;border:1px solid #ccc;" v-if="titTiLe.Twe">
             <div style="width:90px;
             height:400px;
             display:inline-block;
@@ -84,7 +106,7 @@
                 </div>
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;" v-if="titTiLe.Thr">
             <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 人造事物
             </div>
@@ -142,7 +164,7 @@
                 </div>
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;" v-if="titTiLe.Four">
              <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 艺术符号
             </div>
@@ -199,7 +221,7 @@
                 </div>
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;" v-if="titTiLe.Five">
             <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 数学符号
             </div>
@@ -258,7 +280,7 @@
                 </div>
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;" v-if="titTiLe.Six">
             <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 语言符号
             </div>
@@ -318,7 +340,7 @@
                 </div>
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;" v-if="titTiLe.Seven">
             <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 社会制度
             </div>
@@ -378,7 +400,7 @@
                 </div>
             </div>
         </div>
-        <div style="width:800px;border:1px solid #ccc;">
+        <div style="width:800px;border:1px solid #ccc;" v-if="titTiLe.Eight">
             <div style="width:90px; color:#ccc;height:400px;display:inline-block;float: left;border-right:1px solid #ccc;letter-spacing: 25px;font-size:20px;line-height: 100px;">
                 个体生命
             </div>
@@ -438,7 +460,7 @@
                 </div>
             </div>
         </div>
-        <Button type="primary" ghost @click="postAx">提交</Button>
+        <Button type="primary" ghost @click="postAx" v-if="titTiLe.Nine">提交</Button>
     </div>
 </template>
 
@@ -447,7 +469,19 @@ import axios from 'axios'
 export default {
     data () {
         return {
-            testAA:true,
+            titTiLe:{
+                one:false,
+                Twe:false,
+                Thr:false,
+                Four:false,
+                Five:false,
+                Six:false,
+                Seven:false,
+                Eight:false,
+                Nine:false,
+                Ten:true
+            },
+            fruit: [],
             radiotit:{
                 one:{
                     one:"",
@@ -732,6 +766,48 @@ export default {
         this.uid = this.$route.query.id;
     },
    methods:{
+       OneHunty(){
+           console.log(this.fruit)
+        //    if()
+            let data = this.fruit;
+            data.forEach(item=>{
+                if(item==="A科学竞赛类；"){
+                    this.titTiLe.Nine = true;
+                    this.titTiLe.one = true;
+                    this.titTiLe.Twe = true;
+                }else if(item==="B科技制作类；"){
+                    this.titTiLe.Nine = true;
+                    this.titTiLe.one = true;
+                    this.titTiLe.Thr = true;
+                }else if(item==="C艺术类；"){
+                    this.titTiLe.Nine = true;
+                    this.titTiLe.one = true;
+
+                }else if(item==="D数学与编程类；"){
+                    this.titTiLe.Nine = true;
+                    this.titTiLe.one = true;
+
+                }else if(item==="E语文与英语类；"){
+                    this.titTiLe.Nine = true;
+                    this.titTiLe.one = true;
+
+                }else if(item==="F历史与文化类；"){
+                    this.titTiLe.Nine = true;
+                    this.titTiLe.one = true;
+
+                }else if(item==="G职业体验与社会服务类；"){
+                    this.titTiLe.Nine = true;
+                    this.titTiLe.one = true;
+
+                }else if(item==="H没有过参加过以上任何课外项目；"){
+                    this.titTiLe.Ten = false;
+                }
+            })
+            if(data.length === 0){
+                this.titTiLe.Ten = false;
+                console.log('aaa')
+            }
+       },
        postAx(){
         //    if(
         //         this.radiotit.one.one===""||
