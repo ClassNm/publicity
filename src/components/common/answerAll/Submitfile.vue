@@ -420,8 +420,8 @@
                 </div>
                 <div style="width:700px;height:100px;display:inline-block;border-bottom:1px solid #ccc;">
                     2,初中以来,你参加体育类项目地市级以上比赛有多少次?
+                    <!-- style="width:400px;" -->
                     <RadioGroup 
-                    style="width:700px;"
                     v-model="firstQuestiontit.seve.twe"
                     v-for="(item,i) in TwoQuestion" :key="i"
                     :title="item.label"
@@ -767,7 +767,7 @@ export default {
     },
    methods:{
        OneHunty(){
-           console.log(this.fruit)
+        //    console.log(this.fruit)
         //    if()
             let data = this.fruit;
             data.forEach(item=>{
@@ -775,29 +775,39 @@ export default {
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
                     this.titTiLe.Twe = true;
+                    this.titTiLe.Ten = false;
                 }else if(item==="B科技制作类；"){
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
                     this.titTiLe.Thr = true;
+                    this.titTiLe.Ten = false;
                 }else if(item==="C艺术类；"){
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
-
+                    this.titTiLe.Four = true;
+                    this.titTiLe.Ten = false;
                 }else if(item==="D数学与编程类；"){
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
-
+                    this.titTiLe.Five = true;
+                    this.titTiLe.Ten = false;
                 }else if(item==="E语文与英语类；"){
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
+                    this.titTiLe.Six = true;
+                    this.titTiLe.Ten = false;
 
                 }else if(item==="F历史与文化类；"){
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
+                    this.titTiLe.Seven = true;
+                    this.titTiLe.Ten = false;
 
                 }else if(item==="G职业体验与社会服务类；"){
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
+                    this.titTiLe.Eight = true;
+                    this.titTiLe.Ten = false;
 
                 }else if(item==="H没有过参加过以上任何课外项目；"){
                     this.titTiLe.Ten = false;
@@ -961,7 +971,7 @@ export default {
                 )
                 .then((res)=>{}),(err)=>{}
                 let headbox = this.$refs.headbox;
-                headbox.style.display = "none" 
+                headbox.style.display = "none"
        },
        parent(index){
            this.radiotit.one.one = index.label

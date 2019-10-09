@@ -4,7 +4,7 @@
         <div class="dashedT" style="margin-top:20px;">
             <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:20px;margin-left:20px;">（一）测验概要</span>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-bottom:10px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;未来的职业需要专业知识、能力来支撑，专业知识则有学科知识组成，而高中学科与大学学科之间具有思维方法上的一致性，知识体系上的一惯性。所以，中学阶段体现出来的学科潜能对于大学阶段学科学习具有较大影响。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;未来的职业需要专业知识、能力来支撑，专业知识则由学科知识组成，而高中学科与大学学科之间具有思维方法上的一致性，知识体系上的一惯性。所以，中学阶段体现出来的学科潜能对于大学阶段学科学习具有较大影响。
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-bottom:10px;margin-left:40px;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本测验从“对象”维度出发，系统考察个体在不同对象所对应的职业类别上的学科潜能或特长，进一步判断个体是否具有从事相应职业的能力条件，并依次缩小职业推荐范围。

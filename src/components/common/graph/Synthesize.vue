@@ -4,7 +4,7 @@
         <div class="dashedT" style="margin-top:20px;">
             <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:30px;margin-left:20px;">（一）测验概要</span>
             <div style="text-align:left;display:block;font-size:16px;margin:20px 0 20px 40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本测评系统通过全职兴趣测验、思维人格测验、学科潜能调查和心理定位测验等几个方面分别测验了您的职业兴趣，并通过四个维度的测验逐渐缩小职业推荐范围。按照“大处着眼、小处着手”的思路，以职业适合度为导向积极准备大学阶段及现阶段的学习内容是有利于提高生涯规划效率的。也就是采用“职业—专业—学科”的顺序，将远期目标分解为阶段性目标，将大目标分解为小目标，整理清晰的成长路线，打造高效的人生。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本测评系统通过全职兴趣测验、四维人格测验、学科潜能调查和心理定位测验等几个方面分别测验了您的职业兴趣，并通过四个维度的测验逐渐缩小职业推荐范围。按照“大处着眼、小处着手”的思路，以职业适合度为导向积极准备大学阶段及现阶段的学习内容是有利于提高生涯规划效率的。也就是采用“职业—专业—学科”的顺序，将远期目标分解为阶段性目标，将大目标分解为小目标，整理清晰的成长路线，打造高效的人生。
             </div>
             <span 
                 style="

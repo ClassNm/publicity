@@ -16,7 +16,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你在该人格测验中四个维度的得分情况如下：</div>
             <div id="Radar" class="Repor"></div>
             <span style="margin:50px 0 0 20px;;text-align:left;display:block;font-size:20px;font-weight:bolder;">代表人物</span>
-            <div v-for="(item,i) in ImgLengt" :key="i" style="display:inline-block;width: 200px;margin-right: 100px;">
+            <div v-for="(item,i) in ImgLengt" :key="i" style="display:inline-block;width: 200px;margin-right: 100px;margin-bottom:20px;">
                 <img  :src="item.url" alt="">
                 <h1 style="font-size:20px;margin: 0 0 15px 0;">{{item.name}}</h1>
             </div>
@@ -34,7 +34,7 @@
             </div>
             <ul style="margin-top:50px;margin-bottom:50px;margin-left:40px;">
                 <span style="margin-bottom:30px;">主要特征：</span>
-                <li v-for="(item,i) in object1" :key="i">{{item}}</li>
+                <li v-for="(item,i) in object1" :key="i">{{item}}。</li>
             </ul>
         </div>
             

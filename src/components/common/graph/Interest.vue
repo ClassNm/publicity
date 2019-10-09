@@ -1,14 +1,14 @@
 <template>
     <div class="box">
         <h1 style="margin-bottom:60px;font-size:30px;">第一部分：全职兴趣测验结果</h1>
-        <div class="dashedT">
+        <div class="dashedT" style="break-after:page;page-break-after: always;">
             <span style="font-weight:bolder;text-align:left;display:block;font-size:20px;margin:50px 10px 20px 20px;">（一）测验概要</span>
             <ul style="text-align:left;display:block;font-size:16px;margin:0 20px 50px 40px;">
                 <li>
                     全职兴趣测验按照“对象”和“活动”两个维度系统考察一个人的职业兴趣。其中，“对象”指一个人喜欢接触并与之打交道的事物，“活动”指一个人与特定对象打交道的形式。
                 </li>
                 <li>
-                    本测验将对象分为自然事物、人造事物、语言符号、数学符号、艺术符号、社会制度、个体生命七种类型，七种对象的含义和包含的事物如下。
+                    本测验将对象分为自然事物、人造事物、语言符号、数学符号、艺术符号、社会制度、个体生命七种类型，七种对象的含义和包含的事物如下：
                 </li>
                 <li>
                     （1）“自然事物”指自然界存在的各种事物，既包括山地、河流、沙漠、海洋、天空等各种自然环境，也包括在这些环境中生存的植物、动物、微生物，以及自然环境中的各种气候变化和天气现象。人类种植的各种粮食和经济作物，以及饲养的各种动物，也属于自然事物。
@@ -32,7 +32,7 @@
                     （7）“个体生命”指生活在一定自然和社会环境中，具有七情六欲和精神需要的独立生命个体，主要指人类个体，也包括与人有亲密关系的各种宠物。
                 </li>
                 <li>
-                    本测验将活动分为研究与探索、设计与创造、使用与维护三种形式，三种活动的含义和对应的主要职业如下。
+                    本测验将活动分为研究与探索、设计与创造、使用与维护三种形式，三种活动的含义和对应的主要职业如下：
                 </li>
                 <li>
                     （1）“研究与探索”指通过观察、实验、计算、分析等方法，了解某一对象的特点和规律。根据对象不同，对应的职业主要包括自然科学家、工程学家、语言学家、数学家、计算机科学家、艺术家、社会学家、心理学家等。
@@ -47,8 +47,8 @@
                     以上七种对象和三种活动形式组合，可以得到21种职业类别（见下表），根据不同的职业类别，可以确定适合的大学本科学科。
                 </li>
             </ul>
-            <Table border :columns="columns10" :data="data10" style="width:1000px;margin:10px auto;"></Table>
         </div>
+        <Table border :columns="columns10" :data="data10" style="width:1000px;margin:20px auto;"></Table>
         <div class="dashedT" style="margin-top:20px;">
             <span style="font-weight:bolder;text-align:left;display:block;font-size:20px;margin:50px 0 20px 20px;">（二）测试结果</span>
             <div style="text-align:left;display:block;font-size:16px;margin-bottom:20px;margin-left:40px;">
