@@ -68,30 +68,30 @@
         </div>
         <div style="text-align: left;margin:20px 0 50px 40px;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据测验结果，在21种职业类别中，你的得分超过18分的前8种职业类别及相应学科如下：</div>
          <div style="width:1000px;margin-top:40px;">
-             <div style="height:200px;width:240px;display:inline-block;border:1px solid #ccc;">
+             <div style="height:200px;width:240px;display:inline-block;border:1px solid #ccc;float: left;">
                 <div style="margin-top: 70px;">序号</div>
             </div>
-            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;">
+            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;float: left;">
                 <div style="margin-top: 70px;">职业类别</div>
             </div>
-            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;">
+            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;float: left;">
                 <div style="margin-top: 70px;">得分</div>
             </div>
-            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;">
+            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;float: left;">
                 <div style="margin-top: 70px;">这一类型下感兴趣的大学本科学科</div>
             </div>
             <div style="width:1000px;" v-for="(item,index) in arrTw" :key="index">
             <!-- <div style="width:1000px;"> -->
-                 <div style="width:240px;height:200px;display:inline-block;border:1px solid #ccc;">
+                 <div style="width:240px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{index+1}}</div>
                 </div>
-                <div style="width:250px;height:200px;display:inline-block;border:1px solid #ccc;">
+                <div style="width:250px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.typ}}</div>
                 </div>  
-                <div style="width:250px;height:200px;display:inline-block;border:1px solid #ccc;">
+                <div style="width:250px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
                     <div class="rightBot" :title="item.code">&nbsp;&nbsp;&nbsp;&nbsp;{{item.code}}</div>
                 </div>
-                <div style="width:250px;height:200px;display:inline-block;border:1px solid #ccc;">
+                <div style="width:250px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
                 </div>
             </div>
@@ -323,16 +323,54 @@ export default {
                     // item.code = item.code*10;
                     item.code+="分"
                 })
+                let aa = res.data
+                let bb = aa.map(item=>{
+                    if(item.typ=="RA"){
+                        item.typ = "艺术形象-研究与探索"
+                    }else if(item.typ=="RN"){
+                        item.typ = "自然事物-研究与探索"
+                    }else if(item.typ=="UN"){
+                        item.typ = "自然事物-使用与维护"
+                    }else if(item.typ=="PN"){
+                        item.typ = "自然事务-设计与创造"
+                    }else if(item.typ=="RT"){
+                        item.typ = "人造事物-研究与探索"
+                    }else if(item.typ=="PT"){
+                        item.typ = "人造事物-设计与创造"
+                    }else if(item.typ=="UT"){
+                        item.typ = "人造事物-使用与维护"
+                    }else if(item.typ=="RM"){
+                        item.typ = "数学符号-研究与探索"
+                    }else if(item.typ=="PM"){
+                        item.typ = "数学符号-设计与创造"
+                    }else if(item.typ=="UM"){
+                        item.typ = "数学符号-使用与维护"
+                    }else if(item.typ=="RL"){
+                        item.typ = "语言符号-研究与探索"
+                    }else if(item.typ=="PL"){
+                        item.typ = "语言符号-设计与创造"
+                    }else if(item.typ=="UL"){
+                        item.typ = "语言符号-使用与维护"
+                    }else if(item.typ=="RA"){
+                        item.typ = "艺术形象-设计与创造"
+                    }else if(item.typ=="UA"){
+                        item.typ = "艺术形象-使用与维护"
+                    }else if(item.typ=="RS"){
+                        item.typ = "社会制度-研究与探索"
+                    }else if(item.typ=="PS"){
+                        item.typ = "社会制度-设计与创造"
+                    }else if(item.typ=="US"){
+                        item.typ = "社会制度-使用与维护"
+                    }else if(item.typ=="RI"){
+                        item.typ = "个体生命-研究与探索"
+                    }else if(item.typ=="PI"){
+                        item.typ = "个体生命-设计与创造"
+                    }else if(item.typ=="UI"){
+                        item.typ = "个体生命-使用与维护"
+                    }
+                    return item;
+                })
                 this.arrTw = res.data;
-                // let selected = this.typSele
-                // let all = res.data;
-                // let items = []
-                // selected.forEach(item=>{
-                //     all.forEach(i=>{
-                //         (item == i.typ) && items.push(i)
-                //     })
-                // })
-                // console.log(res.data,'item')
             })
         },
         // echarts调用方法 的案例
@@ -519,48 +557,44 @@ export default {
                     }else if(item=="UN"){
                         item = "自然事物-使用与维护"
                     }else if(item=="PN"){
-                        item = "自然事务-规划与实施"
+                        item = "自然事务-设计与创造"
                     }else if(item=="RT"){
                         item = "人造事物-研究与探索"
                     }else if(item=="PT"){
-                        item = "人造事物-规划与实施"
+                        item = "人造事物-设计与创造"
                     }else if(item=="UT"){
                         item = "人造事物-使用与维护"
                     }else if(item=="RM"){
                         item = "数学符号-研究与探索"
                     }else if(item=="PM"){
-                        item = "数学符号-规划与实施"
+                        item = "数学符号-设计与创造"
                     }else if(item=="UM"){
                         item = "数学符号-使用与维护"
                     }else if(item=="RL"){
                         item = "语言符号-研究与探索"
                     }else if(item=="PL"){
-                        item = "语言符号-规划与实施"
+                        item = "语言符号-设计与创造"
                     }else if(item=="UL"){
                         item = "语言符号-使用与维护"
                     }else if(item=="RA"){
-                        item = "艺术形象-研究与探索"
+                        item = "艺术形象-设计与创造"
                     }else if(item=="UA"){
                         item = "艺术形象-使用与维护"
                     }else if(item=="RS"){
                         item = "社会制度-研究与探索"
                     }else if(item=="PS"){
-                        item = "社会制度-规划与实施"
+                        item = "社会制度-设计与创造"
                     }else if(item=="US"){
                         item = "社会制度-使用与维护"
                     }else if(item=="RI"){
                         item = "个体生命-研究与探索"
                     }else if(item=="PI"){
-                        item = "个体生命-规划与实施"
+                        item = "个体生命-设计与创造"
                     }else if(item=="UI"){
                         item = "个体生命-使用与维护"
                     }
                     return item;
                 })
-                // var arr = res.data.join(",")
-                // var b = arr.replace(/RA/,"艺术形象-研究与探索")
-                // console.log(typeof(cc),'cccbb')
-                // console.log(bb,'cccbb')
                 this.Arrdata = bb.join(",");
              }),(err)=>{
                 console.log(err)

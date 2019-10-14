@@ -484,32 +484,32 @@ export default {
             fruit: [],
             radiotit:{
                 one:{
-                    one:"",
-                    twe:"",
+                    one:0,
+                    twe:0,
                 },
                 twe:{
-                    one:"",
-                    twe:"",
+                    one:0,
+                    twe:0,
                 },
                 thr:{
-                    one:"",
-                    twe:"",
+                    one:0,
+                    twe:0,
                 },
                 four:{
-                    one:"",
-                    twe:"",
+                    one:0,
+                    twe:0,
                 },
                 five:{
-                    one:"",
-                    twe:"",
+                    one:0,
+                    twe:0,
                 },
                 six:{
-                    one:"",
-                    twe:"",
+                    one:0,
+                    twe:0,
                 },
                 seve:{
-                    one:"",
-                    twe:"",
+                    one:0,
+                    twe:0,
                 }
             },
             // firstQuestiontit: '',
@@ -972,6 +972,7 @@ export default {
                 .then((res)=>{}),(err)=>{}
                 let headbox = this.$refs.headbox;
                 headbox.style.display = "none"
+                // console.log(data)
        },
        parent(index){
            this.radiotit.one.one = index.label

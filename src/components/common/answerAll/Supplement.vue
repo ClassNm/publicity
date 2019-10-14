@@ -73,17 +73,17 @@ export default {
         }
     },
     created(){
-        this.uid = this.$route.query.id;
-        this.verify();
+        // this.uid = this.$route.query.id;
+        // this.verify();
     },
     watch:{
-        code(n,o){
-            if(n===0||o===0){
-                this.acquire();
-            }else{
-                this.actiontyp = false;
-            }
-        }
+        // code(n,o){
+        //     if(n===0||o===0){
+        //         this.acquire();
+        //     }else{
+        //         this.actiontyp = false;
+        //     }
+        // }
     },
     mounted(){
     },

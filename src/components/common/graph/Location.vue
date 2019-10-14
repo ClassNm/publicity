@@ -23,10 +23,10 @@
         <div class="dashedT" style="margin-top:20px;">
             <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;margin-left:20px;">（三）适合的职业类别</span>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在感兴趣的职业类别中，与你的心理定位不匹配的是：【个体生命-使用与维护】
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在感兴趣的职业类别中，与你的心理定位不匹配的是：{{ShowPeopleTwe}}
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-bottom:20px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在符合人格类型的职业类别中，与你的心理定位不匹配的是：无
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在符合人格类型的职业类别中，与你的心理定位不匹配的是：{{ShowPeople}}
             </div>
         </div>
         
@@ -191,7 +191,9 @@ export default {
             ],
             matter:"",
             Twethdy:true,
-            TwethdyTw:true
+            TwethdyTw:true,
+            ShowPeople:"",
+            ShowPeopleTwe:"",
 
         }
     },
@@ -211,21 +213,44 @@ export default {
         this.typTeach();
     },
     methods:{
+
         typTeach(){
             let data = this.$route.query.id;
-            axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_xueke',
+            axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_renge',
             data,
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                this.matter = res.data[0].matter
-                let a = res.data
-                let arrT = []
-                let id = 0;
-                a.map(((item,index)=>{
-                    arrT.push(Object.assign({},item,{potency:"匹配",mentality:"适合",name:id+=1}))
-                }))
-                this.arr = arrT;
+                // this.matter = res.data[0].matter
+                // let a = res.data
+                // let arrT = []
+                // let id = 0;
+                // a.map(((item,index)=>{
+                //     arrT.push(Object.assign({},item,{potency:"匹配",mentality:"适合",name:id+=1}))
+                // }))
+                if(res.data.length===0){
+                    this.ShowPeople = "无"
+                }else{
+                    this.ShowPeople = res.data;
+                }
+                this.typTeachTwee();
+             }),(err)=>{
+                console.log(err)
+            }
+        },
+         typTeachTwee(){
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_xingqu',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                if(res.data.length===0){
+                    this.ShowPeopleTwe = "无"
+                }else{
+                    this.ShowPeople = res.data;
+                }
+
              }),(err)=>{
                 console.log(err)
             }

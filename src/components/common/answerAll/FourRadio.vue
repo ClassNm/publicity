@@ -174,6 +174,19 @@ export default {
                 console.log(err,'err')
             };
         },
+         UpSave(){
+            // 选项
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessMbtiCopy/save',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+
+            }),(err)=>{
+                
+            };
+        },
 
       // 兴趣题目
         topicFun(index){
@@ -225,6 +238,7 @@ export default {
                 this.redio = "";
                 this.matter = ""
                 if(this.title.length == 0){
+                    this.UpSave();
                     let headbox = this.$refs.headbox
                     headbox.style.display = "none"
                     // let id = this.ubid;

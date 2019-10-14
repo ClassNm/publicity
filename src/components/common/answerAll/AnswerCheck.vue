@@ -1,6 +1,6 @@
 <template>
 <!-- 多选 -->
-    <div class="checkAll" ref="HeaderBox">
+    <div class="checkAll" ref="HeaderBox" v-if="false">
         <!-- because 给的数据格式很奇怪 只能拆分开分21次循环 crazy... 
         他把所有的数据全放在一个接口里然后给一个typ值让我区分 没办法 
         前方高能！！！

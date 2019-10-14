@@ -20,14 +20,14 @@
             </span>
             <Table border :columns="columns1" :data="data1" style="width: 590px;margin: 0 auto;"></Table>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【规划者 (粘液质-决策型)】的职业类别是排名第 六 的职业类别【社会制度-规划与实施】，你在这一职业类别上的学科潜能指数为第    等。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【规划者 (粘液质-决策型)】的职业类别是{{peopleTeacj}}。
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：【个体生命-使用与维护】。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：{{typTeachTwe}}{{ShowPeople}}。
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-bottom:20px;margin-left:40px;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                根据以上判断，优先推荐的职业类别是：【社会制度-规划与实施】，在这一职业类别所对应的学科中，你感兴趣的学科是：公共管理、经济学、地理科学。
+                根据以上判断，优先推荐的职业类别是：{{peopleTeacj}}，在这一职业类别所对应的学科中，你感兴趣的学科是：{{peoplType}}。
             </div>
         </div>
         
@@ -35,37 +35,157 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data () {
         return {
             columns1: [
                 {
                     title: '序号',
-                    key: 'name'
+                    key: 'uid'
                 },
                 {
                     title: '职业类别',
-                    key: 'age'
+                    key: 'typ'
                 }
             ],
-            data1: [
-                {
-                    name: 1,
-                    age: '个体生命-使用与维护',
-                },
-                {
-                    name: 2,
-                    age: '个体生命-研究与探索',
-                },
-                {
-                    name: 3,
-                    age: '社会制度-使用与维护',
-                },
-                {
-                    name: 4,
-                    age: '人造事物-使用与维护',
+            data1: [],
+            typTeachTwe:"",
+            ShowPeople:"",
+            peopleTeacj:"",
+            peoplType:""
+        }
+    },
+    mounted(){
+        this.ShowMTyoe();
+        this.typTeach();
+    },
+    methods:{
+         HeathTYpp(){
+            let data = this.$route.query.id;
+            // let data =1 
+            axios.post('http://47.104.245.242:8085/AssessMbtiCopy/show_xueke2',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+               this.peoplType = res.data;
+             }),(err)=>{
+                console.log(err)
+            }
+        },
+        HeathTeach(){
+            let data = this.$route.query.id;
+            // let data =1 
+            axios.post('http://47.104.245.242:8085/AssessMbtiCopy/show_xueke',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+               this.peopleTeacj = res.data;
+             }),(err)=>{
+                console.log(err)
+            }
+        },
+         typTeach(){
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_renge',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                if(res.data.length===0){
+                    this.ShowPeople = "无"
+                }else{
+                    this.ShowPeople = res.data;
                 }
-            ]
+                this.typTeachTwee();
+                this.HeathTeach();
+                this.HeathTYpp();
+             }),(err)=>{
+                console.log(err)
+            }
+        },
+         typTeachTwee(){
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_xingqu',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                if(res.data.length===0){
+                    this.typTeachTwe = "无"
+                }else{
+                    this.typTeachTwe = res.data;
+                }
+
+             }),(err)=>{
+                console.log(err)
+            }
+        },
+        ShowMTyoe(){
+            // let data = 1;
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessMbtiCopy/show_jieguo',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                let aa = res.data;
+                let bb = aa.map(item=>{
+                    if(item.part === 0){
+                        item.part = "不符合"
+                    }else{
+                        item.part = "符合"
+                    }
+                     if(item.typ=="RA"){
+                        item.typ = "艺术形象-研究与探索"
+                    }else if(item.typ=="RN"){
+                        item.typ = "自然事物-研究与探索"
+                    }else if(item.typ=="UN"){
+                        item.typ = "自然事物-使用与维护"
+                    }else if(item.typ=="PN"){
+                        item.typ = "自然事务-设计与创造"
+                    }else if(item.typ=="RT"){
+                        item.typ = "人造事物-研究与探索"
+                    }else if(item.typ=="PT"){
+                        item.typ = "人造事物-设计与创造"
+                    }else if(item.typ=="UT"){
+                        item.typ = "人造事物-使用与维护"
+                    }else if(item.typ=="RM"){
+                        item.typ = "数学符号-研究与探索"
+                    }else if(item.typ=="PM"){
+                        item.typ = "数学符号-设计与创造"
+                    }else if(item.typ=="UM"){
+                        item.typ = "数学符号-使用与维护"
+                    }else if(item.typ=="RL"){
+                        item.typ = "语言符号-研究与探索"
+                    }else if(item.typ=="PL"){
+                        item.typ = "语言符号-设计与创造"
+                    }else if(item.typ=="UL"){
+                        item.typ = "语言符号-使用与维护"
+                    }else if(item.typ=="RA"){
+                        item.typ = "艺术形象-设计与创造"
+                    }else if(item.typ=="UA"){
+                        item.typ = "艺术形象-使用与维护"
+                    }else if(item.typ=="RS"){
+                        item.typ = "社会制度-研究与探索"
+                    }else if(item.typ=="PS"){
+                        item.typ = "社会制度-设计与创造"
+                    }else if(item.typ=="US"){
+                        item.typ = "社会制度-使用与维护"
+                    }else if(item.typ=="RI"){
+                        item.typ = "个体生命-研究与探索"
+                    }else if(item.typ=="PI"){
+                        item.typ = "个体生命-设计与创造"
+                    }else if(item.typ=="UI"){
+                        item.typ = "个体生命-使用与维护"
+                    }
+                    return item;
+                })
+                this.data1 = res.data;
+                console.log(res.data,'222')
+            })
         }
     }
 }

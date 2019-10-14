@@ -24,23 +24,15 @@
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:60px;">
                 在感兴趣的职业类别中，学科潜能较高的是：
                 <ul style="text-align:left;display:block;font-size:16px;margin-top:20px;">
-                    社会制度，包含如下学科：
-                    <li>哲学类</li>
-                    <li>。。。</li>
-                    <li>。。。</li>
-                    <li>。。。</li>
-                    <li>。。。</li>
+                    <!-- 包含如下学科： -->
+                    <li v-for="(item,i) in interest" :key="i">{{item}}</li>
                 </ul>
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:60px;">
             在符合人格类型的职业类别中，学科潜能较高的是：
                 <ul style="text-align:left;display:block;font-size:16px;margin-top:20px;">
-                    社会制度，包含如下学科：
-                    <li>哲学类</li>
-                    <li>。。。</li>
-                    <li>。。。</li>
-                    <li>。。。</li>
-                    <li>。。。</li>
+                    <!-- {{interestTwe}}，包含如下学科： -->
+                    <li v-for="(item,i) in interestTwe" :key="i">{{item}}</li>
                 </ul>
             </div>
        </div>
@@ -97,44 +89,24 @@ export default {
             data1: [
                     {
                         name: '语言符号-研究与探索',
-                        // address: {
-                        //     one:"①传播学 ",
-                        //     two:"②应用语言学",
-                        //     three:"③外国语言与外国历史",
-                        // },
                         address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-03'
                     },
                     {
                         name: '数学符号-研究与探索',
-                        // address: {
-                        //     one:"哲学",
-                        //     two:"逻辑学",
-                        //     three:"宗教学",
-                        // },
                         address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-01'
                     },
                     {
                         name: '阿迪王-研究与探索',
-                        // address: {
-                        //     one:"①传播学 ",
-                        //     two:"②应用语言学",
-                        //     three:"③外国语言与外国历史",
-                        // },
                         address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-02'
                     },
                     {
                         name: '挖的哇-研究与探索',
-                        // address: {
-                        //     one:"wdw挖的哇",
-                        //     two:"挖的哇",
-                        //     three:"反对v吧",
-                        // },
                         address:"传播学",
                         subject:"ABQ=80（八级）",
                         date: '2016-10-04'
@@ -143,6 +115,8 @@ export default {
             arr:[],
             kool:[],
             score:[],
+            interest:"",
+            interestTwe:""
         }
     },
     created(){
@@ -150,11 +124,36 @@ export default {
     },
     mounted(){
         this.drawLineTwo();
-        this.dataTit();
-        
+        // this.dataTit();
+        this.dataTypp()
         
     },
     methods:{
+        dataTypp(){
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/show_jibie',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.interest = res.data
+                this.dataTyppTwe();
+             }),(err)=>{
+                console.log(err)
+            }
+        },
+        dataTyppTwe(){
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessScoreTechangWeb/show_jibie2',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.interestTwe = res.data
+             }),(err)=>{
+                console.log(err)
+            }
+        },
         drawLineTwo(){
             var myChartThr = this.$echarts.init(document.getElementById('myChartThr'));//获取容器元素
             myChartThr.setOption({
@@ -229,7 +228,6 @@ export default {
             .then((res)=>{
                 this.kool = res.data
                 this.foon();
-                // console.log(this.arr,'2111111111')
              }),(err)=>{
                 console.log(err)
             }

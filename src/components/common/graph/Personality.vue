@@ -71,43 +71,23 @@ export default {
             columns1: [
                     {
                         title: '序号',
-                        key: 'name'
+                        key: 'uid'
                     },
                     {
                         title: '职业类别',
-                        key: 'age'
+                        key: 'typ'
                     },
                     {
                         title: '是否符合职业兴趣',
-                        key: 'address'
+                        key: 'part'
                     },
                     {
                         title: '兴趣排序',
-                        key: 'sort'
+                        key: 'code'
                     },
                 ],
                 data1: [
-                    {
-                        name: 1,
-                        age: "社会制度-规划与实施",
-                        address: '符合',
-                        sort:"第六",
-                        date: '2016-10-03'
-                    },
-                    {
-                        name: 2,
-                        age: "社会制度-规划与实施",
-                        address: '不符合',
-                        sort:"第一",
-                        date: '2016-10-01'
-                    },
-                    {
-                        name: 3,
-                        age: "数学符号-规划与实施",
-                        address: '不符合',
-                        sort:"无",
-                        date: '2016-10-02'
-                    }
+                    
                 ]
         }
     },
@@ -117,6 +97,7 @@ export default {
         this.describeTit();
         this.titdata();
         this.titdataMbt();
+        this.ShowMTyoe();
     },
     methods:{
         titdata(){
@@ -220,6 +201,69 @@ export default {
             )
             .then((res)=>{
                 this.ImgLengt = res.data;
+            })
+        },
+        ShowMTyoe(){
+            // let data = 1;
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_mbti3',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                let aa = res.data;
+                let bb = aa.map(item=>{
+                    if(item.part === 0){
+                        item.part = "不符合"
+                    }else{
+                        item.part = "符合"
+                    }
+                     if(item.typ=="RA"){
+                        item.typ = "艺术形象-研究与探索"
+                    }else if(item.typ=="RN"){
+                        item.typ = "自然事物-研究与探索"
+                    }else if(item.typ=="UN"){
+                        item.typ = "自然事物-使用与维护"
+                    }else if(item.typ=="PN"){
+                        item.typ = "自然事务-设计与创造"
+                    }else if(item.typ=="RT"){
+                        item.typ = "人造事物-研究与探索"
+                    }else if(item.typ=="PT"){
+                        item.typ = "人造事物-设计与创造"
+                    }else if(item.typ=="UT"){
+                        item.typ = "人造事物-使用与维护"
+                    }else if(item.typ=="RM"){
+                        item.typ = "数学符号-研究与探索"
+                    }else if(item.typ=="PM"){
+                        item.typ = "数学符号-设计与创造"
+                    }else if(item.typ=="UM"){
+                        item.typ = "数学符号-使用与维护"
+                    }else if(item.typ=="RL"){
+                        item.typ = "语言符号-研究与探索"
+                    }else if(item.typ=="PL"){
+                        item.typ = "语言符号-设计与创造"
+                    }else if(item.typ=="UL"){
+                        item.typ = "语言符号-使用与维护"
+                    }else if(item.typ=="RA"){
+                        item.typ = "艺术形象-设计与创造"
+                    }else if(item.typ=="UA"){
+                        item.typ = "艺术形象-使用与维护"
+                    }else if(item.typ=="RS"){
+                        item.typ = "社会制度-研究与探索"
+                    }else if(item.typ=="PS"){
+                        item.typ = "社会制度-设计与创造"
+                    }else if(item.typ=="US"){
+                        item.typ = "社会制度-使用与维护"
+                    }else if(item.typ=="RI"){
+                        item.typ = "个体生命-研究与探索"
+                    }else if(item.typ=="PI"){
+                        item.typ = "个体生命-设计与创造"
+                    }else if(item.typ=="UI"){
+                        item.typ = "个体生命-使用与维护"
+                    }
+                    return item;
+                })
+                this.data1 = res.data;
             })
         }
     }
