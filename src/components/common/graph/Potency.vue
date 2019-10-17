@@ -36,13 +36,6 @@
                 </ul>
             </div>
        </div>
-        
-        <!-- <span style="text-align:left;display:block;font-size:16px;margin:50px 0 50px 30px;">
-            恭喜你， 语言符号 的 研究与探索 类职业所对应的学科专业能够完美的匹配你的兴趣、人格类型和学科潜能。
-        </span>
-         <span style="text-align:left;display:block;font-size:16px;margin:50px 0 50px 30px;">
-            #需要该部分测验结果的解释,比如ABQ=80（八级）#
-        </span> -->
     </div>
 </template>
 
@@ -59,27 +52,6 @@ export default {
                     {
                         title: '你喜欢、并适合人格类型的学科',
                         key: 'score',
-                        // render: (h, params) => {
-                        //     return h('div', [
-                        //     h('p',params.row.address.one),
-                        //     h('div', {
-                        //         style: {
-                        //         margin: '1px 0',
-                        //         height: '1px',
-                        //         background: '#ccc',
-                        //         }
-                        //     }),
-                        //     h('p',params.row.address.two),
-                        //     h('div', {
-                        //         style: {
-                        //         margin: '1px 0',
-                        //         height: '1px',
-                        //         background: '#ccc',
-                        //         }
-                        //     }),
-                        //     h('p',params.row.address.three),
-                        //     ])
-                        // }
                     },
                      {
                         title: '综合学科潜能',

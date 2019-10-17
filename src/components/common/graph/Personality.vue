@@ -124,7 +124,6 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                // console.log(res.data,'aaa')
                 this.height = res.data;
              }),(err)=>{
                 console.log(err)

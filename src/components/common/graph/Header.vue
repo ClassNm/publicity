@@ -140,7 +140,6 @@ import axios from 'axios';
                     this.schoolT = arr.school
                     this.clas = arr.clas
                     this.grade = arr.grade
-                    // console.log(res.data)
                 }),(err)=>{
                     console.log(err)
                 }

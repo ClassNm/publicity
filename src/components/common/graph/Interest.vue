@@ -56,18 +56,14 @@
             </div>
             <div id="myChart" class="Repor"></div>
         </div>
-        
-        <!-- <ul style="text-align:left;font-weight:bolder;margin-top:80px;">
-            结果说明：
-            <li>在全部21中职业类型中，超过15分的职业类别包括：{{Arrdata}}</li>
-        </ul> -->
 
         <span style="font-weight:bolder;text-align:left;font-size:20px;display:block;margin-top:50px;margin-left:20px;">（三）适合的职业类别与学科门类</span>
         <div style="text-align: left;margin:20px 0 50px 40px;font-size:16px;">
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本测验中的21种职业类别每一类的最低得分为5分，最高得分为25分，具体分值表示的是受测者的职业兴趣高低。一般认为达到或者超过18分所表现出来的职业兴趣即可充分支撑未来的职业发展，分值越高在未来从事相应职业时将会越顺利。任何职业都需要专业知识、专业能力的支撑，而专业知识又是由学科知识组成的。在明确了职业兴趣之后就要考虑各类型职业所需的学科知识的支撑，这些学科也就是在大学阶段需要学习和储备的内容。
         </div>
         <div style="text-align: left;margin:20px 0 50px 40px;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据测验结果，在21种职业类别中，你的得分超过18分的前8种职业类别及相应学科如下：</div>
-         <div style="width:1000px;margin-top:40px;">
+        <Table :columns="columns3" :data="arrTw"></Table>
+        <!-- <div style="width:1000px;margin-top:40px;">
              <div style="height:200px;width:240px;display:inline-block;border:1px solid #ccc;float: left;">
                 <div style="margin-top: 70px;">序号</div>
             </div>
@@ -81,24 +77,22 @@
                 <div style="margin-top: 70px;">这一类型下感兴趣的大学本科学科</div>
             </div>
             <div style="width:1000px;" v-for="(item,index) in arrTw" :key="index">
-            <!-- <div style="width:1000px;"> -->
-                 <div style="width:240px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
+                 <div style="width:240px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{index+1}}</div>
                 </div>
-                <div style="width:250px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
+                <div style="width:250px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.typ}}</div>
                 </div>  
-                <div style="width:250px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
+                <div style="width:250px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
                     <div class="rightBot" :title="item.code">&nbsp;&nbsp;&nbsp;&nbsp;{{item.code}}</div>
                 </div>
-                <div style="width:250px;height:500px;display:inline-block;border:1px solid #ccc;float: left;">
+                <div style="width:250px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
                     <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
                 </div>
-            </div>
+            </div> -->
             <div style="text-align:center;font-size:18px;margin-top:20px;font-weight:bolder;">（注：与第八种职业类别相同分数的类型顺延推荐）</div>
             
-                <!-- <div class="rightBot" :style="{width:item.part+px}">111</div> -->
-        </div>
+        <!-- </div> -->
        
         <br>
     </div>
@@ -111,47 +105,6 @@ export default {
         return{
             numI:1,
             Arrdata:"",
-            kkk:[
-                {
-                    name:[
-                        {
-                            name:"11",
-                        },
-                        {
-                            name:"12",
-                        },
-                        {
-                            name:"13",
-                        }
-                    ]
-                },
-                {
-                    name:[
-                        {
-                            name:"121",
-                        },
-                        {
-                            name:"122",
-                        },
-                        {
-                            name:"123",
-                        }
-                    ]
-                },
-                {
-                    name:[
-                        {
-                            name:"131",
-                        },
-                        {
-                            name:"132",
-                        },
-                        {
-                            name:"133",
-                        }
-                    ]
-                },
-            ],
             // header:"三、职业兴趣维度",
             // 用户uid
             uid:"",
@@ -169,47 +122,6 @@ export default {
             // 传过来的Array
             //  graph:[]
             color:50,
-             cc:[
-                {
-                    width:[
-                        {
-                            name:"①教育学"
-                        },
-                        {
-                            name:"②旅游管理"
-                        },
-                        {
-                            name:"③公共管理"
-                        },
-                    ]
-                },
-                {
-                    width:[
-                        {
-                            name:"①教育学"
-                        },
-                        {
-                            name:"②旅游管理"
-                        },
-                        {
-                            name:"③公共管理"
-                        },
-                    ]
-                },
-                {
-                    width:[
-                        {
-                            name:"①教育学"
-                        },
-                        {
-                            name:"②旅游管理"
-                        },
-                        {
-                            name:"③公共管理"
-                        },
-                    ]
-                },
-            ],
             arr:[],
             test:[],
             arrTw:[],
@@ -230,58 +142,76 @@ export default {
                         title:"U使用与维护",
                         key:"bao"
                     }
-                ],
-                data10: [
+            ],
+            data10: [
+                {
+                    name: 'N自然事物',
+                    age: "自然事物-研究与探索",
+                    address: '自然事物-设计与创造',
+                    bao:"自然事物-使用与维护",
+                    date: '2016-10-03'
+                },
+                {
+                    name: 'T人造事物',
+                    age: "人造事物-研究与探索",
+                    address: '人造事物-设计与创造',
+                    bao:"人造事物-使用与维护",
+                    date: '2016-10-01'
+                },
+                {
+                    name: 'L语言符号',
+                    age: "语言符号-研究与探索",
+                    address: '语言符号-设计与创造',
+                    bao:"语言符号-使用与维护",
+                    date: '2016-10-02'
+                },
+                {
+                    name: 'M数学符号',
+                    age: "数学符号-研究与探索",
+                    address: '数学符号-设计与创造',
+                    bao:"数学符号-使用与维护",
+                    date: '2016-10-04'
+                },
+                {
+                    name: 'A艺术形象',
+                    age: "艺术形象-研究与探索",
+                    address: '艺术形象-设计与创造',
+                    bao:"艺术形象-使用与维护",
+                    date: '2016-10-04'
+                },
+                {
+                    name: 'S社会制度',
+                    age: "社会制度-研究与探索",
+                    address: '社会制度-设计与创造',
+                    bao:"社会制度-使用与维护",
+                    date: '2016-10-04'
+                },
+                {
+                    name: 'I个体生命',
+                    age: "个体生命-研究与探索",
+                    address: '个体生命-设计与创造',
+                    bao:"个体生命-使用与维护",
+                    date: '2016-10-04'
+                }
+            ],
+            columns3: [
+                    // {
+                    //     title: '序号',
+                    //     key: 'index'
+                    // },
                     {
-                        name: 'N自然事物',
-                        age: "自然事物-研究与探索",
-                        address: '自然事物-设计与创造',
-                        bao:"自然事物-使用与维护",
-                        date: '2016-10-03'
+                        title: '职业类别',
+                        key: 'typ'
                     },
                     {
-                        name: 'T人造事物',
-                        age: "人造事物-研究与探索",
-                        address: '人造事物-设计与创造',
-                        bao:"人造事物-使用与维护",
-                        date: '2016-10-01'
+                        title: '得分',
+                        key: 'code'
                     },
                     {
-                        name: 'L语言符号',
-                        age: "语言符号-研究与探索",
-                        address: '语言符号-设计与创造',
-                        bao:"语言符号-使用与维护",
-                        date: '2016-10-02'
-                    },
-                    {
-                        name: 'M数学符号',
-                        age: "数学符号-研究与探索",
-                        address: '数学符号-设计与创造',
-                        bao:"数学符号-使用与维护",
-                        date: '2016-10-04'
-                    },
-                    {
-                        name: 'A艺术形象',
-                        age: "艺术形象-研究与探索",
-                        address: '艺术形象-设计与创造',
-                        bao:"艺术形象-使用与维护",
-                        date: '2016-10-04'
-                    },
-                    {
-                        name: 'S社会制度',
-                        age: "社会制度-研究与探索",
-                        address: '社会制度-设计与创造',
-                        bao:"社会制度-使用与维护",
-                        date: '2016-10-04'
-                    },
-                    {
-                        name: 'I个体生命',
-                        age: "个体生命-研究与探索",
-                        address: '个体生命-设计与创造',
-                        bao:"个体生命-使用与维护",
-                        date: '2016-10-04'
+                        title: '这一类型下感兴趣的大学本科学科',
+                        key: 'score'
                     }
-                ]
+            ],
         }
      },
      created(){

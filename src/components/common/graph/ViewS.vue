@@ -17,13 +17,13 @@ export default {
     data () {
         return {
             columns1: [
-                {
-                    title: '类别',
-                    key: 'name'
-                },
+                // {
+                //     title: '类别',
+                //     key: 'typ'
+                // },
                 {
                     title: '学科',
-                    key: 'age'
+                    key: 'bigSubject'
                 },
                 {
                     title: '专业',
@@ -31,31 +31,13 @@ export default {
                 }
             ],
             data1: [
-                {
-                    name: "理学",
-                    age: '地理科学类',
-                    major:"人文地理与城乡规划"
-                },
-                {
-                    name: "管理学",
-                    age: '电子商务类',
-                    major:"电子商务"
-                },
-                {
-                    name: "管理学",
-                    age: '电子商务类',
-                    major:"电子商务及法律"
-                },
-                {
-                    name: "法学",
-                    age: '法学类',
-                    major:"知识产权"
-                }
+                
             ]
         }
     },
     mounted(){
         // this.ShowMTyoe()
+        this.ShowUser();
     },
     methods:{
         ShowMTyoe(){
@@ -119,9 +101,21 @@ export default {
                     return item;
                 })
                 this.data1 = res.data;
-                console.log(res.data,'222')
             })
-        }
+        },
+        ShowUser(){
+                let data = this.$route.query.id;
+                // let data = 1;
+                axios.post('http://47.104.245.242:8085/AssessMbtiCopy/show_zhaunye',
+                data,
+                {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+                )
+                .then((res)=>{
+                    this.data1 = res.data
+                }),(err)=>{
+                    console.log(err)
+                }
+        },
     }
 }
 </script>

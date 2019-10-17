@@ -29,28 +29,6 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在符合人格类型的职业类别中，与你的心理定位不匹配的是：{{ShowPeople}}
             </div>
         </div>
-        
-        <!-- 符合展示1 3  不符合展示2 -->
-        <!-- <div v-if="Twethdy">
-            <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;font-weight:bolder;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                再次恭喜你，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（  {{object}}  ）并没有不适合之处。显然，这一职业类别及学科专业就是当前最适合你的 
-            </span>
-            <Table border :columns="columns2" :data="arr"></Table>
-        </div>
-        
-        <div v-if="TwethdyTw">
-            <span style="text-align:left;display:block;font-size:17px;margin:50px 0 50px 30px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                非常遗憾，对于以下能够完美的匹配你的兴趣、人格类型和学科潜能的职业类别及学科专业，你的心理定位类型（ 胆小退缩型 ）并不适合。建议寻找专业的心理咨询师，对自己的心理定位进行调整！
-            </span>
-            <Table border :columns="columns1" :data="arr"></Table>
-         </div>
-
-         <div v-if="Twethdy">
-            <span style="text-align:left;display:block;font-size:20px;font-weight:bolder;margin-top:50px;">综合你在四个方面的测试或调查结果，推荐以下职业类别或专业供参考：</span>
-            <Table border :columns="columns3" :data="arr"></Table>
-         </div> -->
     </div>
 </template>
 
@@ -221,13 +199,6 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-                // this.matter = res.data[0].matter
-                // let a = res.data
-                // let arrT = []
-                // let id = 0;
-                // a.map(((item,index)=>{
-                //     arrT.push(Object.assign({},item,{potency:"匹配",mentality:"适合",name:id+=1}))
-                // }))
                 if(res.data.length===0){
                     this.ShowPeople = "无"
                 }else{

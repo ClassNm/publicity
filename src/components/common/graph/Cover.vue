@@ -35,7 +35,6 @@ export default {
                 .then((res)=>{
                     let arr = res.data[0]
                     this.name = arr.name;
-                    // console.log(arr,'arr')
                 }),(err)=>{
                     console.log(err)
                 }

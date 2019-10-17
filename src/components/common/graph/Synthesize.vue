@@ -20,17 +20,16 @@
             </span>
             <Table border :columns="columns1" :data="data1" style="width: 590px;margin: 0 auto;"></Table>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【规划者 (粘液质-决策型)】的职业类别是{{peopleTeacj}}。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【{{majorTyp}}】的职业类别是{{peopleTeacj}}。
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：{{typTeachTwe}}{{ShowPeople}}。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：{{typTeachTwe}}、{{ShowPeople}}。
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-bottom:20px;margin-left:40px;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 根据以上判断，优先推荐的职业类别是：{{peopleTeacj}}，在这一职业类别所对应的学科中，你感兴趣的学科是：{{peoplType}}。
             </div>
         </div>
-        
     </div>
 </template>
 
@@ -53,7 +52,8 @@ export default {
             typTeachTwe:"",
             ShowPeople:"",
             peopleTeacj:"",
-            peoplType:""
+            peoplType:"",
+            majorTyp:""
         }
     },
     mounted(){
@@ -61,6 +61,18 @@ export default {
         this.typTeach();
     },
     methods:{
+         typTeachMajor(){
+            let data = this.$route.query.id;
+            axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_mbti',
+            data,
+            {headers:{'Content-Type':"application/json; charset=UTF-8"}}
+            )
+            .then((res)=>{
+                this.majorTyp = res.data.typ
+             }),(err)=>{
+                console.log(err)
+            }
+        },
          HeathTYpp(){
             let data = this.$route.query.id;
             // let data =1 
@@ -99,6 +111,7 @@ export default {
                 }else{
                     this.ShowPeople = res.data;
                 }
+                this.typTeachMajor();
                 this.typTeachTwee();
                 this.HeathTeach();
                 this.HeathTYpp();
@@ -184,7 +197,6 @@ export default {
                     return item;
                 })
                 this.data1 = res.data;
-                console.log(res.data,'222')
             })
         }
     }
