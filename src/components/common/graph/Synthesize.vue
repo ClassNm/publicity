@@ -16,14 +16,14 @@
                 margin-top:50px;
                 margin-left:20px;
                 ">
-                根据以上四个方面的测评结果，你感兴趣的职业类别包括以下九种：
+                根据以上四个方面的测评结果，你感兴趣的职业类别包括以下几种：
             </span>
             <Table border :columns="columns1" :data="data1" style="width: 590px;margin: 0 auto;"></Table>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在以上职业类别中，符合你的人格类型【{{majorTyp}}】的职业类别是{{peopleTeacj}}。
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-left:40px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：{{typTeachTwe}}、{{ShowPeople}}。
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你的心理定位与以上职业类别不匹配的是：{{typTeachTwe}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ShowPeople}}
             </div>
             <div style="text-align:left;display:block;font-size:16px;margin-top:20px;margin-bottom:20px;margin-left:40px;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,7 +61,12 @@ export default {
         this.typTeach();
     },
     methods:{
-         typTeachMajor(){
+        determination(){
+            if(this.ShowPeople==""&&this.typTeachTwe==""){
+                this.typTeachTwe="无"
+            }
+        },
+        typTeachMajor(){
             let data = this.$route.query.id;
             axios.post('http://47.104.245.242:8085/AssessScoreMbti/show_mbti',
             data,
@@ -94,10 +99,59 @@ export default {
             {headers:{'Content-Type':"application/json; charset=UTF-8"}}
             )
             .then((res)=>{
-               this.peopleTeacj = res.data;
-             }),(err)=>{
+
+               let aa = res.data;
+               let bb = aa.map(item=>{
+                    if(item=="RA"){
+                        item = "艺术形象-研究与探索"
+                    }else if(item=="RN"){
+                        item = "自然事物-研究与探索"
+                    }else if(item=="UN"){
+                        item = "自然事物-使用与维护"
+                    }else if(item=="PN"){
+                        item = "自然事务-设计与创造"
+                    }else if(item=="RT"){
+                        item = "人造事物-研究与探索"
+                    }else if(item=="PT"){
+                        item = "人造事物-设计与创造"
+                    }else if(item=="UT"){
+                        item = "人造事物-使用与维护"
+                    }else if(item=="RM"){
+                        item = "数学符号-研究与探索"
+                    }else if(item=="PM"){
+                        item = "数学符号-设计与创造"
+                    }else if(item=="UM"){
+                        item = "数学符号-使用与维护"
+                    }else if(item=="RL"){
+                        item = "语言符号-研究与探索"
+                    }else if(item=="PL"){
+                        item = "语言符号-设计与创造"
+                    }else if(item=="UL"){
+                        item = "语言符号-使用与维护"
+                    }else if(item=="PA"){
+                        item = "艺术形象-规划与实施"
+                    }else if(item=="UA"){
+                        item = "艺术形象-使用与维护"
+                    }else if(item=="RS"){
+                        item = "社会制度-研究与探索"
+                    }else if(item=="PS"){
+                        item = "社会制度-设计与创造"
+                    }else if(item=="US"){
+                        item = "社会制度-使用与维护"
+                    }else if(item=="RI"){
+                        item = "个体生命-研究与探索"
+                    }else if(item=="PI"){
+                        item = "个体生命-设计与创造"
+                    }else if(item=="UI"){
+                        item = "个体生命-使用与维护"
+                    }
+                    return item;
+               })
+            this.peopleTeacj = bb;
+            }),(err)=>{
                 console.log(err)
             }
+            
         },
          typTeach(){
             let data = this.$route.query.id;
@@ -107,7 +161,7 @@ export default {
             )
             .then((res)=>{
                 if(res.data.length===0){
-                    this.ShowPeople = "无"
+                    this.ShowPeople = ""
                 }else{
                     this.ShowPeople = res.data;
                 }
@@ -116,10 +170,10 @@ export default {
                 this.HeathTeach();
                 this.HeathTYpp();
              }),(err)=>{
-                console.log(err)
+                 console.log(err)
             }
         },
-         typTeachTwee(){
+        typTeachTwee(){
             let data = this.$route.query.id;
             axios.post('http://47.104.245.242:8085/AssessScoreXinli/show_xingqu',
             data,
@@ -127,11 +181,11 @@ export default {
             )
             .then((res)=>{
                 if(res.data.length===0){
-                    this.typTeachTwe = "无"
+                    this.typTeachTwe = ""
                 }else{
                     this.typTeachTwe = res.data;
                 }
-
+                this.determination();
              }),(err)=>{
                 console.log(err)
             }

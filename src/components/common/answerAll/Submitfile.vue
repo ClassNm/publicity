@@ -4,7 +4,7 @@
             <span style="font-weight:bolder;margin-bottom:8px;display:block;font-size:18px;">3.2.2补充题：学科特长调查</span>
             <div style="">初中以来，你是否参加过以下类型的课外项目并获得相关奖励（可多选）。</div>
             <CheckboxGroup v-model="fruit" style="text-align:left;margin-left:40%;">
-                <Checkbox label="A科学竞赛类；"></Checkbox>
+                <Checkbox label="A学科竞赛类；"></Checkbox>
                 <br>
                 <Checkbox label="B科技制作类；"></Checkbox>
                 <br>
@@ -18,7 +18,7 @@
                 <br>
                 <Checkbox label="G职业体验与社会服务类；"></Checkbox>
                 <br>
-                <Checkbox label="H没有过参加过以上任何课外项目；"></Checkbox>
+                <Checkbox label="H没有参加过以上任何课外项目；"></Checkbox>
             </CheckboxGroup>
             <Button type="primary" @click="OneHunty">提交</Button>
         </div>
@@ -81,27 +81,27 @@
                 <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在以上学科项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
-                        <input type="number" style="width:50px;" v-model="natural.prefecture.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="natural.prefecture.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="natural.prefecture.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.prefecture.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.prefecture.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.prefecture.three">次；
                     </div>
                     <br>
                     <div>省级：一等奖
-                        <input type="number" style="width:50px;" v-model="natural.provincial.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="natural.provincial.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="natural.provincial.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.provincial.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.provincial.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.provincial.three">次；
                     </div>
                     <br>   
                     <div>国家级：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="natural.state.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="natural.state.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="natural.state.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.state.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.state.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.state.three">次；
                     </div>
                     <br>
                     <div>国际比赛：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="natural.international.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="natural.international.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="natural.international.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.international.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.international.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="natural.international.three">次；
                     </div>
                 </div>
             </div>
@@ -139,27 +139,27 @@
                 <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在以上科技类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
-                        <input type="number" style="width:50px;" v-model="manMade.prefecture.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="manMade.prefecture.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="manMade.prefecture.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.prefecture.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.prefecture.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.prefecture.three">次；
                     </div>
                     <br>
                     <div>省级：一等奖
-                        <input type="number" style="width:50px;" v-model="manMade.provincial.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="manMade.provincial.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="manMade.provincial.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.provincial.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.provincial.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.provincial.three">次；
                     </div>
                     <br>
                     <div>国家级：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="manMade.state.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="manMade.state.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="manMade.state.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.state.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.state.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.state.three">次；
                     </div>
                     <br>
                     <div>国际比赛：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="manMade.international.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="manMade.international.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="manMade.international.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.international.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.international.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="manMade.international.three">次；
                     </div>
                 </div>
             </div>
@@ -196,27 +196,27 @@
                 <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在艺术类项目中,你参加不同级别竞赛获奖的次数有多少?
                      <div>地市级：一等奖
-                        <input type="number" style="width:50px;" v-model="art.prefecture.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="art.prefecture.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="art.prefecture.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.prefecture.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.prefecture.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.prefecture.three">次；
                     </div>
                     <br>
                     <div>省级：一等奖
-                        <input type="number" style="width:50px;" v-model="art.provincial.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="art.provincial.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="art.provincial.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.provincial.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.provincial.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.provincial.three">次；
                     </div>
                     <br>
                     <div>国家级：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="art.state.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="art.state.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="art.state.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.state.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.state.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.state.three">次；
                     </div>
                     <br>
                     <div>国际比赛：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="art.international.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="art.international.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="art.international.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.international.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.international.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="art.international.three">次；
                     </div>
                 </div>
             </div>
@@ -255,27 +255,27 @@
                 <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在数学,编程等项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.prefecture.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.prefecture.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.prefecture.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.prefecture.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.prefecture.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.prefecture.three">次；
                     </div>
                     <br>
                     <div>省级：一等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.provincial.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.provincial.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.provincial.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.provincial.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.provincial.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.provincial.three">次；
                     </div>
                     <br>
                     <div>国家级：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.state.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.state.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.state.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.state.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.state.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.state.three">次；
                     </div>
                     <br>
                     <div>国际比赛：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.international.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.international.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="mathematics.international.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.international.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.international.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="mathematics.international.three">次；
                     </div>
                 </div>
             </div>
@@ -315,27 +315,27 @@
                 <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在语文和英语类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
-                        <input type="number" style="width:50px;" v-model="language.prefecture.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="language.prefecture.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="language.prefecture.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.prefecture.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.prefecture.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.prefecture.three">次；
                     </div>
                     <br>
                     <div>省级：一等奖
-                        <input type="number" style="width:50px;" v-model="language.provincial.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="language.provincial.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="language.provincial.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.provincial.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.provincial.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.provincial.three">次；
                     </div>
                     <br>
                     <div>国家级：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="language.state.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="language.state.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="language.state.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.state.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.state.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.state.three">次；
                     </div>
                     <br>
                     <div>国际比赛：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="language.international.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="language.international.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="language.international.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.international.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.international.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="language.international.three">次；
                     </div>
                 </div>
             </div>
@@ -375,27 +375,27 @@
                 <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在人文和社会类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
-                        <input type="number" style="width:50px;" v-model="society.prefecture.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="society.prefecture.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="society.prefecture.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.prefecture.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.prefecture.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.prefecture.three">次；
                     </div>
                     <br>
                     <div>省级：一等奖
-                        <input type="number" style="width:50px;" v-model="society.provincial.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="society.provincial.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="society.provincial.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.provincial.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.provincial.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.provincial.three">次；
                     </div>
                     <br>
                     <div>国家级：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="society.state.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="society.state.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="society.state.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.state.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.state.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.state.three">次；
                     </div>
                     <br>
                     <div>国际比赛：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="society.international.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="society.international.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="society.international.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.international.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.international.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="society.international.three">次；
                     </div>
                 </div>
             </div>
@@ -435,27 +435,27 @@
                 <div style="width:700px;height:200px;display:inline-block;text-align:left;">
                     3,在体育类项目中,你参加不同级别竞赛获奖的次数有多少?
                     <div>地市级：一等奖
-                        <input type="number" style="width:50px;" v-model="unit.prefecture.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="unit.prefecture.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="unit.prefecture.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.prefecture.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.prefecture.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.prefecture.three">次；
                     </div>
                     <br>
                     <div>省级：一等奖
-                        <input type="number" style="width:50px;" v-model="unit.provincial.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="unit.provincial.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="unit.provincial.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.provincial.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.provincial.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.provincial.three">次；
                     </div>
                     <br>
                     <div>国家级：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="unit.state.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="unit.state.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="unit.state.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.state.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.state.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.state.three">次；
                     </div>
                     <br>
                     <div>国际比赛：地市级： 一等奖
-                        <input type="number" style="width:50px;" v-model="unit.international.one">次；二等奖
-                        <input type="number" style="width:50px;" v-model="unit.international.two">次；三等奖
-                        <input type="number" style="width:50px;" v-model="unit.international.three">次；
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.international.one">次；二等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.international.two">次；三等奖
+                        <input oninput = "value=value.replace(/[^\d]/g,'')" style="width:50px;" v-model="unit.international.three">次；
                     </div>
                 </div>
             </div>
@@ -771,7 +771,7 @@ export default {
         //    if()
             let data = this.fruit;
             data.forEach(item=>{
-                if(item==="A科学竞赛类；"){
+                if(item==="A学科竞赛类；"){
                     this.titTiLe.Nine = true;
                     this.titTiLe.one = true;
                     this.titTiLe.Twe = true;
@@ -808,14 +808,17 @@ export default {
                     this.titTiLe.one = true;
                     this.titTiLe.Eight = true;
                     this.titTiLe.Ten = false;
-
-                }else if(item==="H没有过参加过以上任何课外项目；"){
+                }else if(item==="H没有参加过以上任何课外项目；"){
                     this.titTiLe.Ten = false;
+                    let headbox = this.$refs.headbox;
+                    headbox.style.display = "none"
                 }
             })
             if(data.length === 0){
                 this.titTiLe.Ten = false;
-                console.log('aaa')
+                let headbox = this.$refs.headbox;
+                headbox.style.display = "none"
+                // console.log('aaa')
             }
        },
        postAx(){

@@ -1,11 +1,11 @@
 <template>
     <div class="maj">
         <h1 style="text-align:center;margin-bottom:50px;font-size:30px;">{{headerT}}</h1>
-        <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;margin-top:50px;">
+        <span style="text-align:left;display:block;margin-bottom:20px;font-size:16px;margin-top:50px;">
             (一)优先推荐的学科解析
         </span>
         <div class="box" v-for="item in objLeTwe" :key="item.generalize">
-                <div style="font-size:20px;height:50px;line-height:50px;background:pink;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</div>
+                <div style="font-size:16px;height:50px;line-height:50px;background:pink;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</div>
                 <ul class="outer" style="text-align:left;">
                     <br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专业类概述&nbsp;▼
@@ -47,11 +47,11 @@
                     </li>
                 </ul>
             </div>
-        <span style="text-align:left;display:block;margin-bottom:20px;font-size:20px;margin-top:50px;">
+        <span style="text-align:left;display:block;margin-bottom:20px;font-size:16px;margin-top:50px;">
             (二)你感兴趣的其他学科解析
         </span>
         <div class="box" v-for="(item,i) in objLe" :key="i">
-            <div style="font-size:20px;height:50px;line-height:50px;background:pink;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</div>
+            <div style="font-size:16px;height:50px;line-height:50px;background:pink;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.name}}</div>
             <ul class="outer" style="text-align:left;">
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专业类概述&nbsp;▼
@@ -165,7 +165,7 @@ export default {
             text-align: left;
             /* height: 400px; */
             width: 1000px;
-            font-size: 20px;
+            font-size: 16px;
             overflow: hidden;
             text-overflow:ellipsis;
             -o-text-overflow:ellipsis;
@@ -174,7 +174,7 @@ export default {
             background: white;
             text-align: left;
              width: 1000px;
-            font-size: 20px;
+            font-size: 16px;
              overflow: hidden;
             text-overflow:ellipsis;
             -o-text-overflow:ellipsis;
@@ -206,7 +206,7 @@ export default {
             text-align: left;
             /* height: 400px; */
             width: 1000px;
-            font-size: 20px;
+            font-size: 16px;
             overflow: hidden;
             text-overflow:ellipsis;
             -o-text-overflow:ellipsis;
@@ -215,7 +215,7 @@ export default {
             background: white;
             text-align: left;
              width: 1000px;
-            font-size: 20px;
+            font-size: 16px;
              overflow: hidden;
             text-overflow:ellipsis;
             -o-text-overflow:ellipsis;
@@ -242,7 +242,7 @@ export default {
             text-align: left;
             height: 400px;
             width: 800px !important;
-            font-size: 20px;
+            font-size: 16px;
             overflow: hidden;
             text-overflow:ellipsis;
             -o-text-overflow:ellipsis;
@@ -252,7 +252,7 @@ export default {
             text-align: left;
             height: 400px;
              width: 800px !important;
-            font-size: 20px;
+            font-size: 16px;
              overflow: hidden;
             text-overflow:ellipsis;
             -o-text-overflow:ellipsis;

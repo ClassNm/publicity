@@ -81,6 +81,7 @@ import axios from 'axios';
                 {headers:{'Content-Type':"application/json; charset=UTF-8"}}
                 )
                 .then((res)=>{
+                    console.log(res.data)
                     this.information = res.data
                     let arr = res.data.split(',')
                     this.id = arr[0]

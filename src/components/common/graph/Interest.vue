@@ -49,47 +49,19 @@
             </ul>
         </div>
         <Table border :columns="columns10" :data="data10" style="width:1000px;margin:20px auto;"></Table>
-        <div class="dashedT" style="margin-top:20px;">
+        <div class="dashedT" style="display:block;margin-top:20px;break-after:page;page-break-after: always;">
             <span style="font-weight:bolder;text-align:left;display:block;font-size:20px;margin:50px 0 20px 20px;">（二）测试结果</span>
             <div style="text-align:left;display:block;font-size:16px;margin-bottom:20px;margin-left:40px;">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您在全职兴趣测验中的得分如下：
             </div>
             <div id="myChart" class="Repor"></div>
         </div>
-
         <span style="font-weight:bolder;text-align:left;font-size:20px;display:block;margin-top:50px;margin-left:20px;">（三）适合的职业类别与学科门类</span>
         <div style="text-align: left;margin:20px 0 50px 40px;font-size:16px;">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本测验中的21种职业类别每一类的最低得分为5分，最高得分为25分，具体分值表示的是受测者的职业兴趣高低。一般认为达到或者超过18分所表现出来的职业兴趣即可充分支撑未来的职业发展，分值越高在未来从事相应职业时将会越顺利。任何职业都需要专业知识、专业能力的支撑，而专业知识又是由学科知识组成的。在明确了职业兴趣之后就要考虑各类型职业所需的学科知识的支撑，这些学科也就是在大学阶段需要学习和储备的内容。
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本测验中的21种职业类别每一类的最低得分为5分，最高得分为25分，具体分值表示的是受测者的职业兴趣高低。一般认为达到或者超过16分所表现出来的职业兴趣即可充分支撑未来的职业发展，分值越高在未来从事相应职业时将会越顺利。任何职业都需要专业知识、专业能力的支撑，而专业知识又是由学科知识组成的。在明确了职业兴趣之后就要考虑各类型职业所需的学科知识的支撑，这些学科也就是在大学阶段需要学习和储备的内容。
         </div>
-        <div style="text-align: left;margin:20px 0 50px 40px;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据测验结果，在21种职业类别中，你的得分超过18分的前8种职业类别及相应学科如下：</div>
+        <div style="text-align: left;margin:20px 0 50px 40px;font-size:16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据测验结果，在21种职业类别中，你的得分超过16分及以上的前8种职业类别及相应学科如下：</div>
         <Table :columns="columns3" :data="arrTw"></Table>
-        <!-- <div style="width:1000px;margin-top:40px;">
-             <div style="height:200px;width:240px;display:inline-block;border:1px solid #ccc;float: left;">
-                <div style="margin-top: 70px;">序号</div>
-            </div>
-            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;float: left;">
-                <div style="margin-top: 70px;">职业类别</div>
-            </div>
-            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;float: left;">
-                <div style="margin-top: 70px;">得分</div>
-            </div>
-            <div style="height:200px;width:250px;display:inline-block;border:1px solid #ccc;float: left;">
-                <div style="margin-top: 70px;">这一类型下感兴趣的大学本科学科</div>
-            </div>
-            <div style="width:1000px;" v-for="(item,index) in arrTw" :key="index">
-                 <div style="width:240px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
-                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{index+1}}</div>
-                </div>
-                <div style="width:250px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
-                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.typ}}</div>
-                </div>  
-                <div style="width:250px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
-                    <div class="rightBot" :title="item.code">&nbsp;&nbsp;&nbsp;&nbsp;{{item.code}}</div>
-                </div>
-                <div style="width:250px;display:inline-block;border-bottom:1px solid #ccc;text-align:center;">
-                    <div style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;{{item.score}}</div>
-                </div>
-            </div> -->
             <div style="text-align:center;font-size:18px;margin-top:20px;font-weight:bolder;">（注：与第八种职业类别相同分数的类型顺延推荐）</div>
             
         <!-- </div> -->
@@ -281,8 +253,8 @@ export default {
                         item.typ = "语言符号-设计与创造"
                     }else if(item.typ=="UL"){
                         item.typ = "语言符号-使用与维护"
-                    }else if(item.typ=="RA"){
-                        item.typ = "艺术形象-设计与创造"
+                    }else if(item.typ=="PA"){
+                        item.typ = "艺术形象-规划与实施"
                     }else if(item.typ=="UA"){
                         item.typ = "艺术形象-使用与维护"
                     }else if(item.typ=="RS"){

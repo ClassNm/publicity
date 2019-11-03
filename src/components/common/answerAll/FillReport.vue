@@ -5,8 +5,9 @@
         <form action="" style="border:1px solid #ccc">
             <thead>
                 <tr>
-                    <th style="width:400px;height:100px;">学科</th>
-                    <th style="width:400px;height:100px;">考试成绩I</th>
+                    <th style="width:300px;height:100px;">学科</th>
+                    <th style="width:300px;height:100px;">考试成绩</th>
+                    <th style="width:300px;height:100px;">说明</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,78 +16,91 @@
                     <td> 
                         <input type="text" class="inpAll" v-model="physics">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                <tr>
                     <td style="height:60px;">化学</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="chemistry">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">生物</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="biology">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                  <tr>
                     <td style="height:60px;">信息技术</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="message">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">通用技术</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="common">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">美术</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="fineArts">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">音乐</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="music">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">数学</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="mathematics">
                     </td>
+                    <td style="height:60px">满分：150分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">语文</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="language">
                     </td>
+                    <td style="height:60px">满分：150分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">英语</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="english">
                     </td>
+                    <td style="height:60px">满分：150分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">历史</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="history">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">地理</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="geography">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
                 <tr>
                     <td style="height:60px;">政治</td>
                     <td> 
                         <input type="text" class="inpAll" v-model="politics">
                     </td>
+                    <td style="height:60px">满分：100分</td>
                 </tr>
             </tbody>
         </form>
@@ -137,7 +151,7 @@ export default {
                 },
                 {
                     score:this.biology,
-                    typ:"N",
+                    typ:"NI",
                     uid:uid
                 },
                 {
@@ -167,7 +181,7 @@ export default {
                 },
                 {
                     score:this.language,
-                    typ:"L",
+                    typ:"LI",
                     uid:uid
                 },
                 {

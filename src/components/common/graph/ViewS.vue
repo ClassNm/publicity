@@ -81,8 +81,8 @@ export default {
                         item.typ = "语言符号-设计与创造"
                     }else if(item.typ=="UL"){
                         item.typ = "语言符号-使用与维护"
-                    }else if(item.typ=="RA"){
-                        item.typ = "艺术形象-设计与创造"
+                    }else if(item.typ=="PA"){
+                        item.typ = "艺术形象-规划与实施"
                     }else if(item.typ=="UA"){
                         item.typ = "艺术形象-使用与维护"
                     }else if(item.typ=="RS"){
